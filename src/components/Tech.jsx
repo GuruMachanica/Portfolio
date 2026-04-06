@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { BallCanvas } from './canvas';
 import { SectionWrapper } from '../hoc';
@@ -6,6 +7,18 @@ import { styles } from '../styles';
 import { textVariant } from '../utils/motion';
 
 const Tech = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 767px)');
+    const handleChange = (e) => setIsMobile(e.matches);
+
+    setIsMobile(mediaQuery.matches);
+    mediaQuery.addEventListener('change', handleChange);
+
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
+
   return (
     <>
       <motion.div variants={textVariant()}>
@@ -28,7 +41,19 @@ const Tech = () => {
             <div className="flex flex-wrap justify-center md:justify-start gap-5">
               {group.items.map((technology) => (
                 <div className="w-24 h-24" key={technology.name}>
-                  <BallCanvas icon={technology.icon} />
+                  {isMobile ? (
+                    <div className="w-24 h-24 rounded-2xl bg-[#1a1a1a] border border-white/20 p-3 flex items-center justify-center">
+                      <img
+                        src={technology.icon}
+                        alt={technology.name}
+                        className="w-full h-full object-contain"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                  ) : (
+                    <BallCanvas icon={technology.icon} />
+                  )}
                 </div>
               ))}
             </div>

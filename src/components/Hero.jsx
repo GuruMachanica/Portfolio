@@ -26,7 +26,7 @@ const Hero = () => {
         className="relative flex sm:flex-row flex-col w-full min-h-screen mx-auto 
         sm:bg-hero bg-hero-mobile overflow-hidden">
         <div
-          className={`absolute inset-0 sm:top-[250px] top-[150px] 
+          className={`absolute inset-0 sm:top-[250px] top-[120px] 
           lg:top-[150px] xl:top-[250px] ${styles.paddingX} 
           max-w-7xl mx-auto flex flex-row items-start
           justify-between gap-3`}>
@@ -35,13 +35,13 @@ const Hero = () => {
             <div className="w-1 sm:h-80 h-40 bw-gradient sm:hidden" />
           </div>
 
-          <div>
+          <div className="max-w-[68vw] sm:max-w-none">
             <h1
               className={`${styles.heroHeadText} text-eerieBlack font-poppins uppercase`}>
               Hi, I'm{' '}
               <span
-                className="sm:text-battleGray sm:text-[90px] 
-                text-eerieBlack text-[50px] font-mova
+                className="sm:text-battleGray sm:text-[90px]
+                text-eerieBlack text-[clamp(34px,9vw,50px)] font-mova
                 font-extrabold uppercase">
                 Mohammad Huzaifa
               </span>

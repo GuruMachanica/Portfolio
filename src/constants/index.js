@@ -1,4 +1,13 @@
 import {
+  c,
+  cplusplus,
+  python,
+  canva,
+  mongodb,
+  mysql,
+  tensorflow,
+  pytorch,
+  vscode,
   frontend,
   backend,
   ux,
@@ -12,6 +21,7 @@ import {
   tailwind,
   nodejs,
   git,
+  github,
   figma,
   docker,
   postgresql,
@@ -26,7 +36,6 @@ import {
   kelhel,
   microverse,
 } from '../assets';
-import { skillIconUris } from '../utils/simpleIcons';
 
 export const navLinks = [
   {
@@ -68,15 +77,15 @@ const technologyGroups = [
     items: [
       {
         name: 'C++',
-        icon: skillIconUris.cplusplus,
+        icon: cplusplus,
       },
       {
         name: 'Python',
-        icon: skillIconUris.python,
+        icon: python,
       },
       {
         name: 'C',
-        icon: skillIconUris.c,
+        icon: c,
       },
     ],
   },
@@ -85,11 +94,11 @@ const technologyGroups = [
     items: [
       {
         name: 'Figma',
-        icon: skillIconUris.figma,
+        icon: figma,
       },
       {
         name: 'Canva',
-        icon: skillIconUris.canva,
+        icon: canva,
       },
     ],
   },
@@ -98,11 +107,11 @@ const technologyGroups = [
     items: [
       {
         name: 'MongoDB',
-        icon: skillIconUris.mongodb,
+        icon: mongodb,
       },
       {
         name: 'MySQL',
-        icon: skillIconUris.mysql,
+        icon: mysql,
       },
     ],
   },
@@ -111,11 +120,11 @@ const technologyGroups = [
     items: [
       {
         name: 'TensorFlow',
-        icon: skillIconUris.tensorflow,
+        icon: tensorflow,
       },
       {
         name: 'PyTorch',
-        icon: skillIconUris.pytorch,
+        icon: pytorch,
       },
     ],
   },
@@ -124,19 +133,19 @@ const technologyGroups = [
     items: [
       {
         name: 'Git',
-        icon: skillIconUris.git,
+        icon: git,
       },
       {
         name: 'GitHub',
-        icon: skillIconUris.github,
+        icon: github,
       },
       {
         name: 'VS Code',
-        icon: skillIconUris.vscode,
+        icon: vscode,
       },
       {
         name: 'Docker',
-        icon: skillIconUris.docker,
+        icon: docker,
       },
     ],
   },

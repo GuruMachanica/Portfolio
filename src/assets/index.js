@@ -38,6 +38,16 @@ import graphql from './tech/graphql.webp';
 import postgresql from './tech/postgresql.webp';
 import rubyrails from './tech/rubyrails.webp';
 
+import c from './tech-extra/c.webp';
+import cplusplus from './tech-extra/cplusplus.webp';
+import python from './tech-extra/python.webp';
+import canva from './tech-extra/canva.webp';
+import mongodb from './tech-extra/mongodb.webp';
+import mysql from './tech-extra/mysql.webp';
+import tensorflow from './tech-extra/tensorflow.webp';
+import pytorch from './tech-extra/pytorch.webp';
+import vscode from './tech-extra/vscode.webp';
+
 import coverhunt from './company/coverhunt.webp';
 import dcc from './company/dcc.webp';
 import kelhel from './company/kelhel.webp';
@@ -80,6 +90,15 @@ export {
   nodejs,
   postgresql,
   rubyrails,
+  c,
+  cplusplus,
+  python,
+  canva,
+  mongodb,
+  mysql,
+  tensorflow,
+  pytorch,
+  vscode,
   reactjs,
   redux,
   tailwind,
