@@ -1,16 +1,26 @@
-import React, { Suspense } from 'react';
-import { Canvas } from '@react-three/fiber';
+import React, { Suspense, useEffect } from 'react';
+import { Canvas, useThree } from '@react-three/fiber';
 import {
   Decal,
   Float,
-  OrbitControls,
   Preload,
   useTexture,
 } from '@react-three/drei';
+import * as THREE from 'three';
 import Loader from '../Loader';
 
 const Ball = (props) => {
   const [decal] = useTexture([props.imgUrl]);
+  const { gl } = useThree();
+
+  useEffect(() => {
+    decal.colorSpace = THREE.SRGBColorSpace;
+    decal.generateMipmaps = true;
+    decal.minFilter = THREE.LinearMipmapLinearFilter;
+    decal.magFilter = THREE.LinearFilter;
+    decal.anisotropy = gl.capabilities.getMaxAnisotropy();
+    decal.needsUpdate = true;
+  }, [decal, gl]);
 
   return (
     <Float speed={2.5} rotationIntensity={1} floatIntensity={2}>
@@ -37,9 +47,11 @@ const Ball = (props) => {
 
 const BallCanvas = ({ icon }) => {
   return (
-    <Canvas frameloop="always" gl={{ preserveDrawingBuffer: true }}>
+    <Canvas
+      frameloop="always"
+      dpr={[1, 1.5]}
+      gl={{ preserveDrawingBuffer: false, antialias: true, alpha: true }}>
       <Suspense fallback={<Loader />}>
-        <OrbitControls enableZoom={false} position0={0} />
         <Ball imgUrl={icon} />
       </Suspense>
 

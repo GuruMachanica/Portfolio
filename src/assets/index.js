@@ -40,6 +40,10 @@ import rubyrails from './tech/rubyrails.webp';
 
 import c from './tech-extra/c.webp';
 import cplusplus from './tech-extra/cplusplus.webp';
+import dockerTech from './tech-extra/docker.webp';
+import figmaTech from './tech-extra/figma.webp';
+import gitTech from './tech-extra/git.webp';
+import githubTech from './tech-extra/github.webp';
 import python from './tech-extra/python.webp';
 import canva from './tech-extra/canva.webp';
 import mongodb from './tech-extra/mongodb.webp';
@@ -92,6 +96,10 @@ export {
   rubyrails,
   c,
   cplusplus,
+  dockerTech,
+  figmaTech,
+  gitTech,
+  githubTech,
   python,
   canva,
   mongodb,

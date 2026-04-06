@@ -8,6 +8,10 @@ import {
   tensorflow,
   pytorch,
   vscode,
+  figmaTech,
+  gitTech,
+  githubTech,
+  dockerTech,
   frontend,
   backend,
   ux,
@@ -94,7 +98,7 @@ const technologyGroups = [
     items: [
       {
         name: 'Figma',
-        icon: figma,
+        icon: figmaTech,
       },
       {
         name: 'Canva',
@@ -133,11 +137,11 @@ const technologyGroups = [
     items: [
       {
         name: 'Git',
-        icon: git,
+        icon: gitTech,
       },
       {
         name: 'GitHub',
-        icon: github,
+        icon: githubTech,
       },
       {
         name: 'VS Code',
@@ -145,7 +149,7 @@ const technologyGroups = [
       },
       {
         name: 'Docker',
-        icon: docker,
+        icon: dockerTech,
       },
     ],
   },

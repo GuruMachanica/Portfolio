@@ -8,6 +8,7 @@ import {
   Navbar,
   Footer,
 } from './components';
+import { nairobi, whiteabstract } from './assets';
 import PageLoader from './components/PageLoader';
 
 const Tech = lazy(() => import('./components/Tech'));
@@ -51,7 +52,12 @@ const App = () => {
           <About />
         </div>
 
-        <div className="bg-tech bg-cover bg-center bg-no-repeat pb-10">
+        <div
+          className="bg-cover bg-center bg-no-repeat pb-10"
+          style={{
+            backgroundImage:
+              `linear-gradient(165deg, rgba(20,20,20,0.8) 100%, rgba(109,109,116,0.8) 100%), url(${nairobi})`,
+          }}>
           <Suspense fallback={<div className="h-[220px]" />}>
             <Tech />
           </Suspense>
@@ -62,8 +68,11 @@ const App = () => {
         </Suspense>
 
         <div
-          className="bg-experience bg-cover bg-center bg-no-repeat 
-            rounded-tl-[150px] rounded-br-[150px]">
+          className="bg-cover bg-center bg-no-repeat rounded-tl-[150px] rounded-br-[150px]"
+          style={{
+            backgroundImage:
+              `linear-gradient(135deg, rgba(244,244,246,0.5) 60%, rgba(10,10,10,0.2) 100%), url(${whiteabstract})`,
+          }}>
           <div
             className="bg-experienceLight bg-cover bg-center 
             bg-no-repeat rounded-tl-[150px] rounded-br-[130px]">
@@ -76,7 +85,7 @@ const App = () => {
               className="relative overflow-hidden mb-10 bg-cover bg-center bg-no-repeat"
               style={{
                 backgroundImage:
-                  "linear-gradient(165deg, rgba(20,20,20,0.8) 100%, rgba(109,109,116,0.8) 100%), url('/backgrounds/nairobi.webp')",
+                  `linear-gradient(165deg, rgba(20,20,20,0.8) 100%, rgba(109,109,116,0.8) 100%), url(${nairobi})`,
               }}>
               <div className="absolute inset-0 backdrop-blur-[1px] bg-black/10" />
 
