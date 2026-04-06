@@ -80,7 +80,7 @@ const Experience = () => {
         duration-[0.2s] ease-in-out shadow-[0_12px_28px_rgba(0,0,0,0.28)]"
         onClick={() =>
           window.open(
-            'https://www.linkedin.com/in/mohammad-huzaifa-137939322/',
+            'https://drive.google.com/file/d/1u2xt4lfEFvHCyCcoRaL9azhuzHQtiPNx/view?usp=sharing',
             '_blank'
           )
         }

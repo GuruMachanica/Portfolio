@@ -1,12 +1,12 @@
-import bwmap from './backgrounds/bw-map.jpeg';
-import nairobi from './backgrounds/nairobi.png';
-import whiteabstract from './backgrounds/white-abstract.png';
-import worldmap from './backgrounds/world-map.png';
+import bwmap from './backgrounds/bw-map.webp';
+import nairobi from './backgrounds/nairobi.webp';
+import whiteabstract from './backgrounds/white-abstract.webp';
+import worldmap from './backgrounds/world-map.webp';
 
 import logo from './logo/logo-black.png';
 import logotext from './logo/logo-text-black.png';
 
-import huzaifa from './personal/huzaifa.png';
+import huzaifa from './personal/huzaifa.webp';
 
 import backend from './icons/backend.png';
 import ux from './icons/ux.png';
@@ -43,10 +43,10 @@ import dcc from './company/dcc.png';
 import kelhel from './company/kelhel.png';
 import microverse from './company/microverse.png';
 
-import komikult from './projects/AEGIS.png';
-import leaderboard from './projects/Concept-2-3d.png';
-import math from './projects/KavachG.png';
-import sunmap from './projects/sunmap.png';
+import komikult from './projects/AEGIS.webp';
+import leaderboard from './projects/Concept-2-3d.webp';
+import math from './projects/KavachG.webp';
+import sunmap from './projects/sunmap.webp';
 
 export {
   bwmap,

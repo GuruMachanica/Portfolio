@@ -1,19 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, lazy, Suspense } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { BrowserRouter } from 'react-router-dom';
 import {
   About,
-  Achievements,
-  Certifications,
   Contact,
-  Experience,
   Hero,
   Navbar,
-  Tech,
-  Projects,
   Footer,
 } from './components';
 import PageLoader from './components/PageLoader';
+
+const Tech = lazy(() => import('./components/Tech'));
+const Projects = lazy(() => import('./components/Projects'));
+const Experience = lazy(() => import('./components/Experience'));
+const Certifications = lazy(() => import('./components/Certifications'));
+const Achievements = lazy(() => import('./components/Achievements'));
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -28,6 +29,7 @@ const App = () => {
 
   useEffect(() => {
     document.body.style.overflow = isLoading ? 'hidden' : 'auto';
+
     return () => {
       document.body.style.overflow = 'auto';
     };
@@ -50,10 +52,14 @@ const App = () => {
         </div>
 
         <div className="bg-tech bg-cover bg-center bg-no-repeat pb-10">
-          <Tech />
+          <Suspense fallback={<div className="h-[220px]" />}>
+            <Tech />
+          </Suspense>
         </div>
 
-        <Projects />
+        <Suspense fallback={<div className="h-[220px]" />}>
+          <Projects />
+        </Suspense>
 
         <div
           className="bg-experience bg-cover bg-center bg-no-repeat 
@@ -61,8 +67,10 @@ const App = () => {
           <div
             className="bg-experienceLight bg-cover bg-center 
             bg-no-repeat rounded-tl-[150px] rounded-br-[130px]">
-            <Experience />
-            <Certifications />
+            <Suspense fallback={<div className="h-[220px]" />}>
+              <Experience />
+              <Certifications />
+            </Suspense>
 
             <div
               className="relative overflow-hidden mb-10 bg-cover bg-center bg-no-repeat"
@@ -73,7 +81,9 @@ const App = () => {
               <div className="absolute inset-0 backdrop-blur-[1px] bg-black/10" />
 
               <div className="relative z-10">
-                <Achievements />
+                <Suspense fallback={<div className="h-[180px]" />}>
+                  <Achievements />
+                </Suspense>
               </div>
             </div>
           </div>
