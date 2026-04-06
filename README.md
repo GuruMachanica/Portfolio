@@ -49,11 +49,15 @@ Run locally to view the full experience with animations, timelines, and 3D skill
 
 ### Install Dependencies
 
+```bash
 npm install
+```
 
 ### Run Development Server
 
+```bash
 npm run dev
+```
 
 Default local URL:
 
@@ -61,11 +65,30 @@ http://localhost:5173/
 
 ### Build for Production
 
+```bash
 npm run build
+```
 
 ### Preview Production Build
 
+```bash
 npm run preview
+```
+
+## Environment variables
+
+This project uses Vite and expects environment variables prefixed with `VITE_` for client-side usage. Create a local `.env` (already ignored) with these keys:
+
+```env
+VITE_EMAILJS_SERVICE_ID=service_xxx
+VITE_EMAILJS_TEMPLATE_ID=template_xxx
+VITE_EMAILJS_PUBLIC_KEY=your_public_key
+VITE_CONTACT_TO_EMAIL=you@yourdomain.com
+```
+
+Do NOT commit your `.env` — it is included in `.gitignore`.
+
+If you use GitHub Actions to build & deploy, add the same keys to the repository **Secrets** (Settings → Secrets → Actions) with the exact names above.
 
 ## Customization Guide
 
@@ -100,7 +123,31 @@ You may not:
 - Redistribute project assets, source files, or design sections
 - Use this project as a template for direct reuse
 
-See the full legal terms in LICENSE.md.
+See the full legal terms in [LICENSE](LICENSE).
+
+## Deployment
+
+Three common deployment options are described below. Choose one and follow the steps.
+
+- Vercel (recommended):
+	1. Sign in to https://vercel.com and create a new project.
+	2. Import this GitHub repository.
+	3. Under Project Settings → Environment Variables, add the same `VITE_` variables listed above.
+	4. Vercel will automatically detect the Vite project and deploy on push.
+
+- Netlify:
+	1. Create a site from Git → GitHub and import the repo.
+	2. Set the build command to `npm run build` and the publish directory to `dist`.
+	3. Add the `VITE_` environment variables under Site Settings → Build & deploy → Environment.
+
+- GitHub Pages (via GitHub Actions):
+	- I added a GitHub Actions workflow at `.github/workflows/deploy.yml` that builds the site and publishes the `dist` folder to the `gh-pages` branch on push to `main`.
+	- To use it:
+		1. Add the `VITE_` variables as **Repository secrets** (Settings → Secrets → Actions).
+		2. Push to `main` — the workflow will run, build, and publish `dist` to `gh-pages`.
+		3. Enable Pages in the repository Settings → Pages and select the `gh-pages` branch as the source.
+
+If you'd like, I can set up CI deployment to Netlify or Vercel for you (I can't set up external accounts, but I can create the configuration and instructions you can follow to connect them).
 
 ## Credits
 
