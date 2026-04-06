@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { styles } from '../styles';
 import { navLinks } from '../constants';
@@ -11,7 +11,7 @@ const Navbar = () => {
   return (
     <nav
       className={`${styles.paddingX} w-full flex items-center py-2 fixed 
-      top-0 z-20 bg-flashWhite sm:opacity-[0.97] xxs:h-[12vh]`}>
+      top-0 z-20 bg-flashWhite sm:opacity-[0.97]`}>
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
         <Link
           to="/"
@@ -24,6 +24,9 @@ const Navbar = () => {
             src={logo} // your logo comes here
             alt="logo"
             className="sm:w-[50px] sm:h-[50px] w-[45px] h-[45px] object-contain"
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
           />
 
           {/* if you have text you want besides your logo it comes here.
@@ -32,15 +35,18 @@ const Navbar = () => {
             src={logotext}
             alt="logo"
             className="sm:w-[90px] sm:h-[90px] w-[85px] h-[85px] -ml-[0.6rem] object-contain"
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
           />
         </Link>
-        <ul className="list-none hidden sm:flex flex-row gap-14 mt-2">
+        <ul className="list-none hidden sm:flex flex-row gap-8 lg:gap-14 mt-2">
           {navLinks.map((nav) => (
             <li
               key={nav.id}
               className={`${
                 active === nav.title ? 'text-french' : 'text-eerieBlack'
-              } hover:text-taupe text-[21px] font-medium font-mova 
+              } hover:text-taupe text-[17px] lg:text-[21px] font-medium font-mova 
                 uppercase tracking-[3px] cursor-pointer nav-links`}
               onClick={() => setActive(nav.title)}>
               <a href={`#${nav.id}`}>{nav.title}</a>
@@ -61,19 +67,21 @@ const Navbar = () => {
                   src={close}
                   alt="close"
                   className="w-[22px] h-[22px] object-contain cursor-pointer"
+                  loading="lazy"
+                  decoding="async"
                   onClick={() => setToggle(!toggle)}
                 />
               </div>
               <ul
-                className="list-none flex flex-col -gap-[1rem] 
-                items-start justify-end mt-[10rem] -ml-[35px]">
+                className="list-none flex flex-col
+                items-start justify-end mt-[8rem] -ml-[20px] sm:-ml-[35px]">
                 {navLinks.map((nav) => (
                   <li
                     id={nav.id}
                     key={nav.id}
                     className={`${
                       active === nav.title ? 'text-french' : 'text-eerieBlack'
-                    } text-[88px] font-bold font-arenq 
+                    } text-[clamp(56px,17vw,88px)] leading-[0.95] font-bold font-arenq 
                       uppercase tracking-[1px] cursor-pointer`}
                     onClick={() => {
                       setToggle(!toggle);
@@ -89,6 +97,8 @@ const Navbar = () => {
               src={menu}
               alt="menu"
               className="w-[34px] h-[34px] object-contain cursor-pointer"
+              loading="lazy"
+              decoding="async"
               onClick={() => setToggle(!toggle)}
             />
           )}

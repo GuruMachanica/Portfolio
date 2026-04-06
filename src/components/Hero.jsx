@@ -23,7 +23,7 @@ const Hero = () => {
         />
       </div>
       <section
-        className="relative flex sm:flex-row flex-col w-full h-screen mx-auto 
+        className="relative flex sm:flex-row flex-col w-full min-h-screen mx-auto 
         sm:bg-hero bg-hero-mobile overflow-hidden">
         <div
           className={`absolute inset-0 sm:top-[250px] top-[150px] 
@@ -88,11 +88,14 @@ const Hero = () => {
         {/* Your image comes here. Feel free to remove image if you don't plan to have one.*/}
         <div>
           <img
-            className="absolute bottom-0 ml-[50vw] 
-            lg:ml-[75vw] md:ml-[60vw] xmd:ml-[60vw] 2xl:ml-[83vw]
-            sm:h-[90vh] md:h-[70vh] xl:h-[80vh]"
+            className="absolute right-0 bottom-0 w-[52vw] max-w-[540px]
+            md:w-[44vw] lg:w-[38vw] 2xl:w-[32vw] h-auto max-h-[86vh]
+            object-contain pointer-events-none"
             src={huzaifa}
             alt="mohammad huzaifa"
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
           />
         </div>
       </section>

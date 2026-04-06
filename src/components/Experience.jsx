@@ -35,6 +35,8 @@ const ExperienceCard = ({ education }) => (
           src={education.icon}
           alt={education.company_name}
           className="w-[60%] h-[60%] object-contain"
+          loading="lazy"
+          decoding="async"
         />
       </div>
     }>
@@ -95,6 +97,8 @@ const Experience = () => {
           src={download}
           alt="download"
           className="download-btn sm:w-[26px] sm:h-[26px] w-[23px] h-[23px] object-contain"
+          loading="lazy"
+          decoding="async"
         />
       </button>
     </>

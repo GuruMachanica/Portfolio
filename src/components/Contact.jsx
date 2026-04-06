@@ -73,7 +73,7 @@ const Contact = () => {
 
   return (
     <div
-      className="-mt-[8rem] xl:flex-row flex-col-reverse 
+      className="sm:-mt-[8rem] -mt-[4rem] xl:flex-row flex-col-reverse 
       flex gap-10 overflow-hidden">
       <motion.div
         variants={slideIn('left', 'tween', 0.2, 1)}
@@ -153,6 +153,8 @@ const Contact = () => {
               alt="send"
               className="contact-btn sm:w-[26px] sm:h-[26px] 
               w-[23px] h-[23px] object-contain"
+              loading="lazy"
+              decoding="async"
             />
           </button>
         </form>

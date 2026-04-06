@@ -76,7 +76,7 @@ const App = () => {
               className="relative overflow-hidden mb-10 bg-cover bg-center bg-no-repeat"
               style={{
                 backgroundImage:
-                  "linear-gradient(165deg, rgba(20,20,20,0.8) 100%, rgba(109,109,116,0.8) 100%), url('/src/assets/backgrounds/city-scape.jpg')",
+                  "linear-gradient(165deg, rgba(20,20,20,0.8) 100%, rgba(109,109,116,0.8) 100%), url('/backgrounds/nairobi.webp')",
               }}>
               <div className="absolute inset-0 backdrop-blur-[1px] bg-black/10" />
 

@@ -23,7 +23,7 @@ const ProjectCard = ({
       className={`relative ${
         active === id ? 'lg:flex-[3.5] flex-[10]' : 'lg:flex-[0.5] flex-[2]'
       } flex items-center justify-center min-w-[170px] 
-      h-[420px] cursor-pointer card-shadow`}
+      h-[360px] sm:h-[420px] cursor-pointer card-shadow`}
       onClick={() => handleClick(id)}>
       <div
         className="absolute top-0 left-0 z-10 bg-jetLight 
@@ -33,6 +33,8 @@ const ProjectCard = ({
         src={image}
         alt={name}
         className="absolute w-full h-full object-cover rounded-[24px]"
+        loading="lazy"
+        decoding="async"
       />
 
       {active !== id ? (
@@ -60,6 +62,8 @@ const ProjectCard = ({
                   src={github}
                   alt="source code"
                   className="w-4/5 h-4/5 object-contain"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>
@@ -100,6 +104,8 @@ const ProjectCard = ({
                 alt="pineapple"
                 className="btn-icon sm:w-[34px] sm:h-[34px] 
                   w-[30px] h-[30px] object-contain"
+                loading="lazy"
+                decoding="async"
               />
               {name === 'SunMap' ? 'LIVE DEMO' : 'DEMO'}
             </button>

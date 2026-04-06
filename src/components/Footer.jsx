@@ -47,7 +47,8 @@ const Footer = () => {
       </div>
 
       <div className="border-t border-gray-800">
-        <div className="max-w-7xl mx-auto px-6 py-6 text-sm text-gray-400 flex justify-between">
+        <div className="max-w-7xl mx-auto px-6 py-6 text-sm text-gray-400
+        flex flex-col sm:flex-row gap-2 sm:gap-0 justify-between text-center sm:text-left">
           <div>© {new Date().getFullYear()} Mohammad Huzaifa. All rights reserved.</div>
           <div>Site design — black & white</div>
         </div>
