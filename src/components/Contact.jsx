@@ -39,17 +39,24 @@ const Contact = () => {
 
     setLoading(true);
 
+    const templateParams = {
+      // Support both common EmailJS template variable styles.
+      name: form.name,
+      email: form.email,
+      message: form.message,
+      time: new Date().toLocaleString(),
+      from_name: form.name,
+      from_email: form.email,
+      to_name: 'Mohammad Huzaifa',
+      to_email: CONTACT_TO_EMAIL,
+      reply_to: form.email,
+    };
+
     emailjs
       .send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
-        {
-          from_name: form.name,
-          to_name: 'Mohammad Huzaifa',
-          from_email: form.email,
-          to_email: CONTACT_TO_EMAIL,
-          message: form.message,
-        },
+        templateParams,
         EMAILJS_PUBLIC_KEY
       )
       .then(
