@@ -165,7 +165,7 @@ const educations = [
   },
   {
     title: 'B.Tech in Computer Science and Engineering',
-    company_name: 'United Institute of Technology, Prayagraj (CGPA: 7.47)',
+    company_name: 'United Institute of Technology, Prayagraj (CGPA: 7.47 upto 5th semester)',
     icon: coverhunt,
     iconBg: '#333333',
     date: '2023 - 2027',
