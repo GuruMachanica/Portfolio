@@ -74,7 +74,7 @@ const Experience = () => {
       </div>
 
       <button
-        className="fixed right-4 sm:right-6 bottom-4 sm:bottom-6 z-40 live-demo
+        className="fixed right-4 sm:right-6 bottom-4 sm:bottom-6 z-[100] live-demo
         flex justify-between sm:text-[18px] text-[14px] text-timberWolf
         font-bold font-beckman items-center py-4 pl-3 pr-3 whitespace-nowrap
         gap-1 sm:w-[160px] sm:h-[58px] w-[130px] h-[48px] rounded-[12px]

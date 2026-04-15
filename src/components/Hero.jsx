@@ -126,7 +126,7 @@ const Hero = () => {
           </a>
 
           <a
-            href="https://leetcode.com/u/6e8oFGT8hK/"
+            href="https://leetcode.com/u/mohammad-huzaifa-/"
             target="_blank"
             rel="noreferrer"
             aria-label="LeetCode profile"

@@ -37,13 +37,7 @@ const About = () => {
       <motion.p
         variants={fadeIn('', '', 0.1, 1)}
         className="mt-4 text-taupe text-[18px] max-w-3xl leading-[30px]">
-        I am a Computer Science student with strong foundations in Data
-        Structures and Algorithms, OOP, DBMS, and Operating Systems. I build
-        practical products at the intersection of machine learning and user
-        experience, with hands-on work in React, Three.js, Python, TensorFlow,
-        PyTorch, and Figma. I have earned second runner-up positions at UHACK
-        4.0 and CodeStorm&apos;25, and completed certifications in Python with
-        Machine Learning and C++ with STL.
+        Results-driven B.Tech Computer Science student with a strong problem-solving mindset, blending technical expertise in Machine Learning, Data Analytics, and UI/UX to deliver high-impact business solutions. Passionate about translating complex datasets into actionable insights, developing KPI dashboards, and driving data-driven decision-making for stakeholder reporting and operational efficiency.
       </motion.p>
 
       <div className="mt-20 flex flex-wrap gap-10">
