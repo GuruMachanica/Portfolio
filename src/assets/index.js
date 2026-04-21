@@ -44,6 +44,7 @@ import dockerTech from './tech-extra/docker.webp';
 import figmaTech from './tech-extra/figma.webp';
 import gitTech from './tech-extra/git.webp';
 import githubTech from './tech-extra/github.webp';
+import n8n from './tech-extra/n8n.webp';
 import python from './tech-extra/python.webp';
 import canva from './tech-extra/canva.webp';
 import mongodb from './tech-extra/mongodb.webp';
@@ -100,6 +101,7 @@ export {
   figmaTech,
   gitTech,
   githubTech,
+  n8n,
   python,
   canva,
   mongodb,

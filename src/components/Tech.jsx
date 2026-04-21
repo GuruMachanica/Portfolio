@@ -27,8 +27,17 @@ const Tech = () => {
 
             <div className="flex flex-wrap justify-center md:justify-start gap-5">
               {group.items.map((technology) => (
-                <div className="w-24 h-24" key={technology.name}>
+                <div
+                  className="relative group w-24 h-24"
+                  key={technology.name}
+                  title={technology.name}>
                   <BallCanvas icon={technology.icon} />
+                  <span
+                    className="pointer-events-none absolute left-1/2 -translate-x-1/2 -top-8
+                    whitespace-nowrap rounded-md bg-black/85 px-2 py-1 text-[12px] text-white
+                    opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+                    {technology.name}
+                  </span>
                 </div>
               ))}
             </div>

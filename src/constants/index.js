@@ -11,6 +11,7 @@ import {
   figmaTech,
   gitTech,
   githubTech,
+  n8n,
   dockerTech,
   frontend,
   backend,
@@ -142,6 +143,10 @@ const technologyGroups = [
       {
         name: 'GitHub',
         icon: githubTech,
+      },
+      {
+        name: 'n8n',
+        icon: n8n,
       },
       {
         name: 'VS Code',
