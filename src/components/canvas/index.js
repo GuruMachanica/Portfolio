@@ -1,3 +1,5 @@
-import BallCanvas from './Ball';
+import BallCanvas, { GroupBallCanvas } from './Ball';
+import TechBalls from './TechBalls';
 
-export { BallCanvas };
+export { BallCanvas, GroupBallCanvas, TechBalls };
+

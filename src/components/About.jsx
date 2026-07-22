@@ -37,7 +37,7 @@ const About = () => {
       <motion.p
         variants={fadeIn('', '', 0.1, 1)}
         className="mt-4 text-taupe text-[18px] max-w-3xl leading-[30px]">
-        Results-driven B.Tech Computer Science student with a strong problem-solving mindset, blending technical expertise in Machine Learning, Data Analytics, and UI/UX to deliver high-impact business solutions. Passionate about translating complex datasets into actionable insights, developing KPI dashboards, and driving data-driven decision-making for stakeholder reporting and operational efficiency.
+        B.Tech Computer Science student specializing in Machine Learning, Generative AI, and Agentic Systems. Proven track record of designing autonomous AI agents, fine-tuning LLMs, and building robust data curation pipelines. Passionate about dataset engineering, workflow automation, and developing intelligent backend solutions for operational efficiency.
       </motion.p>
 
       <div className="mt-20 flex flex-wrap gap-10">

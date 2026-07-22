@@ -13,6 +13,9 @@ import {
   githubTech,
   n8n,
   dockerTech,
+  fastapi,
+  opencv,
+  scikitlearn,
   frontend,
   backend,
   ux,
@@ -59,11 +62,11 @@ export const navLinks = [
 
 const services = [
   {
-    title: 'Machine Learning Enthusiast',
+    title: 'Agentic AI Engineer',
     icon: frontend,
   },
   {
-    title: 'Frontend Developer',
+    title: 'Backend Developer',
     icon: backend,
   },
   {
@@ -71,7 +74,7 @@ const services = [
     icon: ux,
   },
   {
-    title: 'DSA Problem Solver',
+    title: 'Data Engineer',
     icon: prototyping,
   },
 ];
@@ -108,8 +111,12 @@ const technologyGroups = [
     ],
   },
   {
-    title: 'Databases',
+    title: 'Backend & Data Engineering',
     items: [
+      {
+        name: 'FastAPI',
+        icon: fastapi,
+      },
       {
         name: 'MongoDB',
         icon: mongodb,
@@ -121,7 +128,7 @@ const technologyGroups = [
     ],
   },
   {
-    title: 'Machine Learning & AI',
+    title: 'Machine Learning & CV',
     items: [
       {
         name: 'TensorFlow',
@@ -131,10 +138,18 @@ const technologyGroups = [
         name: 'PyTorch',
         icon: pytorch,
       },
+      {
+        name: 'Scikit-Learn',
+        icon: scikitlearn,
+      },
+      {
+        name: 'OpenCV',
+        icon: opencv,
+      },
     ],
   },
   {
-    title: 'Tools',
+    title: 'Tools & Automation',
     items: [
       {
         name: 'Git',
@@ -210,16 +225,16 @@ const achievements = [
 
 const certifications = [
   {
+    title: 'publication: Physiochemical Pattern Fingerprinting (PPF)',
+    description:
+      'Physiochemical Pattern Fingerprinting (PPF): A Memory-Efficient Approach to Structurally-Sensitive Protein Homology Detection. Co-authored by Rohit Mishra et al. (including Mohammad Huzaifa). Published in the International Journal of Drug Delivery Technology (IJDDT), Vol 16, Issue 4.',
+    link: 'https://impactfactor.org/PDF/IJDDT/16/IJDDT,Vol16,Issue43s,Article31.pdf',
+  },
+  {
     title: 'certificate: Machine Learning A-Z: AI, Python',
     description:
       'Covered machine learning fundamentals, model building, and real-world datasets.',
     link: 'https://udemy-certificate.s3.amazonaws.com/pdf/UC-a0237679-e3fc-4010-9950-4d826538b75f.pdf',
-  },
-  {
-    title: 'certificate: Python Programming',
-    description:
-      'Focused on data science, problem-solving, and algorithmic optimization.',
-    link: 'https://www.geeksforgeeks.org/certificate/52efc3c0f0f7c6b889007279db05670d',
   },
 ];
 
@@ -228,19 +243,27 @@ const projects = [
     id: 'project-1',
     name: 'Concept3D',
     description:
-      'AI concept-to-visualization platform. Implemented an AI-driven semantic processing model to reduce 3D prototyping time by 50%, alongside a fallback to ensure 99% rendering reliability.',
+      'AI Concept-to-Visualization Platform. Led backend development and 3D data pipeline engineering, translating unstructured conceptual data into structured inputs for 3D model generation. Streamlined 3D generation workflows by designing an AI-driven semantic preprocessing pipeline with robust data caching and validation.',
     tags: [
       {
         name: 'python',
         color: 'blue-text-gradient',
       },
       {
-        name: 'react',
+        name: 'pytorch',
         color: 'green-text-gradient',
       },
       {
-        name: 'threejs',
+        name: 'gen-ai',
         color: 'pink-text-gradient',
+      },
+      {
+        name: '3d-ml',
+        color: 'blue-text-gradient',
+      },
+      {
+        name: 'data-modeling',
+        color: 'green-text-gradient',
       },
     ],
     image: leaderboard,
@@ -251,7 +274,7 @@ const projects = [
     id: 'project-2',
     name: 'A.E.G.I.S',
     description:
-      'Real-time scam detection & analytics system. Engineered a real-time live audio pipeline delivering instant insights and automated WebSocket alerts, reducing threat response time by 40%.',
+      'Audio-based Edge Guard for Intelligent Scam-prevention. Architected backend data pipelines and API routing, leading the end-to-end integration of a real-time audio analytics and security application. Accelerated threat detection times by deploying a live audio processing pipeline equipped with automated WebSocket alerting.',
     tags: [
       {
         name: 'python',
@@ -262,8 +285,16 @@ const projects = [
         color: 'green-text-gradient',
       },
       {
-        name: 'flutter',
+        name: 'websocket-api',
         color: 'pink-text-gradient',
+      },
+      {
+        name: 'docker',
+        color: 'blue-text-gradient',
+      },
+      {
+        name: 'data-wrangling',
+        color: 'green-text-gradient',
       },
     ],
     image: komikult,
@@ -274,19 +305,27 @@ const projects = [
     id: 'project-3',
     name: 'SunMap',
     description:
-      '3D Solar Potential & Revenue Analytics. Integrated PyTorch models to forecast solar energy capacity, delivering actionable revenue insights and cost-benefit visualizations.',
+      '3D Solar Potential & Revenue Analytics. Led predictive analytics and spatial data structuring to enable simulation environments for solar energy assessment. Generated revenue forecasts and spatial cost-benefit analyses by training custom PyTorch models to predict localized solar energy capacity.',
     tags: [
       {
-        name: 'pytorch',
+        name: 'python',
         color: 'blue-text-gradient',
       },
       {
-        name: 'threejs',
+        name: 'pytorch',
         color: 'green-text-gradient',
       },
       {
-        name: 'python',
+        name: 'sql',
         color: 'pink-text-gradient',
+      },
+      {
+        name: 'statistical-analysis',
+        color: 'blue-text-gradient',
+      },
+      {
+        name: 'spatial-data',
+        color: 'green-text-gradient',
       },
     ],
     image: sunmap,
@@ -297,19 +336,27 @@ const projects = [
     id: 'project-4',
     name: 'KavachG',
     description:
-      'AI-based safety KPI & monitoring dashboard. Developed predictive analytics for live video feeds, automating safety compliance monitoring to save 20+ hours weekly with a responsive BI dashboard.',
+      'AI-Based Safety KPI & Monitoring Dashboard. Developed end-to-end machine learning pipelines and backend service integrations for a smart safety monitoring system. Replaced manual safety compliance checks by deploying real-time predictive computer vision models processing live camera feeds.',
     tags: [
       {
-        name: 'react',
+        name: 'python',
         color: 'blue-text-gradient',
       },
       {
-        name: 'python',
+        name: 'computer-vision',
         color: 'green-text-gradient',
       },
       {
-        name: 'tailwind',
+        name: 'opencv',
         color: 'pink-text-gradient',
+      },
+      {
+        name: 'fastapi',
+        color: 'blue-text-gradient',
+      },
+      {
+        name: 'ml-pipelines',
+        color: 'green-text-gradient',
       },
     ],
     image: math,

@@ -11,12 +11,12 @@ const Footer = () => {
         <div>
           <h3 className="text-2xl font-bold">Mohammad Huzaifa</h3>
           <p className="mt-4 text-sm text-gray-200 max-w-sm">
-            Passionate developer and machine learning enthusiast, dedicated to creating
-            innovative solutions and turning ideas into reality through code.
+            Agentic AI Engineer and backend developer, building autonomous agents and
+            intelligent systems that turn complex ideas into production-ready solutions.
           </p>
           <div className="flex gap-4 mt-6 text-gray-300">
             <a href="https://github.com/GuruMachanica" aria-label="GitHub" className="hover:text-white">GitHub</a>
-            <a href="https://www.linkedin.com/in/mohammad-huzaifa-137939322/" aria-label="LinkedIn" className="hover:text-white">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/mohammad--huzaifa/" aria-label="LinkedIn" className="hover:text-white">LinkedIn</a>
             <a href={`mailto:${CONTACT_EMAIL}`} aria-label="Email" className="hover:text-white">Email</a>
           </div>
         </div>

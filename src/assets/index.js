@@ -39,7 +39,7 @@ import postgresql from './tech/postgresql.webp';
 import rubyrails from './tech/rubyrails.webp';
 
 import c from './tech-extra/c.webp';
-import cplusplus from './tech-extra/cplusplus.webp';
+import cplusplus from './tech-extra/cpp.webp';
 import dockerTech from './tech-extra/docker.webp';
 import figmaTech from './tech-extra/figma.webp';
 import gitTech from './tech-extra/git.webp';
@@ -52,6 +52,9 @@ import mysql from './tech-extra/mysql.webp';
 import tensorflow from './tech-extra/tensorflow.webp';
 import pytorch from './tech-extra/pytorch.webp';
 import vscode from './tech-extra/vscode.webp';
+import fastapi from './tech-extra/fastapi.webp';
+import opencv from './tech-extra/opencv.webp';
+import scikitlearn from './tech-extra/scikitlearn.webp';
 
 import coverhunt from './company/coverhunt.webp';
 import dcc from './company/dcc.webp';
@@ -109,6 +112,9 @@ export {
   tensorflow,
   pytorch,
   vscode,
+  fastapi,
+  opencv,
+  scikitlearn,
   reactjs,
   redux,
   tailwind,

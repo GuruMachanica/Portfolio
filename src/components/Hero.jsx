@@ -26,16 +26,15 @@ const Hero = () => {
         className="relative flex sm:flex-row flex-col w-full min-h-screen mx-auto 
         sm:bg-hero bg-hero-mobile overflow-hidden">
         <div
-          className={`absolute inset-0 sm:top-[250px] top-[120px] 
-          lg:top-[150px] xl:top-[250px] ${styles.paddingX} 
-          max-w-7xl mx-auto flex flex-row items-start
+          className={`absolute inset-0 sm:top-0 top-[120px] ${styles.paddingX} 
+          max-w-7xl mx-auto flex flex-row sm:items-center items-start
           justify-between gap-3`}>
           <div className="flex flex-col justify-center items-center mt-5 ml-3">
             <div className="w-5 h-5 rounded-full bg-[#0a0a0a] sm:hidden" />
             <div className="w-1 sm:h-80 h-40 bw-gradient sm:hidden" />
           </div>
 
-          <div className="max-w-[68vw] sm:max-w-none">
+          <div className="max-w-[68vw] sm:max-w-[50%]">
             <h1
               className={`${styles.heroHeadText} text-eerieBlack font-poppins uppercase`}>
               Hi, I'm{' '}
@@ -47,9 +46,9 @@ const Hero = () => {
               </span>
             </h1>
             <p className={`${styles.heroSubText} mt-2 text-eerieBlack`}>
-              CS student building AI products and clean user experiences.
+              CS student specializing in Machine Learning, Generative AI, and Agentic Systems.
               <br className="sm:block hidden" />
-              Turning ideas into practical software.
+              Building autonomous agents and intelligent backend solutions.
             </p>
             <p className="mt-3 text-[14px] sm:text-[16px] text-eerieBlack font-poppins">
               Prayagraj, India | Open to internships
@@ -117,7 +116,7 @@ const Hero = () => {
           </a>
 
           <a
-            href="https://www.linkedin.com/in/mohammad-huzaifa-137939322/"
+            href="https://www.linkedin.com/in/mohammad--huzaifa/"
             target="_blank"
             rel="noreferrer"
             aria-label="LinkedIn profile"

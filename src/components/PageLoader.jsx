@@ -8,7 +8,7 @@ const PageLoader = () => {
       animate={{ y: 0, opacity: 1 }}
       exit={{ y: '-100%', opacity: 0.95 }}
       transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed inset-0 z-[999] bg-flashWhite flex flex-col items-center justify-center">
+      className="fixed inset-0 z-[99999] bg-flashWhite flex flex-col items-center justify-center">
       <motion.img
         src={logo}
         alt="portfolio logo"

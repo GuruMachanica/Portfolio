@@ -8,10 +8,10 @@ const Certifications = () => {
   return (
     <div className="-mt-[3rem]">
       <motion.div variants={textVariant()}>
-        <p className={styles.sectionSubTextLight}>Verified learning</p>
+        <p className={styles.sectionSubTextLight}>Research & verified learning</p>
         <h2
           className={`${styles.sectionHeadTextLight} drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]`}>
-          Certifications.
+          Publications & Certifications.
         </h2>
       </motion.div>
 
