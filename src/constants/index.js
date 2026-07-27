@@ -231,10 +231,10 @@ const certifications = [
     link: 'https://impactfactor.org/PDF/IJDDT/16/IJDDT,Vol16,Issue43s,Article31.pdf',
   },
   {
-    title: 'certificate: Machine Learning A-Z: AI, Python',
+    title: "certificate: CS50's Introduction to Artificial Intelligence with Python",
     description:
-      'Covered machine learning fundamentals, model building, and real-world datasets.',
-    link: 'https://udemy-certificate.s3.amazonaws.com/pdf/UC-a0237679-e3fc-4010-9950-4d826538b75f.pdf',
+      'Covered search algorithms, machine learning, neural networks, NLP, and AI in Python.',
+    link: 'https://cs50.harvard.edu/certificates/110613e9-87d7-4464-9897-63780847a793',
   },
 ];
 
