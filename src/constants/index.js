@@ -43,6 +43,7 @@ import {
   dcc,
   kelhel,
   microverse,
+  orvanto,
 } from '../assets';
 
 export const navLinks = [
@@ -177,18 +178,18 @@ const technologyGroups = [
 
 const educations = [
   {
-    title: 'High School',
-    company_name: 'Allahabad Public School, Prayagraj | 88.3%',
+    title: 'High School & Intermediate',
+    company_name: 'Allahabad Public School, Prayagraj | 88.3% & 85.8%',
     icon: microverse,
     iconBg: '#333333',
-    date: '2020',
+    date: '2020 - 2022',
   },
   {
-    title: 'Intermediate',
-    company_name: 'Allahabad Public School, Prayagraj | 85.8%',
-    icon: microverse,
+    title: 'Backend Developer Intern',
+    company_name: 'Sanfy Consultancy Services Pvt. Ltd. (Orvanto AI)',
+    icon: orvanto,
     iconBg: '#333333',
-    date: '2022',
+    date: 'Apr 2026 - Jul 2026',
   },
   {
     title: 'B.Tech in Computer Science & Engineering',

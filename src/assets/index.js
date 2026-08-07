@@ -60,6 +60,7 @@ import coverhunt from './company/coverhunt.webp';
 import dcc from './company/dcc.webp';
 import kelhel from './company/kelhel.webp';
 import microverse from './company/microverse.webp';
+import orvanto from './company/orvanto.webp';
 
 import komikult from './projects/AEGIS.webp';
 import leaderboard from './projects/Concept-2-3d.webp';
@@ -127,4 +128,5 @@ export {
   dcc,
   kelhel,
   microverse,
+  orvanto,
 };
