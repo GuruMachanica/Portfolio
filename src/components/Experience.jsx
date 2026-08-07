@@ -48,6 +48,15 @@ const ExperienceCard = ({ education }) => (
         style={{ margin: 0 }}>
         {education.company_name}
       </p>
+      {education.link && (
+        <a
+          href={education.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block mt-3 px-4 py-1.5 bg-jetLight text-[#eaeaec] font-beckman text-[14px] font-bold tracking-[1px] rounded-lg shadow-sm hover:bg-battleGray hover:text-eerieBlack transition duration-200">
+          VIEW CERTIFICATE
+        </a>
+      )}
     </div>
   </VerticalTimelineElement>
 );

@@ -190,6 +190,7 @@ const educations = [
     icon: orvanto,
     iconBg: '#333333',
     date: 'Apr 2026 - Jul 2026',
+    link: 'https://drive.google.com/file/d/100xwhMZa1ViRXZRXDTFmYDMBq3LtKmt4/view?usp=sharing',
   },
   {
     title: 'B.Tech in Computer Science & Engineering',
