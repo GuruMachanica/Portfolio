@@ -176,14 +176,7 @@ const technologyGroups = [
   },
 ];
 
-const educations = [
-  {
-    title: 'High School & Intermediate',
-    company_name: 'Allahabad Public School, Prayagraj | 88.3% & 85.8%',
-    icon: microverse,
-    iconBg: '#333333',
-    date: '2020 - 2022',
-  },
+const experiences = [
   {
     title: 'Backend Developer Intern',
     company_name: 'Sanfy Consultancy Services Pvt. Ltd. (Orvanto AI)',
@@ -191,6 +184,16 @@ const educations = [
     iconBg: '#333333',
     date: 'Apr 2026 - Jul 2026',
     link: 'https://drive.google.com/file/d/100xwhMZa1ViRXZRXDTFmYDMBq3LtKmt4/view?usp=sharing',
+  },
+];
+
+const educations = [
+  {
+    title: 'High School & Intermediate',
+    company_name: 'Allahabad Public School, Prayagraj | 88.3% & 85.8%',
+    icon: microverse,
+    iconBg: '#333333',
+    date: '2020 - 2022',
   },
   {
     title: 'B.Tech in Computer Science & Engineering',
@@ -370,6 +373,7 @@ const projects = [
 export {
   services,
   technologyGroups,
+  experiences,
   educations,
   achievements,
   certifications,

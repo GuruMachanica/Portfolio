@@ -5,11 +5,11 @@ import {
 import { motion } from 'framer-motion';
 import 'react-vertical-timeline-component/style.min.css';
 import { styles } from '../styles';
-import { experiences } from '../constants';
+import { educations } from '../constants';
 import { SectionWrapper } from '../hoc';
 import { textVariant } from '../utils/motion';
 
-const ExperienceCard = ({ education }) => (
+const EducationCard = ({ education }) => (
   <VerticalTimelineElement
     contentStyle={{
       background: '#eaeaec',
@@ -48,35 +48,26 @@ const ExperienceCard = ({ education }) => (
         style={{ margin: 0 }}>
         {education.company_name}
       </p>
-      {education.link && (
-        <a
-          href={education.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-block mt-3 px-4 py-1.5 bg-jetLight text-[#eaeaec] font-beckman text-[14px] font-bold tracking-[1px] rounded-lg shadow-sm hover:bg-battleGray hover:text-eerieBlack transition duration-200">
-          VIEW CERTIFICATE
-        </a>
-      )}
     </div>
   </VerticalTimelineElement>
 );
 
-const Experience = () => {
+const Education = () => {
   return (
     <>
       <motion.div variants={textVariant()}>
         <p className={`${styles.sectionSubText} sm:pl-16 pl-[2rem]`}>
-          Professional journey
+          Academic journey
         </p>
         <h2 className={`${styles.sectionHeadText} sm:pl-16 pl-[2rem]`}>
-          Work Experience.
+          Education.
         </h2>
       </motion.div>
 
       <div className="mt-20 flex flex-col">
         <VerticalTimeline className="vertical-timeline-custom-line">
-          {experiences.map((experience, index) => (
-            <ExperienceCard key={index} education={experience} />
+          {educations.map((education, index) => (
+            <EducationCard key={index} education={education} />
           ))}
         </VerticalTimeline>
       </div>
@@ -84,4 +75,4 @@ const Experience = () => {
   );
 };
 
-export default SectionWrapper(Experience, 'work');
+export default SectionWrapper(Education, 'education');

@@ -14,6 +14,7 @@ import PageLoader from './components/PageLoader';
 const Tech = lazy(() => import('./components/Tech'));
 const Projects = lazy(() => import('./components/Projects'));
 const Experience = lazy(() => import('./components/Experience'));
+const Education = lazy(() => import('./components/Education'));
 const Certifications = lazy(() => import('./components/Certifications'));
 const Achievements = lazy(() => import('./components/Achievements'));
 
@@ -78,6 +79,7 @@ const App = () => {
             bg-no-repeat rounded-tl-[150px] rounded-br-[130px]">
             <Suspense fallback={<div className="h-[220px]" />}>
               <Experience />
+              <Education />
               <Certifications />
             </Suspense>
 
