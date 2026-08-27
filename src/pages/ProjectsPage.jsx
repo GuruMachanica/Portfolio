@@ -9,6 +9,13 @@ import { FaArrowLeft, FaGithub, FaExternalLinkAlt, FaSearch, FaPlay, FaProjectDi
 import { animate, stagger } from "animejs";
 
 const architectureBlueprints = {
+  "AnveshakSutra": {
+    pipeline: "Input Identity -> 5-Char SHA-256 Hash -> K-Anonymity Exposure Bucket -> 3D Graph ML Centrality -> Deception Tripwire Trigger",
+    latency: "< 120ms Zero-Knowledge Query",
+    throughput: "Asynchronous Celery Sweepers",
+    security: "Zero Server Cleartext Leakage (K-Anonymity)",
+    siteKey: "anveshaksutra"
+  },
   "Concept3D": {
     pipeline: "Text / Image Input -> Semantic Tokenizer -> Coordinate Validation Grid -> PyTorch 3D Latent Mapping -> WebGL 3D Mesh Output",
     latency: "< 2.4s Generation Time",
@@ -24,18 +31,11 @@ const architectureBlueprints = {
     siteKey: "aegis"
   },
   "SunMap": {
-    pipeline: "3D GeoJSON Spatial Mesh -> Sun Elevation Vector Calculator -> Shadow Ray Tracing Engine -> PyTorch Revenue Predictor -> Three.js Heatmap",
+    pipeline: "CityGML LOD2 Geometry -> 60 FPS WebGL Raycaster -> Perez Irradiance Transposition -> Bankable Yield & Financial ROI Engine",
     latency: "60 FPS Real-Time Simulation",
     throughput: "Client-Side WebGL Ray Tracing",
     security: "Static Sandboxed Execution",
     siteKey: "sunmap"
-  },
-  "AnveshakSutra": {
-    pipeline: "Input Identity -> 5-Char SHA-256 Hash -> K-Anonymity Exposure Bucket -> 3D Graph ML Centrality -> Deception Tripwire Trigger",
-    latency: "< 120ms Zero-Knowledge Query",
-    throughput: "Asynchronous Celery Sweepers",
-    security: "Zero Server Cleartext Leakage (K-Anonymity)",
-    siteKey: "anveshaksutra"
   },
   "KavachG": {
     pipeline: "RTSP Video Feed -> OpenCV Frame Extractor -> YOLOv8 PPE & Hazard Detector -> Incident Logger DB -> FastAPI Dashboard Alert Feed",
