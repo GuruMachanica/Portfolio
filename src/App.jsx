@@ -10,10 +10,13 @@ import PageLoader from "./components/PageLoader";
 import SkeletonLoader from "./components/SkeletonLoader";
 import PageTransition from "./components/PageTransition";
 import CommandPalette from "./components/CommandPalette";
+import ScrollProgress from "./components/ScrollProgress";
+import AmbientGlow from "./components/AmbientGlow";
+import TiltCard from "./components/TiltCard";
 import { FaBrain, FaCubes, FaFolderOpen, FaBriefcase, FaGraduationCap, FaCertificate, FaTrophy, FaPaperPlane, FaArrowRight } from "react-icons/fa";
 import { animate, stagger } from "animejs";
 
-// Lazy-loaded dedicated standalone pages for optimal performance and true code-splitting
+// Lazy-loaded dedicated standalone pages
 const OverviewPage = lazy(() => import("./pages/OverviewPage"));
 const TechnologiesPage = lazy(() => import("./pages/TechnologiesPage"));
 const ProjectsPage = lazy(() => import("./pages/ProjectsPage"));
@@ -117,33 +120,32 @@ const HomePage = () => {
           {hubCards.map((card) => {
             const Icon = card.icon;
             return (
-              <Link
-                key={card.path}
-                to={card.path}
-                className="hub-card opacity-0 brutalist-panel rounded-3xl p-6 border border-white/10 hover:border-white/40 flex flex-col justify-between group transition-all duration-300">
-                <div>
-                  <div className="flex items-center justify-between mb-5">
-                    <div className="w-12 h-12 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-300">
-                      <Icon className="w-5 h-5 text-white group-hover:text-black transition-colors" />
+              <Link key={card.path} to={card.path} className="hub-card opacity-0 group">
+                <TiltCard className="brutalist-panel rounded-3xl p-6 border border-white/10 group-hover:border-white/40 flex flex-col justify-between h-full transition-all duration-300">
+                  <div>
+                    <div className="flex items-center justify-between mb-5">
+                      <div className="w-12 h-12 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-300">
+                        <Icon className="w-5 h-5 text-white group-hover:text-black transition-colors" />
+                      </div>
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/10 text-white border border-white/20 font-bold">
+                        {card.tag}
+                      </span>
                     </div>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/10 text-white border border-white/20 font-bold">
-                      {card.tag}
-                    </span>
+
+                    <h3 className="text-white text-[19px] font-bold font-poppins tracking-tight mb-2 group-hover:text-white">
+                      {card.title}
+                    </h3>
+
+                    <p className="text-zinc-400 text-[13px] font-poppins leading-relaxed">
+                      {card.desc}
+                    </p>
                   </div>
 
-                  <h3 className="text-white text-[19px] font-bold font-poppins tracking-tight mb-2 group-hover:text-white">
-                    {card.title}
-                  </h3>
-
-                  <p className="text-zinc-400 text-[13px] font-poppins leading-relaxed">
-                    {card.desc}
-                  </p>
-                </div>
-
-                <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-[12px] font-mono text-zinc-400 group-hover:text-white">
-                  <span>ENTER MODULE</span>
-                  <FaArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                </div>
+                  <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-[12px] font-mono text-zinc-400 group-hover:text-white">
+                    <span>ENTER MODULE</span>
+                    <FaArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </TiltCard>
               </Link>
             );
           })}
@@ -197,6 +199,9 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className="relative z-0 bg-[#000000] text-[#ffffff] min-h-screen overflow-x-hidden flex flex-col justify-between">
+        <ScrollProgress />
+        <AmbientGlow />
+
         <AnimatePresence mode="wait">
           {isLoading && <PageLoader />}
         </AnimatePresence>
@@ -204,7 +209,7 @@ const App = () => {
         <Navbar />
         <CommandPalette />
 
-        <main className="flex-grow">
+        <main className="flex-grow relative z-10">
           <AnimatedRoutes />
         </main>
 

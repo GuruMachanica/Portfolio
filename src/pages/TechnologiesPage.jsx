@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { TechBalls } from "../components/canvas";
 import { technologyGroups } from "../constants";
 import PageTransition from "../components/PageTransition";
+import TiltCard from "../components/TiltCard";
 import { FaArrowLeft, FaTerminal, FaBrain, FaServer, FaCubes, FaFilter, FaCheckCircle, FaBolt, FaLayerGroup } from "react-icons/fa";
 import { animate, stagger } from "animejs";
 
@@ -219,41 +220,40 @@ const TechnologiesPage = () => {
         {/* 3D Tech Ball Panels Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           {filteredGroups.map((group) => (
-            <div
-              key={group.title}
-              className="tech-panel-item opacity-0 brutalist-panel rounded-3xl p-6 border border-white/10 hover:border-white/35 flex flex-col justify-between transition-all duration-300">
-              
-              <div>
-                <div className="pb-3 border-b border-white/10 mb-4 flex items-center justify-between">
-                  <h3 className="text-white text-[19px] sm:text-[22px] font-bold font-poppins tracking-tight">
-                    {group.title}
-                  </h3>
-                  <span className="text-[10px] font-mono text-zinc-400">
-                    {group.items.length} Modules
-                  </span>
+            <div key={group.title} className="tech-panel-item opacity-0">
+              <TiltCard className="brutalist-panel rounded-3xl p-6 border border-white/10 hover:border-white/35 flex flex-col justify-between h-full transition-all duration-300">
+                <div>
+                  <div className="pb-3 border-b border-white/10 mb-4 flex items-center justify-between">
+                    <h3 className="text-white text-[19px] sm:text-[22px] font-bold font-poppins tracking-tight">
+                      {group.title}
+                    </h3>
+                    <span className="text-[10px] font-mono text-zinc-400">
+                      {group.items.length} Modules
+                    </span>
+                  </div>
+
+                  {/* 3D WebGL Spheres Canvas */}
+                  <div className="w-full flex items-center justify-center overflow-hidden py-2">
+                    <TechBalls items={group.items} />
+                  </div>
                 </div>
 
-                {/* 3D WebGL Spheres Canvas */}
-                <div className="w-full flex items-center justify-center overflow-hidden py-2">
-                  <TechBalls items={group.items} />
+                {/* Clickable Quick Selector Pills */}
+                <div className="mt-4 pt-4 border-t border-white/10 flex flex-wrap gap-1.5">
+                  {group.items.map((it) => (
+                    <button
+                      key={it.name}
+                      onClick={() => setSelectedTech(it.name)}
+                      className={`text-[11px] font-mono px-2.5 py-1 rounded-lg transition-all ${
+                        selectedTech === it.name
+                          ? "bg-white text-black font-bold shadow-md"
+                          : "bg-white/[0.04] text-zinc-300 hover:text-white border border-white/10 hover:border-white/30"
+                      }`}>
+                      {it.name}
+                    </button>
+                  ))}
                 </div>
-              </div>
-
-              {/* Clickable Quick Selector Pills */}
-              <div className="mt-4 pt-4 border-t border-white/10 flex flex-wrap gap-1.5">
-                {group.items.map((it) => (
-                  <button
-                    key={it.name}
-                    onClick={() => setSelectedTech(it.name)}
-                    className={`text-[11px] font-mono px-2.5 py-1 rounded-lg transition-all ${
-                      selectedTech === it.name
-                        ? "bg-white text-black font-bold shadow-md"
-                        : "bg-white/[0.04] text-zinc-300 hover:text-white border border-white/10 hover:border-white/30"
-                    }`}>
-                    {it.name}
-                  </button>
-                ))}
-              </div>
+              </TiltCard>
             </div>
           ))}
         </div>
