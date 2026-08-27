@@ -1,39 +1,42 @@
-import { motion } from 'framer-motion';
-import { TechBalls } from './canvas';
-import { SectionWrapper } from '../hoc';
-import { technologyGroups } from '../constants';
-import { styles } from '../styles';
-import { textVariant } from '../utils/motion';
+import React from "react";
+import { motion } from "framer-motion";
+import { TechBalls } from "./canvas";
+import { SectionWrapper } from "../hoc";
+import { technologyGroups } from "../constants";
+import { styles } from "../styles";
+import { textVariant } from "../utils/motion";
 
 const Tech = () => {
   return (
-    <>
+    <div className="-mt-[4rem]">
       <motion.div variants={textVariant()}>
-        <p className={styles.sectionSubTextLight}>My skills</p>
+        <p className={styles.sectionSubTextLight}>Interactive 3D Stack</p>
         <h2 className={styles.sectionHeadTextLight}>Technologies.</h2>
       </motion.div>
 
-      <div className="mt-14 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+      <div className="mt-12 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
         {technologyGroups.map((group) => (
           <div
             key={group.title}
-            className="bg-[rgba(20,20,20,0.48)] border border-white/25 rounded-2xl px-5 py-5">
-
-            <h3
-              className="text-silver sm:text-[28px] text-[24px] font-beckman
-              tracking-[1px] mb-3 text-center md:text-left">
-              {group.title}
-            </h3>
+            className="brutalist-panel rounded-3xl p-6 border border-white/10 flex flex-col justify-between">
+            <div className="flex items-center justify-between pb-3 border-b border-white/10 mb-4">
+              <h3 className="text-white sm:text-[22px] text-[19px] font-bold font-poppins tracking-tight">
+                {group.title}
+              </h3>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/[0.06] text-[#61DAFB] border border-[#61DAFB]/20">
+                Interactive 3D
+              </span>
+            </div>
 
             {/* All balls for this group share ONE WebGL context */}
-            <TechBalls items={group.items} />
+            <div className="w-full flex items-center justify-center">
+              <TechBalls items={group.items} />
+            </div>
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 
-export default SectionWrapper(Tech, '');
-
-
+export default SectionWrapper(Tech, "");

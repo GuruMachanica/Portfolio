@@ -1,29 +1,42 @@
-import { useState, useRef } from 'react';
-import { motion } from 'framer-motion';
-import emailjs from '@emailjs/browser';
-import { styles } from '../styles';
-import { SectionWrapper } from '../hoc';
-import { slideIn } from '../utils/motion';
-import { send, sendHover } from '../assets';
+import React, { useState, useRef } from "react";
+import { motion } from "framer-motion";
+import emailjs from "@emailjs/browser";
+import { styles } from "../styles";
+import { SectionWrapper } from "../hoc";
+import { slideIn, fadeIn, textVariant } from "../utils/motion";
+import { FaGithub, FaLinkedin, FaPaperPlane, FaCopy, FaCheck } from "react-icons/fa";
 
 const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 const CONTACT_TO_EMAIL =
-  import.meta.env.VITE_CONTACT_TO_EMAIL || 'mdhuzaifa00786@gmail.com';
+  import.meta.env.VITE_CONTACT_TO_EMAIL || "mdhuzaifa00786@gmail.com";
 
 const Contact = () => {
   const formRef = useRef();
   const [form, setForm] = useState({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   });
   const [loading, setLoading] = useState(false);
+  const [copiedEmail, setCopiedEmail] = useState(false);
+  const [copiedPhone, setCopiedPhone] = useState(false);
+
+  const copyEmail = () => {
+    navigator.clipboard.writeText("mdhuzaifa00786@gmail.com");
+    setCopiedEmail(true);
+    setTimeout(() => setCopiedEmail(false), 2000);
+  };
+
+  const copyPhone = () => {
+    navigator.clipboard.writeText("+916391028860");
+    setCopiedPhone(true);
+    setTimeout(() => setCopiedPhone(false), 2000);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     setForm({ ...form, [name]: value });
   };
 
@@ -31,9 +44,7 @@ const Contact = () => {
     e.preventDefault();
 
     if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
-      alert(
-        'Contact form is not configured yet. Add EmailJS keys in your .env file.'
-      );
+      alert("Contact form is not configured yet. Add EmailJS keys in your .env file.");
       return;
     }
 
@@ -46,7 +57,7 @@ const Contact = () => {
       time: new Date().toLocaleString(),
       from_name: form.name,
       from_email: form.email,
-      to_name: 'Mohammad Huzaifa',
+      to_name: "Mohammad Huzaifa",
       to_email: CONTACT_TO_EMAIL,
       reply_to: form.email,
     };
@@ -61,117 +72,152 @@ const Contact = () => {
       .then(
         () => {
           setLoading(false);
-          alert('Thank you. I will get back to you as soon as possible.');
-
-          setForm({
-            name: '',
-            email: '',
-            message: '',
-          });
+          alert("Thank you! I will get back to you as soon as possible.");
+          setForm({ name: "", email: "", message: "" });
         },
         (error) => {
           setLoading(false);
-          console.log(error);
-          alert('Something went wrong. Please try again.');
+          console.error(error);
+          alert("Something went wrong. Please try again.");
         }
       );
   };
 
   return (
-    <div
-      className="sm:-mt-[8rem] -mt-[4rem] xl:flex-row flex-col-reverse 
-      flex gap-10 overflow-hidden">
-      <motion.div
-        variants={slideIn('left', 'tween', 0.2, 1)}
-        className="flex-[0.75] bg-jet p-8 rounded-2xl">
-        <p className={styles.sectionSubText}>Get in touch</p>
-        <h3 className={styles.sectionHeadTextLight}>Contact.</h3>
-
-        <form
-          ref={formRef}
-          onSubmit={handleSubmit}
-          className="mt-10 flex flex-col gap-6 font-poppins">
-          <label className="flex flex-col">
-            <span className="text-timberWolf font-medium mb-4">Your Name</span>
-            <input
-              type="text"
-              name="name"
-              autoComplete="name"
-              value={form.name}
-              onChange={handleChange}
-              placeholder="What's your name?"
-              className="bg-eerieBlack py-4 px-6
-              placeholder:text-taupe
-              text-timberWolf rounded-lg outline-none
-              border-none font-medium"
-            />
-          </label>
-          <label className="flex flex-col">
-            <span className="text-timberWolf font-medium mb-4">Your Email</span>
-            <input
-              type="email"
-              name="email"
-              autoComplete="email"
-              value={form.email}
-              onChange={handleChange}
-              placeholder="What's your email?"
-              className="bg-eerieBlack py-4 px-6
-              placeholder:text-taupe
-              text-timberWolf rounded-lg outline-none
-              border-none font-medium"
-            />
-          </label>
-          <label className="flex flex-col">
-            <span className="text-timberWolf font-medium mb-4">
-              Your Message
-            </span>
-            <textarea
-              rows="7"
-              name="message"
-              autoComplete="off"
-              value={form.message}
-              onChange={handleChange}
-              placeholder="What's your message?"
-              className="bg-eerieBlack py-4 px-6
-              placeholder:text-taupe
-              text-timberWolf rounded-lg outline-none
-              border-none font-medium resize-none"
-            />
-          </label>
-
-          <button
-            type="submit"
-            className="live-demo flex justify-center sm:gap-4 
-            gap-3 sm:text-[20px] text-[16px] text-timberWolf 
-            font-bold font-beckman items-center py-5
-            whitespace-nowrap sm:w-[130px] sm:h-[50px] 
-            w-[100px] h-[45px] rounded-[10px] bg-night 
-            hover:bg-battleGray hover:text-eerieBlack 
-            transition duration-[0.2s] ease-in-out"
-            onMouseOver={() => {
-              document
-                .querySelector('.contact-btn')
-                ?.setAttribute('src', sendHover);
-            }}
-            onMouseOut={() => {
-              document
-                .querySelector('.contact-btn')
-                ?.setAttribute('src', send);
-            }}>
-            {loading ? 'Sending' : 'Send'}
-            <img
-              src={send}
-              alt="send"
-              className="contact-btn sm:w-[26px] sm:h-[26px] 
-              w-[23px] h-[23px] object-contain"
-              loading="lazy"
-              decoding="async"
-            />
-          </button>
-        </form>
+    <div className="-mt-[4rem]">
+      <motion.div variants={textVariant()}>
+        <p className={styles.sectionSubText}>Direct Channels &amp; Inquiries</p>
+        <h2 className={styles.sectionHeadText}>Contact.</h2>
       </motion.div>
+
+      <div className="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        {/* Left Col: Direct Channels */}
+        <motion.div
+          variants={slideIn("left", "tween", 0.1, 0.8)}
+          className="lg:col-span-5 flex flex-col gap-4">
+          
+          <div className="brutalist-panel rounded-3xl p-6 sm:p-7 border border-white/10">
+            <h3 className="text-white text-[22px] font-bold font-poppins tracking-tight mb-2">
+              Let&apos;s Build Together
+            </h3>
+            <p className="text-slate-300 text-[14px] leading-relaxed font-poppins mb-6">
+              I am open to machine learning roles, AI agent development, and high-throughput backend architecture opportunities.
+            </p>
+
+            {/* Email Action */}
+            <div
+              onClick={copyEmail}
+              className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-[#61DAFB]/50 transition-all duration-200 cursor-pointer flex items-center justify-between group mb-3">
+              <div>
+                <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest block">
+                  EMAIL ADDRESS
+                </span>
+                <span className="text-white text-[14px] sm:text-[15px] font-mono font-bold mt-0.5 block break-all">
+                  mdhuzaifa00786@gmail.com
+                </span>
+              </div>
+              <button className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-400 group-hover:text-[#61DAFB] transition-colors">
+                {copiedEmail ? <FaCheck className="w-3.5 h-3.5 text-[#10B981]" /> : <FaCopy className="w-3.5 h-3.5" />}
+              </button>
+            </div>
+
+            {/* Phone Action */}
+            <div
+              onClick={copyPhone}
+              className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-[#61DAFB]/50 transition-all duration-200 cursor-pointer flex items-center justify-between group mb-3">
+              <div>
+                <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest block">
+                  PHONE / WHATSAPP
+                </span>
+                <span className="text-white text-[14px] sm:text-[15px] font-mono font-bold mt-0.5 block">
+                  +91 6391028860
+                </span>
+              </div>
+              <button className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-400 group-hover:text-[#61DAFB] transition-colors">
+                {copiedPhone ? <FaCheck className="w-3.5 h-3.5 text-[#10B981]" /> : <FaCopy className="w-3.5 h-3.5" />}
+              </button>
+            </div>
+
+            {/* Location */}
+            <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10">
+              <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest block">
+                LOCATION
+              </span>
+              <span className="text-white text-[14px] font-poppins font-medium mt-0.5 block">
+                Prayagraj, Uttar Pradesh, India
+              </span>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Right Col: Message Form */}
+        <motion.div
+          variants={slideIn("right", "tween", 0.2, 0.8)}
+          className="lg:col-span-7 brutalist-panel rounded-3xl p-6 sm:p-8 border border-white/10">
+          
+          <form
+            ref={formRef}
+            onSubmit={handleSubmit}
+            className="flex flex-col gap-5 font-poppins">
+            
+            <div>
+              <label className="text-white text-[13px] font-mono font-bold block mb-2">
+                YOUR NAME
+              </label>
+              <input
+                type="text"
+                name="name"
+                required
+                value={form.name}
+                onChange={handleChange}
+                placeholder="What is your name?"
+                className="w-full bg-black/60 border border-white/10 focus:border-[#61DAFB] rounded-xl px-4 py-3.5 text-white text-[14px] outline-none transition-colors"
+              />
+            </div>
+
+            <div>
+              <label className="text-white text-[13px] font-mono font-bold block mb-2">
+                YOUR EMAIL
+              </label>
+              <input
+                type="email"
+                name="email"
+                required
+                value={form.email}
+                onChange={handleChange}
+                placeholder="Where can I reach you?"
+                className="w-full bg-black/60 border border-white/10 focus:border-[#61DAFB] rounded-xl px-4 py-3.5 text-white text-[14px] outline-none transition-colors"
+              />
+            </div>
+
+            <div>
+              <label className="text-white text-[13px] font-mono font-bold block mb-2">
+                YOUR MESSAGE
+              </label>
+              <textarea
+                rows="5"
+                name="message"
+                required
+                value={form.message}
+                onChange={handleChange}
+                placeholder="Tell me about your project, team, or opportunity..."
+                className="w-full bg-black/60 border border-white/10 focus:border-[#61DAFB] rounded-xl px-4 py-3.5 text-white text-[14px] outline-none transition-colors resize-none"
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="mt-2 flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-white text-black hover:bg-[#61DAFB] font-mono font-bold text-[14px] transition-all duration-200 shadow-md">
+              <FaPaperPlane className="w-3.5 h-3.5" />
+              {loading ? "SENDING MESSAGE..." : "SEND MESSAGE"}
+            </button>
+          </form>
+        </motion.div>
+      </div>
     </div>
   );
 };
 
-export default SectionWrapper(Contact, 'contact');
+export default SectionWrapper(Contact, "contact");

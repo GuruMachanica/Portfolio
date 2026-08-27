@@ -1,38 +1,39 @@
 import {
   VerticalTimeline,
   VerticalTimelineElement,
-} from 'react-vertical-timeline-component';
-import { motion } from 'framer-motion';
-import 'react-vertical-timeline-component/style.min.css';
-import { styles } from '../styles';
-import { experiences } from '../constants';
-import { SectionWrapper } from '../hoc';
-import { textVariant } from '../utils/motion';
+} from "react-vertical-timeline-component";
+import { motion } from "framer-motion";
+import "react-vertical-timeline-component/style.min.css";
+import { styles } from "../styles";
+import { experiences } from "../constants";
+import { SectionWrapper } from "../hoc";
+import { textVariant } from "../utils/motion";
 
-const ExperienceCard = ({ education }) => (
+const ExperienceCard = ({ experience }) => (
   <VerticalTimelineElement
     contentStyle={{
-      background: '#eaeaec',
-      color: '#292929',
-      boxShadow:
-        'rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px',
+      background: "rgba(13, 15, 22, 0.9)",
+      color: "#f8fafc",
+      border: "1px solid rgba(255, 255, 255, 0.1)",
+      boxShadow: "0 10px 30px -10px rgba(0, 0, 0, 0.8)",
+      borderRadius: "20px",
     }}
     contentArrowStyle={{
-      borderRight: '7px solid  #232631',
+      borderRight: "7px solid rgba(255, 255, 255, 0.1)",
     }}
     date={
       <div>
-        <h3 className="text-dim text-[18px] font-bold font-beckman">
-          {education.date}
+        <h3 className="text-[#61DAFB] text-[15px] font-bold font-mono">
+          {experience.date}
         </h3>
       </div>
     }
-    iconStyle={{ background: education.iconBg }}
+    iconStyle={{ background: "#11131a", border: "2px solid rgba(255, 255, 255, 0.15)" }}
     icon={
       <div className="flex justify-center items-center w-full h-full">
         <img
-          src={education.icon}
-          alt={education.company_name}
+          src={experience.icon}
+          alt={experience.company_name}
           className="w-[60%] h-[60%] object-contain"
           loading="lazy"
           decoding="async"
@@ -40,21 +41,21 @@ const ExperienceCard = ({ education }) => (
       </div>
     }>
     <div>
-      <h3 className="text-jetLight text-[24px] font-bold font-beckman tracking-[2px]">
-        {education.title}
+      <h3 className="text-white text-[22px] font-bold font-poppins tracking-tight">
+        {experience.title}
       </h3>
       <p
-        className="text-dim sm:text-[16px] text-[14px] font-semibold font-poppins tracking-[0.5px]"
-        style={{ margin: 0 }}>
-        {education.company_name}
+        className="text-slate-300 sm:text-[15px] text-[13px] font-normal font-poppins"
+        style={{ margin: "4px 0 0 0" }}>
+        {experience.company_name}
       </p>
-      {education.link && (
+      {experience.link && (
         <a
-          href={education.link}
+          href={experience.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block mt-3 px-4 py-1.5 bg-jetLight text-[#eaeaec] font-beckman text-[14px] font-bold tracking-[1px] rounded-lg shadow-sm hover:bg-battleGray hover:text-eerieBlack transition duration-200">
-          VIEW CERTIFICATE
+          className="inline-flex items-center gap-1.5 mt-4 px-4 py-1.5 bg-white text-black font-mono text-[12px] font-bold tracking-wider rounded-lg hover:bg-[#61DAFB] transition duration-200 shadow-sm">
+          VIEW CERTIFICATE →
         </a>
       )}
     </div>
@@ -63,25 +64,21 @@ const ExperienceCard = ({ education }) => (
 
 const Experience = () => {
   return (
-    <>
+    <div className="-mt-[4rem]">
       <motion.div variants={textVariant()}>
-        <p className={`${styles.sectionSubText} sm:pl-16 pl-[2rem]`}>
-          Professional journey
-        </p>
-        <h2 className={`${styles.sectionHeadText} sm:pl-16 pl-[2rem]`}>
-          Work Experience.
-        </h2>
+        <p className={styles.sectionSubText}>Professional Journey</p>
+        <h2 className={styles.sectionHeadText}>Work Experience.</h2>
       </motion.div>
 
-      <div className="mt-20 flex flex-col">
+      <div className="mt-12 flex flex-col">
         <VerticalTimeline className="vertical-timeline-custom-line">
           {experiences.map((experience, index) => (
-            <ExperienceCard key={index} education={experience} />
+            <ExperienceCard key={index} experience={experience} />
           ))}
         </VerticalTimeline>
       </div>
-    </>
+    </div>
   );
 };
 
-export default SectionWrapper(Experience, 'work');
+export default SectionWrapper(Experience, "work");

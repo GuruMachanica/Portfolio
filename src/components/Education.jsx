@@ -1,33 +1,34 @@
 import {
   VerticalTimeline,
   VerticalTimelineElement,
-} from 'react-vertical-timeline-component';
-import { motion } from 'framer-motion';
-import 'react-vertical-timeline-component/style.min.css';
-import { styles } from '../styles';
-import { educations } from '../constants';
-import { SectionWrapper } from '../hoc';
-import { textVariant } from '../utils/motion';
+} from "react-vertical-timeline-component";
+import { motion } from "framer-motion";
+import "react-vertical-timeline-component/style.min.css";
+import { styles } from "../styles";
+import { educations } from "../constants";
+import { SectionWrapper } from "../hoc";
+import { textVariant } from "../utils/motion";
 
 const EducationCard = ({ education }) => (
   <VerticalTimelineElement
     contentStyle={{
-      background: '#eaeaec',
-      color: '#292929',
-      boxShadow:
-        'rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px',
+      background: "rgba(13, 15, 22, 0.9)",
+      color: "#f8fafc",
+      border: "1px solid rgba(255, 255, 255, 0.1)",
+      boxShadow: "0 10px 30px -10px rgba(0, 0, 0, 0.8)",
+      borderRadius: "20px",
     }}
     contentArrowStyle={{
-      borderRight: '7px solid  #232631',
+      borderRight: "7px solid rgba(255, 255, 255, 0.1)",
     }}
     date={
       <div>
-        <h3 className="text-dim text-[18px] font-bold font-beckman">
+        <h3 className="text-[#61DAFB] text-[15px] font-bold font-mono">
           {education.date}
         </h3>
       </div>
     }
-    iconStyle={{ background: education.iconBg }}
+    iconStyle={{ background: "#11131a", border: "2px solid rgba(255, 255, 255, 0.15)" }}
     icon={
       <div className="flex justify-center items-center w-full h-full">
         <img
@@ -40,12 +41,12 @@ const EducationCard = ({ education }) => (
       </div>
     }>
     <div>
-      <h3 className="text-jetLight text-[24px] font-bold font-beckman tracking-[2px]">
+      <h3 className="text-white text-[22px] font-bold font-poppins tracking-tight">
         {education.title}
       </h3>
       <p
-        className="text-dim sm:text-[16px] text-[14px] font-semibold font-poppins tracking-[0.5px]"
-        style={{ margin: 0 }}>
+        className="text-slate-300 sm:text-[15px] text-[13px] font-normal font-poppins"
+        style={{ margin: "4px 0 0 0" }}>
         {education.company_name}
       </p>
     </div>
@@ -54,25 +55,21 @@ const EducationCard = ({ education }) => (
 
 const Education = () => {
   return (
-    <>
+    <div className="-mt-[2rem]">
       <motion.div variants={textVariant()}>
-        <p className={`${styles.sectionSubText} sm:pl-16 pl-[2rem]`}>
-          Academic journey
-        </p>
-        <h2 className={`${styles.sectionHeadText} sm:pl-16 pl-[2rem]`}>
-          Education.
-        </h2>
+        <p className={styles.sectionSubText}>Academic Background</p>
+        <h2 className={styles.sectionHeadText}>Education.</h2>
       </motion.div>
 
-      <div className="mt-20 flex flex-col">
+      <div className="mt-12 flex flex-col">
         <VerticalTimeline className="vertical-timeline-custom-line">
           {educations.map((education, index) => (
             <EducationCard key={index} education={education} />
           ))}
         </VerticalTimeline>
       </div>
-    </>
+    </div>
   );
 };
 
-export default SectionWrapper(Education, 'education');
+export default SectionWrapper(Education, "education");

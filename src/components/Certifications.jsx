@@ -1,17 +1,17 @@
-import { motion } from 'framer-motion';
-import { styles } from '../styles';
-import { certifications } from '../constants';
-import { SectionWrapper } from '../hoc';
-import { fadeIn, textVariant } from '../utils/motion';
+import { motion } from "framer-motion";
+import { styles } from "../styles";
+import { certifications } from "../constants";
+import { SectionWrapper } from "../hoc";
+import { fadeIn, textVariant } from "../utils/motion";
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 const Certifications = () => {
   return (
-    <div className="-mt-[3rem]">
+    <div className="-mt-[2rem]">
       <motion.div variants={textVariant()}>
-        <p className={styles.sectionSubTextLight}>Research & verified learning</p>
-        <h2
-          className={`${styles.sectionHeadTextLight} drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]`}>
-          Publications & Certifications.
+        <p className={styles.sectionSubTextLight}>Research &amp; Verified Credentials</p>
+        <h2 className={styles.sectionHeadTextLight}>
+          Publications &amp; Certifications.
         </h2>
       </motion.div>
 
@@ -19,19 +19,36 @@ const Certifications = () => {
         {certifications.map((cert, index) => (
           <motion.a
             key={cert.title}
-            variants={fadeIn('up', 'spring', index * 0.15, 0.8)}
+            variants={fadeIn("up", "spring", index * 0.15, 0.8)}
             href={cert.link}
             target="_blank"
             rel="noreferrer"
-            className="block bg-[rgba(244,244,246,0.85)] border border-[#cfcfd4]
-            rounded-2xl p-6 shadow-[0_8px_24px_rgba(0,0,0,0.08)] hover:translate-y-[-2px]
-            transition-transform duration-200">
-            <h3 className="text-jet text-[20px] font-bold font-beckman tracking-[1px]">
-              {cert.title}
-            </h3>
-            <p className="mt-2 text-dim text-[15px] leading-[24px] font-poppins">
-              {cert.description}
-            </p>
+            className="brutalist-panel rounded-3xl p-6 sm:p-7 border border-white/10 flex flex-col justify-between group hover:border-[#61DAFB]/40 transition-all duration-300">
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-[11px] font-mono font-bold text-[#61DAFB] uppercase tracking-wider">
+                  {cert.title.includes("Research") || cert.title.includes("Paper") || cert.title.includes("Protein") ? "Peer-Reviewed Paper" : "Harvard CS50"}
+                </span>
+                <FaExternalLinkAlt className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#61DAFB] transition-colors" />
+              </div>
+
+              <h3 className="text-white text-[20px] font-bold font-poppins tracking-tight mb-2">
+                {cert.title}
+              </h3>
+
+              <p className="text-slate-300 text-[14px] leading-relaxed font-normal font-poppins">
+                {cert.description}
+              </p>
+            </div>
+
+            <div className="mt-5 pt-4 border-t border-white/10 flex items-center justify-between">
+              <span className="text-[12px] font-mono text-[#10B981] font-bold">
+                VERIFIED CREDENTIAL
+              </span>
+              <span className="text-[12px] font-mono text-white group-hover:text-[#61DAFB] font-bold">
+                VIEW DOCUMENT →
+              </span>
+            </div>
           </motion.a>
         ))}
       </div>
@@ -39,4 +56,4 @@ const Certifications = () => {
   );
 };
 
-export default SectionWrapper(Certifications, 'certifications');
+export default SectionWrapper(Certifications, "certifications");
