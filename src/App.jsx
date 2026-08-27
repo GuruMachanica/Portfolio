@@ -7,18 +7,19 @@ import {
   Footer,
 } from "./components";
 import PageLoader from "./components/PageLoader";
+import SkeletonLoader from "./components/SkeletonLoader";
 import { FaBrain, FaCubes, FaFolderOpen, FaBriefcase, FaGraduationCap, FaCertificate, FaTrophy, FaPaperPlane, FaArrowRight } from "react-icons/fa";
 import { animate, stagger } from "animejs";
 
-// Dedicated separate page components
-import OverviewPage from "./pages/OverviewPage";
-import TechnologiesPage from "./pages/TechnologiesPage";
-import ProjectsPage from "./pages/ProjectsPage";
-import ExperiencePage from "./pages/ExperiencePage";
-import EducationPage from "./pages/EducationPage";
-import CertificationsPage from "./pages/CertificationsPage";
-import AchievementsPage from "./pages/AchievementsPage";
-import ContactPage from "./pages/ContactPage";
+// Lazy-loaded dedicated standalone pages for optimal performance and true code-splitting
+const OverviewPage = lazy(() => import("./pages/OverviewPage"));
+const TechnologiesPage = lazy(() => import("./pages/TechnologiesPage"));
+const ProjectsPage = lazy(() => import("./pages/ProjectsPage"));
+const ExperiencePage = lazy(() => import("./pages/ExperiencePage"));
+const EducationPage = lazy(() => import("./pages/EducationPage"));
+const CertificationsPage = lazy(() => import("./pages/CertificationsPage"));
+const AchievementsPage = lazy(() => import("./pages/AchievementsPage"));
+const ContactPage = lazy(() => import("./pages/ContactPage"));
 
 const hubCards = [
   {
@@ -179,18 +180,20 @@ const App = () => {
         <Navbar />
 
         <main className="flex-grow">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/overview" element={<OverviewPage />} />
-            <Route path="/about" element={<OverviewPage />} />
-            <Route path="/technologies" element={<TechnologiesPage />} />
-            <Route path="/projects" element={<ProjectsPage />} />
-            <Route path="/experience" element={<ExperiencePage />} />
-            <Route path="/education" element={<EducationPage />} />
-            <Route path="/certifications" element={<CertificationsPage />} />
-            <Route path="/achievements" element={<AchievementsPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-          </Routes>
+          <Suspense fallback={<SkeletonLoader />}>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/overview" element={<OverviewPage />} />
+              <Route path="/about" element={<OverviewPage />} />
+              <Route path="/technologies" element={<TechnologiesPage />} />
+              <Route path="/projects" element={<ProjectsPage />} />
+              <Route path="/experience" element={<ExperiencePage />} />
+              <Route path="/education" element={<EducationPage />} />
+              <Route path="/certifications" element={<CertificationsPage />} />
+              <Route path="/achievements" element={<AchievementsPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+            </Routes>
+          </Suspense>
         </main>
 
         <Footer />
