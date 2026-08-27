@@ -9,6 +9,7 @@ import {
 import PageLoader from "./components/PageLoader";
 import SkeletonLoader from "./components/SkeletonLoader";
 import PageTransition from "./components/PageTransition";
+import CommandPalette from "./components/CommandPalette";
 import { FaBrain, FaCubes, FaFolderOpen, FaBriefcase, FaGraduationCap, FaCertificate, FaTrophy, FaPaperPlane, FaArrowRight } from "react-icons/fa";
 import { animate, stagger } from "animejs";
 
@@ -201,6 +202,7 @@ const App = () => {
         </AnimatePresence>
 
         <Navbar />
+        <CommandPalette />
 
         <main className="flex-grow">
           <AnimatedRoutes />
