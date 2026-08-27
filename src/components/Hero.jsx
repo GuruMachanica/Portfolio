@@ -110,7 +110,8 @@ const Hero = () => {
           </a>
           <a
             href="/Mohammad_Huzaifa_Resume.pdf"
-            download
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl brutalist-panel text-zinc-300 font-bold text-[13px] sm:text-[14px] font-mono hover:text-white hover:border-white/40 transition-all duration-200 text-center">
             <FaFileDownload className="w-3.5 h-3.5 text-white" />
             RESUME

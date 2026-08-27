@@ -115,7 +115,8 @@ const Navbar = () => {
           {/* Resume CTA */}
           <a
             href="/Mohammad_Huzaifa_Resume.pdf"
-            download
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-3.5 py-1.5 rounded-lg bg-white text-black font-mono font-bold text-[12px] hover:bg-zinc-200 transition-colors shadow-sm">
             RESUME
           </a>
