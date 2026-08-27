@@ -1,3 +1,4 @@
+import LiveProjectThumbnail from "../components/LiveProjectThumbnail";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { projects } from "../constants";
@@ -163,23 +164,15 @@ const ProjectsPage = () => {
               <div key={project.id} className="project-card-anim opacity-100">
                 <TiltCard className="brutalist-panel rounded-3xl overflow-hidden border border-white/10 hover:border-white/40 flex flex-col justify-between h-full group transition-all duration-300">
                   <div>
-                    {/* Project Image Banner */}
-                    <div className="relative h-56 sm:h-64 w-full bg-zinc-950 overflow-hidden border-b border-white/10">
-                      <img
-                        src={project.image}
-                        alt={project.name}
-                        loading="lazy"
-                        decoding="async"
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
-                      />
-                      <div className="absolute top-4 right-4 flex items-center gap-2">
-                        <span className="text-[10px] font-mono px-3 py-1 rounded-full bg-black/80 backdrop-blur-md text-white border border-white/20 font-bold uppercase">
-                          {project.category || "SYSTEM"}
-                        </span>
-                      </div>
-                    </div>
+                    {/* Project Image Banner with Live Screenshot Support */}
+    <LiveProjectThumbnail
+      name={project.name}
+      fallbackImage={project.image}
+      demoUrl={project.demo}
+      category={project.category}
+    />
 
-                    {/* Content */}
+    {/* Content */}
                     <div className="p-6 sm:p-7">
                       <div className="flex items-center justify-between gap-2 mb-2">
                         <h2 className="text-white text-[22px] sm:text-[26px] font-extrabold font-poppins tracking-tight">

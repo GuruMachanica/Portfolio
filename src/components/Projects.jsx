@@ -1,3 +1,4 @@
+import LiveProjectThumbnail from "./LiveProjectThumbnail";
 import React from "react";
 import { motion } from "framer-motion";
 import { SectionWrapper } from "../hoc";
@@ -23,25 +24,17 @@ const ProjectCard = ({
       className="brutalist-panel rounded-2xl sm:rounded-3xl p-5 sm:p-7 border border-white/10 flex flex-col justify-between group hover:border-white/40 transition-all duration-300">
       
       <div>
-        {/* Project Thumbnail */}
-        <div className="relative w-full h-[180px] sm:h-[220px] rounded-xl sm:rounded-2xl overflow-hidden mb-4 sm:mb-5 border border-white/10 bg-black">
-          <img
-            src={image}
-            alt={name}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            loading="lazy"
-            decoding="async"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-          
-          <div className="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between">
-            <span className="text-[10px] sm:text-[11px] font-mono font-bold px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-black/90 text-white border border-white/30 backdrop-blur-md">
-              {name === "SunMap" ? "Spatial 3D" : name === "Concept3D" ? "GenAI & 3D" : name === "A.E.G.I.S" ? "Audio Security" : "Computer Vision"}
-            </span>
-          </div>
-        </div>
+        {/* Project Thumbnail with Live Deployment Preview */}
+    <div className="rounded-xl sm:rounded-2xl overflow-hidden mb-4 sm:mb-5 border border-white/10">
+      <LiveProjectThumbnail
+        name={name}
+        fallbackImage={image}
+        demoUrl={demo}
+        category={name === "SunMap" ? "Spatial 3D" : name === "Concept3D" ? "GenAI & 3D" : name === "A.E.G.I.S" ? "Audio Security" : "Computer Vision"}
+      />
+    </div>
 
-        {/* Title & Architecture */}
+    {/* Title & Architecture */}
         <h3 className="text-white text-[20px] sm:text-[24px] lg:text-[26px] font-extrabold font-poppins tracking-tight">
           {name}
         </h3>
