@@ -247,8 +247,15 @@ const projects = [
   {
     id: 'project-1',
     name: 'Concept3D',
+    category: 'Agentic AI & 3D',
     description:
       'AI Concept-to-Visualization Platform. Led backend development and 3D data pipeline engineering, translating unstructured conceptual data into structured inputs for 3D model generation. Streamlined 3D generation workflows by designing an AI-driven semantic preprocessing pipeline with robust data caching and validation.',
+    architecture: 'PyTorch • GenAI 3D Pipeline • Semantic Caching Engine',
+    keyHighlights: [
+      'Transforms unstructured conceptual inputs into structured 3D spatial models',
+      'AI-driven semantic preprocessing pipeline with automated coordinate validation',
+      'High-throughput data modeling optimized for generative rendering'
+    ],
     tags: [
       {
         name: 'python',
@@ -278,8 +285,15 @@ const projects = [
   {
     id: 'project-2',
     name: 'A.E.G.I.S',
+    category: 'Backend & APIs',
     description:
       'Audio-based Edge Guard for Intelligent Scam-prevention. Architected backend data pipelines and API routing, leading the end-to-end integration of a real-time audio analytics and security application. Accelerated threat detection times by deploying a live audio processing pipeline equipped with automated WebSocket alerting.',
+    architecture: 'FastAPI • WebSockets • Real-Time Audio Streaming • Docker',
+    keyHighlights: [
+      'Architected live streaming audio data pipeline for real-time scam detection',
+      'Low-latency WebSocket notification system with sub-second alert triggers',
+      'Containerized backend service infrastructure built with Docker & FastAPI'
+    ],
     tags: [
       {
         name: 'python',
@@ -309,8 +323,15 @@ const projects = [
   {
     id: 'project-3',
     name: 'SunMap',
+    category: 'Computer Vision & 3D',
     description:
       '3D Solar Potential & Revenue Analytics. Led predictive analytics and spatial data structuring to enable simulation environments for solar energy assessment. Generated revenue forecasts and spatial cost-benefit analyses by training custom PyTorch models to predict localized solar energy capacity.',
+    architecture: 'PyTorch • Spatial GeoData • Predictive Revenue Simulation',
+    keyHighlights: [
+      'Constructed 3D spatial simulation environments for solar energy assessment',
+      'Trained PyTorch models on spatial datasets for accurate capacity forecasting',
+      'Engineered automated cost-benefit and revenue estimation engines'
+    ],
     tags: [
       {
         name: 'python',
@@ -340,8 +361,15 @@ const projects = [
   {
     id: 'project-4',
     name: 'KavachG',
+    category: 'Computer Vision & 3D',
     description:
       'AI-Based Safety KPI & Monitoring Dashboard. Developed end-to-end machine learning pipelines and backend service integrations for a smart safety monitoring system. Replaced manual safety compliance checks by deploying real-time predictive computer vision models processing live camera feeds.',
+    architecture: 'OpenCV • FastAPI • Real-Time Camera Feed Pipelines',
+    keyHighlights: [
+      'Replaced manual compliance checks with real-time CV safety monitoring',
+      'Engineered high-throughput video analytics pipelines using OpenCV & FastAPI',
+      'Automated KPI tracking with live dashboard synchronization'
+    ],
     tags: [
       {
         name: 'python',
