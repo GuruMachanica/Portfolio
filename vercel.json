@@ -1,16 +1,32 @@
 {
-  "version": 2,
-  "builds": [
+  "rewrites": [
     {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": { "distDir": "dist" }
+      "source": "/((?!.*\\\\.(?:ico|png|jpg|jpeg|svg|webp|pdf|json|webmanifest|xml|txt|woff|woff2|otf|ttf)$).*)",
+      "destination": "/index.html"
     }
   ],
-  "routes": [
+  "headers": [
     {
-      "src": "^/(?!api/|_next/|assets/|static/|favicon.ico|robots.txt|sitemap.xml).*$",
-      "dest": "/index.html"
+      "source": "/(.*)\\\\.pdf",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/pdf"
+        },
+        {
+          "key": "Content-Disposition",
+          "value": "inline"
+        }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     }
   ]
 }
