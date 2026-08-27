@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { projects } from "../constants";
 import PageTransition from "../components/PageTransition";
-import { FaArrowLeft, FaGithub, FaExternalLinkAlt, FaSearch, FaCubes, FaLayerGroup, FaProjectDiagram, FaTimes, FaCheck } from "react-icons/fa";
+import TiltCard from "../components/TiltCard";
+import DemoModal from "../components/demos/DemoModal";
+import { FaArrowLeft, FaGithub, FaExternalLinkAlt, FaSearch, FaCubes, FaPlay, FaLayerGroup, FaProjectDiagram, FaTimes, FaCheck } from "react-icons/fa";
 import { animate, stagger } from "animejs";
 
 const architectureBlueprints = {
@@ -10,25 +12,29 @@ const architectureBlueprints = {
     pipeline: "Text / Image Input -> Semantic Tokenizer -> Coordinate Validation Grid -> PyTorch 3D Latent Mapping -> WebGL 3D Mesh Output",
     latency: "< 2.4s Generation Time",
     throughput: "Optimized Spatial Caching",
-    security: "Input Sanitization & Schema Validation"
+    security: "Input Sanitization & Schema Validation",
+    demoTab: "concept3d"
   },
   "A.E.G.I.S": {
     pipeline: "Audio Stream Buffer -> Edge Signal Normalization -> FastAPI WebSocket Pipeline -> Scam Intent Risk Scorer -> Real-Time Alert Engine",
     latency: "< 250ms Sub-Second Detection",
     throughput: "Asynchronous ASGI Workers",
-    security: "End-to-End WebSocket Encryption"
+    security: "End-to-End WebSocket Encryption",
+    demoTab: "aegis"
   },
   "SunMap": {
     pipeline: "3D GeoJSON Spatial Mesh -> Sun Elevation Vector Calculator -> Shadow Ray Tracing Engine -> PyTorch Revenue Predictor -> Three.js Heatmap",
     latency: "60 FPS Real-Time Simulation",
     throughput: "Client-Side WebGL Ray Tracing",
-    security: "Static Sandboxed Execution"
+    security: "Static Sandboxed Execution",
+    demoTab: "sunmap"
   },
   "KavachG": {
     pipeline: "RTSP Video Feed -> OpenCV Frame Extractor -> YOLOv8 PPE & Hazard Detector -> Incident Logger DB -> FastAPI Dashboard Alert Feed",
     latency: "< 100ms Inference Per Frame",
     throughput: "Multi-Camera Streaming",
-    security: "Role-Based Token Access"
+    security: "Role-Based Token Access",
+    demoTab: "kavachg"
   }
 };
 
@@ -36,6 +42,8 @@ const ProjectsPage = () => {
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState("ALL");
   const [selectedArch, setSelectedArch] = useState(null);
+  const [demoModalOpen, setDemoModalOpen] = useState(false);
+  const [demoTab, setDemoTab] = useState("concept3d");
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -63,6 +71,19 @@ const ProjectsPage = () => {
     return matchesSearch && matchesCategory;
   });
 
+  const launchDemo = (tabName) => {
+    setDemoTab(tabName);
+    setDemoModalOpen(true);
+  };
+
+  const getTabForProject = (name) => {
+    if (name.includes("Concept")) return "concept3d";
+    if (name.includes("A.E.G.I.S") || name.includes("AEGIS")) return "aegis";
+    if (name.includes("SunMap")) return "sunmap";
+    if (name.includes("KavachG")) return "kavachg";
+    return "concept3d";
+  };
+
   return (
     <PageTransition>
       <div className="pt-28 pb-24 px-4 sm:px-8 max-w-7xl mx-auto min-h-screen text-white">
@@ -76,21 +97,29 @@ const ProjectsPage = () => {
           </Link>
           <div className="flex items-center gap-2 text-[12px] font-mono text-zinc-400">
             <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
-            PRODUCTION SYSTEMS &amp; ARCHITECTURES
+            PRODUCTION SYSTEMS &amp; LIVE DEMO SANDBOX
           </div>
         </div>
 
-        {/* Page Title */}
-        <div className="mb-10">
-          <p className="text-[12px] font-mono uppercase tracking-[0.25em] text-zinc-400 font-bold">
-            ENGINEERING SHOWCASE
-          </p>
-          <h1 className="text-[36px] sm:text-[52px] font-extrabold font-poppins text-white tracking-tight mt-1">
-            Projects.
-          </h1>
-          <p className="text-zinc-400 text-[15px] sm:text-[17px] mt-3 max-w-3xl leading-relaxed">
-            Production-grade autonomous AI platforms, high-throughput backend APIs, and real-time computer vision systems with live code repositories and demos.
-          </p>
+        {/* Page Title & Demo Banner */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
+          <div>
+            <p className="text-[12px] font-mono uppercase tracking-[0.25em] text-zinc-400 font-bold">
+              ENGINEERING SHOWCASE
+            </p>
+            <h1 className="text-[36px] sm:text-[52px] font-extrabold font-poppins text-white tracking-tight mt-1">
+              Projects.
+            </h1>
+            <p className="text-zinc-400 text-[15px] sm:text-[17px] mt-3 max-w-2xl leading-relaxed">
+              Production-grade autonomous AI platforms, high-throughput backend APIs, and real-time computer vision systems. Test live simulations directly in your browser.
+            </p>
+          </div>
+
+          <button
+            onClick={() => launchDemo("concept3d")}
+            className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-2xl bg-white text-black font-mono font-extrabold text-[13px] hover:bg-zinc-200 transition-all shadow-[0_10px_30px_rgba(255,255,255,0.15)] hover:scale-105 shrink-0">
+            <FaPlay className="w-3.5 h-3.5" /> LAUNCH IN-APP DEMOS
+          </button>
         </div>
 
         {/* Search & Category Filter Bar */}
@@ -127,89 +156,89 @@ const ProjectsPage = () => {
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {filteredProjects.map((project) => (
-            <div
-              key={project.id}
-              className="project-card-anim opacity-0 brutalist-panel rounded-3xl overflow-hidden border border-white/10 hover:border-white/40 flex flex-col justify-between group transition-all duration-300">
-              
-              <div>
-                {/* Project Image Banner */}
-                <div className="relative h-56 sm:h-64 w-full bg-zinc-950 overflow-hidden border-b border-white/10">
-                  <img
-                    src={project.image}
-                    alt={project.name}
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
-                  />
-                  <div className="absolute top-4 right-4 flex items-center gap-2">
-                    <span className="text-[10px] font-mono px-3 py-1 rounded-full bg-black/80 backdrop-blur-md text-white border border-white/20 font-bold uppercase">
-                      {project.category || "SYSTEM"}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-6 sm:p-7">
-                  <div className="flex items-center justify-between gap-2 mb-2">
-                    <h2 className="text-white text-[22px] sm:text-[26px] font-extrabold font-poppins tracking-tight">
-                      {project.name}
-                    </h2>
-                    <button
-                      onClick={() => setSelectedArch(project.name)}
-                      className="inline-flex items-center gap-1.5 text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/10 hover:bg-white hover:text-black text-white transition-colors border border-white/15">
-                      <FaProjectDiagram className="w-3 h-3" /> ARCHITECTURE
-                    </button>
-                  </div>
-
-                  <p className="text-zinc-300 text-[14px] leading-relaxed font-poppins mb-4">
-                    {project.description}
-                  </p>
-
-                  {/* Architecture & Highlights */}
-                  {project.architecture && (
-                    <div className="mb-4 p-3 rounded-xl bg-white/[0.03] border border-white/5 font-mono text-[12px] text-zinc-400">
-                      <span className="text-white font-bold block mb-0.5">Architecture:</span>
-                      {project.architecture}
+          {filteredProjects.map((project) => {
+            const projectTab = getTabForProject(project.name);
+            return (
+              <div key={project.id} className="project-card-anim opacity-0">
+                <TiltCard className="brutalist-panel rounded-3xl overflow-hidden border border-white/10 hover:border-white/40 flex flex-col justify-between h-full group transition-all duration-300">
+                  <div>
+                    {/* Project Image Banner */}
+                    <div className="relative h-56 sm:h-64 w-full bg-zinc-950 overflow-hidden border-b border-white/10">
+                      <img
+                        src={project.image}
+                        alt={project.name}
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
+                      />
+                      <div className="absolute top-4 right-4 flex items-center gap-2">
+                        <span className="text-[10px] font-mono px-3 py-1 rounded-full bg-black/80 backdrop-blur-md text-white border border-white/20 font-bold uppercase">
+                          {project.category || "SYSTEM"}
+                        </span>
+                      </div>
                     </div>
-                  )}
 
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-1.5 mt-4">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag.name}
-                        className="text-[11px] font-mono px-2.5 py-0.5 rounded-md bg-white/[0.04] text-zinc-300 border border-white/10">
-                        #{tag.name}
-                      </span>
-                    ))}
+                    {/* Content */}
+                    <div className="p-6 sm:p-7">
+                      <div className="flex items-center justify-between gap-2 mb-2">
+                        <h2 className="text-white text-[22px] sm:text-[26px] font-extrabold font-poppins tracking-tight">
+                          {project.name}
+                        </h2>
+                        <div className="flex items-center gap-2">
+                          <button
+                            onClick={() => setSelectedArch(project.name)}
+                            className="inline-flex items-center gap-1.5 text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/10 hover:bg-white hover:text-black text-white transition-colors border border-white/15">
+                            <FaProjectDiagram className="w-3 h-3" /> ARCHITECTURE
+                          </button>
+                        </div>
+                      </div>
+
+                      <p className="text-zinc-300 text-[14px] leading-relaxed font-poppins mb-4">
+                        {project.description}
+                      </p>
+
+                      {/* Architecture & Highlights */}
+                      {project.architecture && (
+                        <div className="mb-4 p-3 rounded-xl bg-white/[0.03] border border-white/5 font-mono text-[12px] text-zinc-400">
+                          <span className="text-white font-bold block mb-0.5">Architecture:</span>
+                          {project.architecture}
+                        </div>
+                      )}
+
+                      {/* Tags */}
+                      <div className="flex flex-wrap gap-1.5 mt-4">
+                        {project.tags.map((tag) => (
+                          <span
+                            key={tag.name}
+                            className="text-[11px] font-mono px-2.5 py-0.5 rounded-md bg-white/[0.04] text-zinc-300 border border-white/10">
+                            #{tag.name}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
 
-              {/* Action Buttons */}
-              <div className="p-6 sm:p-7 pt-0 flex items-center gap-3">
-                {project.repo && (
-                  <a
-                    href={project.repo}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white text-black font-mono font-bold text-[13px] hover:bg-zinc-200 transition-colors shadow-md">
-                    <FaGithub className="w-4 h-4" /> CODE REPO
-                  </a>
-                )}
-                {project.demo && (
-                  <a
-                    href={project.demo}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-mono font-bold text-[13px] border border-white/20 transition-colors">
-                    <FaExternalLinkAlt className="w-3.5 h-3.5" /> LIVE DEMO
-                  </a>
-                )}
+                  {/* Action Buttons */}
+                  <div className="p-6 sm:p-7 pt-0 flex flex-wrap items-center gap-3">
+                    <button
+                      onClick={() => launchDemo(projectTab)}
+                      className="flex-1 min-w-[130px] inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white text-black font-mono font-bold text-[13px] hover:bg-zinc-200 transition-colors shadow-md">
+                      <FaPlay className="w-3 h-3" /> LIVE DEMO
+                    </button>
+                    {project.repo && (
+                      <a
+                        href={project.repo}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="flex-1 min-w-[130px] inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-mono font-bold text-[13px] border border-white/20 transition-colors">
+                        <FaGithub className="w-4 h-4" /> CODE REPO
+                      </a>
+                    )}
+                  </div>
+                </TiltCard>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Architecture Telemetry Modal */}
@@ -254,15 +283,34 @@ const ProjectsPage = () => {
                       <span className="text-white font-bold">{architectureBlueprints[selectedArch].security}</span>
                     </div>
                   </div>
+
+                  <div className="pt-4 flex justify-end">
+                    <button
+                      onClick={() => {
+                        const tab = architectureBlueprints[selectedArch].demoTab || "concept3d";
+                        setSelectedArch(null);
+                        launchDemo(tab);
+                      }}
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-black font-mono font-bold text-[12px] hover:bg-zinc-200 transition-colors">
+                      <FaPlay className="w-3 h-3" /> LAUNCH {selectedArch} SIMULATOR
+                    </button>
+                  </div>
                 </div>
               ) : (
                 <p className="text-zinc-400 font-mono text-[13px]">
-                  Detailed telemetry telemetry blueprint active for this module.
+                  Detailed telemetry blueprint active for this module.
                 </p>
               )}
             </div>
           </div>
         )}
+
+        {/* Interactive In-App Demo Modal */}
+        <DemoModal
+          isOpen={demoModalOpen}
+          onClose={() => setDemoModalOpen(false)}
+          initialTab={demoTab}
+        />
       </div>
     </PageTransition>
   );
