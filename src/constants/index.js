@@ -397,6 +397,44 @@ const projects = [
     repo: 'https://github.com/GuruMachanica/KavachG',
     demo: 'https://github.com/GuruMachanica/KavachG',
   },
+  {
+    id: 'project-5',
+    name: 'AnveshakSutra',
+    category: 'Zero-Knowledge & Cyber AI',
+    description:
+      'Autonomous Zero-Knowledge Dark Web Exposure Monitor, 3D Graph ML Blast Radius Analyzer & Deception Tripwire Platform. Executes 5-character SHA-256 K-Anonymity queries and 3D WebGL graph centrality analytics with zero cleartext identity leakage.',
+    architecture: 'FastAPI • WebGL Three.js • K-Anonymity • Celery • Supabase',
+    keyHighlights: [
+      'Engineered Zero-Knowledge K-Anonymity prefix lookups ensuring zero server-side cleartext leakage',
+      'Constructed 3D WebGL Graph ML visualizer analyzing Betweenness Centrality blast radius',
+      'Deployed canary honey-credentials with automated verification challenge probes'
+    ],
+    tags: [
+      {
+        name: 'fastapi',
+        color: 'blue-text-gradient',
+      },
+      {
+        name: 'zero-knowledge',
+        color: 'green-text-gradient',
+      },
+      {
+        name: 'three.js',
+        color: 'pink-text-gradient',
+      },
+      {
+        name: 'graph-ml',
+        color: 'blue-text-gradient',
+      },
+      {
+        name: 'supabase',
+        color: 'green-text-gradient',
+      },
+    ],
+    image: anveshaksutra,
+    repo: 'https://github.com/GuruMachanica/AnveshakSutra',
+    demo: 'https://anveshak-sutra.vercel.app/',
+  },
 ];
 
 export {
