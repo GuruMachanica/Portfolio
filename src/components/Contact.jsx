@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
-import { slideIn, fadeIn, textVariant } from "../utils/motion";
-import { FaGithub, FaLinkedin, FaPaperPlane, FaCopy, FaCheck } from "react-icons/fa";
+import { slideIn, textVariant } from "../utils/motion";
+import { FaPaperPlane, FaCopy, FaCheck } from "react-icons/fa";
 
 const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
@@ -92,7 +92,7 @@ const Contact = () => {
 
       <div className="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         
-        {/* Left Col: Direct Channels */}
+        {/* Left Col: Direct Channels (Pure Black & White) */}
         <motion.div
           variants={slideIn("left", "tween", 0.1, 0.8)}
           className="lg:col-span-5 flex flex-col gap-4">
@@ -101,47 +101,47 @@ const Contact = () => {
             <h3 className="text-white text-[22px] font-bold font-poppins tracking-tight mb-2">
               Let&apos;s Build Together
             </h3>
-            <p className="text-slate-300 text-[14px] leading-relaxed font-poppins mb-6">
+            <p className="text-zinc-300 text-[14px] leading-relaxed font-poppins mb-6">
               I am open to machine learning roles, AI agent development, and high-throughput backend architecture opportunities.
             </p>
 
             {/* Email Action */}
             <div
               onClick={copyEmail}
-              className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-[#61DAFB]/50 transition-all duration-200 cursor-pointer flex items-center justify-between group mb-3">
+              className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-white/40 transition-all duration-200 cursor-pointer flex items-center justify-between group mb-3">
               <div>
-                <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest block">
+                <span className="text-[10px] font-mono font-bold text-zinc-400 uppercase tracking-widest block">
                   EMAIL ADDRESS
                 </span>
                 <span className="text-white text-[14px] sm:text-[15px] font-mono font-bold mt-0.5 block break-all">
                   mdhuzaifa00786@gmail.com
                 </span>
               </div>
-              <button className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-400 group-hover:text-[#61DAFB] transition-colors">
-                {copiedEmail ? <FaCheck className="w-3.5 h-3.5 text-[#10B981]" /> : <FaCopy className="w-3.5 h-3.5" />}
+              <button className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-zinc-300 group-hover:text-white transition-colors">
+                {copiedEmail ? <FaCheck className="w-3.5 h-3.5 text-white" /> : <FaCopy className="w-3.5 h-3.5" />}
               </button>
             </div>
 
             {/* Phone Action */}
             <div
               onClick={copyPhone}
-              className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-[#61DAFB]/50 transition-all duration-200 cursor-pointer flex items-center justify-between group mb-3">
+              className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-white/40 transition-all duration-200 cursor-pointer flex items-center justify-between group mb-3">
               <div>
-                <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest block">
+                <span className="text-[10px] font-mono font-bold text-zinc-400 uppercase tracking-widest block">
                   PHONE / WHATSAPP
                 </span>
                 <span className="text-white text-[14px] sm:text-[15px] font-mono font-bold mt-0.5 block">
                   +91 6391028860
                 </span>
               </div>
-              <button className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-slate-400 group-hover:text-[#61DAFB] transition-colors">
-                {copiedPhone ? <FaCheck className="w-3.5 h-3.5 text-[#10B981]" /> : <FaCopy className="w-3.5 h-3.5" />}
+              <button className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-zinc-300 group-hover:text-white transition-colors">
+                {copiedPhone ? <FaCheck className="w-3.5 h-3.5 text-white" /> : <FaCopy className="w-3.5 h-3.5" />}
               </button>
             </div>
 
             {/* Location */}
             <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10">
-              <span className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-widest block">
+              <span className="text-[10px] font-mono font-bold text-zinc-400 uppercase tracking-widest block">
                 LOCATION
               </span>
               <span className="text-white text-[14px] font-poppins font-medium mt-0.5 block">
@@ -172,7 +172,7 @@ const Contact = () => {
                 value={form.name}
                 onChange={handleChange}
                 placeholder="What is your name?"
-                className="w-full bg-black/60 border border-white/10 focus:border-[#61DAFB] rounded-xl px-4 py-3.5 text-white text-[14px] outline-none transition-colors"
+                className="w-full bg-black border border-white/10 focus:border-white rounded-xl px-4 py-3.5 text-white text-[14px] outline-none transition-colors"
               />
             </div>
 
@@ -187,7 +187,7 @@ const Contact = () => {
                 value={form.email}
                 onChange={handleChange}
                 placeholder="Where can I reach you?"
-                className="w-full bg-black/60 border border-white/10 focus:border-[#61DAFB] rounded-xl px-4 py-3.5 text-white text-[14px] outline-none transition-colors"
+                className="w-full bg-black border border-white/10 focus:border-white rounded-xl px-4 py-3.5 text-white text-[14px] outline-none transition-colors"
               />
             </div>
 
@@ -202,14 +202,14 @@ const Contact = () => {
                 value={form.message}
                 onChange={handleChange}
                 placeholder="Tell me about your project, team, or opportunity..."
-                className="w-full bg-black/60 border border-white/10 focus:border-[#61DAFB] rounded-xl px-4 py-3.5 text-white text-[14px] outline-none transition-colors resize-none"
+                className="w-full bg-black border border-white/10 focus:border-white rounded-xl px-4 py-3.5 text-white text-[14px] outline-none transition-colors resize-none"
               />
             </div>
 
             <button
               type="submit"
               disabled={loading}
-              className="mt-2 flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-white text-black hover:bg-[#61DAFB] font-mono font-bold text-[14px] transition-all duration-200 shadow-md">
+              className="mt-2 flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-white text-black hover:bg-zinc-200 font-mono font-bold text-[14px] transition-all duration-200 shadow-md">
               <FaPaperPlane className="w-3.5 h-3.5" />
               {loading ? "SENDING MESSAGE..." : "SEND MESSAGE"}
             </button>

@@ -18,13 +18,13 @@ const Tech = () => {
         {technologyGroups.map((group) => (
           <div
             key={group.title}
-            className="brutalist-panel rounded-3xl p-6 border border-white/10 flex flex-col justify-between">
+            className="brutalist-panel rounded-3xl p-6 border border-white/10 flex flex-col justify-between hover:border-white/30 transition-all duration-300">
             <div className="flex items-center justify-between pb-3 border-b border-white/10 mb-4">
               <h3 className="text-white sm:text-[22px] text-[19px] font-bold font-poppins tracking-tight">
                 {group.title}
               </h3>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/[0.06] text-[#61DAFB] border border-[#61DAFB]/20">
-                Interactive 3D
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/10 text-white border border-white/20">
+                3D WebGL
               </span>
             </div>
 

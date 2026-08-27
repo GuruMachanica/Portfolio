@@ -12,29 +12,29 @@ import { textVariant } from "../utils/motion";
 const EducationCard = ({ education }) => (
   <VerticalTimelineElement
     contentStyle={{
-      background: "rgba(13, 15, 22, 0.9)",
-      color: "#f8fafc",
-      border: "1px solid rgba(255, 255, 255, 0.1)",
-      boxShadow: "0 10px 30px -10px rgba(0, 0, 0, 0.8)",
+      background: "rgba(10, 10, 10, 0.9)",
+      color: "#ffffff",
+      border: "1px solid rgba(255, 255, 255, 0.12)",
+      boxShadow: "0 10px 30px -10px rgba(0, 0, 0, 0.9)",
       borderRadius: "20px",
     }}
     contentArrowStyle={{
-      borderRight: "7px solid rgba(255, 255, 255, 0.1)",
+      borderRight: "7px solid rgba(255, 255, 255, 0.12)",
     }}
     date={
       <div>
-        <h3 className="text-[#61DAFB] text-[15px] font-bold font-mono">
+        <h3 className="text-white text-[15px] font-bold font-mono">
           {education.date}
         </h3>
       </div>
     }
-    iconStyle={{ background: "#11131a", border: "2px solid rgba(255, 255, 255, 0.15)" }}
+    iconStyle={{ background: "#000000", border: "2px solid rgba(255, 255, 255, 0.2)" }}
     icon={
       <div className="flex justify-center items-center w-full h-full">
         <img
           src={education.icon}
           alt={education.company_name}
-          className="w-[60%] h-[60%] object-contain"
+          className="w-[60%] h-[60%] object-contain invert brightness-200"
           loading="lazy"
           decoding="async"
         />
@@ -45,7 +45,7 @@ const EducationCard = ({ education }) => (
         {education.title}
       </h3>
       <p
-        className="text-slate-300 sm:text-[15px] text-[13px] font-normal font-poppins"
+        className="text-zinc-300 sm:text-[15px] text-[13px] font-normal font-poppins"
         style={{ margin: "4px 0 0 0" }}>
         {education.company_name}
       </p>

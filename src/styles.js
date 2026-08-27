@@ -20,16 +20,16 @@ const styles = {
   heroHeadText:
     "font-extrabold text-white lg:text-[76px] sm:text-[58px] xs:text-[46px] text-[36px] lg:leading-[84px] tracking-tight",
   heroSubText:
-    "text-slate-300 font-normal lg:text-[22px] sm:text-[20px] xs:text-[17px] text-[15px] lg:leading-[32px]",
+    "text-zinc-300 font-normal lg:text-[22px] sm:text-[20px] xs:text-[17px] text-[15px] lg:leading-[32px]",
 
   sectionHeadText:
     "text-white font-extrabold md:text-[52px] sm:text-[42px] xs:text-[34px] text-[28px] tracking-tight font-poppins",
   sectionHeadTextLight:
     "text-white font-extrabold md:text-[52px] sm:text-[42px] xs:text-[34px] text-[28px] tracking-tight font-poppins",
   sectionSubText:
-    "sm:text-[14px] text-[12px] text-[#61DAFB] uppercase tracking-[0.2em] font-bold font-poppins",
+    "sm:text-[13px] text-[11px] text-zinc-400 uppercase tracking-[0.25em] font-mono font-bold",
   sectionSubTextLight:
-    "sm:text-[14px] text-[12px] text-[#61DAFB] uppercase tracking-[0.2em] font-bold font-poppins",
+    "sm:text-[13px] text-[11px] text-zinc-400 uppercase tracking-[0.25em] font-mono font-bold",
 };
 
 export { styles };
