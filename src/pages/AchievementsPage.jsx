@@ -33,7 +33,7 @@ const fallbackAchievements = [
     organization: "Shambhunath Group of Institutions",
     date: "Oct 2025",
     category: "Hackathon",
-    description: "Engineered SunMap for 3D Solar Potential & Revenue Analytics, creating predictive spatial modeling pipelines with custom PyTorch models.",
+    description: "Engineered SunMap for 3D Spatial Solar Intelligence, parsing CityGML LOD2 geometries with real-time WebGL shadow occlusion and Perez transposition physics.",
     tags: ["2nd Runner-Up", "PyTorch", "Spatial 3D", "Predictive Analytics"]
   }
 ];
