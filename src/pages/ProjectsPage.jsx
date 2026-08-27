@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { projects } from "../constants";
 import PageTransition from "../components/PageTransition";
 import TiltCard from "../components/TiltCard";
-import DemoModal from "../components/demos/DemoModal";
-import { FaArrowLeft, FaGithub, FaExternalLinkAlt, FaSearch, FaCubes, FaPlay, FaLayerGroup, FaProjectDiagram, FaTimes, FaCheck } from "react-icons/fa";
+import LiveWebsiteModal from "../components/demos/LiveWebsiteModal";
+import { FaArrowLeft, FaGithub, FaExternalLinkAlt, FaSearch, FaPlay, FaProjectDiagram, FaTimes, FaGlobe } from "react-icons/fa";
 import { animate, stagger } from "animejs";
 
 const architectureBlueprints = {
@@ -13,28 +13,28 @@ const architectureBlueprints = {
     latency: "< 2.4s Generation Time",
     throughput: "Optimized Spatial Caching",
     security: "Input Sanitization & Schema Validation",
-    demoTab: "concept3d"
+    siteKey: "concept3d"
   },
   "A.E.G.I.S": {
     pipeline: "Audio Stream Buffer -> Edge Signal Normalization -> FastAPI WebSocket Pipeline -> Scam Intent Risk Scorer -> Real-Time Alert Engine",
     latency: "< 250ms Sub-Second Detection",
     throughput: "Asynchronous ASGI Workers",
     security: "End-to-End WebSocket Encryption",
-    demoTab: "aegis"
+    siteKey: "aegis"
   },
   "SunMap": {
     pipeline: "3D GeoJSON Spatial Mesh -> Sun Elevation Vector Calculator -> Shadow Ray Tracing Engine -> PyTorch Revenue Predictor -> Three.js Heatmap",
     latency: "60 FPS Real-Time Simulation",
     throughput: "Client-Side WebGL Ray Tracing",
     security: "Static Sandboxed Execution",
-    demoTab: "sunmap"
+    siteKey: "sunmap"
   },
   "KavachG": {
     pipeline: "RTSP Video Feed -> OpenCV Frame Extractor -> YOLOv8 PPE & Hazard Detector -> Incident Logger DB -> FastAPI Dashboard Alert Feed",
     latency: "< 100ms Inference Per Frame",
     throughput: "Multi-Camera Streaming",
     security: "Role-Based Token Access",
-    demoTab: "kavachg"
+    siteKey: null
   }
 };
 
@@ -42,8 +42,8 @@ const ProjectsPage = () => {
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState("ALL");
   const [selectedArch, setSelectedArch] = useState(null);
-  const [demoModalOpen, setDemoModalOpen] = useState(false);
-  const [demoTab, setDemoTab] = useState("concept3d");
+  const [liveModalOpen, setLiveModalOpen] = useState(false);
+  const [activeSiteKey, setActiveSiteKey] = useState("aegis");
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -71,17 +71,18 @@ const ProjectsPage = () => {
     return matchesSearch && matchesCategory;
   });
 
-  const launchDemo = (tabName) => {
-    setDemoTab(tabName);
-    setDemoModalOpen(true);
-  };
-
-  const getTabForProject = (name) => {
+  const getSiteKey = (name) => {
     if (name.includes("Concept")) return "concept3d";
     if (name.includes("A.E.G.I.S") || name.includes("AEGIS")) return "aegis";
     if (name.includes("SunMap")) return "sunmap";
-    if (name.includes("KavachG")) return "kavachg";
-    return "concept3d";
+    return null;
+  };
+
+  const openLiveWebsite = (siteKey) => {
+    if (siteKey) {
+      setActiveSiteKey(siteKey);
+      setLiveModalOpen(true);
+    }
   };
 
   return (
@@ -97,11 +98,11 @@ const ProjectsPage = () => {
           </Link>
           <div className="flex items-center gap-2 text-[12px] font-mono text-zinc-400">
             <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
-            PRODUCTION SYSTEMS &amp; LIVE DEMO SANDBOX
+            LIVE DEPLOYED WEBSITES &amp; PRODUCTION SYSTEMS
           </div>
         </div>
 
-        {/* Page Title & Demo Banner */}
+        {/* Page Title & Live Browser Launch */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
           <div>
             <p className="text-[12px] font-mono uppercase tracking-[0.25em] text-zinc-400 font-bold">
@@ -111,14 +112,14 @@ const ProjectsPage = () => {
               Projects.
             </h1>
             <p className="text-zinc-400 text-[15px] sm:text-[17px] mt-3 max-w-2xl leading-relaxed">
-              Production-grade autonomous AI platforms, high-throughput backend APIs, and real-time computer vision systems. Test live simulations directly in your browser.
+              Production-grade autonomous AI platforms, high-throughput backend APIs, and real-time computer vision systems with live deployed websites.
             </p>
           </div>
 
           <button
-            onClick={() => launchDemo("concept3d")}
+            onClick={() => openLiveWebsite("aegis")}
             className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-2xl bg-white text-black font-mono font-extrabold text-[13px] hover:bg-zinc-200 transition-all shadow-[0_10px_30px_rgba(255,255,255,0.15)] hover:scale-105 shrink-0">
-            <FaPlay className="w-3.5 h-3.5" /> LAUNCH IN-APP DEMOS
+            <FaGlobe className="w-4 h-4" /> BROWSE LIVE WEBSITES
           </button>
         </div>
 
@@ -157,7 +158,7 @@ const ProjectsPage = () => {
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {filteredProjects.map((project) => {
-            const projectTab = getTabForProject(project.name);
+            const siteKey = getSiteKey(project.name);
             return (
               <div key={project.id} className="project-card-anim opacity-0">
                 <TiltCard className="brutalist-panel rounded-3xl overflow-hidden border border-white/10 hover:border-white/40 flex flex-col justify-between h-full group transition-all duration-300">
@@ -184,13 +185,11 @@ const ProjectsPage = () => {
                         <h2 className="text-white text-[22px] sm:text-[26px] font-extrabold font-poppins tracking-tight">
                           {project.name}
                         </h2>
-                        <div className="flex items-center gap-2">
-                          <button
-                            onClick={() => setSelectedArch(project.name)}
-                            className="inline-flex items-center gap-1.5 text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/10 hover:bg-white hover:text-black text-white transition-colors border border-white/15">
-                            <FaProjectDiagram className="w-3 h-3" /> ARCHITECTURE
-                          </button>
-                        </div>
+                        <button
+                          onClick={() => setSelectedArch(project.name)}
+                          className="inline-flex items-center gap-1.5 text-[11px] font-mono px-2.5 py-1 rounded-md bg-white/10 hover:bg-white hover:text-black text-white transition-colors border border-white/15">
+                          <FaProjectDiagram className="w-3 h-3" /> ARCHITECTURE
+                        </button>
                       </div>
 
                       <p className="text-zinc-300 text-[14px] leading-relaxed font-poppins mb-4">
@@ -220,11 +219,22 @@ const ProjectsPage = () => {
 
                   {/* Action Buttons */}
                   <div className="p-6 sm:p-7 pt-0 flex flex-wrap items-center gap-3">
-                    <button
-                      onClick={() => launchDemo(projectTab)}
-                      className="flex-1 min-w-[130px] inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white text-black font-mono font-bold text-[13px] hover:bg-zinc-200 transition-colors shadow-md">
-                      <FaPlay className="w-3 h-3" /> LIVE DEMO
-                    </button>
+                    {siteKey ? (
+                      <button
+                        onClick={() => openLiveWebsite(siteKey)}
+                        className="flex-1 min-w-[130px] inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white text-black font-mono font-bold text-[13px] hover:bg-zinc-200 transition-colors shadow-md">
+                        <FaGlobe className="w-3.5 h-3.5" /> LIVE PREVIEW
+                      </button>
+                    ) : project.demo ? (
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="flex-1 min-w-[130px] inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white text-black font-mono font-bold text-[13px] hover:bg-zinc-200 transition-colors shadow-md">
+                        <FaExternalLinkAlt className="w-3 h-3" /> LIVE DEMO
+                      </a>
+                    ) : null}
+
                     {project.repo && (
                       <a
                         href={project.repo}
@@ -284,17 +294,19 @@ const ProjectsPage = () => {
                     </div>
                   </div>
 
-                  <div className="pt-4 flex justify-end">
-                    <button
-                      onClick={() => {
-                        const tab = architectureBlueprints[selectedArch].demoTab || "concept3d";
-                        setSelectedArch(null);
-                        launchDemo(tab);
-                      }}
-                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-black font-mono font-bold text-[12px] hover:bg-zinc-200 transition-colors">
-                      <FaPlay className="w-3 h-3" /> LAUNCH {selectedArch} SIMULATOR
-                    </button>
-                  </div>
+                  {architectureBlueprints[selectedArch].siteKey && (
+                    <div className="pt-4 flex justify-end">
+                      <button
+                        onClick={() => {
+                          const key = architectureBlueprints[selectedArch].siteKey;
+                          setSelectedArch(null);
+                          openLiveWebsite(key);
+                        }}
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-black font-mono font-bold text-[12px] hover:bg-zinc-200 transition-colors">
+                        <FaGlobe className="w-3.5 h-3.5" /> LOAD {selectedArch} LIVE DEPLOYMENT
+                      </button>
+                    </div>
+                  )}
                 </div>
               ) : (
                 <p className="text-zinc-400 font-mono text-[13px]">
@@ -305,11 +317,11 @@ const ProjectsPage = () => {
           </div>
         )}
 
-        {/* Interactive In-App Demo Modal */}
-        <DemoModal
-          isOpen={demoModalOpen}
-          onClose={() => setDemoModalOpen(false)}
-          initialTab={demoTab}
+        {/* Live Deployed Website Iframe Modal */}
+        <LiveWebsiteModal
+          isOpen={liveModalOpen}
+          onClose={() => setLiveModalOpen(false)}
+          initialSite={activeSiteKey}
         />
       </div>
     </PageTransition>

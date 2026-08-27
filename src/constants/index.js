@@ -280,7 +280,7 @@ const projects = [
     ],
     image: leaderboard,
     repo: 'https://github.com/GuruMachanica/Concept-2-3D',
-    demo: 'https://drive.google.com/file/d/1Ua7wEPlCZiUdz7Kv_qTL-wFtMvAdNS8C/view?usp=sharing',
+    demo: 'https://concept-3d.vercel.app/',
   },
   {
     id: 'project-2',
@@ -318,7 +318,7 @@ const projects = [
     ],
     image: komikult,
     repo: 'https://github.com/GuruMachanica/A.E.G.I.S.',
-    demo: 'https://drive.google.com/file/d/1BpMsXgtdAWEucwtnrn0tjiO6rDOgp3-r/view?usp=sharing',
+    demo: 'https://aegis-anti-scam.netlify.app/',
   },
   {
     id: 'project-3',
