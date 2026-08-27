@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import PageTransition from "../components/PageTransition";
-import AudioWaveform from "../components/AudioWaveform";
 import TiltCard from "../components/TiltCard";
 import { FaArrowLeft, FaBrain, FaServer, FaCubes, FaDatabase, FaShieldAlt, FaMicrochip, FaArrowRight } from "react-icons/fa";
 import { animate, stagger } from "animejs";
@@ -89,9 +88,7 @@ const OverviewPage = () => {
           </p>
         </div>
 
-        {/* Live Audio Telemetry Visualizer */}
-        <AudioWaveform />
-
+        
         {/* 6 Core Engineering Pillars */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
           {engineeringPillars.map((pillar, idx) => {
