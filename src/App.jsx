@@ -2,8 +2,6 @@ import React, { useEffect, useState, lazy, Suspense } from "react";
 import { AnimatePresence } from "framer-motion";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import {
-  About,
-  Contact,
   Hero,
   Navbar,
   Footer,
@@ -11,13 +9,6 @@ import {
 import PageLoader from "./components/PageLoader";
 import { FaBrain, FaCubes, FaFolderOpen, FaBriefcase, FaGraduationCap, FaCertificate, FaTrophy, FaPaperPlane, FaArrowRight } from "react-icons/fa";
 import { animate, stagger } from "animejs";
-
-const Tech = lazy(() => import("./components/Tech"));
-const Projects = lazy(() => import("./components/Projects"));
-const Experience = lazy(() => import("./components/Experience"));
-const Education = lazy(() => import("./components/Education"));
-const Certifications = lazy(() => import("./components/Certifications"));
-const Achievements = lazy(() => import("./components/Achievements"));
 
 // Dedicated separate page components
 import OverviewPage from "./pages/OverviewPage";
@@ -105,7 +96,7 @@ const HomePage = () => {
     <>
       <Hero />
 
-      {/* Interactive Monolith Hub (Gateway to All Expanded Pages) */}
+      {/* Interactive Monolith Hub (Gateway to All Dedicated Standalone Pages) */}
       <section className="relative z-10 py-16 sm:py-24 border-t border-white/[0.08] stripe-grid px-4 sm:px-8 max-w-7xl mx-auto">
         <div className="mb-12 text-center max-w-3xl mx-auto">
           <p className="text-[12px] font-mono uppercase tracking-[0.25em] text-zinc-400 font-bold">
@@ -115,12 +106,12 @@ const HomePage = () => {
             Explore System Modules.
           </h2>
           <p className="text-zinc-400 text-[15px] sm:text-[17px] mt-3 leading-relaxed">
-            Direct gateways to dedicated technical pages with deep-dive breakdowns, interactive models, and verifiable credentials.
+            Select a technical module below to enter its dedicated deep-dive page.
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {hubCards.map((card, index) => {
+          {hubCards.map((card) => {
             const Icon = card.icon;
             return (
               <Link
@@ -147,32 +138,13 @@ const HomePage = () => {
                 </div>
 
                 <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-[12px] font-mono text-zinc-400 group-hover:text-white">
-                  <span>EXPLORE MODULE</span>
+                  <span>ENTER MODULE</span>
                   <FaArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </div>
               </Link>
             );
           })}
         </div>
-      </section>
-
-      {/* Featured Projects Highlight */}
-      <section id="projects" className="relative z-10 py-16 sm:py-24 border-t border-white/[0.08]">
-        <Suspense fallback={<div className="h-[200px]" />}>
-          <Projects />
-        </Suspense>
-      </section>
-
-      {/* Interactive 3D Stack Highlight */}
-      <section id="technologies" className="relative z-10 py-16 sm:py-24 border-t border-white/[0.08] stripe-grid">
-        <Suspense fallback={<div className="h-[200px]" />}>
-          <Tech />
-        </Suspense>
-      </section>
-
-      {/* Direct Inquiries */}
-      <section id="contact" className="relative z-10 py-16 sm:py-24 border-t border-white/[0.08]">
-        <Contact />
       </section>
     </>
   );
