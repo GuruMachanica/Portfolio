@@ -317,7 +317,7 @@ const projects = [
       },
     ],
     image: komikult,
-    repo: 'https://github.com/GuruMachanica/A.E.G.I.S',
+    repo: 'https://github.com/GuruMachanica/A.E.G.I.S.',
     demo: 'https://drive.google.com/file/d/1BpMsXgtdAWEucwtnrn0tjiO6rDOgp3-r/view?usp=sharing',
   },
   {
