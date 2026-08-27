@@ -279,7 +279,7 @@ const projects = [
       },
     ],
     image: leaderboard,
-    repo: 'https://github.com/GuruMachanica/Concept-2-3D',
+    repo: 'https://github.com/GuruMachanica/Concept-3D',
     demo: 'https://concept-3d.vercel.app/',
   },
   {
