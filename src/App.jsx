@@ -1,6 +1,6 @@
 import React, { useEffect, useState, lazy, Suspense } from "react";
 import { AnimatePresence } from "framer-motion";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import {
   About,
   Contact,
@@ -9,6 +9,8 @@ import {
   Footer,
 } from "./components";
 import PageLoader from "./components/PageLoader";
+import { FaBrain, FaCubes, FaFolderOpen, FaBriefcase, FaGraduationCap, FaCertificate, FaTrophy, FaPaperPlane, FaArrowRight } from "react-icons/fa";
+import { animate, stagger } from "animejs";
 
 const Tech = lazy(() => import("./components/Tech"));
 const Projects = lazy(() => import("./components/Projects"));
@@ -27,45 +29,154 @@ import CertificationsPage from "./pages/CertificationsPage";
 import AchievementsPage from "./pages/AchievementsPage";
 import ContactPage from "./pages/ContactPage";
 
-const HomePage = () => (
-  <>
-    <Hero />
+const hubCards = [
+  {
+    title: "System Overview",
+    path: "/overview",
+    icon: FaBrain,
+    desc: "Autonomous multi-agent architectures, tool calling, and backend engineering philosophy.",
+    tag: "ARCHITECTURE",
+  },
+  {
+    title: "Technologies",
+    path: "/technologies",
+    icon: FaCubes,
+    desc: "Interactive 3D physics tech balls, languages, frameworks, and proficiency matrix.",
+    tag: "3D STACK",
+  },
+  {
+    title: "Projects",
+    path: "/projects",
+    icon: FaFolderOpen,
+    desc: "Concept3D, A.E.G.I.S, SunMap, and KavachG production systems with code & demos.",
+    tag: "PORTFOLIO",
+  },
+  {
+    title: "Work Experience",
+    path: "/experience",
+    icon: FaBriefcase,
+    desc: "Full Stack Machine Learning Intern at Sanfy with verifiable credentials.",
+    tag: "INDUSTRY",
+  },
+  {
+    title: "Education",
+    path: "/education",
+    icon: FaGraduationCap,
+    desc: "B.Tech Computer Science degree journey, coursework, and foundations.",
+    tag: "ACADEMICS",
+  },
+  {
+    title: "Publications & Certs",
+    path: "/certifications",
+    icon: FaCertificate,
+    desc: "Peer-reviewed IJDDT research paper and Harvard CS50 verified credential.",
+    tag: "RESEARCH",
+  },
+  {
+    title: "Achievements",
+    path: "/achievements",
+    icon: FaTrophy,
+    desc: "Competitive programming milestones, hackathons, and certifications.",
+    tag: "HONORS",
+  },
+  {
+    title: "Contact",
+    path: "/contact",
+    icon: FaPaperPlane,
+    desc: "Direct communication channels, copy-to-clipboard email & phone, and message form.",
+    tag: "CONNECT",
+  },
+];
 
-    {/* About Overview */}
-    <section id="about" className="relative z-10 py-12 sm:py-16 border-t border-white/[0.08] stripe-grid">
-      <About />
-    </section>
+const HomePage = () => {
+  useEffect(() => {
+    try {
+      animate(".hub-card", {
+        opacity: [0, 1],
+        translateY: [20, 0],
+        delay: stagger(50, { start: 100 }),
+        ease: "outExpo",
+        duration: 600,
+      });
+    } catch (e) {}
+  }, []);
 
-    {/* Technologies 3D Section */}
-    <section id="technologies" className="relative z-10 py-12 sm:py-16 border-t border-white/[0.08]">
-      <Suspense fallback={<div className="h-[200px]" />}>
-        <Tech />
-      </Suspense>
-    </section>
+  return (
+    <>
+      <Hero />
 
-    {/* Projects Section */}
-    <section id="projects" className="relative z-10 py-12 sm:py-16 border-t border-white/[0.08] stripe-grid">
-      <Suspense fallback={<div className="h-[200px]" />}>
-        <Projects />
-      </Suspense>
-    </section>
+      {/* Interactive Monolith Hub (Gateway to All Expanded Pages) */}
+      <section className="relative z-10 py-16 sm:py-24 border-t border-white/[0.08] stripe-grid px-4 sm:px-8 max-w-7xl mx-auto">
+        <div className="mb-12 text-center max-w-3xl mx-auto">
+          <p className="text-[12px] font-mono uppercase tracking-[0.25em] text-zinc-400 font-bold">
+            MONOLITH ARCHITECTURE INDEX
+          </p>
+          <h2 className="text-[32px] sm:text-[46px] font-extrabold font-poppins text-white tracking-tight mt-1">
+            Explore System Modules.
+          </h2>
+          <p className="text-zinc-400 text-[15px] sm:text-[17px] mt-3 leading-relaxed">
+            Direct gateways to dedicated technical pages with deep-dive breakdowns, interactive models, and verifiable credentials.
+          </p>
+        </div>
 
-    {/* Experience & Education Timelines */}
-    <section id="experience" className="relative z-10 py-12 sm:py-16 border-t border-white/[0.08]">
-      <Suspense fallback={<div className="h-[200px]" />}>
-        <Experience />
-        <div id="education"><Education /></div>
-        <div id="certifications"><Certifications /></div>
-        <div id="achievements"><Achievements /></div>
-      </Suspense>
-    </section>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {hubCards.map((card, index) => {
+            const Icon = card.icon;
+            return (
+              <Link
+                key={card.path}
+                to={card.path}
+                className="hub-card opacity-0 brutalist-panel rounded-3xl p-6 border border-white/10 hover:border-white/40 flex flex-col justify-between group transition-all duration-300">
+                <div>
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="w-12 h-12 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-300">
+                      <Icon className="w-5 h-5 text-white group-hover:text-black transition-colors" />
+                    </div>
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/10 text-white border border-white/20 font-bold">
+                      {card.tag}
+                    </span>
+                  </div>
 
-    {/* Contact Section */}
-    <section id="contact" className="relative z-10 py-12 sm:py-16 border-t border-white/[0.08] stripe-grid">
-      <Contact />
-    </section>
-  </>
-);
+                  <h3 className="text-white text-[19px] font-bold font-poppins tracking-tight mb-2 group-hover:text-white">
+                    {card.title}
+                  </h3>
+
+                  <p className="text-zinc-400 text-[13px] font-poppins leading-relaxed">
+                    {card.desc}
+                  </p>
+                </div>
+
+                <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-[12px] font-mono text-zinc-400 group-hover:text-white">
+                  <span>EXPLORE MODULE</span>
+                  <FaArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* Featured Projects Highlight */}
+      <section id="projects" className="relative z-10 py-16 sm:py-24 border-t border-white/[0.08]">
+        <Suspense fallback={<div className="h-[200px]" />}>
+          <Projects />
+        </Suspense>
+      </section>
+
+      {/* Interactive 3D Stack Highlight */}
+      <section id="technologies" className="relative z-10 py-16 sm:py-24 border-t border-white/[0.08] stripe-grid">
+        <Suspense fallback={<div className="h-[200px]" />}>
+          <Tech />
+        </Suspense>
+      </section>
+
+      {/* Direct Inquiries */}
+      <section id="contact" className="relative z-10 py-16 sm:py-24 border-t border-white/[0.08]">
+        <Contact />
+      </section>
+    </>
+  );
+};
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);

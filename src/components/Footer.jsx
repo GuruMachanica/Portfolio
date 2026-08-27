@@ -111,7 +111,7 @@ const Footer = () => {
             © 2026 Mohammad Huzaifa. All rights reserved.
           </div>
           <div>
-            Built with <span className="text-white font-bold">React</span>, <span className="text-white font-bold">Three.js</span>, <span className="text-white font-bold">Anime.js</span> &amp; <span className="text-white font-bold">TailwindCSS</span>.
+            © 2026 Mohammad Huzaifa • Autonomous Agentic Systems &amp; High-Throughput Architectures • Built with <span className="text-white font-bold">React 18</span>, <span className="text-white font-bold">Three.js</span>, <span className="text-white font-bold">Anime.js</span>, <span className="text-white font-bold">Framer Motion</span> &amp; <span className="text-white font-bold">TailwindCSS</span>.
           </div>
         </div>
       </div>
