@@ -111,11 +111,12 @@ const App = () => {
       {!isLoading && (
         <button
           className="fixed right-5 bottom-5 z-[9999]
-            group flex items-center justify-center gap-2
+            group flex items-center justify-center gap-0 group-hover:gap-2
             overflow-hidden rounded-full
             bg-jetLight hover:bg-battleGray
             shadow-[0_8px_32px_rgba(0,0,0,0.55)]
             w-14 h-14 hover:w-40 hover:rounded-2xl
+            p-0 hover:px-4
             transition-all duration-300 ease-in-out
             cursor-pointer border border-white/10"
           onClick={() =>
