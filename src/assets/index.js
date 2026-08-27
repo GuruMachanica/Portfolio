@@ -1,3 +1,4 @@
+import anveshaksutra from './projects/anveshaksutra.webp';
 import bwmap from './backgrounds/bw-map.webp';
 import nairobi from './backgrounds/nairobi.webp';
 import whiteabstract from './backgrounds/white-abstract.webp';
@@ -68,6 +69,7 @@ import math from './projects/KavachG.webp';
 import sunmap from './projects/sunmap.webp';
 
 export {
+  anveshaksutra,
   bwmap,
   nairobi,
   whiteabstract,

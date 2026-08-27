@@ -30,6 +30,13 @@ const architectureBlueprints = {
     security: "Static Sandboxed Execution",
     siteKey: "sunmap"
   },
+  "AnveshakSutra": {
+    pipeline: "Input Identity -> 5-Char SHA-256 Hash -> K-Anonymity Exposure Bucket -> 3D Graph ML Centrality -> Deception Tripwire Trigger",
+    latency: "< 120ms Zero-Knowledge Query",
+    throughput: "Asynchronous Celery Sweepers",
+    security: "Zero Server Cleartext Leakage (K-Anonymity)",
+    siteKey: "anveshaksutra"
+  },
   "KavachG": {
     pipeline: "RTSP Video Feed -> OpenCV Frame Extractor -> YOLOv8 PPE & Hazard Detector -> Incident Logger DB -> FastAPI Dashboard Alert Feed",
     latency: "< 100ms Inference Per Frame",
@@ -76,6 +83,7 @@ const ProjectsPage = () => {
     if (name.includes("Concept")) return "concept3d";
     if (name.includes("A.E.G.I.S") || name.includes("AEGIS")) return "aegis";
     if (name.includes("SunMap")) return "sunmap";
+    if (name.includes("Anveshak")) return "anveshaksutra";
     return null;
   };
 

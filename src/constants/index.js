@@ -39,6 +39,7 @@ import {
   leaderboard,
   math,
   sunmap,
+  anveshaksutra,
   coverhunt,
   dcc,
   kelhel,

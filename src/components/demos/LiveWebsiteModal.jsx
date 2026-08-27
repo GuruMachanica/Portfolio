@@ -3,6 +3,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaTimes, FaExternalLinkAlt, FaSyncAlt, FaCube, FaShieldAlt, FaSun, FaLock, FaExpand, FaCompress } from "react-icons/fa";
 
 const DEPLOYED_WEBSITES = {
+  anveshaksutra: {
+    id: "anveshaksutra",
+    name: "AnveshakSutra",
+    url: "https://anveshak-sutra.vercel.app/",
+    description: "Autonomous Zero-Knowledge Dark Web Exposure Monitor & 3D Graph ML Blast Radius Analyzer.",
+    domain: "anveshak-sutra.vercel.app",
+    color: "from-emerald-500 to-teal-500"
+  },
   concept3d: {
     id: "concept3d",
     name: "Concept3D",
