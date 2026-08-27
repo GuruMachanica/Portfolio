@@ -9,7 +9,7 @@ import { animate, stagger } from "animejs";
 const techTelemetry = {
   "Python": {
     role: "Primary Backend & AI Language",
-    projects: "A.E.G.I.S, Concept3D, SunMap, Sanfy ML",
+    projects: "A.E.G.I.S, Concept3D, SunMap, KavachG",
     features: "FastAPI, PyTorch, LangChain, NumPy, Pandas, WebSockets",
     metric: "< 120ms API Response",
   },
@@ -27,7 +27,7 @@ const techTelemetry = {
   },
   "FastAPI": {
     role: "Asynchronous Microservices Engine",
-    projects: "A.E.G.I.S Audio Security, Sanfy Production Backend",
+    projects: "A.E.G.I.S Audio Security, Production APIs",
     features: "Pydantic V2, ASGI Workers, WebSocket Streams, OpenAPI",
     metric: "Sub-Second Audio Stream",
   },
@@ -45,7 +45,7 @@ const techTelemetry = {
   },
   "MongoDB": {
     role: "Document & Telemetry Data Store",
-    projects: "KavachG Safety KPI, Sanfy ML Pipelines",
+    projects: "KavachG Safety KPI, Vector Data Pipelines",
     features: "Aggregation Pipelines, Schema-less Storage, Indexing",
     metric: "35% Faster Query Latency",
   },

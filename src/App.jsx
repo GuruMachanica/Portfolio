@@ -48,7 +48,7 @@ const hubCards = [
     title: "Work Experience",
     path: "/experience",
     icon: FaBriefcase,
-    desc: "Full Stack Machine Learning Intern at Sanfy with verifiable credentials.",
+    desc: "Backend developer internship experience with verified credential.",
     tag: "INDUSTRY",
   },
   {
