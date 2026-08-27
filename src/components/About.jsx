@@ -1,23 +1,55 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { styles } from "../styles";
-import { services } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
 import { SectionWrapper } from "../hoc";
+import { FaBrain, FaServer, FaLayerGroup, FaDatabase } from "react-icons/fa";
 
-const ServiceCard = ({ index, title, icon }) => {
+const coreServices = [
+  {
+    title: "Agentic AI Engineer",
+    subtitle: "Multi-Agent Systems & Tool Calling",
+    icon: FaBrain,
+  },
+  {
+    title: "Backend Developer",
+    subtitle: "FastAPI, WebSockets & Scalable APIs",
+    icon: FaServer,
+  },
+  {
+    title: "Computer Vision & 3D",
+    subtitle: "PyTorch, OpenCV & 3D Meshes",
+    icon: FaLayerGroup,
+  },
+  {
+    title: "Data Engineer",
+    subtitle: "ETL, Data Wrangling & Vector DBs",
+    icon: FaDatabase,
+  },
+];
+
+const ServiceCard = ({ index, title, subtitle, icon: Icon }) => {
   return (
     <motion.div
-      variants={fadeIn("right", "spring", 0.25 * index, 0.75)}
-      className="xs:w-[260px] w-full brutalist-panel rounded-2xl p-6 flex flex-col justify-between items-center text-center min-h-[260px] border border-white/10 hover:border-white/40 hover:bg-white/[0.04] transition-all duration-300">
-      <div className="w-16 h-16 rounded-2xl bg-white/[0.05] border border-white/15 flex items-center justify-center mb-4">
-        <img src={icon} alt={title} className="w-10 h-10 object-contain invert brightness-200" />
+      variants={fadeIn("up", "spring", 0.15 * index, 0.75)}
+      className="w-full brutalist-panel rounded-3xl p-7 flex flex-col justify-between items-center text-center min-h-[250px] border border-white/10 hover:border-white/40 hover:bg-white/[0.04] transition-all duration-300 group">
+      
+      {/* Crisp White Vector Icon */}
+      <div className="w-16 h-16 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-white group-hover:text-black transition-all duration-300">
+        <Icon className="w-7 h-7 text-white group-hover:text-black transition-colors duration-300" />
       </div>
-      <h3 className="text-white text-[19px] font-bold tracking-tight font-poppins">
-        {title}
-      </h3>
-      <span className="text-[11px] font-mono text-zinc-400 mt-2 uppercase tracking-wider">
-        Core Competency
+
+      <div>
+        <h3 className="text-white text-[20px] font-bold tracking-tight font-poppins">
+          {title}
+        </h3>
+        <p className="text-zinc-400 text-[13px] font-mono mt-1.5 leading-snug">
+          {subtitle}
+        </p>
+      </div>
+
+      <span className="text-[10px] font-mono font-bold text-zinc-500 mt-4 uppercase tracking-widest block">
+        CORE COMPETENCY
       </span>
     </motion.div>
   );
@@ -38,7 +70,7 @@ const About = () => {
       </motion.p>
 
       <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {services.map((service, index) => (
+        {coreServices.map((service, index) => (
           <ServiceCard key={service.title} index={index} {...service} />
         ))}
       </div>
