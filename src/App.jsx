@@ -1,6 +1,6 @@
-import { useEffect, useState, lazy, Suspense } from "react";
+import React, { useEffect, useState, lazy, Suspense } from "react";
 import { AnimatePresence } from "framer-motion";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {
   About,
   Contact,
@@ -17,13 +17,63 @@ const Education = lazy(() => import("./components/Education"));
 const Certifications = lazy(() => import("./components/Certifications"));
 const Achievements = lazy(() => import("./components/Achievements"));
 
+// Dedicated separate page components
+import OverviewPage from "./pages/OverviewPage";
+import TechnologiesPage from "./pages/TechnologiesPage";
+import ProjectsPage from "./pages/ProjectsPage";
+import ExperiencePage from "./pages/ExperiencePage";
+import EducationPage from "./pages/EducationPage";
+import CertificationsPage from "./pages/CertificationsPage";
+import AchievementsPage from "./pages/AchievementsPage";
+import ContactPage from "./pages/ContactPage";
+
+const HomePage = () => (
+  <>
+    <Hero />
+
+    {/* About Overview */}
+    <section id="about" className="relative z-10 py-12 sm:py-16 border-t border-white/[0.08] stripe-grid">
+      <About />
+    </section>
+
+    {/* Technologies 3D Section */}
+    <section id="technologies" className="relative z-10 py-12 sm:py-16 border-t border-white/[0.08]">
+      <Suspense fallback={<div className="h-[200px]" />}>
+        <Tech />
+      </Suspense>
+    </section>
+
+    {/* Projects Section */}
+    <section id="projects" className="relative z-10 py-12 sm:py-16 border-t border-white/[0.08] stripe-grid">
+      <Suspense fallback={<div className="h-[200px]" />}>
+        <Projects />
+      </Suspense>
+    </section>
+
+    {/* Experience & Education Timelines */}
+    <section id="experience" className="relative z-10 py-12 sm:py-16 border-t border-white/[0.08]">
+      <Suspense fallback={<div className="h-[200px]" />}>
+        <Experience />
+        <div id="education"><Education /></div>
+        <div id="certifications"><Certifications /></div>
+        <div id="achievements"><Achievements /></div>
+      </Suspense>
+    </section>
+
+    {/* Contact Section */}
+    <section id="contact" className="relative z-10 py-12 sm:py-16 border-t border-white/[0.08] stripe-grid">
+      <Contact />
+    </section>
+  </>
+);
+
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2800);
+    }, 2200);
 
     return () => clearTimeout(timer);
   }, []);
@@ -38,49 +88,28 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <div className="relative z-0 bg-[#000000] text-[#ffffff] min-h-screen overflow-x-hidden">
+      <div className="relative z-0 bg-[#000000] text-[#ffffff] min-h-screen overflow-x-hidden flex flex-col justify-between">
         <AnimatePresence mode="wait">
           {isLoading && <PageLoader />}
         </AnimatePresence>
 
         <Navbar />
-        <Hero />
 
-        {/* About Section */}
-        <section className="relative z-10 py-12 sm:py-16 border-t border-white/[0.08] stripe-grid">
-          <About />
-        </section>
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/overview" element={<OverviewPage />} />
+            <Route path="/about" element={<OverviewPage />} />
+            <Route path="/technologies" element={<TechnologiesPage />} />
+            <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/experience" element={<ExperiencePage />} />
+            <Route path="/education" element={<EducationPage />} />
+            <Route path="/certifications" element={<CertificationsPage />} />
+            <Route path="/achievements" element={<AchievementsPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+          </Routes>
+        </main>
 
-        {/* Technologies 3D Section */}
-        <section className="relative z-10 py-12 sm:py-16 border-t border-white/[0.08]">
-          <Suspense fallback={<div className="h-[200px]" />}>
-            <Tech />
-          </Suspense>
-        </section>
-
-        {/* Projects Section */}
-        <section className="relative z-10 py-12 sm:py-16 border-t border-white/[0.08] stripe-grid">
-          <Suspense fallback={<div className="h-[200px]" />}>
-            <Projects />
-          </Suspense>
-        </section>
-
-        {/* Experience & Education Timelines */}
-        <section className="relative z-10 py-12 sm:py-16 border-t border-white/[0.08]">
-          <Suspense fallback={<div className="h-[200px]" />}>
-            <Experience />
-            <Education />
-            <Certifications />
-            <Achievements />
-          </Suspense>
-        </section>
-
-        {/* Contact Section */}
-        <section className="relative z-10 py-12 sm:py-16 border-t border-white/[0.08] stripe-grid">
-          <Contact />
-        </section>
-
-        {/* Footer */}
         <Footer />
       </div>
 
