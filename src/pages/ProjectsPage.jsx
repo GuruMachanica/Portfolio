@@ -1,3 +1,4 @@
+import PageTransition from "../components/PageTransition";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Projects } from "../components";
@@ -10,7 +11,8 @@ const ProjectsPage = () => {
   }, []);
 
   return (
-    <div className="pt-28 pb-24 px-4 sm:px-8 max-w-7xl mx-auto min-h-screen text-white">
+    <PageTransition>
+      <div className="pt-28 pb-24 px-4 sm:px-8 max-w-7xl mx-auto min-h-screen text-white">
       {/* Top Header */}
       <div className="mb-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
         <Link
@@ -26,6 +28,7 @@ const ProjectsPage = () => {
 
       <Projects />
     </div>
+    </PageTransition>
   );
 };
 

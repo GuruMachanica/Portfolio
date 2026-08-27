@@ -1,3 +1,4 @@
+import PageTransition from "../components/PageTransition";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaArrowLeft, FaTrophy, FaMedal, FaCalendarAlt, FaStar } from "react-icons/fa";
@@ -60,7 +61,8 @@ const AchievementsPage = () => {
   }, []);
 
   return (
-    <div className="pt-28 pb-24 px-4 sm:px-8 max-w-7xl mx-auto min-h-screen text-white">
+    <PageTransition>
+      <div className="pt-28 pb-24 px-4 sm:px-8 max-w-7xl mx-auto min-h-screen text-white">
       {/* Top Header */}
       <div className="mb-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
         <Link
@@ -132,6 +134,7 @@ const AchievementsPage = () => {
         ))}
       </div>
     </div>
+    </PageTransition>
   );
 };
 

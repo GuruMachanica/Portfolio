@@ -1,6 +1,6 @@
 import React, { useEffect, useState, lazy, Suspense } from "react";
 import { AnimatePresence } from "framer-motion";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-dom";
 import {
   Hero,
   Navbar,
@@ -8,6 +8,7 @@ import {
 } from "./components";
 import PageLoader from "./components/PageLoader";
 import SkeletonLoader from "./components/SkeletonLoader";
+import PageTransition from "./components/PageTransition";
 import { FaBrain, FaCubes, FaFolderOpen, FaBriefcase, FaGraduationCap, FaCertificate, FaTrophy, FaPaperPlane, FaArrowRight } from "react-icons/fa";
 import { animate, stagger } from "animejs";
 
@@ -94,7 +95,7 @@ const HomePage = () => {
   }, []);
 
   return (
-    <>
+    <PageTransition>
       <Hero />
 
       {/* Interactive Monolith Hub (Gateway to All Dedicated Standalone Pages) */}
@@ -147,7 +148,29 @@ const HomePage = () => {
           })}
         </div>
       </section>
-    </>
+    </PageTransition>
+  );
+};
+
+const AnimatedRoutes = () => {
+  const location = useLocation();
+  return (
+    <AnimatePresence mode="wait">
+      <Suspense fallback={<SkeletonLoader />}>
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/overview" element={<OverviewPage />} />
+          <Route path="/about" element={<OverviewPage />} />
+          <Route path="/technologies" element={<TechnologiesPage />} />
+          <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/experience" element={<ExperiencePage />} />
+          <Route path="/education" element={<EducationPage />} />
+          <Route path="/certifications" element={<CertificationsPage />} />
+          <Route path="/achievements" element={<AchievementsPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+        </Routes>
+      </Suspense>
+    </AnimatePresence>
   );
 };
 
@@ -180,20 +203,7 @@ const App = () => {
         <Navbar />
 
         <main className="flex-grow">
-          <Suspense fallback={<SkeletonLoader />}>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/overview" element={<OverviewPage />} />
-              <Route path="/about" element={<OverviewPage />} />
-              <Route path="/technologies" element={<TechnologiesPage />} />
-              <Route path="/projects" element={<ProjectsPage />} />
-              <Route path="/experience" element={<ExperiencePage />} />
-              <Route path="/education" element={<EducationPage />} />
-              <Route path="/certifications" element={<CertificationsPage />} />
-              <Route path="/achievements" element={<AchievementsPage />} />
-              <Route path="/contact" element={<ContactPage />} />
-            </Routes>
-          </Suspense>
+          <AnimatedRoutes />
         </main>
 
         <Footer />

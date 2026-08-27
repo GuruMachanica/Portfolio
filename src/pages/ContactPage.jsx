@@ -1,3 +1,4 @@
+import PageTransition from "../components/PageTransition";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Contact } from "../components";
@@ -9,7 +10,8 @@ const ContactPage = () => {
   }, []);
 
   return (
-    <div className="pt-28 pb-24 px-4 sm:px-8 max-w-7xl mx-auto min-h-screen text-white">
+    <PageTransition>
+      <div className="pt-28 pb-24 px-4 sm:px-8 max-w-7xl mx-auto min-h-screen text-white">
       <div className="mb-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
         <Link
           to="/"
@@ -24,6 +26,7 @@ const ContactPage = () => {
 
       <Contact />
     </div>
+    </PageTransition>
   );
 };
 
