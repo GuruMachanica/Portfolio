@@ -151,8 +151,12 @@ const Contact = () => {
             <span className="text-[11px] font-bold font-beckman uppercase tracking-wider text-taupe">
               LOCATION &amp; AVAILABILITY
             </span>
-            <p className="text-[15px] font-semibold text-timberWolf mt-1.5 font-poppins">
-              📍 Prayagraj, UP, India
+            <p className="text-[15px] font-semibold text-timberWolf mt-1.5 font-poppins flex items-center gap-1.5">
+              <svg className="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              Prayagraj, UP, India
             </p>
             <p className="text-[13px] text-emerald-400 mt-1 font-medium font-poppins flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
