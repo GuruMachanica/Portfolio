@@ -160,7 +160,7 @@ const ProjectsPage = () => {
           {filteredProjects.map((project) => {
             const siteKey = getSiteKey(project.name);
             return (
-              <div key={project.id} className="project-card-anim opacity-0">
+              <div key={project.id} className="project-card-anim opacity-100">
                 <TiltCard className="brutalist-panel rounded-3xl overflow-hidden border border-white/10 hover:border-white/40 flex flex-col justify-between h-full group transition-all duration-300">
                   <div>
                     {/* Project Image Banner */}

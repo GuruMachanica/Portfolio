@@ -179,22 +179,22 @@ const TechnologiesPage = () => {
 
         {/* Metrics Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-          <div className="tech-metric-card opacity-0 brutalist-panel p-5 rounded-2xl border border-white/10">
+          <div className="tech-metric-card opacity-100 brutalist-panel p-5 rounded-2xl border border-white/10">
             <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block mb-1">CORE TECHNOLOGIES</span>
             <span className="text-[26px] sm:text-[32px] font-extrabold text-white font-poppins">17+</span>
             <p className="text-[12px] font-mono text-zinc-400 mt-1">Interactive 3D WebGL Spheres</p>
           </div>
-          <div className="tech-metric-card opacity-0 brutalist-panel p-5 rounded-2xl border border-white/10">
+          <div className="tech-metric-card opacity-100 brutalist-panel p-5 rounded-2xl border border-white/10">
             <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block mb-1">BACKEND ARCHITECTURE</span>
             <span className="text-[26px] sm:text-[32px] font-extrabold text-white font-poppins">&lt; 120ms</span>
             <p className="text-[12px] font-mono text-zinc-400 mt-1">Asynchronous API Latency</p>
           </div>
-          <div className="tech-metric-card opacity-0 brutalist-panel p-5 rounded-2xl border border-white/10">
+          <div className="tech-metric-card opacity-100 brutalist-panel p-5 rounded-2xl border border-white/10">
             <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block mb-1">MACHINE LEARNING</span>
             <span className="text-[26px] sm:text-[32px] font-extrabold text-white font-poppins">98.4%</span>
             <p className="text-[12px] font-mono text-zinc-400 mt-1">Model Precision Benchmark</p>
           </div>
-          <div className="tech-metric-card opacity-0 brutalist-panel p-5 rounded-2xl border border-white/10">
+          <div className="tech-metric-card opacity-100 brutalist-panel p-5 rounded-2xl border border-white/10">
             <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block mb-1">PIPELINE STREAMING</span>
             <span className="text-[26px] sm:text-[32px] font-extrabold text-white font-poppins">60 FPS</span>
             <p className="text-[12px] font-mono text-zinc-400 mt-1">Real-Time Audio &amp; CV Feeds</p>
@@ -220,7 +220,7 @@ const TechnologiesPage = () => {
         {/* 3D Tech Ball Panels Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           {filteredGroups.map((group) => (
-            <div key={group.title} className="tech-panel-item opacity-0">
+            <div key={group.title} className="tech-panel-item opacity-100">
               <TiltCard className="brutalist-panel rounded-3xl p-6 border border-white/10 hover:border-white/35 flex flex-col justify-between h-full transition-all duration-300">
                 <div>
                   <div className="pb-3 border-b border-white/10 mb-4 flex items-center justify-between">

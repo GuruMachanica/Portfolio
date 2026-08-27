@@ -94,7 +94,7 @@ const AchievementsPage = () => {
         {achievements.map((ach) => (
           <div
             key={ach.id}
-            className="ach-card opacity-0 brutalist-panel rounded-3xl p-7 border border-white/10 hover:border-white/40 flex flex-col justify-between group transition-all duration-300">
+            className="ach-card opacity-100 brutalist-panel rounded-3xl p-7 border border-white/10 hover:border-white/40 flex flex-col justify-between group transition-all duration-300">
             <div>
               <div className="flex items-center justify-between mb-6">
                 <div className="w-12 h-12 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center group-hover:scale-105 group-hover:bg-white group-hover:text-black transition-all duration-300">

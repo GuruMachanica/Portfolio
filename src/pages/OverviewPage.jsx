@@ -94,7 +94,7 @@ const OverviewPage = () => {
           {engineeringPillars.map((pillar, idx) => {
             const Icon = pillar.icon;
             return (
-              <div key={idx} className="pillar-card opacity-0">
+              <div key={idx} className="pillar-card opacity-100">
                 <TiltCard className="brutalist-panel rounded-3xl p-7 border border-white/10 hover:border-white/40 flex flex-col justify-between h-full transition-all duration-300">
                   <div>
                     <div className="flex items-center justify-between mb-6">

@@ -120,7 +120,7 @@ const HomePage = () => {
           {hubCards.map((card) => {
             const Icon = card.icon;
             return (
-              <Link key={card.path} to={card.path} className="hub-card opacity-0 group">
+              <Link key={card.path} to={card.path} className="hub-card opacity-100 group">
                 <TiltCard className="brutalist-panel rounded-3xl p-6 border border-white/10 group-hover:border-white/40 flex flex-col justify-between h-full transition-all duration-300">
                   <div>
                     <div className="flex items-center justify-between mb-5">

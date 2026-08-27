@@ -84,7 +84,7 @@ const ExperiencePage = () => {
         {experiences.map((exp) => (
           <div
             key={exp.id}
-            className="exp-card opacity-0 brutalist-panel rounded-3xl p-6 sm:p-9 border border-white/10 hover:border-white/40 transition-all duration-300">
+            className="exp-card opacity-100 brutalist-panel rounded-3xl p-6 sm:p-9 border border-white/10 hover:border-white/40 transition-all duration-300">
             
             {/* Header row */}
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-white/10">
