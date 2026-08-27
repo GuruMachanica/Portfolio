@@ -247,8 +247,46 @@ const certifications = [
 const projects = [
   {
     id: 'project-1',
+    name: 'AnveshakSutra',
+    category: 'Zero-Knowledge & Cyber AI',
+    description:
+      'Autonomous Zero-Knowledge Dark Web Exposure Monitor, 3D Graph ML Blast Radius Analyzer & Deception Tripwire Platform. Executes 5-character SHA-256 K-Anonymity queries and 3D WebGL graph centrality analytics with zero cleartext identity leakage.',
+    architecture: 'FastAPI • WebGL Three.js • K-Anonymity • Celery • Supabase',
+    keyHighlights: [
+      'Engineered Zero-Knowledge K-Anonymity prefix lookups ensuring zero server-side cleartext leakage',
+      'Constructed 3D WebGL Graph ML visualizer analyzing Betweenness Centrality blast radius',
+      'Deployed canary honey-credentials with automated verification challenge probes'
+    ],
+    tags: [
+      {
+        name: 'fastapi',
+        color: 'blue-text-gradient',
+      },
+      {
+        name: 'zero-knowledge',
+        color: 'green-text-gradient',
+      },
+      {
+        name: 'three.js',
+        color: 'pink-text-gradient',
+      },
+      {
+        name: 'graph-ml',
+        color: 'blue-text-gradient',
+      },
+      {
+        name: 'supabase',
+        color: 'green-text-gradient',
+      },
+    ],
+    image: anveshaksutra,
+    repo: 'https://github.com/GuruMachanica/AnveshakSutra',
+    demo: 'https://anveshak-sutra.vercel.app/',
+  },
+  {
+    id: 'project-2',
     name: 'Concept3D',
-    category: 'Agentic AI & 3D',
+    category: 'GenAI & 3D Visualization',
     description:
       'AI Concept-to-Visualization Platform. Led backend development and 3D data pipeline engineering, translating unstructured conceptual data into structured inputs for 3D model generation. Streamlined 3D generation workflows by designing an AI-driven semantic preprocessing pipeline with robust data caching and validation.',
     architecture: 'PyTorch • GenAI 3D Pipeline • Semantic Caching Engine',
@@ -284,7 +322,7 @@ const projects = [
     demo: 'https://concept-3d.vercel.app/',
   },
   {
-    id: 'project-2',
+    id: 'project-3',
     name: 'A.E.G.I.S',
     category: 'Backend & APIs',
     description:
@@ -322,36 +360,36 @@ const projects = [
     demo: 'https://aegis-anti-scam.netlify.app/',
   },
   {
-    id: 'project-3',
+    id: 'project-4',
     name: 'SunMap',
-    category: 'Computer Vision & 3D',
+    category: 'Spatial 3D & Solar Intelligence',
     description:
-      '3D Solar Potential & Revenue Analytics. Led predictive analytics and spatial data structuring to enable simulation environments for solar energy assessment. Generated revenue forecasts and spatial cost-benefit analyses by training custom PyTorch models to predict localized solar energy capacity.',
-    architecture: 'PyTorch • Spatial GeoData • Predictive Revenue Simulation',
+      '3D Spatial Solar Energy & Rooftop Intelligence Engine. Architected a 60 FPS WebGL/Three.js spatial simulation engine parsing CityGML LOD2 building geometries, rooftop surface normals, and ray-traced shadow occlusions with Perez transposition physics benchmarked against NREL PVLib.',
+    architecture: 'Three.js WebGL • CityGML LOD2 • Perez Transposition • Docker',
     keyHighlights: [
-      'Constructed 3D spatial simulation environments for solar energy assessment',
-      'Trained PyTorch models on spatial datasets for accurate capacity forecasting',
-      'Engineered automated cost-benefit and revenue estimation engines'
+      'Architected 60 FPS Three.js ray-traced shadow occlusion engine across 8,760 annual vectors',
+      'Extracted sub-degree CityGML LOD2 building surface normals and usable rooftop areas',
+      'Engineered bankable financial cashflow, LCOE, and carbon abatement forecasting engines'
     ],
     tags: [
       {
-        name: 'python',
+        name: 'three.js',
         color: 'blue-text-gradient',
       },
       {
-        name: 'pytorch',
+        name: 'citygml-lod2',
         color: 'green-text-gradient',
       },
       {
-        name: 'sql',
+        name: 'python-spatial',
         color: 'pink-text-gradient',
       },
       {
-        name: 'statistical-analysis',
+        name: 'pvlib-physics',
         color: 'blue-text-gradient',
       },
       {
-        name: 'spatial-data',
+        name: 'docker',
         color: 'green-text-gradient',
       },
     ],
@@ -360,7 +398,7 @@ const projects = [
     demo: 'https://sunmapsolar.netlify.app/',
   },
   {
-    id: 'project-4',
+    id: 'project-5',
     name: 'KavachG',
     category: 'Computer Vision & 3D',
     description:
@@ -396,44 +434,6 @@ const projects = [
     image: math,
     repo: 'https://github.com/GuruMachanica/KavachG',
     demo: 'https://github.com/GuruMachanica/KavachG',
-  },
-  {
-    id: 'project-5',
-    name: 'AnveshakSutra',
-    category: 'Zero-Knowledge & Cyber AI',
-    description:
-      'Autonomous Zero-Knowledge Dark Web Exposure Monitor, 3D Graph ML Blast Radius Analyzer & Deception Tripwire Platform. Executes 5-character SHA-256 K-Anonymity queries and 3D WebGL graph centrality analytics with zero cleartext identity leakage.',
-    architecture: 'FastAPI • WebGL Three.js • K-Anonymity • Celery • Supabase',
-    keyHighlights: [
-      'Engineered Zero-Knowledge K-Anonymity prefix lookups ensuring zero server-side cleartext leakage',
-      'Constructed 3D WebGL Graph ML visualizer analyzing Betweenness Centrality blast radius',
-      'Deployed canary honey-credentials with automated verification challenge probes'
-    ],
-    tags: [
-      {
-        name: 'fastapi',
-        color: 'blue-text-gradient',
-      },
-      {
-        name: 'zero-knowledge',
-        color: 'green-text-gradient',
-      },
-      {
-        name: 'three.js',
-        color: 'pink-text-gradient',
-      },
-      {
-        name: 'graph-ml',
-        color: 'blue-text-gradient',
-      },
-      {
-        name: 'supabase',
-        color: 'green-text-gradient',
-      },
-    ],
-    image: anveshaksutra,
-    repo: 'https://github.com/GuruMachanica/AnveshakSutra',
-    demo: 'https://anveshak-sutra.vercel.app/',
   },
 ];
 

@@ -2,30 +2,22 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
-import { bwmap, worldmap, huzaifa } from "./assets";
 
-const preloadAsset = (href, as, type) => {
-  if (!href) return;
-
-  const existing = document.querySelector(`link[rel="preload"][href="${href}"]`);
-  if (existing) return;
-
+// Global font preload
+const preloadFont = (href) => {
+  if (typeof document === "undefined") return;
   const link = document.createElement("link");
   link.rel = "preload";
+  link.as = "font";
+  link.type = "font/otf";
   link.href = href;
-  link.as = as;
-  if (type) link.type = type;
-  if (as === "font") {
-    link.crossOrigin = "anonymous";
-  }
+  link.crossOrigin = "anonymous";
   document.head.appendChild(link);
 };
 
-// Preload above-the-fold essentials with correct crossOrigin
-preloadAsset(huzaifa, "image", "image/webp");
-preloadAsset(bwmap, "image", "image/webp");
-preloadAsset(worldmap, "image", "image/webp");
-preloadAsset(new URL("./fonts/mova.otf", import.meta.url).href, "font", "font/otf");
+try {
+  preloadFont(new URL("./fonts/mova.otf", import.meta.url).href);
+} catch (e) {}
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
