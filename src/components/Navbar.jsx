@@ -153,7 +153,7 @@ const Navbar = () => {
 
       {/* Mobile Drawer */}
       {toggle && (
-        <div className="xl:hidden fixed inset-x-0 top-[60px] bg-black/95 border-b border-white/15 p-6 backdrop-blur-2xl flex flex-col gap-4 shadow-2xl">
+        <div className="xl:hidden fixed inset-x-0 top-[60px] bg-black/95 border-b border-white/15 p-5 sm:p-6 backdrop-blur-2xl flex flex-col gap-4 shadow-2xl max-h-[calc(100dvh-70px)] overflow-y-auto no-scrollbar">
           <div className="text-[11px] font-mono text-zinc-500 uppercase tracking-widest pb-2 border-b border-white/10">
             PAGES &amp; SECTIONS
           </div>
@@ -184,12 +184,12 @@ const Navbar = () => {
               </a>
             </div>
 
-            <a
-              href="/Mohammad_Huzaifa_Resume.pdf"
-              download
-              className="px-4 py-2 rounded-xl bg-white text-black font-mono font-bold text-[12px]">
-              DOWNLOAD RESUME
-            </a>
+            <Link
+              to="/resume"
+              onClick={() => setToggle(false)}
+              className="px-4 py-2.5 rounded-xl bg-white text-black font-mono font-bold text-[12px] text-center hover:bg-zinc-200 transition-all">
+              VIEW RESUME
+            </Link>
           </div>
         </div>
       )}

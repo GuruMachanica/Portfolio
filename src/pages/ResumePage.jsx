@@ -215,14 +215,14 @@ const ResumePage = () => {
           </div>
 
           {/* PDF Display Frame with responsive container */}
-          <div className="w-full flex justify-center overflow-auto bg-[#141414] rounded-2xl p-2 sm:p-4 border border-white/5 min-h-[750px] lg:min-h-[1050px]">
+          <div className="w-full flex justify-center overflow-auto bg-[#141414] rounded-2xl p-2 sm:p-4 border border-white/5 min-h-[600px] sm:min-h-[850px] lg:min-h-[1100px]">
             <div 
               className="w-full max-w-4xl transition-transform duration-200 origin-top h-full"
               style={{ transform: `scale(${zoomLevel / 100})` }}>
               <iframe
                 src={`${pdfUrl}#toolbar=0&navpanes=0&scrollbar=1`}
                 title="Mohammad Huzaifa Resume"
-                className="w-full h-[750px] sm:h-[900px] lg:h-[1100px] rounded-xl border border-white/10 shadow-2xl bg-white"
+                className="w-full h-[600px] sm:h-[850px] lg:h-[1100px] rounded-xl border border-white/10 shadow-2xl bg-white"
               />
             </div>
           </div>

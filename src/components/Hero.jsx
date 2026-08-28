@@ -53,7 +53,7 @@ const Hero = () => {
 
       {/* Main Headline (Grouped by word with clamp sizing) */}
       <div className="w-full max-w-5xl text-center flex flex-col items-center">
-        <h1 className="text-white text-[clamp(28px,7.5vw,72px)] font-extrabold tracking-tight leading-[1.08] font-poppins uppercase flex flex-wrap justify-center gap-x-2 sm:gap-x-4">
+        <h1 className="text-white text-[clamp(24px,7vw,70px)] font-extrabold tracking-tight leading-[1.08] font-poppins uppercase flex flex-wrap justify-center gap-x-2 sm:gap-x-4">
           <span className="inline-block whitespace-nowrap">
             {firstName.split("").map((char, index) => (
               <span
