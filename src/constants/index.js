@@ -81,17 +81,17 @@ const services = [
   },
 ];
 
-const technologyGroups = [
+export const technologyGroups = [
   {
     title: 'Programming Languages',
     items: [
       {
-        name: 'C++',
-        icon: cplusplus,
-      },
-      {
         name: 'Python',
         icon: python,
+      },
+      {
+        name: 'C++',
+        icon: cplusplus,
       },
       {
         name: 'C',
@@ -100,45 +100,15 @@ const technologyGroups = [
     ],
   },
   {
-    title: 'UI/UX',
-    items: [
-      {
-        name: 'Figma',
-        icon: figmaTech,
-      },
-      {
-        name: 'Canva',
-        icon: canva, threejs,
-      },
-    ],
-  },
-  {
-    title: 'Backend & Data Engineering',
-    items: [
-      {
-        name: 'FastAPI',
-        icon: fastapi,
-      },
-      {
-        name: 'MongoDB',
-        icon: mongodb,
-      },
-      {
-        name: 'MySQL',
-        icon: mysql,
-      },
-    ],
-  },
-  {
     title: 'Machine Learning & CV',
     items: [
       {
-        name: 'TensorFlow',
-        icon: tensorflow,
-      },
-      {
         name: 'PyTorch',
         icon: pytorch,
+      },
+      {
+        name: 'TensorFlow',
+        icon: tensorflow,
       },
       {
         name: 'Scikit-Learn',
@@ -151,8 +121,33 @@ const technologyGroups = [
     ],
   },
   {
+    title: 'Backend & Data Engineering',
+    items: [
+      {
+        name: 'FastAPI',
+        icon: fastapi,
+      },
+      {
+        name: 'PostgreSQL',
+        icon: postgresql,
+      },
+      {
+        name: 'MongoDB',
+        icon: mongodb,
+      },
+      {
+        name: 'MySQL',
+        icon: mysql,
+      },
+    ],
+  },
+  {
     title: 'Tools & Automation',
     items: [
+      {
+        name: 'Docker',
+        icon: dockerTech,
+      },
       {
         name: 'Git',
         icon: gitTech,
@@ -169,9 +164,18 @@ const technologyGroups = [
         name: 'VS Code',
         icon: vscode,
       },
+    ],
+  },
+  {
+    title: 'UI/UX & 3D Spatial',
+    items: [
       {
-        name: 'Docker',
-        icon: dockerTech,
+        name: 'Figma',
+        icon: figmaTech,
+      },
+      {
+        name: 'Three.js',
+        icon: threejs,
       },
     ],
   },

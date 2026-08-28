@@ -36,7 +36,7 @@ import redux from './tech/redux.webp';
 import tailwind from './tech/tailwind.webp';
 import typescript from './tech/typescript.webp';
 import graphql from './tech/graphql.webp';
-import postgresql from './tech/postgresql.webp';
+import postgresql from './tech-extra/postgresql.svg';
 import rubyrails from './tech/rubyrails.webp';
 
 import c from './tech-extra/c.webp';
@@ -48,15 +48,15 @@ import githubTech from './tech-extra/github.webp';
 import n8n from './tech-extra/n8n.webp';
 import python from './tech-extra/python.webp';
 import canva from './tech-extra/canva.webp';
-import threejs from './tech-extra/threejs.svg';
 import mongodb from './tech-extra/mongodb.webp';
 import mysql from './tech-extra/mysql.webp';
 import tensorflow from './tech-extra/tensorflow.webp';
 import pytorch from './tech-extra/pytorch.webp';
-import vscode from './tech-extra/vscode.webp';
+import vscode from './tech-extra/vscode.svg';
 import fastapi from './tech-extra/fastapi.webp';
 import opencv from './tech-extra/opencv.webp';
 import scikitlearn from './tech-extra/scikitlearn.webp';
+import threejs from './tech-extra/threejs.svg';
 
 import coverhunt from './company/coverhunt.webp';
 import dcc from './company/dcc.webp';
@@ -64,18 +64,15 @@ import kelhel from './company/kelhel.webp';
 import microverse from './company/microverse.webp';
 import orvanto from './company/orvanto.webp';
 
-import komikult from './projects/AEGIS.webp';
-import leaderboard from './projects/Concept-2-3d.webp';
-import math from './projects/KavachG.webp';
+import komikult from './projects/komikult.png';
+import leaderboard from './projects/leaderboard.png';
+import math from './projects/math-magicians.png';
+import movie from './projects/movie-metro.png';
+import nyeusi from './projects/nyeusi.png';
+import space from './projects/space-hub.png';
 import sunmap from './projects/sunmap.webp';
 
 export {
-  threejs,
-  anveshaksutra,
-  bwmap,
-  nairobi,
-  whiteabstract,
-  worldmap,
   logo,
   logotext,
   huzaifa,
@@ -103,6 +100,27 @@ export {
   nodejs,
   postgresql,
   rubyrails,
+  reactjs,
+  redux,
+  tailwind,
+  typescript,
+  komikult,
+  leaderboard,
+  math,
+  movie,
+  nyeusi,
+  space,
+  coverhunt,
+  dcc,
+  kelhel,
+  microverse,
+  orvanto,
+  anveshaksutra,
+  sunmap,
+  bwmap,
+  nairobi,
+  whiteabstract,
+  worldmap,
   c,
   cplusplus,
   dockerTech,
@@ -120,17 +138,5 @@ export {
   fastapi,
   opencv,
   scikitlearn,
-  reactjs,
-  redux,
-  tailwind,
-  typescript,
-  komikult,
-  leaderboard,
-  math,
-  sunmap,
-  coverhunt,
-  dcc,
-  kelhel,
-  microverse,
-  orvanto,
+  threejs,
 };
