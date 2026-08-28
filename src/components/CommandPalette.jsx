@@ -123,11 +123,10 @@ const CommandPalette = () => {
         setIsOpen(false);
         break;
       case "resume":
-        newHistory.push({ type: "out", text: "Opening verified resume..." });
-        window.open(
-          "https://drive.google.com/file/d/1u2xt4lfEFvHCyCcoRaL9azhuzHQtiPNx/view?usp=sharing",
-          "_blank"
-        );
+      case "cv":
+        newHistory.push({ type: "out", text: "Routing to /resume..." });
+        navigate("/resume");
+        setIsOpen(false);
         break;
       case "sudo hire-huzaifa":
       case "hire":

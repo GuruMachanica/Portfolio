@@ -433,7 +433,7 @@ const projects = [
     ],
     image: math,
     repo: 'https://github.com/GuruMachanica/KavachG',
-    demo: 'https://github.com/GuruMachanica/KavachG',
+    demo: 'https://kavach-g.vercel.app/',
   },
 ];
 

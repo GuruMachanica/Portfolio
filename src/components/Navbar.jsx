@@ -113,13 +113,11 @@ const Navbar = () => {
           </div>
 
           {/* Resume CTA */}
-          <a
-            href="/Mohammad_Huzaifa_Resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to="/resume"
             className="px-3.5 py-1.5 rounded-lg bg-white text-black font-mono font-bold text-[12px] hover:bg-zinc-200 transition-colors shadow-sm">
             RESUME
-          </a>
+          </Link>
         </div>
 
         {/* Mobile / Tablet Menu Button */}

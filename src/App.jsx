@@ -13,7 +13,7 @@ import CommandPalette from "./components/CommandPalette";
 import ScrollProgress from "./components/ScrollProgress";
 import AmbientGlow from "./components/AmbientGlow";
 import TiltCard from "./components/TiltCard";
-import { FaBrain, FaCubes, FaFolderOpen, FaBriefcase, FaGraduationCap, FaCertificate, FaTrophy, FaPaperPlane, FaArrowRight } from "react-icons/fa";
+import { FaBrain, FaCubes, FaFolderOpen, FaBriefcase, FaGraduationCap, FaCertificate, FaTrophy, FaPaperPlane, FaArrowRight, FaFilePdf } from "react-icons/fa";
 import { animate, stagger } from "animejs";
 
 // Lazy-loaded dedicated standalone pages
@@ -25,6 +25,7 @@ const EducationPage = lazy(() => import("./pages/EducationPage"));
 const CertificationsPage = lazy(() => import("./pages/CertificationsPage"));
 const AchievementsPage = lazy(() => import("./pages/AchievementsPage"));
 const ContactPage = lazy(() => import("./pages/ContactPage"));
+const ResumePage = lazy(() => import("./pages/ResumePage"));
 
 const hubCards = [
   {
@@ -82,6 +83,13 @@ const hubCards = [
     icon: FaPaperPlane,
     desc: "Direct communication channels, copy-to-clipboard email & phone, and message form.",
     tag: "CONNECT",
+  },
+  {
+    title: "Curriculum Vitae",
+    path: "/resume",
+    icon: FaFilePdf,
+    desc: "Interactive 1-page master resume with instant download, zoom, and competency dossier.",
+    tag: "RESUME",
   },
 ];
 
@@ -171,6 +179,7 @@ const AnimatedRoutes = () => {
           <Route path="/certifications" element={<CertificationsPage />} />
           <Route path="/achievements" element={<AchievementsPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/resume" element={<ResumePage />} />
         </Routes>
       </Suspense>
     </AnimatePresence>

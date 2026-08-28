@@ -42,7 +42,7 @@ const architectureBlueprints = {
     latency: "< 100ms Inference Per Frame",
     throughput: "Multi-Camera Streaming",
     security: "Role-Based Token Access",
-    siteKey: null
+    siteKey: "kavachg"
   }
 };
 
@@ -84,6 +84,7 @@ const ProjectsPage = () => {
     if (name.includes("A.E.G.I.S") || name.includes("AEGIS")) return "aegis";
     if (name.includes("SunMap")) return "sunmap";
     if (name.includes("Anveshak")) return "anveshaksutra";
+    if (name.includes("Kavach")) return "kavachg";
     return null;
   };
 
