@@ -1,4 +1,5 @@
 import React from "react";
+import LazyAsset from "./LazyAsset";
 
 export default function LiveProjectThumbnail({
   name,
@@ -8,13 +9,11 @@ export default function LiveProjectThumbnail({
 }) {
   return (
     <div className="relative h-56 sm:h-64 w-full bg-zinc-950 overflow-hidden border-b border-white/10 group-hover:border-white/20 transition-colors">
-      {/* High-Resolution Project Artwork (Zero WordPress Watermark / Zero Distortion) */}
-      <img
+      {/* AJAX Lazy Loaded High-Resolution Project Artwork */}
+      <LazyAsset
         src={fallbackImage}
         alt={name}
-        loading="lazy"
-        decoding="async"
-        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
+        className="w-full h-full group-hover:scale-105 transition-transform duration-500"
       />
 
       {/* Cinematic Gradient Shadow */}
@@ -25,7 +24,7 @@ export default function LiveProjectThumbnail({
         {demoUrl && !demoUrl.includes("github.com") && (
           <span className="inline-flex items-center gap-1.5 text-[9px] font-mono px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 backdrop-blur-md font-bold uppercase tracking-wider">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            LIVE DEMO
+            LIVE PREVIEW
           </span>
         )}
         <span className="text-[10px] font-mono px-3 py-1 rounded-full bg-black/80 backdrop-blur-md text-white border border-white/20 font-bold uppercase">
