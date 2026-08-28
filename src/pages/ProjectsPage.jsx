@@ -67,16 +67,13 @@ const ProjectsPage = () => {
   }, [search, activeCategory]);
 
   const filteredProjects = projects.filter((p) => {
-    const matchesSearch =
+    return (
       p.name.toLowerCase().includes(search.toLowerCase()) ||
       p.description.toLowerCase().includes(search.toLowerCase()) ||
-      p.tags.some((t) => t.name.toLowerCase().includes(search.toLowerCase()));
-
-    const matchesCategory =
-      activeCategory === "ALL" ||
-      (p.category && p.category.toUpperCase().includes(activeCategory));
-
-    return matchesSearch && matchesCategory;
+      (p.category && p.category.toLowerCase().includes(search.toLowerCase())) ||
+      (p.architecture && p.architecture.toLowerCase().includes(search.toLowerCase())) ||
+      p.tags.some((t) => t.name.toLowerCase().includes(search.toLowerCase()))
+    );
   });
 
   const getSiteKey = (name) => {
@@ -133,35 +130,17 @@ const ProjectsPage = () => {
           </button>
         </div>
 
-        {/* Search & Category Filter Bar */}
-        <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 mb-10 pb-6 border-b border-white/10">
-          
-          {/* Real-Time Search Bar */}
-          <div className="relative flex-1 max-w-md">
-            <FaSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500 w-3.5 h-3.5" />
+        {/* Search Bar */}
+        <div className="mb-10 pb-6 border-b border-white/10">
+          <div className="relative max-w-xl">
+            <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 w-4 h-4" />
             <input
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search projects by name, tag, or stack..."
-              className="w-full bg-white/[0.04] border border-white/10 rounded-xl pl-9 pr-4 py-2 text-[13px] font-mono text-white placeholder:text-zinc-500 focus:outline-none focus:border-white/40 transition-colors"
+              placeholder="Search all production projects by name, technology, or keywords..."
+              className="w-full bg-white/[0.04] border border-white/10 rounded-xl pl-11 pr-4 py-2.5 text-[13px] font-mono text-white placeholder:text-zinc-500 focus:outline-none focus:border-white/40 transition-colors"
             />
-          </div>
-
-          {/* Filter Pills */}
-          <div className="flex flex-wrap gap-2">
-            {["ALL", "AI", "BACKEND", "3D", "VISION"].map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-3.5 py-1.5 rounded-lg text-[11px] font-mono font-bold tracking-wider uppercase transition-all ${
-                  activeCategory === cat
-                    ? "bg-white text-black shadow-md"
-                    : "bg-white/5 text-zinc-400 hover:text-white border border-white/10"
-                }`}>
-                {cat}
-              </button>
-            ))}
           </div>
         </div>
 

@@ -177,30 +177,6 @@ const TechnologiesPage = () => {
           </p>
         </div>
 
-        {/* Metrics Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-          <div className="tech-metric-card opacity-100 brutalist-panel p-5 rounded-2xl border border-white/10">
-            <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block mb-1">CORE TECHNOLOGIES</span>
-            <span className="text-[26px] sm:text-[32px] font-extrabold text-white font-poppins">17+</span>
-            <p className="text-[12px] font-mono text-zinc-400 mt-1">Interactive 3D WebGL Spheres</p>
-          </div>
-          <div className="tech-metric-card opacity-100 brutalist-panel p-5 rounded-2xl border border-white/10">
-            <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block mb-1">BACKEND ARCHITECTURE</span>
-            <span className="text-[26px] sm:text-[32px] font-extrabold text-white font-poppins">&lt; 120ms</span>
-            <p className="text-[12px] font-mono text-zinc-400 mt-1">Asynchronous API Latency</p>
-          </div>
-          <div className="tech-metric-card opacity-100 brutalist-panel p-5 rounded-2xl border border-white/10">
-            <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block mb-1">MACHINE LEARNING</span>
-            <span className="text-[26px] sm:text-[32px] font-extrabold text-white font-poppins">98.4%</span>
-            <p className="text-[12px] font-mono text-zinc-400 mt-1">Model Precision Benchmark</p>
-          </div>
-          <div className="tech-metric-card opacity-100 brutalist-panel p-5 rounded-2xl border border-white/10">
-            <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block mb-1">PIPELINE STREAMING</span>
-            <span className="text-[26px] sm:text-[32px] font-extrabold text-white font-poppins">60 FPS</span>
-            <p className="text-[12px] font-mono text-zinc-400 mt-1">Real-Time Audio &amp; CV Feeds</p>
-          </div>
-        </div>
-
         {/* Category Filter Tabs */}
         <div className="flex flex-wrap gap-2 mb-10 pb-4 border-b border-white/10">
           {["ALL", "PROGRAMMING", "MACHINE LEARNING", "BACKEND", "TOOLS", "UI/UX"].map((cat) => (
