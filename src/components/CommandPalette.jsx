@@ -129,14 +129,10 @@ const CommandPalette = () => {
  ██║ ╚████║╚██████╔╝██║██║  ██║██║     ███████╗   ██║   ╚██████╗██║  ██║
  ╚═╝  ╚═══╝ ╚═════╝ ╚═╝╚═╝  ╚═╝╚═╝     ╚══════╝   ╚═╝    ╚═════╝╚═╝  ╚═╝
 
- OS: Monolith NoirOS (x86_64 / WebGL Monolith)
  Host: Mohammad Huzaifa (Agentic AI & Backend Architect)
- Kernel: 6.12.0-noir-monolith
- Palette: [ ■ #000000 | ■ #141414 | ■ #888888 | ■ #ffffff ]
- Core: FastAPI • PyTorch • Three.js • Docker • pgvector
- Systems: AnveshakSutra, Concept3D, AEGIS, SunMap, KavachG
- Latency: < 0.001ms (FastCache L1 In-Memory Stream)
- Status: Available for High-Impact Engineering Roles
+ Stack: FastAPI • PyTorch • Three.js • Docker • PostgreSQL
+ Systems: 5 Production Deployments (/projects)
+ Status: Available for Engineering Roles
 `
         });
         break;
