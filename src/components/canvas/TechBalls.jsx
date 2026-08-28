@@ -1,6 +1,6 @@
 /**
- * TechBalls - High-performance WebGL 3D faceted tech spheres with titanium chrome lighting,
- * dynamic cursor parallax, floating hover tooltips, and click inspection.
+ * TechBalls - High-performance WebGL 3D faceted tech spheres with pure black & white monochrome
+ * symbol filtering, titanium chrome lighting, dynamic cursor parallax, and hover tooltips.
  */
 import React, { useEffect, useRef, useMemo } from "react";
 import * as THREE from "three";
@@ -10,15 +10,15 @@ const TITANIUM_COLOR = "#1c1c1f";
 function buildScene(iconUrl) {
   const scene = new THREE.Scene();
 
-  // Studio 3-Point Lighting
-  const ambient = new THREE.AmbientLight(0xffffff, 0.8);
+  // Studio Pure Monochrome Lighting
+  const ambient = new THREE.AmbientLight(0xffffff, 0.85);
   scene.add(ambient);
 
   const keyLight = new THREE.DirectionalLight(0xffffff, 1.8);
   keyLight.position.set(5, 6, 5);
   scene.add(keyLight);
 
-  const rimLight = new THREE.DirectionalLight(0x61dafb, 1.3);
+  const rimLight = new THREE.DirectionalLight(0xffffff, 1.4);
   rimLight.position.set(-5, -5, -4);
   scene.add(rimLight);
 
@@ -44,12 +44,12 @@ function buildScene(iconUrl) {
   const wireMat = new THREE.LineBasicMaterial({
     color: 0xffffff,
     transparent: true,
-    opacity: 0.12,
+    opacity: 0.14,
   });
   const wireMesh = new THREE.LineSegments(wireGeo, wireMat);
   mesh.add(wireMesh);
 
-  // High-Resolution Decal Sprite for Tech Brand Icon
+  // High-Resolution Decal Sprite with Pure Black & White Monochromatic Texture
   const spriteMat = new THREE.SpriteMaterial({
     transparent: true,
     depthTest: false,
@@ -58,13 +58,27 @@ function buildScene(iconUrl) {
   sprite.scale.set(1.65, 1.65, 1);
   scene.add(sprite);
 
-  new THREE.TextureLoader().load(iconUrl, (tex) => {
-    tex.colorSpace = THREE.SRGBColorSpace;
-    tex.minFilter = THREE.LinearFilter;
-    tex.magFilter = THREE.LinearFilter;
-    spriteMat.map = tex;
-    spriteMat.needsUpdate = true;
-  });
+  // Dynamic In-Memory Canvas Grayscale Converter
+  const img = new Image();
+  img.crossOrigin = "anonymous";
+  img.onload = () => {
+    const offCanvas = document.createElement("canvas");
+    offCanvas.width = img.width || 256;
+    offCanvas.height = img.height || 256;
+    const ctx = offCanvas.getContext("2d");
+    if (ctx) {
+      // Convert all colors to pure high-contrast black & white
+      ctx.filter = "grayscale(100%) brightness(130%) contrast(160%)";
+      ctx.drawImage(img, 0, 0, offCanvas.width, offCanvas.height);
+      const bwTex = new THREE.CanvasTexture(offCanvas);
+      bwTex.colorSpace = THREE.SRGBColorSpace;
+      bwTex.minFilter = THREE.LinearFilter;
+      bwTex.magFilter = THREE.LinearFilter;
+      spriteMat.map = bwTex;
+      spriteMat.needsUpdate = true;
+    }
+  };
+  img.src = iconUrl;
 
   const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
   camera.position.set(0, 0, 4.6);
