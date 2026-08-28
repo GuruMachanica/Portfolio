@@ -25,10 +25,11 @@ const AmbientGlow = () => {
 
   return (
     <div
-      className="fixed inset-0 pointer-events-none z-[1] transition-opacity duration-500"
+      aria-hidden="true"
+      className="fixed inset-0 pointer-events-none z-[999] transition-opacity duration-300 mix-blend-screen"
       style={{
         opacity,
-        background: `radial-gradient(650px circle at ${pos.x}px ${pos.y}px, rgba(255, 255, 255, 0.045), transparent 80%)`
+        background: `radial-gradient(600px circle at ${pos.x}px ${pos.y}px, rgba(255, 255, 255, 0.055), transparent 75%)`
       }}
     />
   );

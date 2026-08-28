@@ -96,11 +96,11 @@ const Hero = () => {
 
         {/* Action Buttons (Full width on small phones, inline on tablets/desktops) */}
         <div className="hero-cta opacity-0 mt-7 sm:mt-8 flex flex-col xs:flex-row w-full xs:w-auto gap-3 sm:gap-4 justify-center px-4 xs:px-0">
-          <a
-            href="#projects"
-            className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white text-black font-bold text-[13px] sm:text-[14px] font-mono hover:bg-zinc-200 transition-all duration-200 shadow-lg text-center">
+          <Link
+            to="/projects"
+            className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white text-black font-bold text-[13px] sm:text-[14px] font-mono hover:bg-zinc-200 transition-all duration-200 shadow-lg text-center hover:scale-105">
             VIEW PROJECTS <FaArrowRight className="w-3.5 h-3.5" />
-          </a>
+          </Link>
           <a
             href="https://github.com/GuruMachanica"
             target="_blank"
