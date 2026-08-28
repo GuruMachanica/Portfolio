@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaTimes, FaExternalLinkAlt, FaSyncAlt, FaCube, FaShieldAlt, FaSun, FaLock, FaExpand, FaCompress, FaGlobe } from "react-icons/fa";
+import { FaTimes, FaExternalLinkAlt, FaSyncAlt, FaCube, FaShieldAlt, FaSun, FaLock, FaExpand, FaCompress, FaGlobe, FaCheckCircle } from "react-icons/fa";
+import KavachGDemo from "./KavachGDemo";
 
 const DEPLOYED_WEBSITES = {
   anveshaksutra: {
@@ -106,9 +107,9 @@ const LiveWebsiteModal = ({ isOpen, onClose, initialSite = "anveshaksutra" }) =>
             {/* Window Dots & Tab Switcher */}
             <div className="flex items-center gap-3 overflow-x-auto no-scrollbar py-1">
               <div className="hidden sm:flex items-center gap-1.5 mr-2">
-                <span className="w-3 h-3 rounded-full bg-red-500/80 inline-block" />
-                <span className="w-3 h-3 rounded-full bg-yellow-500/80 inline-block" />
-                <span className="w-3 h-3 rounded-full bg-green-500/80 inline-block" />
+                <span className="w-3 h-3 rounded-full bg-white/20 inline-block" />
+                <span className="w-3 h-3 rounded-full bg-white/40 inline-block" />
+                <span className="w-3 h-3 rounded-full bg-white/60 inline-block" />
               </div>
 
               {/* Tabs */}
@@ -125,7 +126,7 @@ const LiveWebsiteModal = ({ isOpen, onClose, initialSite = "anveshaksutra" }) =>
                       }}
                       className={`px-3 py-1.5 rounded-lg text-xs font-mono font-semibold flex items-center gap-1.5 transition-all cursor-pointer whitespace-nowrap ${
                         isActive
-                          ? "bg-white text-black shadow-md"
+                          ? "bg-white text-black shadow-md font-bold"
                           : "bg-white/5 text-zinc-400 hover:bg-white/10 hover:text-white"
                       }`}>
                       <TabIcon className="w-3.5 h-3.5" />
@@ -149,10 +150,10 @@ const LiveWebsiteModal = ({ isOpen, onClose, initialSite = "anveshaksutra" }) =>
                 href={activeSite.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-zinc-200 hover:text-white transition-colors text-xs font-mono flex items-center gap-1.5 font-bold"
+                className="px-2.5 py-1.5 rounded-lg bg-white text-black hover:bg-zinc-200 transition-colors text-xs font-mono flex items-center gap-1.5 font-bold shadow-md hover:scale-105"
                 title="Open in Native Browser Tab">
                 <FaExternalLinkAlt className="w-3 h-3" />
-                <span className="hidden md:inline">OPEN TAB</span>
+                <span className="hidden md:inline">OPEN NEW TAB</span>
               </a>
 
               <button
@@ -164,7 +165,7 @@ const LiveWebsiteModal = ({ isOpen, onClose, initialSite = "anveshaksutra" }) =>
 
               <button
                 onClick={onClose}
-                className="p-2 rounded-lg bg-red-500/20 hover:bg-red-500/40 text-red-300 hover:text-white transition-colors cursor-pointer ml-1"
+                className="p-2 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer ml-1"
                 title="Close Viewer">
                 <FaTimes className="w-4 h-4" />
               </button>
@@ -181,9 +182,14 @@ const LiveWebsiteModal = ({ isOpen, onClose, initialSite = "anveshaksutra" }) =>
                 {activeSite.tag}
               </span>
             </div>
-            <span className="text-[11px] text-zinc-500 hidden sm:inline truncate max-w-md">
-              {activeSite.description}
-            </span>
+            
+            <a
+              href={activeSite.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:underline text-[11px] font-bold hidden sm:inline truncate max-w-md">
+              Launch Direct Link ↗
+            </a>
           </div>
 
           {/* Iframe Viewport Container */}
@@ -192,11 +198,12 @@ const LiveWebsiteModal = ({ isOpen, onClose, initialSite = "anveshaksutra" }) =>
               <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-[#0c0c0c] text-white gap-3">
                 <div className="w-8 h-8 border-2 border-white/20 border-t-white rounded-full animate-spin" />
                 <span className="text-xs font-mono text-zinc-400 tracking-wider">
-                  INITIALIZING {activeSite.name.toUpperCase()} PREVIEW...
+                  INITIALIZING {activeSite.name.toUpperCase()} SYSTEM STREAM...
                 </span>
               </div>
             )}
 
+            {/* If KavachG or any site has active browser policy restrictions */}
             <iframe
               key={reloadKey + activeSite.id}
               src={activeSite.url}
@@ -204,8 +211,19 @@ const LiveWebsiteModal = ({ isOpen, onClose, initialSite = "anveshaksutra" }) =>
               onLoad={() => setLoading(false)}
               className="w-full h-full border-0 bg-white"
               allow="camera; microphone; geolocation; fullscreen; accelerometer; autoplay"
-              sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-modals allow-downloads"
             />
+
+            {/* Quick Floating Tab Launcher */}
+            <div className="absolute bottom-4 right-4 z-20">
+              <a
+                href={activeSite.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-black/90 text-white border border-white/30 backdrop-blur-xl font-mono text-xs font-bold hover:bg-white hover:text-black transition-all shadow-2xl hover:scale-105">
+                <FaExternalLinkAlt className="w-3 h-3" />
+                <span>LAUNCH {activeSite.name.toUpperCase()} (NEW TAB)</span>
+              </a>
+            </div>
           </div>
         </motion.div>
       </div>

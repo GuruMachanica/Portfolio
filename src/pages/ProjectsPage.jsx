@@ -262,28 +262,28 @@ const ProjectsPage = () => {
 
                   {/* Action Buttons */}
                   <div className="p-6 sm:p-7 pt-0 flex flex-wrap items-center gap-3">
-                    {siteKey ? (
-                      <button
-                        onClick={() => openLiveWebsite(siteKey)}
-                        className="flex-1 min-w-[130px] inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white text-black font-mono font-bold text-[13px] hover:bg-zinc-200 transition-colors shadow-md cursor-pointer hover:scale-105">
-                        <FaGlobe className="w-3.5 h-3.5" /> LIVE PREVIEW
-                      </button>
-                    ) : project.demo ? (
+                    {project.demo ? (
                       <a
                         href={project.demo}
                         target="_blank"
-                        rel="noreferrer"
-                        className="flex-1 min-w-[130px] inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white text-black font-mono font-bold text-[13px] hover:bg-zinc-200 transition-colors shadow-md hover:scale-105">
+                        rel="noopener noreferrer"
+                        className="flex-1 min-w-[130px] inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white text-black font-mono font-bold text-[13px] hover:bg-zinc-200 transition-all shadow-md hover:scale-105 cursor-pointer">
                         <FaExternalLinkAlt className="w-3 h-3" /> LIVE PREVIEW
                       </a>
+                    ) : siteKey ? (
+                      <button
+                        onClick={() => openLiveWebsite(siteKey)}
+                        className="flex-1 min-w-[130px] inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white text-black font-mono font-bold text-[13px] hover:bg-zinc-200 transition-all shadow-md cursor-pointer hover:scale-105">
+                        <FaGlobe className="w-3.5 h-3.5" /> LIVE PREVIEW
+                      </button>
                     ) : null}
 
                     {project.repo && (
                       <a
                         href={project.repo}
                         target="_blank"
-                        rel="noreferrer"
-                        className="flex-1 min-w-[130px] inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-mono font-bold text-[13px] border border-white/20 transition-colors hover:scale-105">
+                        rel="noopener noreferrer"
+                        className="flex-1 min-w-[130px] inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-mono font-bold text-[13px] border border-white/20 transition-all hover:scale-105">
                         <FaGithub className="w-4 h-4" /> CODE REPO
                       </a>
                     )}
