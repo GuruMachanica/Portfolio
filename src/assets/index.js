@@ -48,6 +48,7 @@ import githubTech from './tech-extra/github.webp';
 import n8n from './tech-extra/n8n.webp';
 import python from './tech-extra/python.webp';
 import canva from './tech-extra/canva.webp';
+import threejs from './tech-extra/threejs.svg';
 import mongodb from './tech-extra/mongodb.webp';
 import mysql from './tech-extra/mysql.webp';
 import tensorflow from './tech-extra/tensorflow.webp';
@@ -69,6 +70,7 @@ import math from './projects/KavachG.webp';
 import sunmap from './projects/sunmap.webp';
 
 export {
+  threejs,
   anveshaksutra,
   bwmap,
   nairobi,

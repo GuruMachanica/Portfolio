@@ -50,6 +50,18 @@ const techTelemetry = {
     features: "Aggregation Pipelines, Schema-less Storage, Indexing",
     metric: "35% Faster Query Latency",
   },
+  "PostgreSQL": {
+    role: "Relational DBMS & pgvector HNSW Store",
+    projects: "Giyu-Bot RAG, Enterprise Vector Storage",
+    features: "pgvector, HNSW Indexing, Foreign Keys, Stored Procedures",
+    metric: "< 12ms Vector Search",
+  },
+  "Three.js": {
+    role: "3D Spatial Graphics & WebGL Engine",
+    projects: "SunMap (CityGML), Concept3D, AnveshakSutra (3D Graph ML)",
+    features: "Custom Shaders, CityGML LOD2, Shadow Occlusion, 60 FPS Engine",
+    metric: "60 FPS Spatial Rendering",
+  },
   "MySQL": {
     role: "Relational Schema & Transactional DB",
     projects: "Enterprise Backend Architecture",
@@ -205,26 +217,10 @@ const TechnologiesPage = () => {
                     </h3>
                   </div>
 
-                  {/* 3D WebGL Spheres Canvas */}
-                  <div className="w-full flex items-center justify-center overflow-hidden py-2">
-                    <TechBalls items={group.items} />
+                  {/* 3D WebGL Spheres Canvas with Floating Hover Tags */}
+                  <div className="w-full flex items-center justify-center overflow-hidden py-1">
+                    <TechBalls items={group.items} onSelectTech={setSelectedTech} />
                   </div>
-                </div>
-
-                {/* Clickable Quick Selector Pills */}
-                <div className="mt-4 pt-4 border-t border-white/10 flex flex-wrap gap-1.5">
-                  {group.items.map((it) => (
-                    <button
-                      key={it.name}
-                      onClick={() => setSelectedTech(it.name)}
-                      className={`text-[11px] font-mono px-2.5 py-1 rounded-lg transition-all ${
-                        selectedTech === it.name
-                          ? "bg-white text-black font-bold shadow-md"
-                          : "bg-white/[0.04] text-zinc-300 hover:text-white border border-white/10 hover:border-white/30"
-                      }`}>
-                      {it.name}
-                    </button>
-                  ))}
                 </div>
               </TiltCard>
             </div>

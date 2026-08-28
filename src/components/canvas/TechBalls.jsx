@@ -1,25 +1,24 @@
 /**
  * TechBalls - High-performance WebGL 3D faceted tech spheres with titanium chrome lighting,
- * dynamic cursor parallax, and smooth inertia physics.
+ * dynamic cursor parallax, floating hover tooltips, and click inspection.
  */
-import React, { useEffect, useRef, useMemo, useState } from "react";
+import React, { useEffect, useRef, useMemo } from "react";
 import * as THREE from "three";
 
 const TITANIUM_COLOR = "#1c1c1f";
-const WIREFRAME_COLOR = "rgba(255, 255, 255, 0.15)";
 
 function buildScene(iconUrl) {
   const scene = new THREE.Scene();
 
   // Studio 3-Point Lighting
-  const ambient = new THREE.AmbientLight(0xffffff, 0.75);
+  const ambient = new THREE.AmbientLight(0xffffff, 0.8);
   scene.add(ambient);
 
   const keyLight = new THREE.DirectionalLight(0xffffff, 1.8);
   keyLight.position.set(5, 6, 5);
   scene.add(keyLight);
 
-  const rimLight = new THREE.DirectionalLight(0x61dafb, 1.2);
+  const rimLight = new THREE.DirectionalLight(0x61dafb, 1.3);
   rimLight.position.set(-5, -5, -4);
   scene.add(rimLight);
 
@@ -69,10 +68,10 @@ function buildScene(iconUrl) {
 
   const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
   camera.position.set(0, 0, 4.6);
-  return { scene, mesh, sprite, camera, targetRot: { x: 0, y: 0 } };
+  return { scene, mesh, sprite, camera };
 }
 
-export default function TechBalls({ items }) {
+export default function TechBalls({ items, onSelectTech }) {
   const canvasRef = useRef(null);
   const wrapperRef = useRef(null);
   const placeholderRefs = useRef([]);
@@ -175,7 +174,7 @@ export default function TechBalls({ items }) {
   }, [itemUrls]);
 
   return (
-    <div ref={wrapperRef} className="relative w-full py-2">
+    <div ref={wrapperRef} className="relative w-full py-4">
       <canvas
         ref={canvasRef}
         className="absolute inset-0 pointer-events-none w-full h-full"
@@ -185,9 +184,18 @@ export default function TechBalls({ items }) {
           <div
             key={item.name}
             ref={(el) => (placeholderRefs.current[idx] = el)}
+            onClick={() => onSelectTech && onSelectTech(item.name)}
             className="w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center relative group cursor-pointer"
-            title={item.name}
+            title={`Click to inspect ${item.name}`}
           >
+            {/* Floating Cyber Tooltip Tag on Hover */}
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 group-hover:-top-4 transition-all duration-200 pointer-events-none z-30 whitespace-nowrap">
+              <span className="px-2.5 py-1 rounded-md bg-[#090909]/95 text-white border border-white/30 text-[11px] font-mono font-bold tracking-wider uppercase shadow-2xl backdrop-blur-md">
+                {item.name}
+              </span>
+              <div className="w-1.5 h-1.5 bg-[#090909] border-r border-b border-white/30 transform rotate-45 mx-auto -mt-0.5" />
+            </div>
+
             {/* Subtle luminous ambient ground glow */}
             <div className="absolute inset-2 rounded-full bg-white/[0.03] group-hover:bg-white/[0.08] blur-md transition-all pointer-events-none" />
           </div>
