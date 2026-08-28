@@ -203,9 +203,6 @@ const TechnologiesPage = () => {
                     <h3 className="text-white text-[19px] sm:text-[22px] font-bold font-poppins tracking-tight">
                       {group.title}
                     </h3>
-                    <span className="text-[10px] font-mono text-zinc-400">
-                      {group.items.length} Modules
-                    </span>
                   </div>
 
                   {/* 3D WebGL Spheres Canvas */}

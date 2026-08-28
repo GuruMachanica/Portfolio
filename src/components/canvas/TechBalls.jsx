@@ -1,40 +1,75 @@
-﻿/**
- * TechBalls - one WebGL canvas for an entire group using scissor/viewport.
+/**
+ * TechBalls - High-performance WebGL 3D faceted tech spheres with titanium chrome lighting,
+ * dynamic cursor parallax, and smooth inertia physics.
  */
-import React, { useEffect, useRef, useMemo } from "react";
+import React, { useEffect, useRef, useMemo, useState } from "react";
 import * as THREE from "three";
 
-const BALL_COLOR = "#3d3d3d";
+const TITANIUM_COLOR = "#1c1c1f";
+const WIREFRAME_COLOR = "rgba(255, 255, 255, 0.15)";
 
 function buildScene(iconUrl) {
   const scene = new THREE.Scene();
-  scene.add(new THREE.AmbientLight(0xffffff, 0.5));
-  const dir = new THREE.DirectionalLight(0xffffff, 1.2);
-  dir.position.set(5, 5, 5);
-  scene.add(dir);
 
-  const geo = new THREE.IcosahedronGeometry(1.5, 2);
+  // Studio 3-Point Lighting
+  const ambient = new THREE.AmbientLight(0xffffff, 0.75);
+  scene.add(ambient);
+
+  const keyLight = new THREE.DirectionalLight(0xffffff, 1.8);
+  keyLight.position.set(5, 6, 5);
+  scene.add(keyLight);
+
+  const rimLight = new THREE.DirectionalLight(0x61dafb, 1.2);
+  rimLight.position.set(-5, -5, -4);
+  scene.add(rimLight);
+
+  const topFill = new THREE.DirectionalLight(0xffffff, 1.0);
+  topFill.position.set(0, 5, -2);
+  scene.add(topFill);
+
+  // Faceted 3D Titanium Icosahedron Polyhedron
+  const geo = new THREE.IcosahedronGeometry(1.45, 1);
   const mat = new THREE.MeshStandardMaterial({
-    color: BALL_COLOR, flatShading: true,
-    polygonOffset: true, polygonOffsetFactor: -5,
+    color: TITANIUM_COLOR,
+    flatShading: true,
+    roughness: 0.25,
+    metalness: 0.85,
+    polygonOffset: true,
+    polygonOffsetFactor: -4,
   });
   const mesh = new THREE.Mesh(geo, mat);
   scene.add(mesh);
 
-  const spriteMat = new THREE.SpriteMaterial({ transparent: true, depthTest: false });
+  // Wireframe outline accent for technical precision
+  const wireGeo = new THREE.WireframeGeometry(geo);
+  const wireMat = new THREE.LineBasicMaterial({
+    color: 0xffffff,
+    transparent: true,
+    opacity: 0.12,
+  });
+  const wireMesh = new THREE.LineSegments(wireGeo, wireMat);
+  mesh.add(wireMesh);
+
+  // High-Resolution Decal Sprite for Tech Brand Icon
+  const spriteMat = new THREE.SpriteMaterial({
+    transparent: true,
+    depthTest: false,
+  });
   const sprite = new THREE.Sprite(spriteMat);
-  sprite.scale.set(1.8, 1.8, 1);
+  sprite.scale.set(1.65, 1.65, 1);
   scene.add(sprite);
 
   new THREE.TextureLoader().load(iconUrl, (tex) => {
     tex.colorSpace = THREE.SRGBColorSpace;
+    tex.minFilter = THREE.LinearFilter;
+    tex.magFilter = THREE.LinearFilter;
     spriteMat.map = tex;
     spriteMat.needsUpdate = true;
   });
 
   const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
-  camera.position.set(0, 0, 4.5);
-  return { scene, mesh, sprite, camera };
+  camera.position.set(0, 0, 4.6);
+  return { scene, mesh, sprite, camera, targetRot: { x: 0, y: 0 } };
 }
 
 export default function TechBalls({ items }) {
@@ -43,14 +78,33 @@ export default function TechBalls({ items }) {
   const placeholderRefs = useRef([]);
   const scenesRef = useRef([]);
   const rafRef = useRef(null);
+  const mousePos = useRef({ x: 0, y: 0 });
 
-  const itemUrls = useMemo(() => items.map((it) => it.icon), []);
+  const itemUrls = useMemo(() => items.map((it) => it.icon), [items]);
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      const { innerWidth, innerHeight } = window;
+      mousePos.current = {
+        x: (e.clientX / innerWidth) * 2 - 1,
+        y: -(e.clientY / innerHeight) * 2 + 1,
+      };
+    };
+
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    const renderer = new THREE.WebGLRenderer({
+      canvas,
+      antialias: true,
+      alpha: true,
+      powerPreference: "high-performance",
+    });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     renderer.autoClear = false;
 
@@ -68,9 +122,14 @@ export default function TechBalls({ items }) {
       const wrapRect = wrapper.getBoundingClientRect();
       const W = wrapRect.width, H = wrapRect.height;
 
-      if (canvas.width !== Math.round(W * renderer.getPixelRatio()) ||
-          canvas.height !== Math.round(H * renderer.getPixelRatio())) {
-        renderer.setSize(W, H);
+      if (W <= 0 || H <= 0) return;
+
+      const pixelRatio = renderer.getPixelRatio();
+      if (
+        canvas.width !== Math.round(W * pixelRatio) ||
+        canvas.height !== Math.round(H * pixelRatio)
+      ) {
+        renderer.setSize(W, H, false);
       }
 
       renderer.clear();
@@ -85,11 +144,18 @@ export default function TechBalls({ items }) {
         const w = r.width, h = r.height;
         if (w <= 0 || h <= 0) return;
 
-        const fy = Math.sin(t * 2.5 + i * 1.3) * 0.18;
+        // Smooth Floating Oscillation
+        const fy = Math.sin(t * 2.2 + i * 1.4) * 0.16;
         s.mesh.position.y = fy;
-        s.mesh.rotation.y = t * 0.8 + i * 0.5;
-        s.mesh.rotation.x = Math.sin(t * 0.5 + i) * 0.25;
         s.sprite.position.y = fy;
+
+        // Parallax cursor tracking with smooth damping
+        const targetRotY = t * 0.6 + i * 0.4 + mousePos.current.x * 0.75;
+        const targetRotX = Math.sin(t * 0.4 + i) * 0.2 - mousePos.current.y * 0.45;
+
+        s.mesh.rotation.y += (targetRotY - s.mesh.rotation.y) * 0.08;
+        s.mesh.rotation.x += (targetRotX - s.mesh.rotation.x) * 0.08;
+
         s.camera.aspect = w / h;
         s.camera.updateProjectionMatrix();
 
@@ -98,37 +164,32 @@ export default function TechBalls({ items }) {
         renderer.setScissorTest(true);
         renderer.render(s.scene, s.camera);
       });
-      renderer.setScissorTest(false);
     }
 
     rafRef.current = requestAnimationFrame(animate);
 
     return () => {
-      cancelAnimationFrame(rafRef.current);
-      scenesRef.current.forEach(({ scene }) => {
-        scene.traverse((o) => {
-          o.geometry?.dispose();
-          if (o.material) { o.material.map?.dispose(); o.material.dispose(); }
-        });
-      });
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
       renderer.dispose();
     };
-  }, []);
+  }, [itemUrls]);
 
   return (
-    <div ref={wrapperRef} className="relative" style={{ minHeight: "96px" }}>
-      <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none"
-        style={{ width: "100%", height: "100%" }} />
-      <div className="flex flex-wrap justify-center md:justify-start gap-4 py-2">
-        {items.map((technology, i) => (
-          <div key={technology.name}
-            ref={(el) => { placeholderRefs.current[i] = el; }}
-            className="relative group w-20 h-20 shrink-0">
-            <span className="pointer-events-none absolute left-1/2 -translate-x-1/2 -top-8
-              whitespace-nowrap rounded-md bg-black/85 px-2 py-1 text-[12px] text-white
-              opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10">
-              {technology.name}
-            </span>
+    <div ref={wrapperRef} className="relative w-full py-2">
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 pointer-events-none w-full h-full"
+      />
+      <div className="flex flex-wrap items-center justify-around gap-2 sm:gap-4">
+        {items.map((item, idx) => (
+          <div
+            key={item.name}
+            ref={(el) => (placeholderRefs.current[idx] = el)}
+            className="w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center relative group cursor-pointer"
+            title={item.name}
+          >
+            {/* Subtle luminous ambient ground glow */}
+            <div className="absolute inset-2 rounded-full bg-white/[0.03] group-hover:bg-white/[0.08] blur-md transition-all pointer-events-none" />
           </div>
         ))}
       </div>
