@@ -121,15 +121,16 @@ const CommandPalette = () => {
         newHistory.push({
           type: "sys",
           text: `
-  __  __ _    _ ______     _____ ______     
- |  \/  | |  | |___  / /\   |_   _|  ____/\    
- | \  / | |__| |  / / /  \    | | | |__ /  \   
- | |\/| |  __  | / / / /\ \   | | |  __/ /\ \  
- | |  | | |  | |/ /_/ ____ \ _| |_| | / ____ \ 
- |_|  |_|_|  |_/_____/_/    \_\_____|_|/_/    \_\
+ ██╗  ██╗██╗   ██╗███████╗ █████╗ ██╗███████╗ █████╗ 
+ ██║  ██║██║   ██║╚══███╔╝██╔══██╗██║██╔════╝██╔══██╗
+ ███████║██║   ██║  ███╔╝ ███████║██║█████╗  ███████║
+ ██╔══██║██║   ██║ ███╔╝  ██╔══██║██║██╔══╝  ██╔══██║
+ ██║  ██║╚██████╔╝███████╗██║  ██║██║██║     ██║  ██║
+ ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝╚═╝     ╚═╝  ╚═╝
 
  OS: Monolith Linux x86_64 / WebGL Engine
  Host: Mohammad Huzaifa (Agentic AI & Backend Architect)
+ Kernel: 6.12.0-monolith-opt
  Core: FastAPI • PyTorch • Three.js • Docker • pgvector
  Systems: AnveshakSutra, Concept3D, AEGIS, SunMap, KavachG
  Latency: < 0.001ms (FastCache L1 Memory Stream)
