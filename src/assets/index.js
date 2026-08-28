@@ -1,4 +1,9 @@
 import anveshaksutra from './projects/anveshaksutra.webp';
+import concept3d from './projects/Concept-2-3d.webp';
+import aegis from './projects/AEGIS.webp';
+import sunmap from './projects/sunmap.webp';
+import kavachg from './projects/KavachG.webp';
+
 import bwmap from './backgrounds/bw-map.webp';
 import nairobi from './backgrounds/nairobi.webp';
 import whiteabstract from './backgrounds/white-abstract.webp';
@@ -64,14 +69,6 @@ import kelhel from './company/kelhel.webp';
 import microverse from './company/microverse.webp';
 import orvanto from './company/orvanto.webp';
 
-import komikult from './projects/komikult.png';
-import leaderboard from './projects/leaderboard.png';
-import math from './projects/math-magicians.png';
-import movie from './projects/movie-metro.png';
-import nyeusi from './projects/nyeusi.png';
-import space from './projects/space-hub.png';
-import sunmap from './projects/sunmap.webp';
-
 export {
   logo,
   logotext,
@@ -104,19 +101,16 @@ export {
   redux,
   tailwind,
   typescript,
-  komikult,
-  leaderboard,
-  math,
-  movie,
-  nyeusi,
-  space,
   coverhunt,
   dcc,
   kelhel,
   microverse,
   orvanto,
   anveshaksutra,
+  concept3d,
+  aegis,
   sunmap,
+  kavachg,
   bwmap,
   nairobi,
   whiteabstract,
