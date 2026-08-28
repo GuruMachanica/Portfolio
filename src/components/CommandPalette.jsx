@@ -5,7 +5,7 @@ import { FaTerminal, FaTimes, FaArrowRight, FaKeyboard, FaExternalLinkAlt, FaCod
 
 const COMMANDS = {
   help: "Display list of available system commands",
-  neofetch: "Render system architecture telemetry & ASCII banner",
+  noirfetch: "Render system architecture telemetry & Noir ASCII banner",
   whoami: "Inspect engineer profile, bio & verified credentials",
   projects: "Explore production systems & repositories (/projects)",
   anveshaksutra: "Inspect AnveshakSutra Zero-Knowledge & Graph ML telemetry",
@@ -26,14 +26,14 @@ const COMMANDS = {
   exit: "Close command palette"
 };
 
-const SUGGESTED_CHIPS = ["help", "neofetch", "projects", "resume", "whoami", "tech", "sudo hire-huzaifa"];
+const SUGGESTED_CHIPS = ["help", "noirfetch", "projects", "resume", "whoami", "tech", "sudo hire-huzaifa"];
 
 const CommandPalette = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
   const [history, setHistory] = useState([
     { type: "sys", text: "Huzaifa Monolith System CLI [Version 3.0.0-PROD]" },
-    { type: "sys", text: "Type 'help' or 'neofetch' for system diagnostics. Press Tab for autocomplete." }
+    { type: "sys", text: "Type 'help' or 'noirfetch' for system diagnostics. Press Tab for autocomplete." }
   ]);
   const [cmdHistory, setCmdHistory] = useState([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
@@ -116,24 +116,26 @@ const CommandPalette = () => {
         });
         break;
 
+      case "noirfetch":
       case "neofetch":
       case "sysinfo":
         newHistory.push({
           type: "sys",
           text: `
- ██╗  ██╗██╗   ██╗███████╗ █████╗ ██╗███████╗ █████╗ 
- ██║  ██║██║   ██║╚══███╔╝██╔══██╗██║██╔════╝██╔══██╗
- ███████║██║   ██║  ███╔╝ ███████║██║█████╗  ███████║
- ██╔══██║██║   ██║ ███╔╝  ██╔══██║██║██╔══╝  ██╔══██║
- ██║  ██║╚██████╔╝███████╗██║  ██║██║██║     ██║  ██║
- ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝╚═╝     ╚═╝  ╚═╝
+ ███╗   ██╗ ██████╗ ██╗██████╗ ███████╗███████╗████████╗ ██████╗██╗  ██╗
+ ████╗  ██║██╔═══██╗██║██╔══██╗██╔════╝██╔════╝╚══██╔══╝██╔════╝██║  ██║
+ ██╔██╗ ██║██║   ██║██║██████╔╝█████╗  █████╗     ██║   ██║     ███████║
+ ██║╚██╗██║██║   ██║██║██╔══██╗██╔══╝  ██╔══╝     ██║   ██║     ██╔══██║
+ ██║ ╚████║╚██████╔╝██║██║  ██║██║     ███████╗   ██║   ╚██████╗██║  ██║
+ ╚═╝  ╚═══╝ ╚═════╝ ╚═╝╚═╝  ╚═╝╚═╝     ╚══════╝   ╚═╝    ╚═════╝╚═╝  ╚═╝
 
- OS: Monolith Linux x86_64 / WebGL Engine
+ OS: Monolith NoirOS (x86_64 / WebGL Monolith)
  Host: Mohammad Huzaifa (Agentic AI & Backend Architect)
- Kernel: 6.12.0-monolith-opt
+ Kernel: 6.12.0-noir-monolith
+ Palette: [ ■ #000000 | ■ #141414 | ■ #888888 | ■ #ffffff ]
  Core: FastAPI • PyTorch • Three.js • Docker • pgvector
  Systems: AnveshakSutra, Concept3D, AEGIS, SunMap, KavachG
- Latency: < 0.001ms (FastCache L1 Memory Stream)
+ Latency: < 0.001ms (FastCache L1 In-Memory Stream)
  Status: Available for High-Impact Engineering Roles
 `
         });
