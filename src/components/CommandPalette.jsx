@@ -344,9 +344,9 @@ LinkedIn: https://linkedin.com/in/mohammad--huzaifa/
               {/* Terminal Title Bar */}
               <div className="px-4 py-3 bg-[#111111] border-b border-white/10 flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-full bg-red-500/80 cursor-pointer" onClick={() => setIsOpen(false)} />
-                  <span className="w-3 h-3 rounded-full bg-amber-500/80" />
-                  <span className="w-3 h-3 rounded-full bg-emerald-500/80" />
+                  <span className="w-3 h-3 rounded-full bg-white/20 cursor-pointer" onClick={() => setIsOpen(false)} />
+                  <span className="w-3 h-3 rounded-full bg-white/40" />
+                  <span className="w-3 h-3 rounded-full bg-white/60" />
                   <span className="text-[12px] font-mono text-zinc-400 ml-2">
                     huzaifa@monolith: ~ (bash/zsh)
                   </span>
@@ -370,9 +370,9 @@ LinkedIn: https://linkedin.com/in/mohammad--huzaifa/
                       h.type === "user"
                         ? "text-white font-bold"
                         : h.type === "err"
-                        ? "text-red-400 font-bold"
+                        ? "text-zinc-400 font-bold"
                         : h.type === "sys"
-                        ? "text-cyan-400 font-mono text-[11px] sm:text-[12px]"
+                        ? "text-zinc-200 font-mono text-[11px] sm:text-[12px]"
                         : "text-zinc-300"
                     }`}>
                     {h.text}
@@ -397,7 +397,7 @@ LinkedIn: https://linkedin.com/in/mohammad--huzaifa/
               <form
                 onSubmit={onSubmit}
                 className="p-3 bg-[#0d0d0d] border-t border-white/10 flex items-center gap-2">
-                <span className="text-emerald-400 font-mono text-[13px] select-none font-bold">
+                <span className="text-white font-mono text-[13px] select-none font-bold">
                   huzaifa@monolith:~$
                 </span>
                 <input

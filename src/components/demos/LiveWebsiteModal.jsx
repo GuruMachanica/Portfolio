@@ -174,7 +174,7 @@ const LiveWebsiteModal = ({ isOpen, onClose, initialSite = "anveshaksutra" }) =>
           {/* Sub-bar / Address URL Simulator */}
           <div className="bg-[#0e0e0e] border-b border-white/5 px-4 py-2 flex items-center justify-between text-xs font-mono text-zinc-400 gap-2 shrink-0">
             <div className="flex items-center gap-2 truncate">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
               <span className="text-zinc-500">https://</span>
               <span className="text-zinc-200 font-semibold truncate">{activeSite.domain}</span>
               <span className="hidden lg:inline px-2 py-0.5 rounded text-[10px] bg-white/10 text-zinc-300 font-bold ml-2">

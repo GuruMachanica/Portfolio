@@ -264,23 +264,23 @@ const projects = [
     tags: [
       {
         name: 'fastapi',
-        color: 'blue-text-gradient',
+        color: 'text-zinc-300 font-mono text-[11px]',
       },
       {
         name: 'zero-knowledge',
-        color: 'green-text-gradient',
+        color: 'text-zinc-400 font-mono text-[11px]',
       },
       {
         name: 'three.js',
-        color: 'pink-text-gradient',
+        color: 'text-zinc-500 font-mono text-[11px]',
       },
       {
         name: 'graph-ml',
-        color: 'blue-text-gradient',
+        color: 'text-zinc-300 font-mono text-[11px]',
       },
       {
         name: 'supabase',
-        color: 'green-text-gradient',
+        color: 'text-zinc-400 font-mono text-[11px]',
       },
     ],
     image: anveshaksutra,
@@ -302,23 +302,23 @@ const projects = [
     tags: [
       {
         name: 'python',
-        color: 'blue-text-gradient',
+        color: 'text-zinc-300 font-mono text-[11px]',
       },
       {
         name: 'pytorch',
-        color: 'green-text-gradient',
+        color: 'text-zinc-400 font-mono text-[11px]',
       },
       {
         name: 'gen-ai',
-        color: 'pink-text-gradient',
+        color: 'text-zinc-500 font-mono text-[11px]',
       },
       {
         name: '3d-ml',
-        color: 'blue-text-gradient',
+        color: 'text-zinc-300 font-mono text-[11px]',
       },
       {
         name: 'data-modeling',
-        color: 'green-text-gradient',
+        color: 'text-zinc-400 font-mono text-[11px]',
       },
     ],
     image: concept3d,
@@ -340,23 +340,23 @@ const projects = [
     tags: [
       {
         name: 'python',
-        color: 'blue-text-gradient',
+        color: 'text-zinc-300 font-mono text-[11px]',
       },
       {
         name: 'fastapi',
-        color: 'green-text-gradient',
+        color: 'text-zinc-400 font-mono text-[11px]',
       },
       {
         name: 'websocket-api',
-        color: 'pink-text-gradient',
+        color: 'text-zinc-500 font-mono text-[11px]',
       },
       {
         name: 'docker',
-        color: 'blue-text-gradient',
+        color: 'text-zinc-300 font-mono text-[11px]',
       },
       {
         name: 'data-wrangling',
-        color: 'green-text-gradient',
+        color: 'text-zinc-400 font-mono text-[11px]',
       },
     ],
     image: aegis,
@@ -378,23 +378,23 @@ const projects = [
     tags: [
       {
         name: 'three.js',
-        color: 'blue-text-gradient',
+        color: 'text-zinc-300 font-mono text-[11px]',
       },
       {
         name: 'citygml-lod2',
-        color: 'green-text-gradient',
+        color: 'text-zinc-400 font-mono text-[11px]',
       },
       {
         name: 'python-spatial',
-        color: 'pink-text-gradient',
+        color: 'text-zinc-500 font-mono text-[11px]',
       },
       {
         name: 'pvlib-physics',
-        color: 'blue-text-gradient',
+        color: 'text-zinc-300 font-mono text-[11px]',
       },
       {
         name: 'docker',
-        color: 'green-text-gradient',
+        color: 'text-zinc-400 font-mono text-[11px]',
       },
     ],
     image: sunmap,
@@ -416,23 +416,23 @@ const projects = [
     tags: [
       {
         name: 'python',
-        color: 'blue-text-gradient',
+        color: 'text-zinc-300 font-mono text-[11px]',
       },
       {
         name: 'computer-vision',
-        color: 'green-text-gradient',
+        color: 'text-zinc-400 font-mono text-[11px]',
       },
       {
         name: 'opencv',
-        color: 'pink-text-gradient',
+        color: 'text-zinc-500 font-mono text-[11px]',
       },
       {
         name: 'fastapi',
-        color: 'blue-text-gradient',
+        color: 'text-zinc-300 font-mono text-[11px]',
       },
       {
         name: 'ml-pipelines',
-        color: 'green-text-gradient',
+        color: 'text-zinc-400 font-mono text-[11px]',
       },
     ],
     image: kavachg,

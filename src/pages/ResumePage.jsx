@@ -77,7 +77,7 @@ const ResumePage = () => {
               <FaArrowLeft className="w-3.5 h-3.5" /> BACK TO HOME
             </Link>
             <div className="flex items-center gap-2 text-[12px] font-mono text-zinc-400">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
               <span>OFFICIAL 1-PAGE PRODUCTION DOSSIER</span>
             </div>
             <h1 className="text-3xl sm:text-4xl font-bold tracking-tight font-poppins text-white flex items-center gap-3">
@@ -98,8 +98,8 @@ const ResumePage = () => {
               title="Copy PDF URL to clipboard">
               {copied ? (
                 <>
-                  <FaCheck className="w-3.5 h-3.5 text-emerald-400" />
-                  <span className="text-emerald-400 font-bold">COPIED!</span>
+                  <FaCheck className="w-3.5 h-3.5 text-white" />
+                  <span className="text-white font-bold">COPIED!</span>
                 </>
               ) : (
                 <>
@@ -187,7 +187,7 @@ const ResumePage = () => {
           {/* Canvas Controls Header */}
           <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-white/10 text-xs font-mono text-zinc-400">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
               <span>MiKTeX pdflatex Verified Build (1-Page Strict Layout)</span>
             </div>
 
