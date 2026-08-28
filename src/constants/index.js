@@ -2,7 +2,7 @@ import {
   c,
   cplusplus,
   python,
-  canva, threejs, postgresql,
+  canva, threejs,
   mongodb,
   mysql,
   tensorflow,
@@ -108,7 +108,7 @@ const technologyGroups = [
       },
       {
         name: 'Canva',
-        icon: canva, threejs, postgresql,
+        icon: canva, threejs,
       },
     ],
   },
