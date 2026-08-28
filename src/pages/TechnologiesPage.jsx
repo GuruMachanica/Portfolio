@@ -10,7 +10,7 @@ import { animate, stagger } from "animejs";
 const techTelemetry = {
   "Python": {
     role: "Primary Backend & AI Language",
-    projects: "A.E.G.I.S, Concept3D, SunMap, KavachG",
+    projects: "AnveshakSutra, Concept3D, A.E.G.I.S, SunMap, KavachG",
     features: "FastAPI, PyTorch, LangChain, NumPy, Pandas, WebSockets",
     metric: "< 120ms API Response",
   },
@@ -28,19 +28,19 @@ const techTelemetry = {
   },
   "FastAPI": {
     role: "Asynchronous Microservices Engine",
-    projects: "A.E.G.I.S Audio Security, Production APIs",
+    projects: "AnveshakSutra, A.E.G.I.S, KavachG, SunMap",
     features: "Pydantic V2, ASGI Workers, WebSocket Streams, OpenAPI",
     metric: "Sub-Second Audio Stream",
   },
   "PyTorch": {
     role: "Deep Learning & Neural Homology",
-    projects: "IJDDT Research Paper, SunMap Spatial Model",
+    projects: "AnveshakSutra (Graph ML), Concept3D, SunMap",
     features: "Custom Loss Functions, Tensors, Embeddings, GPU Acceleration",
     metric: "98.4% Precision",
   },
   "Docker": {
     role: "Microservices Containerization",
-    projects: "A.E.G.I.S, Production Backends",
+    projects: "AnveshakSutra, A.E.G.I.S, SunMap, KavachG",
     features: "Multi-stage Builds, Docker Compose, Isolated Environments",
     metric: "100% Reproducibility",
   },
