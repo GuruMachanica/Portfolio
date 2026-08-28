@@ -85,7 +85,7 @@ const hubCards = [
     tag: "CONNECT",
   },
   {
-    title: "Curriculum Vitae",
+    title: "Technical Resume",
     path: "/resume",
     icon: FaFilePdf,
     desc: "Interactive 1-page master resume with instant download, zoom, and competency dossier.",
