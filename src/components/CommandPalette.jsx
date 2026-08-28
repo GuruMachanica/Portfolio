@@ -7,6 +7,11 @@ const COMMANDS = {
   help: "Display list of available system commands",
   noirfetch: "Render system architecture telemetry & Noir ASCII banner",
   whoami: "Inspect engineer profile, bio & verified credentials",
+  github: "Open verified GitHub profile (github.com/GuruMachanica)",
+  linkedin: "Open verified LinkedIn profile (linkedin.com/in/mohammad--huzaifa)",
+  socials: "Display all official social & communication channels",
+  telegram: "Open official Telegram AI Agent (@TomiokaGiyu98_bot)",
+  email: "Send direct transmission to mdhuzaifa00786@gmail.com",
   projects: "Explore production systems & repositories (/projects)",
   anveshaksutra: "Inspect AnveshakSutra Zero-Knowledge & Graph ML telemetry",
   kavachg: "Inspect KavachG Industrial Safety CV Command Center",
@@ -26,7 +31,7 @@ const COMMANDS = {
   exit: "Close command palette"
 };
 
-const SUGGESTED_CHIPS = ["help", "noirfetch", "projects", "resume", "whoami", "tech", "sudo hire-huzaifa"];
+const SUGGESTED_CHIPS = ["help", "noirfetch", "github", "linkedin", "socials", "projects", "resume", "whoami", "sudo hire-huzaifa"];
 
 const CommandPalette = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -149,6 +154,56 @@ GitHub: https://github.com/GuruMachanica
 LinkedIn: https://linkedin.com/in/mohammad--huzaifa/
 `
         });
+        break;
+
+      case "github":
+      case "gh":
+        newHistory.push({
+          type: "out",
+          text: `[GITHUB] https://github.com/GuruMachanica\nOpening verified GitHub profile in new tab...`
+        });
+        window.open("https://github.com/GuruMachanica", "_blank");
+        break;
+
+      case "linkedin":
+        newHistory.push({
+          type: "out",
+          text: `[LINKEDIN] https://linkedin.com/in/mohammad--huzaifa/\nOpening verified LinkedIn profile in new tab...`
+        });
+        window.open("https://linkedin.com/in/mohammad--huzaifa/", "_blank");
+        break;
+
+      case "socials":
+      case "social":
+      case "links":
+        newHistory.push({
+          type: "out",
+          text: `
+[VERIFIED PROFESSIONAL CHANNELS]
+- GitHub:    https://github.com/GuruMachanica
+- LinkedIn:  https://linkedin.com/in/mohammad--huzaifa/
+- Telegram:  https://t.me/TomiokaGiyu98_bot (@TomiokaGiyu98_bot)
+- Email:     mailto:mdhuzaifa00786@gmail.com
+`
+        });
+        break;
+
+      case "telegram":
+      case "tg":
+        newHistory.push({
+          type: "out",
+          text: `[TELEGRAM] @TomiokaGiyu98_bot -> https://t.me/TomiokaGiyu98_bot\nOpening official Telegram AI Agent in new tab...`
+        });
+        window.open("https://t.me/TomiokaGiyu98_bot", "_blank");
+        break;
+
+      case "email":
+      case "mail":
+        newHistory.push({
+          type: "out",
+          text: `[EMAIL] Initiating direct transmission to mdhuzaifa00786@gmail.com...`
+        });
+        window.location.href = "mailto:mdhuzaifa00786@gmail.com?subject=Engineering%20Inquiry%20-%20Mohammad%20Huzaifa";
         break;
 
       case "anveshaksutra":
