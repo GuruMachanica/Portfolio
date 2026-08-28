@@ -10,7 +10,6 @@ const COMMANDS = {
   github: "Open verified GitHub profile (github.com/GuruMachanica)",
   linkedin: "Open verified LinkedIn profile (linkedin.com/in/mohammad--huzaifa)",
   socials: "Display all official social & communication channels",
-  telegram: "Open official Telegram AI Agent (@TomiokaGiyu98_bot)",
   email: "Send direct transmission to mdhuzaifa00786@gmail.com",
   projects: "Explore production systems & repositories (/projects)",
   anveshaksutra: "Inspect AnveshakSutra Zero-Knowledge & Graph ML telemetry",
@@ -18,7 +17,6 @@ const COMMANDS = {
   concept3d: "Inspect Concept-3D Spatial Latent Generator",
   aegis: "Inspect A.E.G.I.S. Audio Edge Scam Defense",
   sunmap: "Inspect SunMap 3D Solar Irradiance Engine",
-  giyubot: "Inspect Giyu-Bot Telegram AI Agent (@TomiokaGiyu98_bot)",
   tech: "Launch 3D WebGL Technology Stack (/technologies)",
   resume: "Open verified 1-Page Master Resume (/resume)",
   experience: "Review industry career experience (/experience)",
@@ -182,19 +180,9 @@ LinkedIn: https://linkedin.com/in/mohammad--huzaifa/
 [VERIFIED PROFESSIONAL CHANNELS]
 - GitHub:    https://github.com/GuruMachanica
 - LinkedIn:  https://linkedin.com/in/mohammad--huzaifa/
-- Telegram:  https://t.me/TomiokaGiyu98_bot (@TomiokaGiyu98_bot)
 - Email:     mailto:mdhuzaifa00786@gmail.com
 `
         });
-        break;
-
-      case "telegram":
-      case "tg":
-        newHistory.push({
-          type: "out",
-          text: `[TELEGRAM] @TomiokaGiyu98_bot -> https://t.me/TomiokaGiyu98_bot\nOpening official Telegram AI Agent in new tab...`
-        });
-        window.open("https://t.me/TomiokaGiyu98_bot", "_blank");
         break;
 
       case "email":
@@ -253,16 +241,6 @@ LinkedIn: https://linkedin.com/in/mohammad--huzaifa/
 - Stack: Three.js, CityGML LOD2, Perez Transposition, PyTorch
 - Live Preview: https://sunmapsolar.netlify.app/
 - Repo: https://github.com/GuruMachanica/SunMap`
-        });
-        break;
-
-      case "giyubot":
-        newHistory.push({
-          type: "out",
-          text: `[SYSTEM] Giyu-Bot (冨岡 義勇) — Multi-Modal Telegram AI Agent
-- Stack: Python 3.11, Mistral AI, Supabase pgvector HNSW, Edge TTS
-- Telegram Handle: @TomiokaGiyu98_bot (https://t.me/TomiokaGiyu98_bot)
-- Repo: https://github.com/GuruMachanica/Giyu-Bot`
         });
         break;
 
