@@ -81,7 +81,7 @@ const services = [
   },
 ];
 
-export const technologyGroups = [
+const technologyGroups = [
   {
     title: 'Programming Languages',
     items: [
