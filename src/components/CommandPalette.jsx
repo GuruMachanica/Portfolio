@@ -1,45 +1,109 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaTerminal, FaTimes, FaArrowRight, FaKeyboard, FaExternalLinkAlt, FaCode } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import { FaTerminal, FaTimes } from "react-icons/fa";
 
 const COMMANDS = {
-  help: "Display list of available system commands",
-  noirfetch: "Render system architecture telemetry & Noir ASCII banner",
-  whoami: "Inspect engineer profile, bio & verified credentials",
-  github: "Open verified GitHub profile (github.com/GuruMachanica)",
-  linkedin: "Open verified LinkedIn profile (linkedin.com/in/mohammad--huzaifa)",
-  socials: "Display all official social & communication channels",
-  email: "Send direct transmission to mdhuzaifa00786@gmail.com",
-  projects: "Explore production systems & repositories (/projects)",
-  anveshaksutra: "Inspect AnveshakSutra Zero-Knowledge & Graph ML telemetry",
-  kavachg: "Inspect KavachG Industrial Safety CV Command Center",
-  concept3d: "Inspect Concept-3D Spatial Latent Generator",
-  aegis: "Inspect A.E.G.I.S. Audio Edge Scam Defense",
-  sunmap: "Inspect SunMap 3D Solar Irradiance Engine",
-  tech: "Launch 3D WebGL Technology Stack (/technologies)",
-  resume: "Open verified 1-Page Master Resume (/resume)",
-  experience: "Review industry career experience (/experience)",
-  education: "Inspect academic foundations & coursework (/education)",
-  certifications: "View Harvard CS50 credential & research paper (/certifications)",
-  achievements: "View Hackathons & innovation awards (/achievements)",
-  contact: "Open direct communication channel (/contact)",
-  "sudo hire-huzaifa": "Initiate priority hiring handshake protocol",
-  clear: "Clear terminal console output",
-  exit: "Close command palette"
+  "help": "Display all available terminal commands and system controls",
+  "huzaifa": "Display HUZAIFA monochrome brutalist telemetry and host specs",
+  "noirfetch": "Alias for HUZAIFA telemetry and system diagnostics",
+  "neofetch": "Alias for HUZAIFA system telemetry",
+  "whoami": "Display engineer dossier, academic credentials, and roles",
+  "projects": "List all flagship production systems with live endpoints",
+  "technologies": "Display core backend, ML, database, and system arsenal",
+  "certifications": "View verified academic credentials and research papers",
+  "research": "Inspect IJDDT protein homology research publication",
+  "experience": "Inspect Sanfy (Orvanto AI) backend internship dossier",
+  "resume": "Open official 1-page technical resume PDF",
+  "anveshaksutra": "Inspect AnveshakSutra Zero-Knowledge OSINT architecture",
+  "kavachg": "Inspect KavachG Edge-AI Industrial Safety CV architecture",
+  "concept3d": "Inspect Concept-3D Prompt-to-3D Spatial Latent Generator",
+  "aegis": "Inspect A.E.G.I.S. Real-Time Audio Edge Scam Defense",
+  "sunmap": "Inspect SunMap 3D Spatial Solar Irradiance Engine",
+  "github": "Open verified GitHub profile (GuruMachanica)",
+  "linkedin": "Open verified LinkedIn profile (mohammad--huzaifa)",
+  "email": "Initiate direct transmission to mdhuzaifa00786@gmail.com",
+  "socials": "List all professional social channels and links",
+  "clear": "Reverse-erase terminal screen with CRT backspace sweep",
+  "exit": "Close Monolith System CLI terminal"
 };
 
-const SUGGESTED_CHIPS = ["help", "noirfetch", "github", "linkedin", "socials", "projects", "resume", "whoami", "sudo hire-huzaifa"];
+const SUGGESTED_CHIPS = ["help", "noirfetch", "projects", "certifications", "experience", "resume", "github", "linkedin", "clear"];
+
+const HUZAIFA_ASCII = `  ██╗  ██╗██╗   ██╗███████╗ █████╗ ██╗███████╗ █████╗ 
+  ██║  ██║██║   ██║╚══███╔╝██╔══██╗██║██╔════╝██╔══██╗
+  ███████║██║   ██║  ███╔╝ ███████║██║█████╗  ███████║
+  ██╔══██║██║   ██║ ███╔╝  ██╔══██║██║██╔══╝  ██╔══██║
+  ██║  ██║╚██████╔╝███████╗██║  ██║██║██║     ██║  ██║
+  ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝╚═╝     ╚═╝  ╚═╝
+
+  Host: Mohammad Huzaifa (Agentic AI & Backend Architect)
+  Stack: FastAPI • PyTorch • Three.js • Docker • PostgreSQL
+  Systems: 5 Production Deployments (/projects)
+  Status: Available for Engineering Roles`;
+
+// Typewriter message line renderer with moving pointer
+const TypewriterLine = ({ text, type, isStreaming, onComplete }) => {
+  const [displayedText, setDisplayedText] = useState(isStreaming ? "" : text);
+  const [isDone, setIsDone] = useState(!isStreaming);
+
+  useEffect(() => {
+    if (!isStreaming) {
+      setDisplayedText(text);
+      setIsDone(true);
+      return;
+    }
+
+    let currentIndex = 0;
+    setDisplayedText("");
+    setIsDone(false);
+
+    // Fast, responsive streaming: type characters smoothly
+    const speed = text.length > 300 ? 4 : text.length > 100 ? 8 : 14;
+    const interval = setInterval(() => {
+      currentIndex += text.length > 400 ? 4 : text.length > 200 ? 2 : 1;
+      if (currentIndex >= text.length) {
+        setDisplayedText(text);
+        setIsDone(true);
+        clearInterval(interval);
+        if (onComplete) onComplete();
+      } else {
+        setDisplayedText(text.slice(0, currentIndex));
+      }
+    }, speed);
+
+    return () => clearInterval(interval);
+  }, [text, isStreaming]);
+
+  return (
+    <div
+      className={`leading-relaxed whitespace-pre-wrap ${
+        type === "user"
+          ? "text-white font-bold"
+          : type === "err"
+          ? "text-zinc-400 font-bold"
+          : type === "sys"
+          ? "text-zinc-200 font-mono text-[11px] sm:text-[12px]"
+          : "text-zinc-300 font-mono"
+      }`}>
+      {displayedText}
+      {!isDone && (
+        <span className="inline-block w-2 h-4 bg-white ml-0.5 animate-pulse align-middle" />
+      )}
+    </div>
+  );
+};
 
 const CommandPalette = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
   const [history, setHistory] = useState([
-    { type: "sys", text: "Huzaifa Monolith System CLI [Version 3.0.0-PROD]" },
-    { type: "sys", text: "Type 'help' or 'noirfetch' for system diagnostics. Press Tab for autocomplete." }
+    { id: 1, type: "sys", text: "Huzaifa Monolith System CLI [Version 3.0.0-PROD]", isStreaming: false },
+    { id: 2, type: "sys", text: "Type 'help' or 'noirfetch' for system diagnostics. Press Tab for autocomplete.", isStreaming: false }
   ]);
   const [cmdHistory, setCmdHistory] = useState([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
+  const [isClearing, setIsClearing] = useState(false);
 
   const inputRef = useRef(null);
   const scrollRef = useRef(null);
@@ -100,244 +164,278 @@ const CommandPalette = () => {
     }
   };
 
+  // Typewriter backspace purge on clear
+  const triggerReverseEraseClear = () => {
+    setIsClearing(true);
+    let step = history.length;
+    const eraseInterval = setInterval(() => {
+      if (step > 0) {
+        step -= 1;
+        setHistory((prev) => prev.slice(0, step));
+      } else {
+        clearInterval(eraseInterval);
+        setIsClearing(false);
+        setHistory([
+          { id: Date.now(), type: "sys", text: "Huzaifa Monolith System CLI [Version 3.0.0-PROD] — Buffer Cleared", isStreaming: true }
+        ]);
+      }
+    }, 45);
+  };
+
   const handleCommand = (cmdStr) => {
     const trimmed = cmdStr.trim().toLowerCase();
     if (!trimmed) return;
 
+    if (trimmed === "clear" || trimmed === "cls") {
+      triggerReverseEraseClear();
+      setInput("");
+      return;
+    }
+
     setCmdHistory((prev) => [...prev, cmdStr]);
     setHistoryIndex(-1);
 
-    const newHistory = [...history, { type: "user", text: `huzaifa@monolith:~$ ${cmdStr}` }];
+    const userEntry = { id: Date.now(), type: "user", text: `huzaifa@monolith:~$ ${cmdStr}`, isStreaming: false };
+    let responseEntry = null;
 
     switch (trimmed) {
       case "help":
-        newHistory.push({
+        responseEntry = {
+          id: Date.now() + 1,
           type: "out",
           text: Object.entries(COMMANDS)
-            .map(([cmd, desc]) => `  ${cmd.padEnd(20)} - ${desc}`)
-            .join("\n")
-        });
+            .map(([cmd, desc]) => `  ${cmd.padEnd(18)} - ${desc}`)
+            .join("\n"),
+          isStreaming: true
+        };
         break;
 
       case "huzaifa":
       case "noirfetch":
       case "neofetch":
       case "sysinfo":
-        newHistory.push({
+        responseEntry = {
+          id: Date.now() + 1,
           type: "sys",
-          text: `
- ██╗  ██╗██╗   ██╗███████╗ █████╗ ██╗███████╗ █████╗ 
- ██║  ██║██║   ██║╚══███╔╝██╔══██╗██║██╔════╝██╔══██╗
- ███████║██║   ██║  ███╔╝ ███████║██║█████╗  ███████║
- ██╔══██║██║   ██║ ███╔╝  ██╔══██║██║██╔══╝  ██╔══██║
- ██║  ██║╚██████╔╝███████╗██║  ██║██║██║     ██║  ██║
- ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝╚═╝     ╚═╝  ╚═╝
-
- Host: Mohammad Huzaifa (Agentic AI & Backend Architect)
- Stack: FastAPI • PyTorch • Three.js • Docker • PostgreSQL
- Systems: 5 Production Deployments (/projects)
- Status: Available for Engineering Roles
-`
-        });
+          text: HUZAIFA_ASCII,
+          isStreaming: true
+        };
         break;
 
       case "whoami":
-        newHistory.push({
+        responseEntry = {
+          id: Date.now() + 1,
           type: "out",
-          text: `
-Name: Mohammad Huzaifa
+          text: `Name: Mohammad Huzaifa
 Role: Agentic AI Engineer & Scalable Backend Architect
 Education: B.Tech Computer Science & Engineering (2023 - 2027)
 Specialization: Multi-Agent Swarms, Zero-Knowledge Privacy, Distributed Systems
 GitHub: https://github.com/GuruMachanica
-LinkedIn: https://linkedin.com/in/mohammad--huzaifa/
-`
-        });
+LinkedIn: https://linkedin.com/in/mohammad--huzaifa/`,
+          isStreaming: true
+        };
         break;
 
       case "github":
       case "gh":
-        newHistory.push({
+        responseEntry = {
+          id: Date.now() + 1,
           type: "out",
-          text: `[GITHUB] https://github.com/GuruMachanica\nOpening verified GitHub profile in new tab...`
-        });
-        window.open("https://github.com/GuruMachanica", "_blank");
+          text: `[GITHUB] https://github.com/GuruMachanica\nOpening verified GitHub profile in new tab...`,
+          isStreaming: true
+        };
+        setTimeout(() => window.open("https://github.com/GuruMachanica", "_blank"), 400);
         break;
 
       case "linkedin":
-        newHistory.push({
+        responseEntry = {
+          id: Date.now() + 1,
           type: "out",
-          text: `[LINKEDIN] https://linkedin.com/in/mohammad--huzaifa/\nOpening verified LinkedIn profile in new tab...`
-        });
-        window.open("https://linkedin.com/in/mohammad--huzaifa/", "_blank");
+          text: `[LINKEDIN] https://linkedin.com/in/mohammad--huzaifa/\nOpening verified LinkedIn profile in new tab...`,
+          isStreaming: true
+        };
+        setTimeout(() => window.open("https://linkedin.com/in/mohammad--huzaifa/", "_blank"), 400);
         break;
 
       case "socials":
       case "social":
       case "links":
-        newHistory.push({
+        responseEntry = {
+          id: Date.now() + 1,
           type: "out",
-          text: `
-[VERIFIED PROFESSIONAL CHANNELS]
+          text: `[VERIFIED PROFESSIONAL CHANNELS]
 - GitHub:    https://github.com/GuruMachanica
 - LinkedIn:  https://linkedin.com/in/mohammad--huzaifa/
-- Email:     mailto:mdhuzaifa00786@gmail.com
-`
-        });
+- Email:     mailto:mdhuzaifa00786@gmail.com`,
+          isStreaming: true
+        };
         break;
 
       case "email":
       case "mail":
-        newHistory.push({
+        responseEntry = {
+          id: Date.now() + 1,
           type: "out",
-          text: `[EMAIL] Initiating direct transmission to mdhuzaifa00786@gmail.com...`
-        });
-        window.location.href = "mailto:mdhuzaifa00786@gmail.com?subject=Engineering%20Inquiry%20-%20Mohammad%20Huzaifa";
+          text: `[EMAIL] Initiating direct transmission to mdhuzaifa00786@gmail.com...`,
+          isStreaming: true
+        };
+        setTimeout(() => {
+          window.location.href = "mailto:mdhuzaifa00786@gmail.com?subject=Engineering%20Inquiry%20-%20Mohammad%20Huzaifa";
+        }, 400);
         break;
 
-      case "anveshaksutra":
-        newHistory.push({
+      case "certifications":
+      case "certs":
+      case "research":
+      case "paper":
+      case "publications":
+        responseEntry = {
+          id: Date.now() + 1,
           type: "out",
-          text: `[SYSTEM] AnveshakSutra — Zero-Knowledge Breach OSINT & 3D Graph ML
-- Stack: K-Anonymity (k=50), PyTorch Geometric, Three.js WebGL, Celery
-- Live Preview: https://anveshak-sutra.vercel.app/
-- Repo: https://github.com/GuruMachanica/AnveshakSutra`
-        });
-        break;
-
-      case "kavachg":
-        newHistory.push({
-          type: "out",
-          text: `[SYSTEM] KavachG — Autonomous Edge Industrial Safety CV Command Center
-- Stack: YOLOv8 (98.4% mAP50), 17-Point Pose, Three.js Plant Digital Twin
-- Live Preview: https://kavach-g.vercel.app/
-- Repo: https://github.com/GuruMachanica/KavachG`
-        });
-        break;
-
-      case "concept3d":
-        newHistory.push({
-          type: "out",
-          text: `[SYSTEM] Concept-3D — Prompt-to-3D Spatial Latent Generator
-- Stack: PyTorch, Generative 3D, ChromaDB Vector Memory, Three.js
-- Live Preview: https://concept-3d.vercel.app/
-- Repo: https://github.com/GuruMachanica/Concept-3D`
-        });
-        break;
-
-      case "aegis":
-        newHistory.push({
-          type: "out",
-          text: `[SYSTEM] A.E.G.I.S. — Real-Time Audio Edge Scam Defense
-- Stack: FastAPI, AASIST Deepfake Audio, WebSockets, Sarvam STT
-- Live Preview: https://aegis-anti-scam.netlify.app/
-- Repo: https://github.com/GuruMachanica/A.E.G.I.S.`
-        });
-        break;
-
-      case "sunmap":
-        newHistory.push({
-          type: "out",
-          text: `[SYSTEM] SunMap — 3D Spatial Solar Irradiance Engine
-- Stack: Three.js, CityGML LOD2, Perez Transposition, PyTorch
-- Live Preview: https://sunmapsolar.netlify.app/
-- Repo: https://github.com/GuruMachanica/SunMap`
-        });
-        break;
-
-      case "overview":
-      case "about":
-        newHistory.push({ type: "out", text: "Routing to /overview..." });
-        navigate("/overview");
-        setIsOpen(false);
-        break;
-
-      case "tech":
-      case "technologies":
-      case "skills":
-        newHistory.push({
-          type: "out",
-          text: "Core Stack: Python, C++, FastAPI, PyTorch, Docker, MongoDB, MySQL, OpenCV, WebSockets, Three.js"
-        });
-        if (trimmed !== "skills") {
-          navigate("/technologies");
+          text: `[ACADEMIC & PEER-REVIEWED CREDENTIALS]
+- IJDDT Research Paper: DOI 10.25258/ijddt.16.43s.31 (PPF Protein Homology Detection)
+- Harvard University: CS50 AI (Introduction to AI with Python, Jul 2026)
+- GeeksforGeeks: Python Programming Self-Paced (Jul 2025)
+Routing to /certifications interactive dossier viewer...`,
+          isStreaming: true
+        };
+        setTimeout(() => {
+          navigate("/certifications");
           setIsOpen(false);
-        }
-        break;
-
-      case "projects":
-        newHistory.push({ type: "out", text: "Routing to /projects..." });
-        navigate("/projects");
-        setIsOpen(false);
+        }, 900);
         break;
 
       case "experience":
-        newHistory.push({ type: "out", text: "Routing to /experience..." });
-        navigate("/experience");
-        setIsOpen(false);
-        break;
-
-      case "education":
-        newHistory.push({ type: "out", text: "Routing to /education..." });
-        navigate("/education");
-        setIsOpen(false);
-        break;
-
-      case "publications":
-      case "certifications":
-      case "certs":
-        newHistory.push({ type: "out", text: "Routing to /certifications..." });
-        navigate("/certifications");
-        setIsOpen(false);
-        break;
-
-      case "achievements":
-      case "awards":
-        newHistory.push({ type: "out", text: "Routing to /achievements..." });
-        navigate("/achievements");
-        setIsOpen(false);
-        break;
-
-      case "contact":
-        newHistory.push({ type: "out", text: "Routing to /contact..." });
-        navigate("/contact");
-        setIsOpen(false);
+      case "internship":
+      case "sanfy":
+      case "orvanto":
+        responseEntry = {
+          id: Date.now() + 1,
+          type: "out",
+          text: `[INDUSTRY EXPERIENCE]
+- Role: Backend Developer Intern (Hybrid, India)
+- Company: Sanfy Consultancy Services Pvt. Ltd. (Orvanto AI)
+- Period: May 2026 - Jul 2026
+- Focus: Asynchronous FastAPI microservices, ML pipelines, MongoDB/MySQL query optimization
+Routing to /experience...`,
+          isStreaming: true
+        };
+        setTimeout(() => {
+          navigate("/experience");
+          setIsOpen(false);
+        }, 900);
         break;
 
       case "resume":
       case "cv":
-        newHistory.push({ type: "out", text: "Routing to /resume..." });
-        navigate("/resume");
-        setIsOpen(false);
-        break;
-
-      case "sudo hire-huzaifa":
-      case "hire":
-        newHistory.push({
+        responseEntry = {
+          id: Date.now() + 1,
           type: "out",
-          text: "[ACCESS GRANTED] Initiating direct transmission to mdhuzaifa00786@gmail.com..."
-        });
-        window.location.href = "mailto:mdhuzaifa00786@gmail.com?subject=Engineering%20Opportunity%20-%20Mohammad%20Huzaifa";
+          text: `[RESUME] Routing to /resume master 1-page PDF dossier...`,
+          isStreaming: true
+        };
+        setTimeout(() => {
+          navigate("/resume");
+          setIsOpen(false);
+        }, 800);
         break;
 
-      case "clear":
-        setHistory([]);
+      case "projects":
+        responseEntry = {
+          id: Date.now() + 1,
+          type: "out",
+          text: `[FLAGSHIP PRODUCTION PLATFORMS]
+1. AnveshakSutra  -> Zero-Knowledge OSINT & 3D Graph ML (https://anveshak-sutra.vercel.app/)
+2. Concept-3D     -> Prompt-to-3D Spatial Latent Generator (https://concept-3d.vercel.app/)
+3. A.E.G.I.S.     -> Real-Time Audio Edge Scam Defense (https://aegis-anti-scam.netlify.app/)
+4. SunMap         -> 3D Spatial Solar Irradiance Engine (https://sunmapsolar.netlify.app/)
+5. KavachG        -> Autonomous Edge Industrial Safety CV by Team CodeGambit (https://kavach-g.vercel.app/)
+Routing to /projects...`,
+          isStreaming: true
+        };
+        setTimeout(() => {
+          navigate("/projects");
+          setIsOpen(false);
+        }, 1100);
+        break;
+
+      case "anveshaksutra":
+        responseEntry = {
+          id: Date.now() + 1,
+          type: "out",
+          text: `[SYSTEM] AnveshakSutra — Zero-Knowledge Breach OSINT & 3D Graph ML
+- Stack: K-Anonymity (k=50), PyTorch Geometric, Three.js WebGL, Celery
+- Live Preview: https://anveshak-sutra.vercel.app/
+- Repo: https://github.com/GuruMachanica/AnveshakSutra`,
+          isStreaming: true
+        };
+        break;
+
+      case "kavachg":
+        responseEntry = {
+          id: Date.now() + 1,
+          type: "out",
+          text: `[SYSTEM] KavachG — Autonomous Edge Industrial Safety CV (Team CodeGambit)
+- Stack: YOLOv8 (98.4% mAP50), 17-Point Pose, Three.js Plant Digital Twin
+- Live Preview: https://kavach-g.vercel.app/
+- Repo: https://github.com/GuruMachanica/KavachG`,
+          isStreaming: true
+        };
+        break;
+
+      case "concept3d":
+        responseEntry = {
+          id: Date.now() + 1,
+          type: "out",
+          text: `[SYSTEM] Concept-3D — Prompt-to-3D Spatial Latent Generator
+- Stack: PyTorch, Generative 3D, ChromaDB Vector Memory, Three.js
+- Live Preview: https://concept-3d.vercel.app/
+- Repo: https://github.com/GuruMachanica/Concept-3D`,
+          isStreaming: true
+        };
+        break;
+
+      case "aegis":
+        responseEntry = {
+          id: Date.now() + 1,
+          type: "out",
+          text: `[SYSTEM] A.E.G.I.S. — Real-Time Audio Edge Scam Defense
+- Stack: FastAPI, AASIST Deepfake Audio, WebSockets, Sarvam STT
+- Live Preview: https://aegis-anti-scam.netlify.app/
+- Repo: https://github.com/GuruMachanica/A.E.G.I.S.`,
+          isStreaming: true
+        };
+        break;
+
+      case "sunmap":
+        responseEntry = {
+          id: Date.now() + 1,
+          type: "out",
+          text: `[SYSTEM] SunMap — 3D Spatial Solar Irradiance Engine
+- Stack: Three.js, CityGML LOD2, Perez Transposition, PyTorch
+- Live Preview: https://sunmapsolar.netlify.app/
+- Repo: https://github.com/GuruMachanica/SunMap`,
+          isStreaming: true
+        };
+        break;
+
+      case "exit":
+      case "quit":
+        setIsOpen(false);
         setInput("");
         return;
 
-      case "exit":
-        setIsOpen(false);
-        break;
-
       default:
-        newHistory.push({
+        responseEntry = {
+          id: Date.now() + 1,
           type: "err",
-          text: `command not found: '${trimmed}'. Type 'help' or click a shortcut below.`
-        });
+          text: `command not found: "${trimmed}". Type 'help' to inspect available system commands.`,
+          isStreaming: true
+        };
         break;
     }
 
-    setHistory(newHistory);
+    setHistory((prev) => [...prev, userEntry, ...(responseEntry ? [responseEntry] : [])]);
     setInput("");
   };
 
@@ -374,7 +472,7 @@ LinkedIn: https://linkedin.com/in/mohammad--huzaifa/
               {/* Terminal Title Bar */}
               <div className="px-4 py-3 bg-[#111111] border-b border-white/10 flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-full bg-white/20 cursor-pointer" onClick={() => setIsOpen(false)} />
+                  <span className="w-3 h-3 rounded-full bg-white/20 cursor-pointer hover:bg-white/40 transition-colors" onClick={() => setIsOpen(false)} />
                   <span className="w-3 h-3 rounded-full bg-white/40" />
                   <span className="w-3 h-3 rounded-full bg-white/60" />
                   <span className="text-[12px] font-mono text-zinc-400 ml-2">
@@ -389,25 +487,24 @@ LinkedIn: https://linkedin.com/in/mohammad--huzaifa/
                 </button>
               </div>
 
-              {/* Console Output Area */}
+              {/* Console Output Area with Typewriter & Backspace Purge */}
               <div
                 ref={scrollRef}
                 className="p-4 flex-1 overflow-y-auto font-mono text-[13px] space-y-2 select-text min-h-[220px] max-h-[420px]">
-                {history.map((h, i) => (
-                  <div
-                    key={i}
-                    className={`leading-relaxed whitespace-pre-wrap ${
-                      h.type === "user"
-                        ? "text-white font-bold"
-                        : h.type === "err"
-                        ? "text-zinc-400 font-bold"
-                        : h.type === "sys"
-                        ? "text-zinc-200 font-mono text-[11px] sm:text-[12px]"
-                        : "text-zinc-300"
-                    }`}>
-                    {h.text}
-                  </div>
+                {history.map((h) => (
+                  <TypewriterLine
+                    key={h.id || h.text}
+                    text={h.text}
+                    type={h.type}
+                    isStreaming={h.isStreaming}
+                  />
                 ))}
+                {isClearing && (
+                  <div className="text-zinc-500 font-mono text-[12px] flex items-center gap-1">
+                    <span className="w-2 h-4 bg-white animate-pulse" />
+                    <span>[REVERSE PURGE IN PROGRESS...]</span>
+                  </div>
+                )}
               </div>
 
               {/* Suggested Quick-Pill Command Chips */}
@@ -423,22 +520,24 @@ LinkedIn: https://linkedin.com/in/mohammad--huzaifa/
                 ))}
               </div>
 
-              {/* Console Input Bar */}
+              {/* Console Input Bar with Blinking Cursor */}
               <form
                 onSubmit={onSubmit}
                 className="p-3 bg-[#0d0d0d] border-t border-white/10 flex items-center gap-2">
                 <span className="text-white font-mono text-[13px] select-none font-bold">
                   huzaifa@monolith:~$
                 </span>
-                <input
-                  ref={inputRef}
-                  type="text"
-                  value={input}
-                  onKeyDown={handleKeyDownInput}
-                  onChange={(e) => setInput(e.target.value)}
-                  placeholder="type help, neofetch, projects, resume... (Tab to autocomplete)"
-                  className="flex-1 bg-transparent text-white font-mono text-[13px] focus:outline-none placeholder:text-zinc-600"
-                />
+                <div className="flex-1 relative flex items-center">
+                  <input
+                    ref={inputRef}
+                    type="text"
+                    value={input}
+                    onKeyDown={handleKeyDownInput}
+                    onChange={(e) => setInput(e.target.value)}
+                    placeholder="type help, noirfetch, projects, resume... (Tab to autocomplete)"
+                    className="w-full bg-transparent text-white font-mono text-[13px] focus:outline-none placeholder:text-zinc-600"
+                  />
+                </div>
                 <button
                   type="submit"
                   className="px-3 py-1.5 rounded-lg bg-white text-black font-mono font-bold text-[11px] hover:bg-zinc-200 transition-colors cursor-pointer">
