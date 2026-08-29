@@ -23,7 +23,7 @@ import { animate, stagger } from "animejs";
 const architectureBlueprints = {
   "AnveshakSutra": {
     category: "Zero-Knowledge Breach OSINT & 3D Graph ML",
-    math: "H(c) = \text{SHA-256}(c)[0:5] \implies k \ge 50 \text{ Bucket K-Anonymity}",
+    math: "H(c) = SHA-256(c)[0:5]  ⟹  k ≥ 50 (Bucket k-Anonymity Pool)",
     pipeline: "Input Identity -> SHA-256 5-Char Prefix -> K-Anonymity Pool -> 3D WebGL Graph ML -> Canary Tripwire",
     coreStack: "FastAPI • PyTorch Geometric • Celery • Three.js WebGL • Redis",
     keyHighlights: [
@@ -39,7 +39,7 @@ const architectureBlueprints = {
   },
   "Concept3D": {
     category: "AI Concept-to-3D Spatial Generator",
-    math: "\mathcal{L}_{\text{spatial}} = \|\mathbf{z}_{\text{3D}} - \mathcal{E}_{\text{text}}(u)\|^2_2 + \lambda \mathcal{R}_{\text{mesh}}",
+    math: "ℒ_spatial = ‖z_3D - ℰ_text(u)‖²₂ + λ · ℛ_mesh",
     pipeline: "Text / Image Input -> Semantic Tokenizer -> ChromaDB Vector Store -> PyTorch Latent Mesh -> WebGL 3D Canvas",
     coreStack: "Python • PyTorch • ChromaDB • Three.js • FastAPI",
     keyHighlights: [
@@ -55,7 +55,7 @@ const architectureBlueprints = {
   },
   "A.E.G.I.S": {
     category: "Real-Time Audio Edge Scam Defense",
-    math: "\mathcal{S}_{\text{fraud}} = w_1 \cdot \mathcal{S}_{\text{AASIST}} + w_2 \cdot \mathcal{S}_{\text{NLP}} \ge \theta_{\text{alert}}",
+    math: "𝒮_fraud = w₁ · 𝒮_AASIST + w₂ · 𝒮_NLP  ≥  θ_alert",
     pipeline: "Audio Stream -> WebRTC VAD -> AASIST Voice Model -> Sarvam Multilingual STT -> Guardian SOS Alert",
     coreStack: "FastAPI • WebSockets • AASIST • Sarvam AI STT • WebRTC",
     keyHighlights: [
@@ -71,7 +71,7 @@ const architectureBlueprints = {
   },
   "SunMap": {
     category: "3D Spatial Solar Irradiance & Yield Engine",
-    math: "I_{\text{tilt}} = I_{\text{dir}} \cos(\theta) + I_{\text{diff}} \cdot Y_{\text{Perez}} + I_{\text{refl}}",
+    math: "I_tilt = I_dir · cos(θ) + I_diff · Y_Perez + I_refl",
     pipeline: "CityGML LOD2 Meshes -> Normal Vector Parser -> Perez Transposition Physics -> 8,760h Raycast Shadow Engine",
     coreStack: "Three.js WebGL • CityGML LOD2 • Perez Model • Python • Docker",
     keyHighlights: [
@@ -87,7 +87,7 @@ const architectureBlueprints = {
   },
   "KavachG": {
     category: "Industrial Edge Safety CV Command Center",
-    math: "\text{IoU}(\text{box}_p, \text{box}_g) \ge 0.50 \implies \text{mAP}_{50} = 98.4\%",
+    math: "IoU(box_p, box_g) ≥ 0.50  ⟹  mAP₅₀ = 98.4%",
     pipeline: "RTSP Video Stream -> OpenCV Buffer -> YOLOv8 Detection -> 17-Point Pose -> Three.js Plant Digital Twin",
     coreStack: "YOLOv8 • OpenCV • FastAPI • Three.js • MongoDB",
     keyHighlights: [
