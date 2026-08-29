@@ -17,29 +17,6 @@ import {
   scikitlearn,
   threejs,
   postgresql,
-  frontend,
-  backend,
-  ux,
-  prototyping,
-  javascript,
-  typescript,
-  html,
-  css,
-  reactjs,
-  redux,
-  tailwind,
-  nodejs,
-  git,
-  github,
-  figma,
-  docker,
-  rubyrails,
-  graphql,
-  coverhunt,
-  dcc,
-  kelhel,
-  microverse,
-  orvanto,
   anveshaksutra,
   concept3d,
   aegis,
@@ -65,19 +42,15 @@ export const navLinks = [
 const services = [
   {
     title: 'Agentic AI Engineer',
-    icon: frontend,
   },
   {
     title: 'Backend Developer',
-    icon: backend,
   },
   {
     title: 'UI/UX Designer',
-    icon: ux,
   },
   {
     title: 'Data Engineer',
-    icon: prototyping,
   },
 ];
 
@@ -196,14 +169,12 @@ const educations = [
   {
     title: 'High School & Intermediate',
     company_name: 'Allahabad Public School, Prayagraj | 88.3% & 85.8%',
-    icon: microverse,
     iconBg: '#333333',
     date: '2020 - 2022',
   },
   {
     title: 'B.Tech in Computer Science & Engineering',
     company_name: 'United Institute of Technology, Prayagraj | 7.47 CGPA',
-    icon: coverhunt,
     iconBg: '#333333',
     date: '2023 - 2027',
   },
@@ -213,21 +184,18 @@ const achievements = [
   {
     title: 'Prototype Development Sprint Qualifier',
     company_name: 'Sankalp 2026 – National Summit on Innovation & Skills (Organized by MNNIT Prayagraj)',
-    icon: microverse,
     iconBg: '#333333',
     date: '2026',
   },
   {
     title: 'Second Runner-Up, UHACK 4.0 Hackathon',
     company_name: 'United Group of Institutions (A.E.G.I.S Scam Detection)',
-    icon: kelhel,
     iconBg: '#333333',
     date: 'Jan 2026 - Feb 2026',
   },
   {
     title: 'Second Runner-Up, CodeStorm\'25 Hackathon',
     company_name: 'Shambhunath Group of Institutions (SunMap)',
-    icon: dcc,
     iconBg: '#333333',
     date: 'Oct 2025',
   },
@@ -251,6 +219,7 @@ const certifications = [
 const projects = [
   {
     id: 'project-1',
+    siteKey: 'anveshaksutra',
     name: 'AnveshakSutra',
     category: 'Zero-Knowledge & Cyber AI',
     description:
@@ -285,10 +254,12 @@ const projects = [
     ],
     image: anveshaksutra,
     repo: 'https://github.com/GuruMachanica/AnveshakSutra',
+    source_code_link: 'https://github.com/GuruMachanica/AnveshakSutra',
     demo: 'https://anveshak-sutra.vercel.app/',
   },
   {
     id: 'project-2',
+    siteKey: 'concept3d',
     name: 'Concept3D',
     category: 'GenAI & 3D Visualization',
     description:
@@ -323,10 +294,12 @@ const projects = [
     ],
     image: concept3d,
     repo: 'https://github.com/GuruMachanica/Concept-3D',
+    source_code_link: 'https://github.com/GuruMachanica/Concept-3D',
     demo: 'https://concept-3d.vercel.app/',
   },
   {
     id: 'project-3',
+    siteKey: 'aegis',
     name: 'A.E.G.I.S',
     category: 'Backend & APIs',
     description:
@@ -361,10 +334,12 @@ const projects = [
     ],
     image: aegis,
     repo: 'https://github.com/GuruMachanica/A.E.G.I.S.',
+    source_code_link: 'https://github.com/GuruMachanica/A.E.G.I.S.',
     demo: 'https://aegis-anti-scam.netlify.app/',
   },
   {
     id: 'project-4',
+    siteKey: 'sunmap',
     name: 'SunMap',
     category: 'Spatial 3D & Solar Intelligence',
     description:
@@ -399,10 +374,12 @@ const projects = [
     ],
     image: sunmap,
     repo: 'https://github.com/GuruMachanica/SunMap',
+    source_code_link: 'https://github.com/GuruMachanica/SunMap',
     demo: 'https://sunmapsolar.netlify.app/',
   },
   {
     id: 'project-5',
+    siteKey: 'kavachg',
     name: 'KavachG',
     category: 'Computer Vision & 3D',
     description:
@@ -437,6 +414,7 @@ const projects = [
     ],
     image: kavachg,
     repo: 'https://github.com/GuruMachanica/KavachG',
+    source_code_link: 'https://github.com/GuruMachanica/KavachG',
     demo: 'https://kavach-g.vercel.app/',
   },
 ];
@@ -450,3 +428,4 @@ export {
   certifications,
   projects,
 };
+

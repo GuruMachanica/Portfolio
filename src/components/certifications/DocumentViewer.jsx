@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { 
   FaDownload, 
   FaExternalLinkAlt, 
@@ -16,6 +16,17 @@ const DocumentViewer = ({ activeDoc }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [zoomLevel, setZoomLevel] = useState(100);
   const [copied, setCopied] = useState(false);
+  const scrollContainerRef = useRef(null);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeDoc.id]);
+
+  useEffect(() => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTop = 0;
+    }
+  }, [currentPage, activeDoc.id]);
 
   const handleCopyDoi = (doiText) => {
     navigator.clipboard.writeText(doiText);
@@ -101,17 +112,32 @@ const DocumentViewer = ({ activeDoc }) => {
         </div>
 
         {/* High-Resolution Document Canvas */}
-        <div className="relative w-full overflow-auto bg-[#070707] rounded-2xl border border-white/10 p-2 sm:p-6 min-h-[480px] max-h-[75vh] flex items-center justify-center">
-          <div
-            style={{ width: `${zoomLevel}%`, transition: "width 0.2s ease" }}
-            className="flex flex-col items-center max-w-full">
-            <img
-              src={activeDoc.images[currentPage - 1] || activeDoc.images[0]}
-              alt={`${activeDoc.title} Page ${currentPage}`}
-              className="w-full h-auto rounded-lg shadow-[0_15px_50px_rgba(0,0,0,0.9)] border border-white/15 select-none"
-              loading="eager"
-            />
-          </div>
+        <div 
+          ref={scrollContainerRef}
+          className="relative w-full overflow-y-auto overflow-x-auto bg-[#070707] rounded-2xl border border-white/10 p-2 sm:p-6 min-h-[480px] max-h-[75vh] flex flex-col items-center justify-start scroll-smooth">
+          {activeDoc.previewIframeUrl ? (
+            <div 
+              style={{ width: `${zoomLevel}%`, maxWidth: "850px" }}
+              className="w-full h-[580px] my-2 rounded-xl overflow-hidden border border-white/15 shadow-2xl bg-black">
+              <iframe
+                src={activeDoc.previewIframeUrl}
+                title={activeDoc.title}
+                className="w-full h-full border-0 bg-white"
+                allow="autoplay"
+              />
+            </div>
+          ) : (
+            <div
+              style={{ width: `${zoomLevel}%`, maxWidth: "850px", transition: "width 0.2s ease" }}
+              className="flex flex-col items-center my-2">
+              <img
+                src={activeDoc.images && (activeDoc.images[currentPage - 1] || activeDoc.images[0])}
+                alt={`${activeDoc.title} Page ${currentPage}`}
+                className="w-full h-auto rounded-lg shadow-[0_15px_50px_rgba(0,0,0,0.9)] border border-white/15 select-none"
+                loading="eager"
+              />
+            </div>
+          )}
         </div>
 
         {/* Action Toolbar */}

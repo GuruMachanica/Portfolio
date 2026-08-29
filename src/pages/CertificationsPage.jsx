@@ -55,14 +55,14 @@ const CertificationsPage = () => {
 
   return (
     <PageTransition>
-      <div className="min-h-screen py-28 px-4 sm:px-8 max-w-7xl mx-auto stripe-grid select-none">
+      <div className="min-h-screen py-28 px-4 sm:px-8 max-w-7xl mx-auto stripe-grid">
         
         {/* Top Header */}
         <div className="mb-10 border-b border-white/10 pb-8">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-zinc-400 hover:text-white font-mono text-[12px] uppercase tracking-wider mb-3 transition-colors">
-            <FaArrowLeft className="w-3 h-3" /> BACK TO MONOLITH
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl brutalist-panel text-white font-mono text-[13px] hover:border-white/40 transition-colors w-fit mb-3">
+            <FaArrowLeft className="w-3.5 h-3.5" /> BACK TO HOME
           </Link>
           <div className="cert-badge flex items-center gap-3">
             <span className="w-2.5 h-2.5 rounded-full bg-white animate-pulse" />

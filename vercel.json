@@ -1,13 +1,13 @@
 {
   "rewrites": [
     {
-      "source": "/((?!.*\\\\.(?:ico|png|jpg|jpeg|svg|webp|pdf|json|webmanifest|xml|txt|woff|woff2|otf|ttf)$).*)",
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ],
   "headers": [
     {
-      "source": "/(.*)\\\\.pdf",
+      "source": "/(.*)\\.pdf",
       "headers": [
         {
           "key": "Content-Type",

@@ -46,15 +46,15 @@ const ProjectsPage = () => {
 
   return (
     <PageTransition>
-      <div className="min-h-screen py-28 px-4 sm:px-8 max-w-7xl mx-auto stripe-grid select-none">
+      <div className="min-h-screen py-28 px-4 sm:px-8 max-w-7xl mx-auto stripe-grid">
         
         {/* Top Header */}
         <div className="mb-10 flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/10 pb-8">
           <div>
             <Link
               to="/"
-              className="inline-flex items-center gap-2 text-zinc-400 hover:text-white font-mono text-[12px] uppercase tracking-wider mb-3 transition-colors">
-              <FaArrowLeft className="w-3 h-3" /> BACK TO MONOLITH
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl brutalist-panel text-white font-mono text-[13px] hover:border-white/40 transition-colors w-fit mb-3">
+              <FaArrowLeft className="w-3.5 h-3.5" /> BACK TO HOME
             </Link>
             <h1 className="text-[34px] sm:text-[44px] font-extrabold font-poppins text-white tracking-tight">
               Production Projects.
@@ -93,8 +93,8 @@ const ProjectsPage = () => {
           ))}
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Projects Grid: Strictly 2 Per Row */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {filteredProjects.map((project, index) => (
             <ProjectCard
               key={project.name}

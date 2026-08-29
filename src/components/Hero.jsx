@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import React, { useEffect, useRef } from "react";
 import { styles } from "../styles";
+import { worldmap } from "../assets";
 import { FaGithub, FaFileDownload, FaArrowRight } from "react-icons/fa";
 import { createTimeline, stagger } from "animejs";
 
@@ -16,20 +17,20 @@ const Hero = () => {
         ease: "outExpo",
         duration: 700,
       })
-      .add(".hero-letter", {
-        opacity: [0, 1],
-        translateY: [25, 0],
-        delay: stagger(20),
-        ease: "outExpo",
-        duration: 800,
-      }, "-=400")
-      .add(".hero-subtext, .hero-meta, .hero-cta", {
-        opacity: [0, 1],
-        translateY: [15, 0],
-        delay: stagger(80),
-        ease: "outQuad",
-        duration: 700,
-      }, "-=400");
+        .add(".hero-letter", {
+          opacity: [0, 1],
+          translateY: [25, 0],
+          delay: stagger(20),
+          ease: "outExpo",
+          duration: 800,
+        }, "-=400")
+        .add(".hero-subtext, .hero-meta, .hero-cta", {
+          opacity: [0, 1],
+          translateY: [15, 0],
+          delay: stagger(80),
+          ease: "outQuad",
+          duration: 700,
+        }, "-=400");
     } catch (e) {
       console.warn("Hero animation fallback", e);
     }
@@ -41,10 +42,25 @@ const Hero = () => {
   return (
     <section
       ref={heroRef}
-      className="relative w-full min-h-[85vh] sm:min-h-[90vh] mx-auto stripe-grid stripe-radial flex flex-col justify-center items-center pt-28 sm:pt-36 pb-16 sm:pb-24 px-4 sm:px-8 z-0">
-      
+      className="relative w-full min-h-[85vh] sm:min-h-[90vh] mx-auto stripe-grid stripe-radial flex flex-col justify-center items-center pt-28 sm:pt-36 pb-16 sm:pb-24 px-4 sm:px-8 z-0 overflow-hidden">
+
+      {/* World Map Backdrop: Full Edge-to-Edge Fill with mix-blend-screen & Translucency */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-[0.24] select-none"
+        style={{
+          maskImage: "radial-gradient(ellipse 95% 82% at 50% 50%, black 55%, transparent 100%)",
+          WebkitMaskImage: "radial-gradient(ellipse 95% 82% at 50% 50%, black 55%, transparent 100%)"
+        }}>
+        <img
+          src={worldmap}
+          alt="World Map Ambient Backdrop"
+          className="w-full h-full object-fill pointer-events-none select-none mix-blend-screen"
+          loading="eager"
+        />
+      </div>
+
       {/* Top Tagline Pill */}
-      <div className="hero-badge opacity-100 inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full brutalist-panel mb-5 sm:mb-6 border border-white/15 shadow-lg text-center max-w-full">
+      <div className="hero-badge opacity-100 inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full brutalist-panel mb-5 sm:mb-6 border border-white/15 shadow-lg text-center max-w-full relative z-10">
         <span className="w-2 h-2 rounded-full bg-white animate-pulse shrink-0" />
         <span className="text-[11px] sm:text-[13px] font-bold font-mono tracking-wider sm:tracking-widest text-zinc-300 uppercase truncate">
           AGENTIC AI ENGINEER • BACKEND ARCHITECT

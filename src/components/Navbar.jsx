@@ -14,7 +14,6 @@ const navItems = [
   { title: "Education", path: "/education" },
   { title: "Research & Certs", path: "/certifications" },
   { title: "Achievements", path: "/achievements" },
-  { title: "Resume", path: "/resume" },
   { title: "Contact", path: "/contact" },
 ];
 

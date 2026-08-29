@@ -3,7 +3,9 @@ import TiltCard from "../TiltCard";
 import LiveProjectThumbnail from "../LiveProjectThumbnail";
 import { FaGithub, FaGlobe, FaProjectDiagram } from "react-icons/fa";
 
-const ProjectCard = ({ project, index, onOpenArchitecture, onOpenLiveWebsite }) => {
+const ProjectCard = ({ project, onOpenArchitecture, onOpenLiveWebsite }) => {
+  const repoUrl = project.source_code_link || project.repo || "https://github.com/GuruMachanica";
+
   return (
     <div className="project-card opacity-100 flex">
       <TiltCard className="brutalist-panel rounded-3xl p-5 sm:p-6 border border-white/10 hover:border-white/40 flex flex-col justify-between h-full transition-all duration-300 w-full">
@@ -11,10 +13,10 @@ const ProjectCard = ({ project, index, onOpenArchitecture, onOpenLiveWebsite }) 
           {/* Interactive Live Interactive Card Media with Architecture Blueprint Overlay */}
           <div className="relative w-full h-[220px] rounded-2xl overflow-hidden mb-5 bg-[#0a0a0a] border border-white/10 group">
             <LiveProjectThumbnail
-              image={project.image}
+              fallbackImage={project.image}
               name={project.name}
-              siteKey={project.siteKey}
-              onClickInteractive={() => onOpenLiveWebsite(project.siteKey)}
+              demoUrl={project.demo}
+              category={project.category || "PRODUCTION"}
             />
 
             {/* Inspect Architecture Blueprint Button */}
@@ -64,7 +66,7 @@ const ProjectCard = ({ project, index, onOpenArchitecture, onOpenLiveWebsite }) 
           </button>
 
           <a
-            href={project.source_code_link}
+            href={repoUrl}
             target="_blank"
             rel="noreferrer"
             className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl brutalist-panel text-white font-mono font-bold text-[11px] sm:text-[12px] hover:border-white/40 transition-colors">
@@ -78,3 +80,4 @@ const ProjectCard = ({ project, index, onOpenArchitecture, onOpenLiveWebsite }) 
 };
 
 export default ProjectCard;
+

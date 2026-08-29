@@ -188,12 +188,12 @@ const AnimatedRoutes = () => {
 };
 
 const App = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 450);
+    }, 700);
 
     return () => clearTimeout(timer);
   }, []);
