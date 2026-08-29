@@ -119,6 +119,7 @@ const CommandPalette = () => {
         });
         break;
 
+      case "huzaifa":
       case "noirfetch":
       case "neofetch":
       case "sysinfo":
