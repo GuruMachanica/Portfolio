@@ -44,7 +44,7 @@ const Hero = () => {
       className="relative w-full min-h-[85vh] sm:min-h-[90vh] mx-auto stripe-grid stripe-radial flex flex-col justify-center items-center pt-28 sm:pt-36 pb-16 sm:pb-24 px-4 sm:px-8 z-0">
       
       {/* Top Tagline Pill */}
-      <div className="hero-badge opacity-0 inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full brutalist-panel mb-5 sm:mb-6 border border-white/15 shadow-lg text-center max-w-full">
+      <div className="hero-badge opacity-100 inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full brutalist-panel mb-5 sm:mb-6 border border-white/15 shadow-lg text-center max-w-full">
         <span className="w-2 h-2 rounded-full bg-white animate-pulse shrink-0" />
         <span className="text-[11px] sm:text-[13px] font-bold font-mono tracking-wider sm:tracking-widest text-zinc-300 uppercase truncate">
           AGENTIC AI ENGINEER • BACKEND ARCHITECT
@@ -74,12 +74,12 @@ const Hero = () => {
           </span>
         </h1>
 
-        <p className="hero-subtext opacity-0 mt-4 sm:mt-5 text-zinc-300 text-[15px] sm:text-[19px] max-w-2xl leading-relaxed font-normal px-2">
+        <p className="hero-subtext opacity-100 mt-4 sm:mt-5 text-zinc-300 text-[15px] sm:text-[19px] max-w-2xl leading-relaxed font-normal px-2">
           Designing autonomous multi-agent systems, deep learning pipelines, and high-throughput backend infrastructure.
         </p>
 
         {/* Location & Status Meta */}
-        <div className="hero-meta opacity-0 mt-4 flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-[12px] sm:text-[13px] text-zinc-400 font-mono px-2">
+        <div className="hero-meta opacity-100 mt-4 flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-[12px] sm:text-[13px] text-zinc-400 font-mono px-2">
           <span className="flex items-center gap-1.5">
             <svg className="w-3.5 h-3.5 text-white shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -95,7 +95,7 @@ const Hero = () => {
         </div>
 
         {/* Action Buttons (Full width on small phones, inline on tablets/desktops) */}
-        <div className="hero-cta opacity-0 mt-7 sm:mt-8 flex flex-col xs:flex-row w-full xs:w-auto gap-3 sm:gap-4 justify-center px-4 xs:px-0">
+        <div className="hero-cta opacity-100 mt-7 sm:mt-8 flex flex-col xs:flex-row w-full xs:w-auto gap-3 sm:gap-4 justify-center px-4 xs:px-0">
           <Link
             to="/projects"
             className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white text-black font-bold text-[13px] sm:text-[14px] font-mono hover:bg-zinc-200 transition-all duration-200 shadow-lg text-center hover:scale-105">
