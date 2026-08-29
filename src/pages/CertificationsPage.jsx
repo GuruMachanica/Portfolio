@@ -9,7 +9,6 @@ import {
   FaSearchPlus, 
   FaSearchMinus, 
   FaUndo, 
-  FaFilePdf, 
   FaAward, 
   FaCheckCircle, 
   FaCopy, 
@@ -18,7 +17,9 @@ import {
   FaBookOpen,
   FaCertificate,
   FaBriefcase,
-  FaShieldAlt
+  FaShieldAlt,
+  FaChevronLeft,
+  FaChevronRight
 } from "react-icons/fa";
 import { createTimeline, stagger } from "animejs";
 
@@ -33,8 +34,9 @@ const credentialsData = [
     doi: "10.25258/ijddt.16.43s.31",
     citation: "IJDDT, Vol 16, Issue 4s (Article 31)",
     authors: "Rohit Mishra, Amit Kumar Tiwari, Isnia Izhar, Ashutosh Mishra, Ashutosh Suryavanshi, Mohammad Huzaifa",
-    docType: "pdf",
-    docUrl: "/IJDDT_Vol16_Issue43s_Article31.pdf",
+    totalPages: 14,
+    images: Array.from({ length: 14 }, (_, i) => `/certificates/ijddt_paper_p${i + 1}.png`),
+    pdfUrl: "/IJDDT_Vol16_Issue43s_Article31.pdf",
     downloadName: "IJDDT_Physiochemical_Pattern_Fingerprinting_Paper.pdf",
     officialVerifyUrl: "https://impactfactor.org/PDF/IJDDT/16/IJDDT,Vol16,Issue43s,Article31.pdf",
     officialVerifyLabel: "VERIFY VIA JOURNAL REPOSITORY",
@@ -56,8 +58,9 @@ const credentialsData = [
     doi: "10.25258/ijddt.16.43s.31",
     citation: "Certificate ID: OP-7050 (ISSN: 0975-4415)",
     authors: "Awarded to Mohammad Huzaifa et al.",
-    docType: "pdf",
-    docUrl: "/OP-7050_IJDDT_Certificate.pdf",
+    totalPages: 1,
+    images: ["/certificates/ijddt_certificate.png"],
+    pdfUrl: "/OP-7050_IJDDT_Certificate.pdf",
     downloadName: "OP-7050_IJDDT_Certificate.pdf",
     officialVerifyUrl: "/OP-7050_IJDDT_Certificate.pdf",
     officialVerifyLabel: "VIEW SIGNED CERTIFICATE (PDF)",
@@ -79,8 +82,9 @@ const credentialsData = [
     doi: "ID: 110613e9-87d7-4464-9897-63780847a793",
     citation: "Awarded from Cambridge, Massachusetts under Prof. David J. Malan",
     authors: "Mohammad Huzaifa",
-    docType: "image",
-    docUrl: "/cs50_ai_certificate.png",
+    totalPages: 1,
+    images: ["/cs50_ai_certificate.png"],
+    pdfUrl: "/cs50_ai_certificate.png",
     downloadName: "Harvard_CS50AI_Certificate.png",
     officialVerifyUrl: "https://cs50.harvard.edu/certificates/110613e9-87d7-4464-9897-63780847a793",
     officialVerifyLabel: "VERIFY VIA HARVARD UNIVERSITY",
@@ -102,12 +106,13 @@ const credentialsData = [
     doi: "ID: 52efc3c0f0f7c6b889007279db05670d",
     citation: "Signed by Mr. Sandeep Jain (Founder & CEO, GeeksforGeeks)",
     authors: "Mohammad Huzaifa",
-    docType: "pdf",
-    docUrl: "/gfg_python_certificate.pdf",
+    totalPages: 1,
+    images: ["/certificates/gfg_python_certificate.png"],
+    pdfUrl: "/gfg_python_certificate.pdf",
     downloadName: "GFG_Python_Programming_Certificate.pdf",
     officialVerifyUrl: "https://media.geeksforgeeks.org/courses/certificates/52efc3c0f0f7c6b889007279db05670d.pdf",
     officialVerifyLabel: "VERIFY VIA GEEKSFORGEEKS",
-    abstract: "Comprehensive 6-week intensive mastery of core and advanced Python programming, data structures, algorithms, functional programming, and modular software engineering.",
+    abstract: "Comprehensive 6-week intensive mastery of core and advanced Python programming, data structures, algorithms, functional programming, and modular software engineering under Mr. Sandeep Jain.",
     keyInsights: [
       "Object-Oriented Programming (OOP), Polymorphism, Inheritance & Custom Class Design",
       "Advanced Data Structures: Hash Maps, Tuples, Sets, Memory-Efficient Generators & Iterators",
@@ -125,12 +130,13 @@ const credentialsData = [
     doi: "Division: Product & Technology (Orvanto AI)",
     citation: "Role: Backend Developer Intern (Hybrid, India)",
     authors: "Mohammad Huzaifa",
-    docType: "external_pdf",
-    docUrl: "https://drive.google.com/file/d/100xwhMZa1ViRXZRXDTFmYDMBq3LtKmt4/preview",
+    totalPages: 1,
+    images: ["https://drive.google.com/thumbnail?id=100xwhMZa1ViRXZRXDTFmYDMBq3LtKmt4&sz=w1600"],
+    pdfUrl: "https://drive.google.com/file/d/100xwhMZa1ViRXZRXDTFmYDMBq3LtKmt4/view?usp=sharing",
     downloadName: "Sanfy_Consultancy_Internship_Certificate.pdf",
     officialVerifyUrl: "https://drive.google.com/file/d/100xwhMZa1ViRXZRXDTFmYDMBq3LtKmt4/view?usp=sharing",
-    officialVerifyLabel: "VERIFY VIA OFFICIAL CLOUD VAULT",
-    abstract: "Backend engineering and infrastructure development for Orvanto AI within the Product & Technology division, architecting high-throughput FastAPI microservices, automated ML pipelines, and database optimization.",
+    officialVerifyLabel: "VERIFY VIA CLOUD VAULT",
+    abstract: "Backend engineering and infrastructure development for Orvanto AI within the Product & Technology division, architecting high-throughput FastAPI microservices, automated ML pipelines, and database query optimization.",
     keyInsights: [
       "Architected asynchronous REST and WebSocket microservices using FastAPI",
       "Built automated data ingestion pipelines for fine-tuning LLMs and computer vision models",
@@ -142,6 +148,7 @@ const credentialsData = [
 
 const CertificationsPage = () => {
   const [selectedId, setSelectedId] = useState("ijddt-paper");
+  const [currentPage, setCurrentPage] = useState(1);
   const [zoomLevel, setZoomLevel] = useState(100);
   const [copied, setCopied] = useState(false);
 
@@ -185,6 +192,11 @@ const CertificationsPage = () => {
     setCopied(true);
     setTimeout(() => setCopied(false), 2200);
   };
+
+  const handlePrevPage = () => setCurrentPage((prev) => Math.max(1, prev - 1));
+  const handleNextPage = () => setCurrentPage((prev) => Math.min(activeCred.totalPages, prev + 1));
+
+  const currentImage = activeCred.images[Math.min(currentPage - 1, activeCred.images.length - 1)];
 
   return (
     <PageTransition>
@@ -312,6 +324,7 @@ const CertificationsPage = () => {
                   key={item.id}
                   onClick={() => {
                     setSelectedId(item.id);
+                    setCurrentPage(1);
                     setZoomLevel(100);
                   }}
                   className={`p-3.5 rounded-2xl border text-left transition-all cursor-pointer relative ${
@@ -345,49 +358,68 @@ const CertificationsPage = () => {
               <span className="hidden sm:inline">• {activeCred.issuer} ({activeCred.date})</span>
             </div>
 
-            <div className="flex items-center gap-2">
-              <button
-                onClick={handleZoomOut}
-                className="p-2 rounded-lg bg-white/5 hover:bg-white/15 text-white transition-colors cursor-pointer"
-                title="Zoom Out">
-                <FaSearchMinus className="w-3.5 h-3.5" />
-              </button>
-              <span className="px-2 font-bold text-white">{zoomLevel}%</span>
-              <button
-                onClick={handleZoomIn}
-                className="p-2 rounded-lg bg-white/5 hover:bg-white/15 text-white transition-colors cursor-pointer"
-                title="Zoom In">
-                <FaSearchPlus className="w-3.5 h-3.5" />
-              </button>
-              <button
-                onClick={handleResetZoom}
-                className="p-2 rounded-lg bg-white/5 hover:bg-white/15 text-white transition-colors cursor-pointer"
-                title="Reset Zoom">
-                <FaUndo className="w-3 h-3" />
-              </button>
+            {/* Pagination Controls (if multi-page) & Zoom Controls */}
+            <div className="flex items-center gap-3">
+              {activeCred.totalPages > 1 && (
+                <div className="flex items-center gap-1.5 bg-white/5 px-2.5 py-1.5 rounded-xl border border-white/10">
+                  <button
+                    onClick={handlePrevPage}
+                    disabled={currentPage === 1}
+                    className="p-1 rounded hover:bg-white/10 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                    title="Previous Page">
+                    <FaChevronLeft className="w-3 h-3 text-white" />
+                  </button>
+                  <span className="text-zinc-300 font-mono text-[11px] px-1">
+                    Page {currentPage} of {activeCred.totalPages}
+                  </span>
+                  <button
+                    onClick={handleNextPage}
+                    disabled={currentPage === activeCred.totalPages}
+                    className="p-1 rounded hover:bg-white/10 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                    title="Next Page">
+                    <FaChevronRight className="w-3 h-3 text-white" />
+                  </button>
+                </div>
+              )}
+
+              <div className="flex items-center gap-1">
+                <button
+                  onClick={handleZoomOut}
+                  className="p-2 rounded-lg bg-white/5 hover:bg-white/15 text-white transition-colors cursor-pointer"
+                  title="Zoom Out">
+                  <FaSearchMinus className="w-3.5 h-3.5" />
+                </button>
+                <span className="px-2 font-bold text-white">{zoomLevel}%</span>
+                <button
+                  onClick={handleZoomIn}
+                  className="p-2 rounded-lg bg-white/5 hover:bg-white/15 text-white transition-colors cursor-pointer"
+                  title="Zoom In">
+                  <FaSearchPlus className="w-3.5 h-3.5" />
+                </button>
+                <button
+                  onClick={handleResetZoom}
+                  className="p-2 rounded-lg bg-white/5 hover:bg-white/15 text-white transition-colors cursor-pointer"
+                  title="Reset Zoom">
+                  <FaUndo className="w-3 h-3" />
+                </button>
+              </div>
             </div>
           </div>
 
           {/* Document Display Frame */}
-          <div className="w-full flex justify-center overflow-auto bg-[#141414] rounded-2xl p-2 sm:p-4 border border-white/5 min-h-[600px] sm:min-h-[850px] lg:min-h-[1050px]">
+          <div className="w-full flex justify-center overflow-auto bg-[#0d0d0d] rounded-2xl p-2 sm:p-6 border border-white/5 min-h-[500px] sm:min-h-[750px] lg:min-h-[900px]">
             <div 
-              className="w-full max-w-4xl transition-transform duration-200 origin-top h-full flex justify-center"
+              className="w-full max-w-4xl transition-transform duration-200 origin-top flex flex-col items-center justify-start"
               style={{ transform: `scale(${zoomLevel / 100})` }}>
-              {activeCred.docType === "image" ? (
-                <div className="w-full flex flex-col items-center justify-center p-4">
-                  <img
-                    src={activeCred.docUrl}
-                    alt={activeCred.title}
-                    className="w-full max-w-3xl rounded-xl border border-white/10 shadow-2xl bg-black"
-                  />
-                </div>
-              ) : (
-                <iframe
-                  src={`${activeCred.docUrl}#toolbar=0&navpanes=0&scrollbar=1`}
-                  title={activeCred.title}
-                  className="w-full h-[600px] sm:h-[850px] lg:h-[1050px] rounded-xl border border-white/10 shadow-2xl bg-white"
-                />
-              )}
+              <img
+                src={currentImage}
+                alt={`${activeCred.title} - Page ${currentPage}`}
+                className="w-full max-w-3xl rounded-xl border border-white/10 shadow-2xl bg-white object-contain"
+                loading="lazy"
+                onError={(e) => {
+                  e.target.src = "/cs50_ai_certificate.png";
+                }}
+              />
             </div>
           </div>
 
