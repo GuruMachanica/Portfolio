@@ -100,7 +100,7 @@
       "subtitle": "A Memory-Efficient Approach to Structurally-Sensitive Protein Homology Detection",
       "type": "Peer-Reviewed Research Publication",
       "issuer": "International Journal of Drug Delivery Technology (IJDDT)",
-      "citation": "IJDDT, Vol 16, Issue 4",
+      "citation": "IJDDT, Vol 16, Issue 4s (Article 31)",
       "authors": "Rohit Mishra, Mohammad Huzaifa, et al.",
       "date": "2026",
       "abstract": "Novel computational methodology leveraging physiochemical residue properties to construct memory-efficient fingerprint vectors for detecting structural protein homology with ultra-low compute overhead.",
@@ -110,15 +110,17 @@
         "High sensitivity for detecting remote homologues across sparse sequence alignments",
         "Validated across benchmark structural databases with low computational footprint"
       ],
-      "verified": true
+      "verified": true,
+      "doi": "10.25258/ijddt.16.43s.31",
+      "certificateUrl": "/OP-7050_IJDDT_Certificate.pdf"
     },
     {
       "id": "cert-2",
-      "title": "CS50 Introduction to Artificial Intelligence with Python",
+      "title": "CS50's Introduction to Artificial Intelligence with Python",
       "subtitle": "Harvard University Verified Online Credential",
       "type": "Verified Professional Certification",
-      "issuer": "Harvard University (CS50)",
-      "date": "2024",
+      "issuer": "Harvard University (CS50 AI)",
+      "date": "2026",
       "abstract": "Rigorous coursework exploring the core concepts and algorithms underpinning modern artificial intelligence and machine learning in Python.",
       "link": "https://cs50.harvard.edu/certificates/110613e9-87d7-4464-9897-63780847a793",
       "keyInsights": [
