@@ -111,10 +111,21 @@ const CommandPalette = () => {
 
   useEffect(() => {
     const handleKeyDown = (e) => {
+      const activeTag = document.activeElement ? document.activeElement.tagName.toLowerCase() : "";
+      const isTyping = activeTag === "input" || activeTag === "textarea" || document.activeElement?.isContentEditable;
+
+      // Toggle with Ctrl+K or Cmd+K
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
         e.preventDefault();
         setIsOpen((prev) => !prev);
-      } else if (e.key === "Escape" && isOpen) {
+      } 
+      // Open with '/' when not typing in another input
+      else if (e.key === "/" && !isOpen && !isTyping) {
+        e.preventDefault();
+        setIsOpen(true);
+      } 
+      // Close with Escape
+      else if (e.key === "Escape" && isOpen) {
         setIsOpen(false);
       }
     };
