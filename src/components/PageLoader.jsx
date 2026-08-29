@@ -22,7 +22,7 @@ const PageLoader = () => {
         
         return next;
       });
-    }, 120);
+    }, 25);
 
     return () => clearInterval(interval);
   }, []);
@@ -54,7 +54,7 @@ const PageLoader = () => {
             <img
               src={logo}
               alt="Huzaifa Logo"
-              className="w-10 h-10 sm:w-12 sm:h-12 object-contain invert brightness-200"
+              width="48" height="48" className="w-10 h-10 sm:w-12 sm:h-12 object-contain invert brightness-200"
             />
           </motion.div>
         </div>
