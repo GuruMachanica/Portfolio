@@ -11,6 +11,7 @@ import SkeletonLoader from "./components/SkeletonLoader";
 import PageTransition from "./components/PageTransition";
 import CommandPalette from "./components/CommandPalette";
 import ScrollProgress from "./components/ScrollProgress";
+import ScrollToTop from "./components/ScrollToTop";
 import AmbientGlow from "./components/AmbientGlow";
 import TiltCard from "./components/TiltCard";
 import { FaBrain, FaCubes, FaFolderOpen, FaBriefcase, FaGraduationCap, FaCertificate, FaTrophy, FaPaperPlane, FaArrowRight, FaFilePdf } from "react-icons/fa";
@@ -217,6 +218,7 @@ const App = () => {
 
         <Navbar />
         <CommandPalette />
+        <ScrollToTop />
 
         <main className="flex-grow relative z-10">
           <AnimatedRoutes />
