@@ -128,21 +128,23 @@ const Navbar = () => {
               href="https://github.com/GuruMachanica"
               target="_blank"
               rel="noreferrer"
-              className="p-1.5 rounded-lg bg-white/5 text-zinc-300">
+              aria-label="GitHub Profile"
+              className="p-1.5 rounded-lg bg-white/5 text-zinc-300 hover:text-white">
               <FaGithub className="w-3.5 h-3.5" />
             </a>
             <a
               href="https://www.linkedin.com/in/mohammad--huzaifa/"
               target="_blank"
               rel="noreferrer"
-              className="p-1.5 rounded-lg bg-white/5 text-zinc-300">
+              aria-label="LinkedIn Profile"
+              className="p-1.5 rounded-lg bg-white/5 text-zinc-300 hover:text-white">
               <FaLinkedin className="w-3.5 h-3.5" />
             </a>
           </div>
 
           <button
             onClick={() => setToggle(!toggle)}
-            className="p-2 rounded-xl brutalist-panel text-white hover:border-white/40">
+            aria-label="Toggle Navigation Menu" className="p-2 rounded-xl brutalist-panel text-white hover:border-white/40">
             {toggle ? (
               <img src={close} alt="close" className="w-5 h-5 object-contain invert" />
             ) : (

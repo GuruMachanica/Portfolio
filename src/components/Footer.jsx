@@ -103,7 +103,7 @@ const Footer = () => {
         </div>
 
         {/* Super Short Bottom Line */}
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left text-[12px] font-mono text-zinc-500">
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left text-[12px] font-mono text-zinc-300">
           <div>
             © 2026 Mohammad Huzaifa
           </div>

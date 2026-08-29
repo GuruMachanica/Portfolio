@@ -1,0 +1,29 @@
+# Mohammad Huzaifa — Portfolio & System Architecture
+
+> Official machine-readable dossier of Mohammad Huzaifa (GuruMachanica), Agentic AI Engineer & Scalable Backend Architect.
+
+## Core Specializations
+- Autonomous Multi-Agent Swarms & Real-Time Orchestration
+- Zero-Knowledge Breach OSINT (K-Anonymity) & 3D Graph Neural Networks
+- Scalable High-Throughput Asynchronous APIs (FastAPI, Redis, Celery, Docker)
+- Computer Vision Edge Inference (YOLOv8, 17-Point Pose Estimation, WebRTC)
+- 3D Spatial Physics Simulations & WebGL Shaders (Three.js, CityGML)
+
+## Production Systems & Deployments
+- [AnveshakSutra](https://anveshak-sutra.vercel.app/): Zero-Knowledge Breach OSINT & 3D Graph ML (Repo: https://github.com/GuruMachanica/AnveshakSutra)
+- [Concept-3D](https://concept-3d.vercel.app/): Prompt-to-3D Spatial Latent Generator (Repo: https://github.com/GuruMachanica/Concept-3D)
+- [A.E.G.I.S.](https://aegis-anti-scam.netlify.app/): Real-Time Audio Edge Scam Defense (Repo: https://github.com/GuruMachanica/A.E.G.I.S.)
+- [SunMap](https://sunmapsolar.netlify.app/): 3D Spatial Solar Irradiance Engine (Repo: https://github.com/GuruMachanica/SunMap)
+- [KavachG](https://kavach-g.vercel.app/): Edge Industrial Safety Computer Vision by Team CodeGambit (Repo: https://github.com/GuruMachanica/KavachG)
+
+## Academic Research & Verified Publications
+- [IJDDT Published Research Paper](https://impactfactor.org/PDF/IJDDT/16/IJDDT,Vol16,Issue43s,Article31.pdf): In silico Exploration of Polyproline-II (PPII) Helices for Potential Mimicry of Type-II Collagen (DOI: 10.25258/ijddt.16.43s.31)
+- [Harvard University CS50 AI Verification](https://cs50.harvard.edu/certificates/110613e9-87d7-4464-9897-63780847a793): CS50 Introduction to Artificial Intelligence with Python
+- [GeeksforGeeks Python Mastery Verification](https://media.geeksforgeeks.org/courses/certificates/52efc3c0f0f7c6b889007279db05670d.pdf): 6-Week Intensive Python Programming
+
+## Professional Verification Channels
+- [Official Website](https://mohammad-huzaifa.me/)
+- [Master Technical Resume](https://mohammad-huzaifa.me/resume)
+- [Verified GitHub Profile](https://github.com/GuruMachanica)
+- [Verified LinkedIn Profile](https://linkedin.com/in/mohammad--huzaifa/)
+- [Contact Email](mailto:mdhuzaifa00786@gmail.com)
