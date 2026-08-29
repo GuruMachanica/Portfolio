@@ -24,7 +24,7 @@ const COMMANDS = {
   "linkedin": "Open verified LinkedIn profile (mohammad--huzaifa)",
   "email": "Initiate direct transmission to mdhuzaifa00786@gmail.com",
   "socials": "List all professional social channels and links",
-  "clear": "Reverse-erase terminal screen with CRT backspace sweep",
+  "clear": "Reverse word-by-word backspace purge of terminal screen",
   "exit": "Close Monolith System CLI terminal"
 };
 
@@ -42,7 +42,7 @@ const HUZAIFA_ASCII = `  ██╗  ██╗██╗   ██╗████�
   Systems: 5 Production Deployments (/projects)
   Status: Available for Engineering Roles`;
 
-// Typewriter message line renderer with moving pointer
+// Typewriter message line renderer with realistic deliberate pacing
 const TypewriterLine = ({ text, type, isStreaming, onComplete }) => {
   const [displayedText, setDisplayedText] = useState(isStreaming ? "" : text);
   const [isDone, setIsDone] = useState(!isStreaming);
@@ -58,10 +58,10 @@ const TypewriterLine = ({ text, type, isStreaming, onComplete }) => {
     setDisplayedText("");
     setIsDone(false);
 
-    // Fast, responsive streaming: type characters smoothly
-    const speed = text.length > 300 ? 4 : text.length > 100 ? 8 : 14;
+    // Realistic typewriter rhythm: visible character-by-character cadence
+    const speed = text.length > 400 ? 6 : text.length > 150 ? 12 : 20;
     const interval = setInterval(() => {
-      currentIndex += text.length > 400 ? 4 : text.length > 200 ? 2 : 1;
+      currentIndex += text.length > 500 ? 3 : text.length > 250 ? 2 : 1;
       if (currentIndex >= text.length) {
         setDisplayedText(text);
         setIsDone(true);
@@ -164,22 +164,50 @@ const CommandPalette = () => {
     }
   };
 
-  // Typewriter backspace purge on clear
-  const triggerReverseEraseClear = () => {
+  // Word-by-word backspacing erase on clear
+  const triggerReverseWordErase = () => {
+    if (history.length === 0) {
+      setHistory([
+        { id: Date.now(), type: "sys", text: "Huzaifa Monolith System CLI [Version 3.0.0-PROD] — Buffer Cleared", isStreaming: true }
+      ]);
+      return;
+    }
+
     setIsClearing(true);
-    let step = history.length;
-    const eraseInterval = setInterval(() => {
-      if (step > 0) {
-        step -= 1;
-        setHistory((prev) => prev.slice(0, step));
-      } else {
-        clearInterval(eraseInterval);
+
+    // Deep copy current history
+    let currentHistory = history.map((item) => ({ ...item, isStreaming: false }));
+
+    const stepInterval = setInterval(() => {
+      if (currentHistory.length === 0) {
+        clearInterval(stepInterval);
         setIsClearing(false);
         setHistory([
           { id: Date.now(), type: "sys", text: "Huzaifa Monolith System CLI [Version 3.0.0-PROD] — Buffer Cleared", isStreaming: true }
         ]);
+        return;
       }
-    }, 45);
+
+      // Look at the last item
+      const lastIndex = currentHistory.length - 1;
+      let lastText = currentHistory[lastIndex].text.trimEnd();
+
+      if (lastText.length === 0) {
+        // Pop empty line
+        currentHistory = currentHistory.slice(0, lastIndex);
+      } else {
+        // Find last space or newline to delete word-by-word
+        const lastSpaceIdx = Math.max(lastText.lastIndexOf(" "), lastText.lastIndexOf("\n"));
+        if (lastSpaceIdx > 0) {
+          currentHistory[lastIndex].text = lastText.slice(0, lastSpaceIdx);
+        } else {
+          // Only one word left on this line, clear the line
+          currentHistory = currentHistory.slice(0, lastIndex);
+        }
+      }
+
+      setHistory([...currentHistory]);
+    }, 40); // 40ms per word erase
   };
 
   const handleCommand = (cmdStr) => {
@@ -187,7 +215,7 @@ const CommandPalette = () => {
     if (!trimmed) return;
 
     if (trimmed === "clear" || trimmed === "cls") {
-      triggerReverseEraseClear();
+      triggerReverseWordErase();
       setInput("");
       return;
     }
@@ -244,7 +272,7 @@ LinkedIn: https://linkedin.com/in/mohammad--huzaifa/`,
           text: `[GITHUB] https://github.com/GuruMachanica\nOpening verified GitHub profile in new tab...`,
           isStreaming: true
         };
-        setTimeout(() => window.open("https://github.com/GuruMachanica", "_blank"), 400);
+        setTimeout(() => window.open("https://github.com/GuruMachanica", "_blank"), 500);
         break;
 
       case "linkedin":
@@ -254,7 +282,7 @@ LinkedIn: https://linkedin.com/in/mohammad--huzaifa/`,
           text: `[LINKEDIN] https://linkedin.com/in/mohammad--huzaifa/\nOpening verified LinkedIn profile in new tab...`,
           isStreaming: true
         };
-        setTimeout(() => window.open("https://linkedin.com/in/mohammad--huzaifa/", "_blank"), 400);
+        setTimeout(() => window.open("https://linkedin.com/in/mohammad--huzaifa/", "_blank"), 500);
         break;
 
       case "socials":
@@ -281,7 +309,7 @@ LinkedIn: https://linkedin.com/in/mohammad--huzaifa/`,
         };
         setTimeout(() => {
           window.location.href = "mailto:mdhuzaifa00786@gmail.com?subject=Engineering%20Inquiry%20-%20Mohammad%20Huzaifa";
-        }, 400);
+        }, 500);
         break;
 
       case "certifications":
@@ -302,7 +330,7 @@ Routing to /certifications interactive dossier viewer...`,
         setTimeout(() => {
           navigate("/certifications");
           setIsOpen(false);
-        }, 900);
+        }, 1100);
         break;
 
       case "experience":
@@ -323,7 +351,7 @@ Routing to /experience...`,
         setTimeout(() => {
           navigate("/experience");
           setIsOpen(false);
-        }, 900);
+        }, 1100);
         break;
 
       case "resume":
@@ -337,7 +365,7 @@ Routing to /experience...`,
         setTimeout(() => {
           navigate("/resume");
           setIsOpen(false);
-        }, 800);
+        }, 1000);
         break;
 
       case "projects":
@@ -356,7 +384,7 @@ Routing to /projects...`,
         setTimeout(() => {
           navigate("/projects");
           setIsOpen(false);
-        }, 1100);
+        }, 1200);
         break;
 
       case "anveshaksutra":
@@ -487,7 +515,7 @@ Routing to /projects...`,
                 </button>
               </div>
 
-              {/* Console Output Area with Typewriter & Backspace Purge */}
+              {/* Console Output Area with Paced Typewriter & Word-by-Word Backspace */}
               <div
                 ref={scrollRef}
                 className="p-4 flex-1 overflow-y-auto font-mono text-[13px] space-y-2 select-text min-h-[220px] max-h-[420px]">
@@ -502,7 +530,7 @@ Routing to /projects...`,
                 {isClearing && (
                   <div className="text-zinc-500 font-mono text-[12px] flex items-center gap-1">
                     <span className="w-2 h-4 bg-white animate-pulse" />
-                    <span>[REVERSE PURGE IN PROGRESS...]</span>
+                    <span>[PURGING BUFFER WORD-BY-WORD...]</span>
                   </div>
                 )}
               </div>
@@ -520,7 +548,7 @@ Routing to /projects...`,
                 ))}
               </div>
 
-              {/* Console Input Bar with Blinking Cursor */}
+              {/* Console Input Bar with Blinking Monospace Prompt Cursor */}
               <form
                 onSubmit={onSubmit}
                 className="p-3 bg-[#0d0d0d] border-t border-white/10 flex items-center gap-2">
