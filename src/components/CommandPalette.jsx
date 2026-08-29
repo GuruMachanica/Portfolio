@@ -42,8 +42,8 @@ const HUZAIFA_ASCII = `  ██╗  ██╗██╗   ██╗████�
   Systems: 5 Production Deployments (/projects)
   Status: Available for Engineering Roles`;
 
-// Typewriter message line renderer with realistic deliberate pacing
-const TypewriterLine = ({ text, type, isStreaming, onComplete }) => {
+// Typewriter message line renderer with realistic deliberate pacing and dynamic pointer tracking
+const TypewriterLine = ({ text, type, isStreaming, isClearingLast, onComplete }) => {
   const [displayedText, setDisplayedText] = useState(isStreaming ? "" : text);
   const [isDone, setIsDone] = useState(!isStreaming);
 
@@ -59,7 +59,7 @@ const TypewriterLine = ({ text, type, isStreaming, onComplete }) => {
     setIsDone(false);
 
     // Realistic typewriter rhythm: visible character-by-character cadence
-    const speed = text.length > 400 ? 6 : text.length > 150 ? 12 : 20;
+    const speed = text.length > 400 ? 8 : text.length > 150 ? 14 : 22;
     const interval = setInterval(() => {
       currentIndex += text.length > 500 ? 3 : text.length > 250 ? 2 : 1;
       if (currentIndex >= text.length) {
@@ -87,8 +87,8 @@ const TypewriterLine = ({ text, type, isStreaming, onComplete }) => {
           : "text-zinc-300 font-mono"
       }`}>
       {displayedText}
-      {!isDone && (
-        <span className="inline-block w-2 h-4 bg-white ml-0.5 animate-pulse align-middle" />
+      {(!isDone || isClearingLast) && (
+        <span className="inline-block w-2 h-4 bg-white ml-0.5 animate-pulse align-middle shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
       )}
     </div>
   );
@@ -207,7 +207,7 @@ const CommandPalette = () => {
       }
 
       setHistory([...currentHistory]);
-    }, 40); // 40ms per word erase
+    }, 32); // 32ms per word erase with pointer attached to tail
   };
 
   const handleCommand = (cmdStr) => {
@@ -519,20 +519,15 @@ Routing to /projects...`,
               <div
                 ref={scrollRef}
                 className="p-4 flex-1 overflow-y-auto font-mono text-[13px] space-y-2 select-text min-h-[220px] max-h-[420px]">
-                {history.map((h) => (
+                {history.map((h, idx) => (
                   <TypewriterLine
-                    key={h.id || h.text}
+                    key={h.id || idx}
                     text={h.text}
                     type={h.type}
                     isStreaming={h.isStreaming}
+                    isClearingLast={isClearing && idx === history.length - 1}
                   />
                 ))}
-                {isClearing && (
-                  <div className="text-zinc-500 font-mono text-[12px] flex items-center gap-1">
-                    <span className="w-2 h-4 bg-white animate-pulse" />
-                    <span>[PURGING BUFFER WORD-BY-WORD...]</span>
-                  </div>
-                )}
               </div>
 
               {/* Suggested Quick-Pill Command Chips */}
