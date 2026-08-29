@@ -129,6 +129,23 @@
         "Supervised Learning, Neural Networks, Convolutional Networks, NLP with Transformers"
       ],
       "verified": true
+    },
+    {
+      "id": "cert-3",
+      "title": "Python Programming - Self Paced (6-Week Intensive)",
+      "subtitle": "GeeksforGeeks Verified Course Completion Credential",
+      "type": "Verified Professional Certification",
+      "issuer": "GeeksforGeeks (GFG)",
+      "date": "Jul 2025",
+      "abstract": "Comprehensive 6-week intensive mastery of core & advanced Python programming, data structures, algorithms, functional paradigms, and modular software design under Mr. Sandeep Jain.",
+      "link": "https://media.geeksforgeeks.org/courses/certificates/52efc3c0f0f7c6b889007279db05670d.pdf",
+      "certificateUrl": "/gfg_python_certificate.pdf",
+      "keyInsights": [
+        "Object-Oriented Programming (OOP), Polymorphism, Inheritance & Custom Class Design",
+        "Advanced Data Structures: Hash Maps, Tuples, Sets, Memory-Efficient Generators & Iterators",
+        "Algorithmic Complexity, File Handling, Exception Pipelines & Modular Python Engineering"
+      ],
+      "verified": true
     }
   ],
   "achievements": [

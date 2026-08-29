@@ -41,6 +41,23 @@ const fallbackCerts = [
       "Supervised Learning, Deep Neural Networks, Convolutional Networks, NLP & Transformers"
     ],
     verified: true
+  },
+  {
+    id: "cert-3",
+    title: "Python Programming - Self Paced (6-Week Intensive)",
+    subtitle: "GeeksforGeeks Verified Course Completion Credential",
+    type: "Verified Professional Certification",
+    issuer: "GeeksforGeeks (GFG)",
+    date: "Jul 2025",
+    abstract: "Comprehensive 6-week intensive mastery of core & advanced Python programming, data structures, algorithms, functional paradigms, and modular software design under Mr. Sandeep Jain.",
+    link: "https://media.geeksforgeeks.org/courses/certificates/52efc3c0f0f7c6b889007279db05670d.pdf",
+    certificateUrl: "/gfg_python_certificate.pdf",
+    keyInsights: [
+      "Object-Oriented Programming (OOP), Polymorphism, Inheritance & Custom Class Design",
+      "Advanced Data Structures: Hash Maps, Tuples, Sets, Memory-Efficient Generators & Iterators",
+      "Algorithmic Complexity, File Handling, Exception Pipelines & Modular Python Engineering"
+    ],
+    verified: true
   }
 ];
 
@@ -173,7 +190,7 @@ const CertificationsPage = () => {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl brutalist-panel text-white font-mono font-bold text-[13px] hover:border-white/40 transition-colors">
                     <FaCertificate className="w-3.5 h-3.5" />
-                    <span>ACCEPTANCE CERTIFICATE (PDF)</span>
+                    <span>CERTIFICATE (PDF)</span>
                   </a>
                 )}
 
@@ -184,7 +201,7 @@ const CertificationsPage = () => {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-white text-black font-mono font-bold text-[13px] hover:bg-zinc-200 transition-colors shadow-md">
                     <FaExternalLinkAlt className="w-3.5 h-3.5" />
-                    <span>{item.type.includes("Publication") ? "READ PUBLISHED PAPER (PDF)" : "VERIFY HARVARD CERTIFICATE"}</span>
+                    <span>{item.type.includes("Publication") ? "READ PUBLISHED PAPER (PDF)" : "VERIFY CREDENTIAL"}</span>
                   </a>
                 )}
               </div>
