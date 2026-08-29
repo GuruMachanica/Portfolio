@@ -16,17 +16,39 @@ import AmbientGlow from "./components/AmbientGlow";
 import TiltCard from "./components/TiltCard";
 import { FaBrain, FaCubes, FaFolderOpen, FaBriefcase, FaGraduationCap, FaCertificate, FaTrophy, FaPaperPlane, FaArrowRight, FaFilePdf } from "react-icons/fa";
 import { animate, stagger } from "animejs";
+import { fetchPortfolioData } from "./services/dataService";
 
-// Lazy-loaded dedicated standalone pages
-const OverviewPage = lazy(() => import("./pages/OverviewPage"));
-const TechnologiesPage = lazy(() => import("./pages/TechnologiesPage"));
-const ProjectsPage = lazy(() => import("./pages/ProjectsPage"));
-const ExperiencePage = lazy(() => import("./pages/ExperiencePage"));
-const EducationPage = lazy(() => import("./pages/EducationPage"));
-const CertificationsPage = lazy(() => import("./pages/CertificationsPage"));
-const AchievementsPage = lazy(() => import("./pages/AchievementsPage"));
-const ContactPage = lazy(() => import("./pages/ContactPage"));
-const ResumePage = lazy(() => import("./pages/ResumePage"));
+// Dynamic route loaders with instant background preloading
+const pageImports = {
+  overview: () => import("./pages/OverviewPage"),
+  technologies: () => import("./pages/TechnologiesPage"),
+  projects: () => import("./pages/ProjectsPage"),
+  experience: () => import("./pages/ExperiencePage"),
+  education: () => import("./pages/EducationPage"),
+  certifications: () => import("./pages/CertificationsPage"),
+  achievements: () => import("./pages/AchievementsPage"),
+  contact: () => import("./pages/ContactPage"),
+  resume: () => import("./pages/ResumePage"),
+};
+
+const OverviewPage = lazy(pageImports.overview);
+const TechnologiesPage = lazy(pageImports.technologies);
+const ProjectsPage = lazy(pageImports.projects);
+const ExperiencePage = lazy(pageImports.experience);
+const EducationPage = lazy(pageImports.education);
+const CertificationsPage = lazy(pageImports.certifications);
+const AchievementsPage = lazy(pageImports.achievements);
+const ContactPage = lazy(pageImports.contact);
+const ResumePage = lazy(pageImports.resume);
+
+// Background prefetch all page bundles during idle time
+const preloadAllPages = () => {
+  Object.values(pageImports).forEach((importer) => {
+    try {
+      importer();
+    } catch (e) {}
+  });
+};
 
 const hubCards = [
   {
@@ -191,6 +213,18 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // Eagerly pre-cache AJAX data
+    fetchPortfolioData();
+
+    // Preload all chunk routes in background after initial render
+    if (typeof window !== "undefined") {
+      if ("requestIdleCallback" in window) {
+        window.requestIdleCallback(preloadAllPages);
+      } else {
+        setTimeout(preloadAllPages, 100);
+      }
+    }
+
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 700);

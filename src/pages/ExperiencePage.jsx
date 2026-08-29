@@ -41,10 +41,10 @@ const ExperiencePage = () => {
       try {
         animate(".exp-card", {
           opacity: [0, 1],
-          translateY: [25, 0],
-          delay: stagger(100, { start: 100 }),
+          translateY: [15, 0],
+          delay: stagger(30, { start: 20 }),
           ease: "outExpo",
-          duration: 700,
+          duration: 350,
         });
       } catch (e) {}
     });

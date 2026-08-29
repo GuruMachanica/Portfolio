@@ -5,6 +5,7 @@ import { close, menu, logo, logotext } from "../assets";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { animate, stagger } from "animejs";
+import { preloadRoute } from "../utils/routePreloader";
 
 const navItems = [
   { title: "Overview", path: "/overview" },
@@ -71,6 +72,8 @@ const Navbar = () => {
               <li key={item.path} className="navbar-element">
                 <Link
                   to={item.path}
+                  onMouseEnter={() => preloadRoute(item.path)}
+                  onTouchStart={() => preloadRoute(item.path)}
                   className={`text-[12px] font-mono font-bold tracking-[1.5px] uppercase py-1 px-1 transition-all duration-200 ${
                     isActive
                       ? "text-white border-b-2 border-white"
