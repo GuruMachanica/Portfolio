@@ -32,7 +32,7 @@ const fallbackCerts = [
     subtitle: "Harvard University Verified Credential (Twelve Projects Completed)",
     type: "Verified Professional Certification",
     issuer: "Harvard University (CS50 AI)",
-    date: "2026",
+    date: "Jul 2026",
     abstract: "Rigorous coursework exploring modern artificial intelligence, deep learning foundations, probabilistic inference, and machine learning in Python under Prof. David J. Malan.",
     link: "https://cs50.harvard.edu/certificates/110613e9-87d7-4464-9897-63780847a793",
     keyInsights: [
