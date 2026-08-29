@@ -30,7 +30,7 @@ const fallbackCerts = [
     subtitle: "Harvard University Verified Online Credential",
     type: "Verified Professional Certification",
     issuer: "Harvard University (CS50)",
-    date: "2024",
+    date: "2026",
     abstract: "Rigorous coursework exploring the core concepts and algorithms underpinning modern artificial intelligence and machine learning in Python.",
     link: "https://cs50.harvard.edu/certificates/110613e9-87d7-4464-9897-63780847a793",
     keyInsights: [
