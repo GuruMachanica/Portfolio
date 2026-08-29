@@ -158,7 +158,6 @@ const experiences = [
   {
     title: 'Backend Developer Intern',
     company_name: 'Sanfy Consultancy Services Pvt. Ltd. (Orvanto AI)',
-    icon: orvanto,
     iconBg: '#333333',
     date: 'Apr 2026 - Jul 2026',
     link: 'https://drive.google.com/file/d/100xwhMZa1ViRXZRXDTFmYDMBq3LtKmt4/view?usp=sharing',
