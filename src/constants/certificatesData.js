@@ -1,0 +1,122 @@
+export const credentialsData = [
+  {
+    id: "ijddt-paper",
+    title: "Physiochemical Pattern Fingerprinting (PPF)",
+    subtitle: "A Memory-Efficient Approach to Structurally-Sensitive Protein Homology Detection",
+    category: "Research Publication",
+    issuer: "International Journal of Drug Delivery Technology (IJDDT)",
+    date: "2026",
+    doi: "10.25258/ijddt.16.43s.31",
+    citation: "IJDDT, Vol 16, Issue 4s (Article 31)",
+    authors: "Rohit Mishra, Amit Kumar Tiwari, Isnia Izhar, Ashutosh Mishra, Ashutosh Suryavanshi, Mohammad Huzaifa",
+    totalPages: 14,
+    images: Array.from({ length: 14 }, (_, i) => `/certificates/ijddt_paper_p${i + 1}.png`),
+    pdfUrl: "/IJDDT_Vol16_Issue43s_Article31.pdf",
+    downloadName: "IJDDT_Physiochemical_Pattern_Fingerprinting_Paper.pdf",
+    officialVerifyUrl: "https://impactfactor.org/PDF/IJDDT/16/IJDDT,Vol16,Issue43s,Article31.pdf",
+    officialVerifyLabel: "VERIFY VIA JOURNAL REPOSITORY",
+    abstract: "Novel computational bioinformatics methodology leveraging physiochemical residue properties to construct memory-efficient fingerprint vectors for detecting structural protein homology with 4.8x reduced memory overhead compared to traditional MSA algorithms.",
+    keyInsights: [
+      "Engineered memory-efficient vectorization of complex protein structural residue patterns",
+      "High sensitivity for detecting remote homologues across sparse sequence alignments",
+      "Published and peer-reviewed in International Journal of Drug Delivery Technology (ISSN: 0975-4415)"
+    ],
+    verified: true
+  },
+  {
+    id: "ijddt-cert",
+    title: "IJDDT Publication Acceptance Certificate",
+    subtitle: "Official Certificate of Publication for Research Paper (OP-7050)",
+    category: "Acceptance Certificate",
+    issuer: "IJDDT Editorial Board",
+    date: "2026",
+    doi: "10.25258/ijddt.16.43s.31",
+    citation: "Certificate ID: OP-7050 (ISSN: 0975-4415)",
+    authors: "Awarded to Mohammad Huzaifa et al.",
+    totalPages: 1,
+    images: ["/certificates/ijddt_certificate.png"],
+    pdfUrl: "/OP-7050_IJDDT_Certificate.pdf",
+    downloadName: "OP-7050_IJDDT_Certificate.pdf",
+    officialVerifyUrl: "/OP-7050_IJDDT_Certificate.pdf",
+    officialVerifyLabel: "VIEW SIGNED CERTIFICATE (PDF)",
+    abstract: "Official certificate of publication awarded by the International Journal of Drug Delivery Technology confirming peer review and publication of the research paper.",
+    keyInsights: [
+      "Official verification certificate signed by the IJDDT Editorial Board",
+      "Peer-reviewed authentication under ISSN 0975-4415",
+      "Recognizes structural bioinformatics research contribution"
+    ],
+    verified: true
+  },
+  {
+    id: "harvard-cs50ai",
+    title: "CS50's Introduction to Artificial Intelligence with Python",
+    subtitle: "Harvard University Verified Online Credential (Twelve Projects Completed)",
+    category: "Harvard Credential",
+    issuer: "Harvard University (CS50 AI)",
+    date: "Jul 2026",
+    doi: "CS50 AI Verified Certificate",
+    citation: "Certificate ID: e2574044-8cb3-4882-9ae8-a4005b820986",
+    authors: "Earned by Mohammad Huzaifa (Taught by Prof. David J. Malan & Brian Yu)",
+    totalPages: 1,
+    images: ["/certificates/cs50_ai_certificate.png"],
+    pdfUrl: "/CS50AI_Certificate.pdf",
+    downloadName: "Harvard_CS50AI_Mohammad_Huzaifa.pdf",
+    officialVerifyUrl: "https://certificates.cs50.io/e2574044-8cb3-4882-9ae8-a4005b820986.pdf?size=letter",
+    officialVerifyLabel: "VERIFY ON HARVARD CS50 PORTAL",
+    abstract: "Rigorous certification covering foundational and modern AI principles: Search (Minimax, A*), Knowledge Engineering (Propositional Logic), Uncertainty (Bayesian Networks, HMMs), Optimization (Linear Programming), Neural Networks (TensorFlow/PyTorch), and NLP (Transformers).",
+    keyInsights: [
+      "Implemented Minimax with Alpha-Beta Pruning (Tic-Tac-Toe AI), Knowledge Inferences (Knights & Knaves, Minesweeper AI)",
+      "Built Bayesian Network Heredity Predictors, PageRank Markov Chain simulation, and Crossword CSP Solvers",
+      "Architected Convolutional Neural Networks (Traffic Sign CV), Sentence Parsing Trees, and Question-Answering Masked LLMs"
+    ],
+    verified: true
+  },
+  {
+    id: "gfg-python",
+    title: "Python Programming Foundation (Self-Paced)",
+    subtitle: "GeeksforGeeks Verified Certificate of Completion",
+    category: "Verified Credential",
+    issuer: "GeeksforGeeks (GFG)",
+    date: "Jul 2025",
+    doi: "GFG Course Certificate",
+    citation: "Course ID: Python Programming (Self Paced)",
+    authors: "Awarded to Mohammad Huzaifa",
+    totalPages: 1,
+    images: ["/certificates/gfg_python_certificate.png"],
+    pdfUrl: "/GFG_Python_Certificate.pdf",
+    downloadName: "GeeksforGeeks_Python_Mohammad_Huzaifa.pdf",
+    officialVerifyUrl: "https://media.geeksforgeeks.org/courses/certificates/1753170940/2ff7e42d765fa50c4bb21f37e408ecbb.pdf",
+    officialVerifyLabel: "VERIFY ON GEEKSFORGEEKS PORTAL",
+    abstract: "Comprehensive algorithmic and object-oriented mastery of Python: Data structures, generator pipelines, complexity analysis, dynamic typing mechanisms, and modular architecture.",
+    keyInsights: [
+      "Data structures & algorithms implementation in pure Python",
+      "Object-Oriented Programming (OOP) design patterns and memory optimization",
+      "Official certificate issued by GeeksforGeeks"
+    ],
+    verified: true
+  },
+  {
+    id: "sanfy-internship",
+    title: "Backend Developer Internship Certificate",
+    subtitle: "Sanfy Consultancy Services Pvt. Ltd. (Orvanto AI)",
+    category: "Industry Experience",
+    issuer: "Sanfy Consultancy Services Pvt. Ltd.",
+    date: "May 2026 - Jul 2026",
+    doi: "Industry Credential",
+    citation: "Authorized by Director & Engineering Lead",
+    authors: "Awarded to Mohammad Huzaifa for Backend Engineering Excellence",
+    totalPages: 1,
+    images: ["/certificates/sanfy_internship_certificate.png"],
+    pdfUrl: "/Sanfy_Internship_Certificate.pdf",
+    downloadName: "Sanfy_Backend_Internship_Mohammad_Huzaifa.pdf",
+    officialVerifyUrl: "/Sanfy_Internship_Certificate.pdf",
+    officialVerifyLabel: "VIEW SIGNED CERTIFICATE (PDF)",
+    abstract: "Demonstrated backend engineering excellence architecting asynchronous FastAPI microservices, containerized Docker services, and high-throughput database queries for Orvanto AI.",
+    keyInsights: [
+      "Engineered asynchronous backend microservices using FastAPI and Celery task queues",
+      "Streamlined MongoDB aggregations and MySQL schemas achieving sub-50ms query latencies",
+      "Collaborated in hybrid cross-functional sprints delivering production AI workflows"
+    ],
+    verified: true
+  }
+];
