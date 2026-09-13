@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import useModalA11y from "../hooks/useModalA11y";
 import { FaTerminal, FaTimes } from "react-icons/fa";
 import { COMMANDS, SUGGESTED_CHIPS } from "../constants/cliCommands";
 import TypewriterLine from "./cli/TypewriterLine";
@@ -19,7 +20,11 @@ const CommandPalette = () => {
 
   const inputRef = useRef(null);
   const scrollRef = useRef(null);
+  const clearIntervalRef = useRef(null);
   const navigate = useNavigate();
+
+  // Focus trap + Escape + focus restore + scroll lock (Escape handled by the hook)
+  const modalRef = useModalA11y(isOpen, () => setIsOpen(false));
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -32,8 +37,6 @@ const CommandPalette = () => {
       } else if (e.key === "/" && !isOpen && !isTyping) {
         e.preventDefault();
         setIsOpen(true);
-      } else if (e.key === "Escape" && isOpen) {
-        setIsOpen(false);
       }
     };
     window.addEventListener("keydown", handleKeyDown);
@@ -51,6 +54,13 @@ const CommandPalette = () => {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
   }, [history]);
+
+  // Ensure the erase animation interval never leaks (unmount / re-clear)
+  useEffect(() => {
+    return () => {
+      if (clearIntervalRef.current) clearInterval(clearIntervalRef.current);
+    };
+  }, []);
 
   const handleKeyDownInput = (e) => {
     if (e.key === "Tab") {
@@ -81,6 +91,12 @@ const CommandPalette = () => {
   };
 
   const triggerReverseWordErase = () => {
+    // A clear is already running — restart it cleanly instead of stacking intervals
+    if (clearIntervalRef.current) {
+      clearInterval(clearIntervalRef.current);
+      clearIntervalRef.current = null;
+    }
+
     if (history.length === 0) {
       setHistory([
         { id: Date.now(), type: "sys", text: "Huzaifa Monolith System CLI [Version 3.0.0-PROD] — Buffer Cleared", isStreaming: true }
@@ -91,9 +107,10 @@ const CommandPalette = () => {
     setIsClearing(true);
     let currentHistory = history.map((item) => ({ ...item, isStreaming: false }));
 
-    const stepInterval = setInterval(() => {
+    clearIntervalRef.current = setInterval(() => {
       if (currentHistory.length === 0) {
-        clearInterval(stepInterval);
+        clearInterval(clearIntervalRef.current);
+        clearIntervalRef.current = null;
         setIsClearing(false);
         setHistory([
           { id: Date.now(), type: "sys", text: "Huzaifa Monolith System CLI [Version 3.0.0-PROD] — Buffer Cleared", isStreaming: true }
@@ -163,7 +180,14 @@ const CommandPalette = () => {
 
       <AnimatePresence>
         {isOpen && (
-          <div className="fixed inset-0 z-[10000] flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md">
+          <div
+            ref={modalRef}
+            className="fixed inset-0 z-[10000] flex items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Interactive CLI terminal"
+            tabIndex={-1}
+          >
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -228,7 +252,7 @@ const CommandPalette = () => {
                     onKeyDown={handleKeyDownInput}
                     onChange={(e) => setInput(e.target.value)}
                     placeholder="type help, noirfetch, projects, resume... (Tab to autocomplete)"
-                    className="w-full bg-transparent text-white font-mono text-[13px] focus:outline-none placeholder:text-zinc-600"
+                    className="w-full bg-transparent text-white font-mono text-[13px] focus:outline-none placeholder:text-zinc-400"
                   />
                 </div>
                 <button

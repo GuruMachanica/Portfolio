@@ -1,53 +1,24 @@
 import PageTransition from "../components/PageTransition";
-import React, { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { FaArrowLeft, FaBriefcase, FaExternalLinkAlt, FaCheckCircle, FaCalendarAlt, FaMapMarkerAlt } from "react-icons/fa";
-import { fetchPortfolioData } from "../services/dataService";
+import { FaArrowLeft, FaExternalLinkAlt, FaCheckCircle, FaCalendarAlt, FaMapMarkerAlt } from "react-icons/fa";
+import { experiences } from "../constants/profile";
 import { animate, stagger } from "animejs";
 
-const fallbackExperiences = [
-  {
-    id: "exp-1",
-    role: "Backend Developer Intern",
-    company: "Sanfy Consultancy Services Pvt. Ltd. (Orvanto AI)",
-    period: "Apr 2026 - Jul 2026",
-    location: "Hybrid, India",
-    type: "Full-Time Internship",
-    summary: "Spearheaded backend architecture and machine learning data curation pipelines for intelligent automation products.",
-    highlights: [
-      "Designed and implemented high-throughput asynchronous REST & WebSocket APIs using FastAPI for real-time model inference.",
-      "Built automated data ingestion, validation, and feature curation pipelines for fine-tuning custom LLMs and computer vision models.",
-      "Optimized database query performance across MongoDB and MySQL, reducing latency for telemetry queries by 35%.",
-      "Collaborated with cross-functional engineering teams to containerize microservices using Docker and establish automated CI/CD workflows."
-    ],
-    skills: ["FastAPI", "Python", "Docker", "MongoDB", "MySQL", "WebSockets", "ML Pipelines", "Redis"],
-    certificateUrl: "https://drive.google.com/file/d/100xwhMZa1ViRXZRXDTFmYDMBq3LtKmt4/view?usp=sharing",
-    verified: true
-  }
-];
-
 const ExperiencePage = () => {
-  const [experiences, setExperiences] = useState(fallbackExperiences);
-  const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     window.scrollTo(0, 0);
-    // Asynchronous AJAX Data Fetching
-    fetchPortfolioData().then((data) => {
-      if (data && data.experiences) {
-        setExperiences(data.experiences);
-      }
-      setLoading(false);
-      try {
-        animate(".exp-card", {
-          opacity: [0, 1],
-          translateY: [15, 0],
-          delay: stagger(30, { start: 20 }),
-          ease: "outExpo",
-          duration: 350,
-        });
-      } catch (e) {}
-    });
+    try {
+      animate(".exp-card", {
+        opacity: [0, 1],
+        translateY: [15, 0],
+        delay: stagger(30, { start: 20 }),
+        ease: "outExpo",
+        duration: 350,
+      });
+    } catch (e) {
+    /* noop: non-critical failure */
+  }
   }, []);
 
   return (

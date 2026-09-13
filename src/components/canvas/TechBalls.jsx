@@ -2,7 +2,7 @@
  * TechBalls - High-performance WebGL 3D faceted tech spheres with pure black & white monochrome
  * symbol filtering, titanium chrome lighting, dynamic cursor parallax, and hover tooltips.
  */
-import React, { useEffect, useRef, useMemo } from "react";
+import { useEffect, useRef, useMemo } from "react";
 import * as THREE from "three";
 
 const TITANIUM_COLOR = "#1c1c1f";
@@ -147,24 +147,35 @@ export default function TechBalls({ items, onSelectTech }) {
 
       renderer.clear();
 
+      // Phase 1 — batch ALL layout reads first (single reflow),
+      // then Phase 2 performs writes + renders. Avoids layout thrash.
+      const visible = [];
       placeholderRefs.current.forEach((el, i) => {
         if (!el) return;
         const s = scenesRef.current[i];
         if (!s) return;
         const r = el.getBoundingClientRect();
-        const left = r.left - wrapRect.left;
-        const bottom = wrapRect.bottom - r.bottom;
         const w = r.width, h = r.height;
         if (w <= 0 || h <= 0) return;
+        visible.push({
+          s,
+          left: r.left - wrapRect.left,
+          bottom: wrapRect.bottom - r.bottom,
+          w,
+          h,
+        });
+      });
 
+      // Phase 2 — writes + renders (no layout reads after this point)
+      visible.forEach(({ s, left, bottom, w, h }, vi) => {
         // Smooth Floating Oscillation
-        const fy = Math.sin(t * 2.2 + i * 1.4) * 0.16;
+        const fy = Math.sin(t * 2.2 + vi * 1.4) * 0.16;
         s.mesh.position.y = fy;
         s.sprite.position.y = fy;
 
         // Parallax cursor tracking with smooth damping
-        const targetRotY = t * 0.6 + i * 0.4 + mousePos.current.x * 0.75;
-        const targetRotX = Math.sin(t * 0.4 + i) * 0.2 - mousePos.current.y * 0.45;
+        const targetRotY = t * 0.6 + vi * 0.4 + mousePos.current.x * 0.75;
+        const targetRotX = Math.sin(t * 0.4 + vi) * 0.2 - mousePos.current.y * 0.45;
 
         s.mesh.rotation.y += (targetRotY - s.mesh.rotation.y) * 0.08;
         s.mesh.rotation.x += (targetRotX - s.mesh.rotation.x) * 0.08;

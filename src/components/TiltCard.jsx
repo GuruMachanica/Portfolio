@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 
 const TiltCard = ({ children, className = "", maxTilt = 8 }) => {
   const cardRef = useRef(null);

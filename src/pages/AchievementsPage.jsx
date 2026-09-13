@@ -1,63 +1,24 @@
 import PageTransition from "../components/PageTransition";
-import React, { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { FaArrowLeft, FaTrophy, FaMedal, FaCalendarAlt, FaStar } from "react-icons/fa";
-import { fetchPortfolioData } from "../services/dataService";
+import { FaArrowLeft, FaTrophy } from "react-icons/fa";
+import { achievements } from "../constants/profile";
 import { animate, stagger } from "animejs";
 
-const fallbackAchievements = [
-  {
-    id: "ach-1",
-    title: "Prototype Development Sprint Qualifier",
-    event: "Sankalp 2026 - National Summit on Innovation & Skills",
-    organization: "Motilal Nehru National Institute of Technology (MNNIT) Prayagraj",
-    date: "2026",
-    category: "National Innovation Summit",
-    description: "Qualified for the competitive National Prototype Sprint by presenting an automated AI agent workflow solution for operational automation.",
-    tags: ["National Qualifier", "AI Prototyping", "MNNIT Prayagraj"]
-  },
-  {
-    id: "ach-2",
-    title: "Second Runner-Up (3rd Place)",
-    event: "UHACK 4.0 Hackathon",
-    organization: "United Group of Institutions",
-    date: "Jan 2026 - Feb 2026",
-    category: "Hackathon",
-    description: "Built and deployed A.E.G.I.S (Audio-based Edge Guard for Intelligent Scam-prevention), delivering sub-second real-time streaming detection.",
-    tags: ["2nd Runner-Up", "FastAPI", "WebSockets", "Audio Security"]
-  },
-  {
-    id: "ach-3",
-    title: "Second Runner-Up (3rd Place)",
-    event: "CodeStorm 2025 Hackathon",
-    organization: "Shambhunath Group of Institutions",
-    date: "Oct 2025",
-    category: "Hackathon",
-    description: "Engineered SunMap for 3D Spatial Solar Intelligence, parsing CityGML LOD2 geometries with real-time WebGL shadow occlusion and Perez transposition physics.",
-    tags: ["2nd Runner-Up", "PyTorch", "Spatial 3D", "Predictive Analytics"]
-  }
-];
-
 const AchievementsPage = () => {
-  const [achievements, setAchievements] = useState(fallbackAchievements);
-
   useEffect(() => {
     window.scrollTo(0, 0);
-    // Asynchronous AJAX Data Fetching
-    fetchPortfolioData().then((data) => {
-      if (data && data.achievements) {
-        setAchievements(data.achievements);
-      }
-      try {
-        animate(".ach-card", {
-          opacity: [0, 1],
-          translateY: [15, 0],
-          delay: stagger(30, { start: 20 }),
-          ease: "outExpo",
-          duration: 350,
-        });
-      } catch (e) {}
-    });
+    try {
+      animate(".ach-card", {
+        opacity: [0, 1],
+        translateY: [15, 0],
+        delay: stagger(30, { start: 20 }),
+        ease: "outExpo",
+        duration: 350,
+      });
+    } catch (e) {
+      /* noop: non-critical failure */
+    }
   }, []);
 
   return (

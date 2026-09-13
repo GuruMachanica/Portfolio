@@ -1,5 +1,5 @@
 import PageTransition from "../components/PageTransition";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Contact } from "../components";
 import { FaArrowLeft } from "react-icons/fa";

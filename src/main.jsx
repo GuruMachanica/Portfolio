@@ -17,7 +17,9 @@ const preloadFont = (href) => {
 
 try {
   preloadFont(new URL("./fonts/mova.otf", import.meta.url).href);
-} catch (e) {}
+} catch (e) {
+    /* noop: non-critical failure */
+  }
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

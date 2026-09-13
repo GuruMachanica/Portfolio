@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import React, { useEffect, useRef } from "react";
-import { styles } from "../styles";
+import { useEffect, useRef } from "react";
 import { worldmap } from "../assets";
 import { FaGithub, FaFileDownload, FaArrowRight } from "react-icons/fa";
 import { createTimeline, stagger } from "animejs";

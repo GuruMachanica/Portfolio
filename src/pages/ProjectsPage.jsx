@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { projects } from "../constants";
 import PageTransition from "../components/PageTransition";
@@ -25,7 +25,9 @@ const ProjectsPage = () => {
         ease: "outExpo",
         duration: 350,
       });
-    } catch (e) {}
+    } catch (e) {
+    /* noop: non-critical failure */
+  }
   }, []);
 
   const allTags = ["all", ...new Set(projects.flatMap((p) => p.tags.map((t) => t.name)))];

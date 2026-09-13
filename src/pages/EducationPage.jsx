@@ -1,80 +1,24 @@
 import PageTransition from "../components/PageTransition";
-import React, { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { FaArrowLeft, FaGraduationCap, FaAward, FaBook, FaCalendarAlt } from "react-icons/fa";
-import { fetchPortfolioData } from "../services/dataService";
+import { FaArrowLeft, FaAward, FaCalendarAlt } from "react-icons/fa";
+import { educations } from "../constants/profile";
 import { animate, stagger } from "animejs";
 
-const fallbackEducations = [
-  {
-    id: "edu-1",
-    degree: "Bachelor of Technology (B.Tech)",
-    field: "Computer Science & Engineering",
-    institution: "United Institute of Technology, Prayagraj",
-    period: "2023 - 2027 (Ongoing)",
-    score: "7.47 CGPA",
-    status: "In Progress",
-    description: "Focusing on artificial intelligence, systems engineering, distributed computing, and advanced data structures.",
-    coursework: [
-      "Data Structures & Algorithms",
-      "Operating Systems & Systems Programming",
-      "Database Management Systems (DBMS)",
-      "Machine Learning & Neural Networks",
-      "Computer Networks & Security",
-      "Theory of Computation & Compiler Design"
-    ],
-    highlights: [
-      "Active member of Technical Societies & AI Innovation Clubs",
-      "Led multiple university hackathon development teams",
-      "Published peer-reviewed research during undergraduate studies"
-    ]
-  },
-  {
-    id: "edu-2",
-    degree: "Senior Secondary (Class XII - Intermediate)",
-    field: "Science Stream (Physics, Chemistry, Mathematics & CS)",
-    institution: "Allahabad Public School, Prayagraj",
-    period: "2021 - 2022",
-    score: "85.8%",
-    status: "Completed",
-    description: "Core science education with foundation in advanced mathematics and computer science fundamentals.",
-    coursework: ["Physics", "Chemistry", "Mathematics", "Computer Science", "English"],
-    highlights: ["Distinction in Mathematics and Computer Science"]
-  },
-  {
-    id: "edu-3",
-    degree: "Secondary School (Class X - Matriculation)",
-    field: "General Science & Mathematics",
-    institution: "Allahabad Public School, Prayagraj",
-    period: "2019 - 2020",
-    score: "88.3%",
-    status: "Completed",
-    description: "Comprehensive foundational secondary education.",
-    coursework: ["Mathematics", "Science", "Social Science", "English", "Hindi"],
-    highlights: ["Top percentile in Mathematics and Science subjects"]
-  }
-];
-
 const EducationPage = () => {
-  const [educations, setEducations] = useState(fallbackEducations);
-
   useEffect(() => {
     window.scrollTo(0, 0);
-    // Asynchronous AJAX Data Fetching
-    fetchPortfolioData().then((data) => {
-      if (data && data.educations) {
-        setEducations(data.educations);
-      }
-      try {
-        animate(".edu-card", {
-          opacity: [0, 1],
-          translateY: [15, 0],
-          delay: stagger(30, { start: 20 }),
-          ease: "outExpo",
-          duration: 350,
-        });
-      } catch (e) {}
-    });
+    try {
+      animate(".edu-card", {
+        opacity: [0, 1],
+        translateY: [15, 0],
+        delay: stagger(30, { start: 20 }),
+        ease: "outExpo",
+        duration: 350,
+      });
+    } catch (e) {
+    /* noop: non-critical failure */
+  }
   }, []);
 
   return (

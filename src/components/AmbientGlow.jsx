@@ -1,17 +1,39 @@
-import React, { useState, useEffect } from "react";
+import { useEffect, useRef } from "react";
 
+/**
+ * AmbientGlow - cursor-following radial glow.
+ * Writes directly to the DOM node via refs (no per-move React re-render),
+ * and throttles work to animation frames for smooth, cheap tracking.
+ */
 const AmbientGlow = () => {
-  const [pos, setPos] = useState({ x: -1000, y: -1000 });
-  const [opacity, setOpacity] = useState(0);
+  const glowRef = useRef(null);
+  const pos = useRef({ x: -1000, y: -1000 });
+  const rafId = useRef(null);
+  const framePending = useRef(false);
 
   useEffect(() => {
+    const paint = () => {
+      framePending.current = false;
+      const el = glowRef.current;
+      if (!el) return;
+      el.style.opacity = "1";
+      el.style.background = `radial-gradient(600px circle at ${pos.current.x}px ${pos.current.y}px, rgba(255, 255, 255, 0.055), transparent 75%)`;
+    };
+
+    const schedulePaint = () => {
+      if (framePending.current) return;
+      framePending.current = true;
+      rafId.current = requestAnimationFrame(paint);
+    };
+
     const handleMouseMove = (e) => {
-      setPos({ x: e.clientX, y: e.clientY });
-      setOpacity(1);
+      pos.current = { x: e.clientX, y: e.clientY };
+      schedulePaint();
     };
 
     const handleMouseLeave = () => {
-      setOpacity(0);
+      const el = glowRef.current;
+      if (el) el.style.opacity = "0";
     };
 
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
@@ -20,17 +42,16 @@ const AmbientGlow = () => {
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseleave", handleMouseLeave);
+      if (rafId.current) cancelAnimationFrame(rafId.current);
     };
   }, []);
 
   return (
     <div
+      ref={glowRef}
       aria-hidden="true"
       className="fixed inset-0 pointer-events-none z-[999] transition-opacity duration-300 mix-blend-screen"
-      style={{
-        opacity,
-        background: `radial-gradient(600px circle at ${pos.x}px ${pos.y}px, rgba(255, 255, 255, 0.055), transparent 75%)`
-      }}
+      style={{ opacity: 0 }}
     />
   );
 };

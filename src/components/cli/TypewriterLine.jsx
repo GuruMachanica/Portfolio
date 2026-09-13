@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const TypewriterLine = ({ text, type, isStreaming, isClearingLast, onComplete }) => {
   const [displayedText, setDisplayedText] = useState(isStreaming ? "" : text);
   const [isDone, setIsDone] = useState(!isStreaming);
+  // Keep the latest callback in a ref so the typing interval doesn't restart
+  // (or trigger the exhaustive-deps warning) when the parent re-renders.
+  const onCompleteRef = useRef(onComplete);
+  onCompleteRef.current = onComplete;
 
   useEffect(() => {
     if (!isStreaming) {
@@ -23,7 +27,7 @@ const TypewriterLine = ({ text, type, isStreaming, isClearingLast, onComplete })
         setDisplayedText(text);
         setIsDone(true);
         clearInterval(interval);
-        if (onComplete) onComplete();
+        if (onCompleteRef.current) onCompleteRef.current();
       } else {
         setDisplayedText(text.slice(0, currentIndex));
       }

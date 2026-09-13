@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaTimes, FaExternalLinkAlt, FaSyncAlt, FaCube, FaShieldAlt, FaSun, FaLock, FaExpand, FaCompress, FaGlobe, FaCheckCircle } from "react-icons/fa";
-import KavachGDemo from "./KavachGDemo";
+import useModalA11y from "../../hooks/useModalA11y";
+import { FaTimes, FaExternalLinkAlt, FaSyncAlt, FaCube, FaShieldAlt, FaSun, FaLock, FaExpand, FaCompress, FaGlobe } from "react-icons/fa";
 
 const DEPLOYED_WEBSITES = {
   anveshaksutra: {
@@ -63,33 +64,34 @@ const LiveWebsiteModal = ({ isOpen, onClose, initialSite = "anveshaksutra" }) =>
     }
   }, [initialSite, isOpen]);
 
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === "Escape") onClose();
-    };
-    if (isOpen) {
-      window.addEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "hidden";
-    }
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "unset";
-    };
-  }, [isOpen, onClose]);
+  // Focus trap + Escape + focus restore + scroll lock (see hook)
+  const modalRef = useModalA11y(isOpen, onClose);
 
   if (!isOpen) return null;
 
   const activeSite = DEPLOYED_WEBSITES[activeSiteKey] || DEPLOYED_WEBSITES.anveshaksutra;
-  const Icon = activeSite.icon || FaGlobe;
 
   const handleRefresh = () => {
     setLoading(true);
     setReloadKey((prev) => prev + 1);
   };
 
-  return (
+  // Portal to <body> so the modal escapes every ancestor stacking context
+  // (e.g. transformed page-transition wrappers, main[z-10]) and always paints
+  // as the absolute top layer — above navbar, footer, CLI and scroll bar.
+  return createPortal(
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 bg-black/85 backdrop-blur-md">
+      <div
+        ref={modalRef}
+        className="fixed inset-0 z-[100000] flex items-center justify-center p-2 sm:p-4 md:p-6 bg-black/85 backdrop-blur-md"
+        role="dialog"
+        aria-modal="true"
+        aria-label={`${activeSite.name} live preview`}
+        tabIndex={-1}
+        onClick={(e) => {
+          if (e.target === e.currentTarget) onClose();
+        }}
+      >
         
         {/* Modal Container */}
         <motion.div
@@ -203,14 +205,14 @@ const LiveWebsiteModal = ({ isOpen, onClose, initialSite = "anveshaksutra" }) =>
               </div>
             )}
 
-            {/* If KavachG or any site has active browser policy restrictions */}
+            {/* Minimal permission set — embedded third-party sites get no camera/mic/geolocation */}
             <iframe
               key={reloadKey + activeSite.id}
               src={activeSite.url}
               title={activeSite.name}
               onLoad={() => setLoading(false)}
               className="w-full h-full border-0 bg-white"
-              allow="camera; microphone; geolocation; fullscreen; accelerometer; autoplay"
+              allow="fullscreen; autoplay"
             />
 
             {/* Quick Floating Tab Launcher */}
@@ -227,7 +229,8 @@ const LiveWebsiteModal = ({ isOpen, onClose, initialSite = "anveshaksutra" }) =>
           </div>
         </motion.div>
       </div>
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 };
 

@@ -1,5 +1,5 @@
-import React, { useEffect, useState, lazy, Suspense } from "react";
-import { AnimatePresence } from "framer-motion";
+import { useEffect, useState, lazy, Suspense } from "react";
+import { AnimatePresence, MotionConfig } from "framer-motion";
 import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-dom";
 import {
   Hero,
@@ -16,7 +16,7 @@ import AmbientGlow from "./components/AmbientGlow";
 import TiltCard from "./components/TiltCard";
 import { FaBrain, FaCubes, FaFolderOpen, FaBriefcase, FaGraduationCap, FaCertificate, FaTrophy, FaPaperPlane, FaArrowRight, FaFilePdf } from "react-icons/fa";
 import { animate, stagger } from "animejs";
-import { fetchPortfolioData } from "./services/dataService";
+import { preloadRoute } from "./utils/routePreloader";
 
 // Dynamic route loaders with instant background preloading
 const pageImports = {
@@ -40,15 +40,6 @@ const CertificationsPage = lazy(pageImports.certifications);
 const AchievementsPage = lazy(pageImports.achievements);
 const ContactPage = lazy(pageImports.contact);
 const ResumePage = lazy(pageImports.resume);
-
-// Background prefetch all page bundles during idle time
-const preloadAllPages = () => {
-  Object.values(pageImports).forEach((importer) => {
-    try {
-      importer();
-    } catch (e) {}
-  });
-};
 
 const hubCards = [
   {
@@ -104,7 +95,7 @@ const hubCards = [
     title: "Contact",
     path: "/contact",
     icon: FaPaperPlane,
-    desc: "Direct communication channels, copy-to-clipboard email & phone, and message form.",
+    desc: "Direct communication channels, copy-to-clipboard email, and message form.",
     tag: "CONNECT",
   },
   {
@@ -126,7 +117,9 @@ const HomePage = () => {
         ease: "outExpo",
         duration: 600,
       });
-    } catch (e) {}
+    } catch (e) {
+    /* noop: non-critical failure */
+  }
   }, []);
 
   return (
@@ -151,7 +144,12 @@ const HomePage = () => {
           {hubCards.map((card) => {
             const Icon = card.icon;
             return (
-              <Link key={card.path} to={card.path} className="hub-card opacity-100 group">
+              <Link
+                key={card.path}
+                to={card.path}
+                onMouseEnter={() => preloadRoute(card.path)}
+                onTouchStart={() => preloadRoute(card.path)}
+                className="hub-card opacity-100 group">
                 <TiltCard className="brutalist-panel rounded-3xl p-6 border border-white/10 group-hover:border-white/40 flex flex-col justify-between h-full transition-all duration-300">
                   <div>
                     <div className="flex items-center justify-between mb-5">
@@ -213,18 +211,6 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Eagerly pre-cache AJAX data
-    fetchPortfolioData();
-
-    // Preload all chunk routes in background after initial render
-    if (typeof window !== "undefined") {
-      if ("requestIdleCallback" in window) {
-        window.requestIdleCallback(preloadAllPages);
-      } else {
-        setTimeout(preloadAllPages, 100);
-      }
-    }
-
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 700);
@@ -241,28 +227,28 @@ const App = () => {
   }, [isLoading]);
 
   return (
-    <BrowserRouter>
-      <div className="relative z-0 bg-[#000000] text-[#ffffff] min-h-screen overflow-x-hidden flex flex-col justify-between">
-        <ScrollProgress />
-        <AmbientGlow />
+    <MotionConfig reducedMotion="user">
+      <BrowserRouter>
+        <div className="relative z-0 bg-[#000000] text-[#ffffff] min-h-screen overflow-x-hidden flex flex-col justify-between">
+          <ScrollProgress />
+          <AmbientGlow />
 
-        <AnimatePresence mode="wait">
-          {isLoading && <PageLoader />}
-        </AnimatePresence>
+          <AnimatePresence mode="wait">
+            {isLoading && <PageLoader />}
+          </AnimatePresence>
 
-        <Navbar />
-        <CommandPalette />
-        <ScrollToTop />
+          <Navbar />
+          <CommandPalette />
+          <ScrollToTop />
 
-        <main className="flex-grow relative z-10">
-          <AnimatedRoutes />
-        </main>
+          <main className="flex-grow relative z-10">
+            <AnimatedRoutes />
+          </main>
 
-        <Footer />
-      </div>
-
-      
-    </BrowserRouter>
+          <Footer />
+        </div>
+      </BrowserRouter>
+    </MotionConfig>
   );
 };
 

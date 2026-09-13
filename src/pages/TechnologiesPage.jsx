@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { TechBalls } from "../components/canvas";
 import { technologyGroups } from "../constants";
@@ -20,7 +20,9 @@ const TechnologiesPage = () => {
         ease: "outExpo",
         duration: 700,
       });
-    } catch (e) {}
+    } catch (e) {
+    /* noop: non-critical failure */
+  }
   }, [activeCategory]);
 
   const filteredGroups = activeCategory === "ALL"

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PageTransition from "../components/PageTransition";
 import DocumentViewer from "../components/certifications/DocumentViewer";
@@ -33,7 +33,9 @@ const CertificationsPage = () => {
         ease: "outExpo",
         duration: 600,
       }, "-=300");
-    } catch (e) {}
+    } catch (e) {
+    /* noop: non-critical failure */
+  }
   }, []);
 
   const getTabIcon = (id) => {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PageTransition from "../components/PageTransition";
 import TiltCard from "../components/TiltCard";
@@ -15,8 +15,7 @@ import {
   FaCopy,
   FaCode, 
   FaGraduationCap, 
-  FaTrophy,
-  FaLayerGroup
+  FaTrophy
 } from "react-icons/fa";
 import { createTimeline, stagger } from "animejs";
 
@@ -85,7 +84,7 @@ const ResumePage = () => {
               <span>Technical Resume</span>
             </h1>
             <p className="text-zinc-400 text-sm font-poppins">
-              Verified 1-Page Master Resume • Agentic AI, Backend Architecture &amp; Distributed Systems
+              Verified 1-Page Master Resume • Agentic AI, Backend Architecture &amp; Distributed Systems{' '}
             </p>
           </div>
 
@@ -175,7 +174,7 @@ const ResumePage = () => {
               </div>
               <div>
                 <span className="text-[10px] font-mono uppercase text-zinc-400 font-bold block">Key Honors</span>
-                <span className="text-xs font-semibold text-white">UHACK 4.0 &amp; CodeStorm'25 Winner</span>
+                <span className="text-xs font-semibold text-white">UHACK 4.0 &amp; CodeStorm&apos;25 Winner</span>
               </div>
             </TiltCard>
           </div>
@@ -215,15 +214,25 @@ const ResumePage = () => {
           </div>
 
           {/* PDF Display Frame with responsive container */}
-          <div className="w-full flex justify-center overflow-auto bg-[#141414] rounded-2xl p-2 sm:p-4 border border-white/5 min-h-[600px] sm:min-h-[850px] lg:min-h-[1100px]">
-            <div 
-              className="w-full max-w-4xl transition-transform duration-200 origin-top h-full"
-              style={{ transform: `scale(${zoomLevel / 100})` }}>
-              <iframe
-                src={`${pdfUrl}#toolbar=0&navpanes=0&scrollbar=1`}
-                title="Mohammad Huzaifa Resume"
-                className="w-full h-[600px] sm:h-[850px] lg:h-[1100px] rounded-xl border border-white/10 shadow-2xl bg-white"
-              />
+          <div className="w-full flex justify-start overflow-auto bg-[#141414] rounded-2xl p-2 sm:p-4 border border-white/5 min-h-[600px] sm:min-h-[850px] lg:min-h-[1100px]">
+            {/* Wrapper grows with the scale so zoomed content scrolls instead of clipping */}
+            <div
+              className="mx-auto"
+              style={{
+                width: `${zoomLevel}%`,
+              }}>
+              <div
+                style={{
+                  transform: `scale(${zoomLevel / 100})`,
+                  transformOrigin: "top left",
+                  width: `${10000 / zoomLevel}%`,
+                }}>
+                <iframe
+                  src={`${pdfUrl}#toolbar=0&navpanes=0&scrollbar=1`}
+                  title="Mohammad Huzaifa Resume"
+                  className="w-full h-[600px] sm:h-[850px] lg:h-[1100px] rounded-xl border border-white/10 shadow-2xl bg-white"
+                />
+              </div>
             </div>
           </div>
         </div>

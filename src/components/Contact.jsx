@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { styles } from "../styles";
@@ -13,26 +13,20 @@ const CONTACT_TO_EMAIL =
   import.meta.env.VITE_CONTACT_TO_EMAIL || "mdhuzaifa00786@gmail.com";
 
 const Contact = () => {
-  const formRef = useRef();
   const [form, setForm] = useState({
     name: "",
     email: "",
     message: "",
   });
+  // Anti-spam honeypot: hidden field that only bots fill in
+  const [honeypot, setHoneypot] = useState("");
   const [loading, setLoading] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
-  const [copiedPhone, setCopiedPhone] = useState(false);
 
   const copyEmail = () => {
     navigator.clipboard.writeText("mdhuzaifa00786@gmail.com");
     setCopiedEmail(true);
     setTimeout(() => setCopiedEmail(false), 2000);
-  };
-
-  const copyPhone = () => {
-    navigator.clipboard.writeText("+916391028860");
-    setCopiedPhone(true);
-    setTimeout(() => setCopiedPhone(false), 2000);
   };
 
   const handleChange = (e) => {
@@ -43,6 +37,9 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // Silently drop bot submissions (honeypot filled)
+    if (honeypot) return;
+
     if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
       alert("Contact form is not configured yet. Add EmailJS keys in your .env file.");
       return;
@@ -51,15 +48,15 @@ const Contact = () => {
     setLoading(true);
 
     const templateParams = {
-      name: form.name,
-      email: form.email,
-      message: form.message,
+      name: form.name.slice(0, 100),
+      email: form.email.slice(0, 254),
+      message: form.message.slice(0, 5000),
       time: new Date().toLocaleString(),
-      from_name: form.name,
-      from_email: form.email,
+      from_name: form.name.slice(0, 100),
+      from_email: form.email.slice(0, 254),
       to_name: "Mohammad Huzaifa",
       to_email: CONTACT_TO_EMAIL,
-      reply_to: form.email,
+      reply_to: form.email.slice(0, 254),
     };
 
     emailjs
@@ -122,23 +119,6 @@ const Contact = () => {
               </button>
             </div>
 
-            {/* Phone Action */}
-            <div
-              onClick={copyPhone}
-              className="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white/[0.03] border border-white/10 hover:border-white/40 transition-all duration-200 cursor-pointer flex items-center justify-between group mb-3">
-              <div>
-                <span className="text-[10px] font-mono font-bold text-zinc-400 uppercase tracking-widest block">
-                  PHONE / WHATSAPP
-                </span>
-                <span className="text-white text-[13px] sm:text-[14px] font-mono font-bold mt-0.5 block">
-                  +91 6391028860
-                </span>
-              </div>
-              <button className="w-8 h-8 rounded-lg bg-white/10 shrink-0 flex items-center justify-center text-zinc-300 group-hover:text-white transition-colors">
-                {copiedPhone ? <FaCheck className="w-3.5 h-3.5 text-white" /> : <FaCopy className="w-3.5 h-3.5" />}
-              </button>
-            </div>
-
             {/* Location */}
             <div className="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-white/[0.03] border border-white/10">
               <span className="text-[10px] font-mono font-bold text-zinc-400 uppercase tracking-widest block">
@@ -157,10 +137,23 @@ const Contact = () => {
           className="lg:col-span-7 brutalist-panel rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-white/10">
           
           <form
-            ref={formRef}
             onSubmit={handleSubmit}
             className="flex flex-col gap-4 sm:gap-5 font-poppins">
-            
+
+            {/* Honeypot field — visually hidden, ignored by humans, filled by bots */}
+            <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", height: 0, overflow: "hidden" }}>
+              <label htmlFor="company_website">Company website</label>
+              <input
+                type="text"
+                id="company_website"
+                name="company_website"
+                tabIndex={-1}
+                autoComplete="off"
+                value={honeypot}
+                onChange={(e) => setHoneypot(e.target.value)}
+              />
+            </div>
+
             <div>
               <label className="text-white text-[12px] sm:text-[13px] font-mono font-bold block mb-1.5 sm:mb-2">
                 YOUR NAME

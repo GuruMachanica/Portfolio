@@ -1,4 +1,3 @@
-import React from "react";
 import TiltCard from "../TiltCard";
 import LiveProjectThumbnail from "../LiveProjectThumbnail";
 import { FaGithub, FaGlobe, FaProjectDiagram } from "react-icons/fa";

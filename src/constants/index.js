@@ -24,36 +24,6 @@ import {
   kavachg,
 } from '../assets';
 
-export const navLinks = [
-  {
-    id: 'about',
-    title: 'About',
-  },
-  {
-    id: 'projects',
-    title: 'Projects',
-  },
-  {
-    id: 'contact',
-    title: 'Contact',
-  },
-];
-
-const services = [
-  {
-    title: 'Agentic AI Engineer',
-  },
-  {
-    title: 'Backend Developer',
-  },
-  {
-    title: 'UI/UX Designer',
-  },
-  {
-    title: 'Data Engineer',
-  },
-];
-
 const technologyGroups = [
   {
     title: 'Programming Languages',
@@ -151,67 +121,6 @@ const technologyGroups = [
         icon: threejs,
       },
     ],
-  },
-];
-
-const experiences = [
-  {
-    title: 'Backend Developer Intern',
-    company_name: 'Sanfy Consultancy Services Pvt. Ltd. (Orvanto AI)',
-    iconBg: '#333333',
-    date: 'Apr 2026 - Jul 2026',
-    link: 'https://drive.google.com/file/d/100xwhMZa1ViRXZRXDTFmYDMBq3LtKmt4/view?usp=sharing',
-  },
-];
-
-const educations = [
-  {
-    title: 'High School & Intermediate',
-    company_name: 'Allahabad Public School, Prayagraj | 88.3% & 85.8%',
-    iconBg: '#333333',
-    date: '2020 - 2022',
-  },
-  {
-    title: 'B.Tech in Computer Science & Engineering',
-    company_name: 'United Institute of Technology, Prayagraj | 7.47 CGPA',
-    iconBg: '#333333',
-    date: '2023 - 2027',
-  },
-];
-
-const achievements = [
-  {
-    title: 'Prototype Development Sprint Qualifier',
-    company_name: 'Sankalp 2026 – National Summit on Innovation & Skills (Organized by MNNIT Prayagraj)',
-    iconBg: '#333333',
-    date: '2026',
-  },
-  {
-    title: 'Second Runner-Up, UHACK 4.0 Hackathon',
-    company_name: 'United Group of Institutions (A.E.G.I.S Scam Detection)',
-    iconBg: '#333333',
-    date: 'Jan 2026 - Feb 2026',
-  },
-  {
-    title: 'Second Runner-Up, CodeStorm\'25 Hackathon',
-    company_name: 'Shambhunath Group of Institutions (SunMap)',
-    iconBg: '#333333',
-    date: 'Oct 2025',
-  },
-];
-
-const certifications = [
-  {
-    title: 'publication: Physiochemical Pattern Fingerprinting (PPF)',
-    description:
-      'Physiochemical Pattern Fingerprinting (PPF): A Memory-Efficient Approach to Structurally-Sensitive Protein Homology Detection. Co-authored by Rohit Mishra et al. (including Mohammad Huzaifa). Published in the International Journal of Drug Delivery Technology (IJDDT), Vol 16, Issue 4.',
-    link: 'https://impactfactor.org/PDF/IJDDT/16/IJDDT,Vol16,Issue43s,Article31.pdf',
-  },
-  {
-    title: "certificate: CS50's Introduction to Artificial Intelligence with Python",
-    description:
-      'Covered search algorithms, machine learning, neural networks, NLP, and AI in Python.',
-    link: 'https://cs50.harvard.edu/certificates/110613e9-87d7-4464-9897-63780847a793',
   },
 ];
 
@@ -419,12 +328,7 @@ const projects = [
 ];
 
 export {
-  services,
   technologyGroups,
-  experiences,
-  educations,
-  achievements,
-  certifications,
   projects,
 };
 

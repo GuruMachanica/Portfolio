@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import PageTransition from "../components/PageTransition";
 import TiltCard from "../components/TiltCard";
-import { FaArrowLeft, FaBrain, FaServer, FaCubes, FaDatabase, FaShieldAlt, FaMicrochip, FaArrowRight } from "react-icons/fa";
+import { FaArrowLeft, FaBrain, FaServer, FaCubes, FaDatabase, FaShieldAlt, FaMicrochip } from "react-icons/fa";
 import { animate, stagger } from "animejs";
 
 const engineeringPillars = [
@@ -55,7 +55,9 @@ const OverviewPage = () => {
         ease: "outExpo",
         duration: 350,
       });
-    } catch (e) {}
+    } catch (e) {
+    /* noop: non-critical failure */
+  }
   }, []);
 
   return (

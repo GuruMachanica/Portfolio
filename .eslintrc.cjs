@@ -10,6 +10,8 @@ module.exports = {
   settings: { react: { version: '18.2' } },
   plugins: ['react-refresh'],
   rules: {
-    'react-refresh/only-export-components': 'warn',
+    'react-refresh/only-export-components': 'off',
+    // Plain-JS project (no PropTypes / no TS) — runtime prop shapes are data-driven
+    'react/prop-types': 'off',
   },
 }

@@ -1,14 +1,32 @@
-import React from "react";
+import { createPortal } from "react-dom";
+import useModalA11y from "../../hooks/useModalA11y";
 import { FaTimes, FaGithub, FaGlobe } from "react-icons/fa";
 import { architectureBlueprints } from "../../constants/architectureBlueprints";
 
 const ArchitectureModal = ({ selectedArch, onClose, onOpenLiveWebsite }) => {
+  const isOpen = Boolean(selectedArch);
+
+  // Focus trap + Escape + focus restore + scroll lock (see hook)
+  const modalRef = useModalA11y(isOpen, onClose);
+
   if (!selectedArch || !architectureBlueprints[selectedArch]) return null;
 
   const blueprint = architectureBlueprints[selectedArch];
 
-  return (
-    <div className="fixed inset-0 z-[10001] flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-xl">
+  // Portal to <body> — escapes the main stacking context so the blueprint
+  // always paints above the navbar/footer, same layer behavior as LiveWebsiteModal.
+  return createPortal(
+    <div
+      ref={modalRef}
+      className="fixed inset-0 z-[100001] flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-xl"
+      role="dialog"
+      aria-modal="true"
+      aria-label={`${selectedArch} architecture blueprint`}
+      tabIndex={-1}
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+    >
       <div className="w-full max-w-3xl bg-[#090909] border border-white/25 rounded-3xl p-6 sm:p-8 shadow-[0_25px_80px_rgba(0,0,0,0.95)] relative max-h-[90vh] overflow-y-auto">
         
         {/* Close Button */}
@@ -104,7 +122,8 @@ const ArchitectureModal = ({ selectedArch, onClose, onOpenLiveWebsite }) => {
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
 

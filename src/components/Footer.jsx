@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
@@ -88,11 +87,6 @@ const Footer = () => {
               <div>
                 <a href={`mailto:${CONTACT_EMAIL}`} className="text-white hover:underline block break-all">
                   {CONTACT_EMAIL}
-                </a>
-              </div>
-              <div>
-                <a href="tel:+916391028860" className="text-white hover:underline">
-                  +91 6391028860
                 </a>
               </div>
               <div>
