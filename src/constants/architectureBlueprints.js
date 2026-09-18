@@ -61,7 +61,7 @@ export const architectureBlueprints = {
     security: "Client-Side Sandboxed WebGL Engine",
     siteKey: "sunmap",
     repo: "https://github.com/GuruMachanica/ArkaSutra",
-    demo: "https://sunmapsolar.netlify.app/"
+    demo: "https://arkasutra.netlify.app/"
   },
   "SunMap": {
     category: "3D Spatial Solar & Autonomous Rooftop Agent",
@@ -77,7 +77,7 @@ export const architectureBlueprints = {
     security: "Client-Side Sandboxed WebGL Engine",
     siteKey: "sunmap",
     repo: "https://github.com/GuruMachanica/ArkaSutra",
-    demo: "https://sunmapsolar.netlify.app/"
+    demo: "https://arkasutra.netlify.app/"
   },
   "KavachG": {
     category: "Industrial Edge Safety CV Command Center",

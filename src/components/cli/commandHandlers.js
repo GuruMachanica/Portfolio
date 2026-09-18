@@ -139,7 +139,7 @@ export const executeCliCommand = (cmdStr, { navigate, setIsOpen, triggerReverseW
       responseEntry = {
         id: Date.now() + 1,
         type: "out",
-        text: `[FLAGSHIP PRODUCTION PLATFORMS]\n1. AnveshakSutra  -> Zero-Knowledge OSINT & 3D Graph ML (https://anveshak-sutra.vercel.app/)\n2. Concept-3D     -> Prompt-to-3D Spatial Latent Generator (https://concept-3d.vercel.app/)\n3. VaakKavach     -> Autonomous Edge AI Acoustic Defense (https://vaakkavach.netlify.app/)\n4. ArkaSutra      -> 3D Spatial Solar & Autonomous Rooftop Agent (https://sunmapsolar.netlify.app/)\n5. KavachG        -> Autonomous Edge Industrial Safety CV by Team CodeGambit (https://kavach-g.vercel.app/)\nRouting to /projects...`,
+        text: `[FLAGSHIP PRODUCTION PLATFORMS]\n1. AnveshakSutra  -> Zero-Knowledge OSINT & 3D Graph ML (https://anveshak-sutra.vercel.app/)\n2. Concept-3D     -> Prompt-to-3D Spatial Latent Generator (https://concept-3d.vercel.app/)\n3. VaakKavach     -> Autonomous Edge AI Acoustic Defense (https://vaakkavach.netlify.app/)\n4. ArkaSutra      -> 3D Spatial Solar & Autonomous Rooftop Agent (https://arkasutra.netlify.app/)\n5. KavachG        -> Autonomous Edge Industrial Safety CV by Team CodeGambit (https://kavach-g.vercel.app/)\nRouting to /projects...`,
         isStreaming: true
       };
       setTimeout(() => {
@@ -190,7 +190,7 @@ export const executeCliCommand = (cmdStr, { navigate, setIsOpen, triggerReverseW
       responseEntry = {
         id: Date.now() + 1,
         type: "out",
-        text: `[SYSTEM] ArkaSutra — 3D Spatial Solar & Autonomous Rooftop Agent\n- Stack: Three.js WebGL, Autonomous Agent AI, CityGML LOD2, Perez Physics, FastAPI\n- Live Preview: https://sunmapsolar.netlify.app/\n- Repo: https://github.com/GuruMachanica/ArkaSutra`,
+        text: `[SYSTEM] ArkaSutra — 3D Spatial Solar & Autonomous Rooftop Agent\n- Stack: Three.js WebGL, Autonomous Agent AI, CityGML LOD2, Perez Physics, FastAPI\n- Live Preview: https://arkasutra.netlify.app/\n- Repo: https://github.com/GuruMachanica/ArkaSutra`,
         isStreaming: true
       };
       break;

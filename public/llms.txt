@@ -13,7 +13,7 @@
 - [AnveshakSutra](https://anveshak-sutra.vercel.app/): Zero-Knowledge Breach OSINT & 3D Graph ML (Repo: https://github.com/GuruMachanica/AnveshakSutra)
 - [Concept-3D](https://concept-3d.vercel.app/): Prompt-to-3D Spatial Latent Generator (Repo: https://github.com/GuruMachanica/Concept-3D)
 - [VaakKavach](https://vaakkavach.netlify.app/): Autonomous Edge AI Acoustic Defense & Deepfake Shield (Repo: https://github.com/GuruMachanica/VaakKavach)
-- [ArkaSutra](https://sunmapsolar.netlify.app/): 3D Spatial Solar Energy & Autonomous Rooftop Intelligence Engine (Repo: https://github.com/GuruMachanica/ArkaSutra)
+- [ArkaSutra](https://arkasutra.netlify.app/): 3D Spatial Solar Energy & Autonomous Rooftop Intelligence Engine (Repo: https://github.com/GuruMachanica/ArkaSutra)
 - [KavachG](https://kavach-g.vercel.app/): Edge Industrial Safety Computer Vision by Team CodeGambit (Repo: https://github.com/GuruMachanica/KavachG)
 
 ## Academic Research & Verified Publications

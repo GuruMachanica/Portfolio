@@ -44,18 +44,18 @@ const DEPLOYED_WEBSITES = {
   sunmap: {
     id: "sunmap",
     name: "ArkaSutra",
-    url: "https://sunmapsolar.netlify.app/",
+    url: "https://arkasutra.netlify.app/",
     icon: FaSun,
-    domain: "sunmapsolar.netlify.app",
+    domain: "arkasutra.netlify.app",
     tag: "3D SPATIAL SOLAR & AGENT AI",
     description: "3D Spatial Solar Energy & Autonomous Rooftop Intelligence Engine."
   },
   arkasutra: {
     id: "arkasutra",
     name: "ArkaSutra",
-    url: "https://sunmapsolar.netlify.app/",
+    url: "https://arkasutra.netlify.app/",
     icon: FaSun,
-    domain: "sunmapsolar.netlify.app",
+    domain: "arkasutra.netlify.app",
     tag: "3D SPATIAL SOLAR & AGENT AI",
     description: "3D Spatial Solar Energy & Autonomous Rooftop Intelligence Engine."
   },

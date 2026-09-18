@@ -284,7 +284,7 @@ const projects = [
     image: sunmap,
     repo: 'https://github.com/GuruMachanica/ArkaSutra',
     source_code_link: 'https://github.com/GuruMachanica/ArkaSutra',
-    demo: 'https://sunmapsolar.netlify.app/',
+    demo: 'https://arkasutra.netlify.app/',
   },
   {
     id: 'project-5',
