@@ -249,15 +249,15 @@ const projects = [
   {
     id: 'project-4',
     siteKey: 'sunmap',
-    name: 'SunMap',
+    name: 'ArkaSutra',
     category: 'Spatial 3D & Solar Intelligence',
     description:
-      '3D Spatial Solar Energy & Rooftop Intelligence Engine. Architected a 60 FPS WebGL/Three.js spatial simulation engine parsing CityGML LOD2 building geometries, rooftop surface normals, and ray-traced shadow occlusions with Perez transposition physics benchmarked against NREL PVLib.',
-    architecture: 'Three.js WebGL • CityGML LOD2 • Perez Transposition • Docker',
+      '3D Spatial Solar Energy & Autonomous Rooftop Intelligence Engine. Architected a 60 FPS WebGL/Three.js spatial simulation digital twin with an autonomous AI engineering agent, CityGML LOD2 building geometry extraction, live Copernicus/ERA5 satellite assimilation, and Perez transposition physics benchmarked against NREL PVLib.',
+    architecture: 'Three.js WebGL • Autonomous Agent AI • CityGML LOD2 • Perez Transposition • FastAPI',
     keyHighlights: [
-      'Architected 60 FPS Three.js ray-traced shadow occlusion engine across 8,760 annual vectors',
-      'Extracted sub-degree CityGML LOD2 building surface normals and usable rooftop areas',
-      'Engineered bankable financial cashflow, LCOE, and carbon abatement forecasting engines'
+      'Architected autonomous AI solar engineering agent controlling 3D scene, tilt pitch, and shadow mitigation',
+      'Engineered zero-upload global OSM 3D building streaming with coordinate-calibrated urban synthesis',
+      'Integrated live Copernicus and ERA5 satellite weather telemetry with real-time cloud derate modeling'
     ],
     tags: [
       {
@@ -265,25 +265,25 @@ const projects = [
         color: 'text-zinc-300 font-mono text-[11px]',
       },
       {
-        name: 'citygml-lod2',
+        name: 'agentic-ai',
         color: 'text-zinc-400 font-mono text-[11px]',
       },
       {
-        name: 'python-spatial',
+        name: 'citygml-lod2',
         color: 'text-zinc-500 font-mono text-[11px]',
       },
       {
-        name: 'pvlib-physics',
+        name: 'fastapi',
         color: 'text-zinc-300 font-mono text-[11px]',
       },
       {
-        name: 'docker',
+        name: 'pvlib-physics',
         color: 'text-zinc-400 font-mono text-[11px]',
       },
     ],
     image: sunmap,
-    repo: 'https://github.com/GuruMachanica/SunMap',
-    source_code_link: 'https://github.com/GuruMachanica/SunMap',
+    repo: 'https://github.com/GuruMachanica/ArkaSutra',
+    source_code_link: 'https://github.com/GuruMachanica/ArkaSutra',
     demo: 'https://sunmapsolar.netlify.app/',
   },
   {

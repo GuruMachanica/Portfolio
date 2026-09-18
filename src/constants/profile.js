@@ -118,7 +118,7 @@ export const achievements = [
     date: 'Oct 2025',
     category: 'Hackathon',
     description:
-      'Engineered SunMap for 3D Spatial Solar Intelligence, parsing CityGML LOD2 geometries with real-time WebGL shadow occlusion and Perez transposition physics.',
+      'Engineered SunMap 3D Spatial Solar Intelligence (now evolved into ArkaSutra), parsing CityGML LOD2 geometries with real-time WebGL shadow occlusion and Perez transposition physics.',
     tags: ['2nd Runner-Up', 'PyTorch', 'Spatial 3D', 'Predictive Analytics'],
   },
 ];

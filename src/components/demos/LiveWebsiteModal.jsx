@@ -43,12 +43,21 @@ const DEPLOYED_WEBSITES = {
   },
   sunmap: {
     id: "sunmap",
-    name: "SunMap",
+    name: "ArkaSutra",
     url: "https://sunmapsolar.netlify.app/",
     icon: FaSun,
     domain: "sunmapsolar.netlify.app",
-    tag: "3D SOLAR POTENTIAL",
-    description: "3D Spatial Solar Energy & LOD2 CityGML Irradiance Simulation Platform."
+    tag: "3D SPATIAL SOLAR & AGENT AI",
+    description: "3D Spatial Solar Energy & Autonomous Rooftop Intelligence Engine."
+  },
+  arkasutra: {
+    id: "arkasutra",
+    name: "ArkaSutra",
+    url: "https://sunmapsolar.netlify.app/",
+    icon: FaSun,
+    domain: "sunmapsolar.netlify.app",
+    tag: "3D SPATIAL SOLAR & AGENT AI",
+    description: "3D Spatial Solar Energy & Autonomous Rooftop Intelligence Engine."
   },
   kavachg: {
     id: "kavachg",

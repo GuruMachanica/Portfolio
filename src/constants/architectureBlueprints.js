@@ -47,36 +47,36 @@ export const architectureBlueprints = {
     repo: "https://github.com/GuruMachanica/VaakKavach",
     demo: "https://vaakkavach.netlify.app/"
   },
-  "A.E.G.I.S": {
-    category: "Autonomous Edge AI Acoustic Defense & Deepfake Shield",
-    math: "P(Clone | X) = σ(w_j(1 - Ĵ) + w_h(1 - Ĥ) + w_b(1 - B̂) + w_k K̂ - θ) ≥ 0.65",
-    pipeline: "44.1kHz PCM Stream -> Lock-Free Ring Buffer -> Native Kotlin FFT/Jitter DSP -> Bayesian Threat Engine -> Haptic/SMS Shield",
-    coreStack: "Flutter • Kotlin Native DSP • FFT Spectral Analysis • SQLite • Riverpod",
-    keyHighlights: [
-      "Sub-15ms on-device frame evaluation isolating neural vocoder phase jitter and spectral clamping",
-      "100% offline sovereign privacy with zero external telemetry, cloud APIs, or authentication barriers",
-      "Autonomous agentic watchdog auto-recovering audio pipelines and logging SHA-256 evidence"
-    ],
-    latency: "< 15ms Real-Time Edge Inference",
-    security: "100% Sovereign Local Sandboxed Execution (Zero Cloud Telemetry)",
-    siteKey: "vaakkavach",
-    repo: "https://github.com/GuruMachanica/VaakKavach",
-    demo: "https://vaakkavach.netlify.app/"
-  },
-  "SunMap": {
-    category: "3D Spatial Solar Irradiance & Yield Engine",
+  "ArkaSutra": {
+    category: "3D Spatial Solar & Autonomous Rooftop Agent",
     math: "I_tilt = I_dir · cos(θ) + I_diff · Y_Perez + I_refl",
-    pipeline: "CityGML LOD2 Meshes -> Normal Vector Parser -> Perez Transposition Physics -> 8,760h Raycast Shadow Engine",
-    coreStack: "Three.js WebGL • CityGML LOD2 • Perez Model • Python • Docker",
+    pipeline: "OSM 3D / CityGML LOD2 -> Perez Physics -> Autonomous AI Agent -> 60 FPS Three.js Twin",
+    coreStack: "Three.js WebGL • Autonomous Agent AI • CityGML LOD2 • Perez Physics • FastAPI",
     keyHighlights: [
-      "60 FPS WebGL spatial simulation parsing CityGML LOD2 building geometries and normal vectors",
-      "Perez clear-sky transposition physics benchmarked against NREL PVLib across 8,760 annual vectors",
-      "Automated rooftop segmentation, shadow occlusion analysis, and carbon abatement calculations"
+      "Autonomous solar AI agent controlling 3D scene, tilt pitch, and shadow mitigation",
+      "Perez clear-sky transposition benchmarked against NREL PVLib across 8,760 annual vectors",
+      "Zero-upload OSM 3D city streaming with live Copernicus/ERA5 satellite telemetry assimilation"
     ],
     latency: "60 FPS GPU-Accelerated Raycasting",
     security: "Client-Side Sandboxed WebGL Engine",
     siteKey: "sunmap",
-    repo: "https://github.com/GuruMachanica/SunMap",
+    repo: "https://github.com/GuruMachanica/ArkaSutra",
+    demo: "https://sunmapsolar.netlify.app/"
+  },
+  "SunMap": {
+    category: "3D Spatial Solar & Autonomous Rooftop Agent",
+    math: "I_tilt = I_dir · cos(θ) + I_diff · Y_Perez + I_refl",
+    pipeline: "OSM 3D / CityGML LOD2 -> Perez Physics -> Autonomous AI Agent -> 60 FPS Three.js Twin",
+    coreStack: "Three.js WebGL • Autonomous Agent AI • CityGML LOD2 • Perez Physics • FastAPI",
+    keyHighlights: [
+      "Autonomous solar AI agent controlling 3D scene, tilt pitch, and shadow mitigation",
+      "Perez clear-sky transposition benchmarked against NREL PVLib across 8,760 annual vectors",
+      "Zero-upload OSM 3D city streaming with live Copernicus/ERA5 satellite telemetry assimilation"
+    ],
+    latency: "60 FPS GPU-Accelerated Raycasting",
+    security: "Client-Side Sandboxed WebGL Engine",
+    siteKey: "sunmap",
+    repo: "https://github.com/GuruMachanica/ArkaSutra",
     demo: "https://sunmapsolar.netlify.app/"
   },
   "KavachG": {

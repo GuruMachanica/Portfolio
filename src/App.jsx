@@ -60,7 +60,7 @@ const hubCards = [
     title: "Projects",
     path: "/projects",
     icon: FaFolderOpen,
-    desc: "Concept3D, A.E.G.I.S, SunMap, and KavachG production systems with code & demos.",
+    desc: "AnveshakSutra, Concept3D, VaakKavach, ArkaSutra, and KavachG production systems with code & demos.",
     tag: "PORTFOLIO",
   },
   {
