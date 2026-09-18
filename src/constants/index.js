@@ -19,6 +19,7 @@ import {
   postgresql,
   anveshaksutra,
   concept3d,
+  vaakkavach,
   aegis,
   sunmap,
   kavachg,
@@ -207,43 +208,43 @@ const projects = [
   },
   {
     id: 'project-3',
-    siteKey: 'aegis',
-    name: 'A.E.G.I.S',
-    category: 'Backend & APIs',
+    siteKey: 'vaakkavach',
+    name: 'VaakKavach',
+    category: 'Edge AI & Cybersecurity',
     description:
-      'Audio-based Edge Guard for Intelligent Scam-prevention. Architected backend data pipelines and API routing, leading the end-to-end integration of a real-time audio analytics and security application. Accelerated threat detection times by deploying a live audio processing pipeline equipped with automated WebSocket alerting.',
-    architecture: 'FastAPI • WebSockets • Real-Time Audio Streaming • Docker',
+      'Autonomous Edge AI Acoustic Defense & Real-Time Deepfake Shield. Architected sub-15ms native DSP audio pipelines on-device to isolate synthetic voice clones, vocoder clamping, and digital arrest extortion. 100% offline, serverless, and sovereign with zero-cloud telemetry.',
+    architecture: 'Edge AI • Flutter • Kotlin Native DSP • Sub-15ms FFT • SQLite Forensic Vault',
     keyHighlights: [
-      'Architected live streaming audio data pipeline for real-time scam detection',
-      'Low-latency WebSocket notification system with sub-second alert triggers',
-      'Containerized backend service infrastructure built with Docker & FastAPI'
+      'Sub-15ms on-device acoustic DSP inspecting phase jitter and vocoder spectral clamping',
+      '100% serverless, zero-cloud sovereign architecture running fully offline in airplane mode',
+      'Autonomous watchdog daemon auto-recovering audio buffers with encrypted forensic ledger'
     ],
     tags: [
       {
-        name: 'python',
+        name: 'flutter',
         color: 'text-zinc-300 font-mono text-[11px]',
       },
       {
-        name: 'fastapi',
+        name: 'kotlin',
         color: 'text-zinc-400 font-mono text-[11px]',
       },
       {
-        name: 'websocket-api',
+        name: 'edge-ai',
         color: 'text-zinc-500 font-mono text-[11px]',
       },
       {
-        name: 'docker',
+        name: 'cybersecurity',
         color: 'text-zinc-300 font-mono text-[11px]',
       },
       {
-        name: 'data-wrangling',
+        name: 'deepfake-defense',
         color: 'text-zinc-400 font-mono text-[11px]',
       },
     ],
-    image: aegis,
-    repo: 'https://github.com/GuruMachanica/A.E.G.I.S.',
-    source_code_link: 'https://github.com/GuruMachanica/A.E.G.I.S.',
-    demo: 'https://aegis-anti-scam.netlify.app/',
+    image: vaakkavach,
+    repo: 'https://github.com/GuruMachanica/VaakKavach',
+    source_code_link: 'https://github.com/GuruMachanica/VaakKavach',
+    demo: 'https://vaakkavach.netlify.app/',
   },
   {
     id: 'project-4',

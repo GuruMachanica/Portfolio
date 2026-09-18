@@ -139,7 +139,7 @@ export const executeCliCommand = (cmdStr, { navigate, setIsOpen, triggerReverseW
       responseEntry = {
         id: Date.now() + 1,
         type: "out",
-        text: `[FLAGSHIP PRODUCTION PLATFORMS]\n1. AnveshakSutra  -> Zero-Knowledge OSINT & 3D Graph ML (https://anveshak-sutra.vercel.app/)\n2. Concept-3D     -> Prompt-to-3D Spatial Latent Generator (https://concept-3d.vercel.app/)\n3. A.E.G.I.S.     -> Real-Time Audio Edge Scam Defense (https://aegis-anti-scam.netlify.app/)\n4. SunMap         -> 3D Spatial Solar Irradiance Engine (https://sunmapsolar.netlify.app/)\n5. KavachG        -> Autonomous Edge Industrial Safety CV by Team CodeGambit (https://kavach-g.vercel.app/)\nRouting to /projects...`,
+        text: `[FLAGSHIP PRODUCTION PLATFORMS]\n1. AnveshakSutra  -> Zero-Knowledge OSINT & 3D Graph ML (https://anveshak-sutra.vercel.app/)\n2. Concept-3D     -> Prompt-to-3D Spatial Latent Generator (https://concept-3d.vercel.app/)\n3. VaakKavach     -> Autonomous Edge AI Acoustic Defense (https://vaakkavach.netlify.app/)\n4. SunMap         -> 3D Spatial Solar Irradiance Engine (https://sunmapsolar.netlify.app/)\n5. KavachG        -> Autonomous Edge Industrial Safety CV by Team CodeGambit (https://kavach-g.vercel.app/)\nRouting to /projects...`,
         isStreaming: true
       };
       setTimeout(() => {
@@ -175,11 +175,12 @@ export const executeCliCommand = (cmdStr, { navigate, setIsOpen, triggerReverseW
       };
       break;
 
+    case "vaakkavach":
     case "aegis":
       responseEntry = {
         id: Date.now() + 1,
         type: "out",
-        text: `[SYSTEM] A.E.G.I.S. — Real-Time Audio Edge Scam Defense\n- Stack: FastAPI, AASIST Deepfake Audio, WebSockets, Sarvam STT\n- Live Preview: https://aegis-anti-scam.netlify.app/\n- Repo: https://github.com/GuruMachanica/A.E.G.I.S.`,
+        text: `[SYSTEM] VaakKavach — Autonomous Edge AI Acoustic Defense & Deepfake Shield\n- Stack: Flutter, Kotlin Native DSP, Sub-15ms FFT, SQLite Forensic Vault\n- Live Preview: https://vaakkavach.netlify.app/\n- Repo: https://github.com/GuruMachanica/VaakKavach`,
         isStreaming: true
       };
       break;

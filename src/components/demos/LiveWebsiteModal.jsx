@@ -23,14 +23,23 @@ const DEPLOYED_WEBSITES = {
     tag: "AI & 3D VISUALIZATION",
     description: "AI-Powered Concept-to-3D Latent Mapping & Spatial Visualization Platform."
   },
-  aegis: {
-    id: "aegis",
-    name: "A.E.G.I.S.",
-    url: "https://aegis-anti-scam.netlify.app/",
+  vaakkavach: {
+    id: "vaakkavach",
+    name: "VaakKavach",
+    url: "https://vaakkavach.netlify.app/",
     icon: FaShieldAlt,
-    domain: "aegis-anti-scam.netlify.app",
-    tag: "AUDIO EDGE ANTI-SCAM",
-    description: "Real-Time Audio Deepfake & Voice Impersonation Threat Mitigation Engine."
+    domain: "vaakkavach.netlify.app",
+    tag: "EDGE AI ACOUSTIC DEFENSE",
+    description: "Autonomous Edge AI Acoustic Defense & Real-Time Deepfake Voice Interceptor."
+  },
+  aegis: {
+    id: "vaakkavach",
+    name: "VaakKavach",
+    url: "https://vaakkavach.netlify.app/",
+    icon: FaShieldAlt,
+    domain: "vaakkavach.netlify.app",
+    tag: "EDGE AI ACOUSTIC DEFENSE",
+    description: "Autonomous Edge AI Acoustic Defense & Real-Time Deepfake Voice Interceptor."
   },
   sunmap: {
     id: "sunmap",

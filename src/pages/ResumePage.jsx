@@ -138,7 +138,7 @@ const ResumePage = () => {
               </div>
               <div>
                 <span className="text-[10px] font-mono uppercase text-zinc-400 font-bold block">5 Production Systems</span>
-                <span className="text-xs font-semibold text-white">AnveshakSutra, Concept3D, AEGIS, SunMap, KavachG</span>
+                <span className="text-xs font-semibold text-white">AnveshakSutra, Concept3D, VaakKavach, SunMap, KavachG</span>
               </div>
             </TiltCard>
           </div>

@@ -31,21 +31,37 @@ export const architectureBlueprints = {
     repo: "https://github.com/GuruMachanica/Concept-3D",
     demo: "https://concept-3d.vercel.app/"
   },
-  "A.E.G.I.S": {
-    category: "Real-Time Audio Edge Scam Defense",
-    math: "𝒮_fraud = w₁ · 𝒮_AASIST + w₂ · 𝒮_NLP  ≥  θ_alert",
-    pipeline: "Audio Stream -> WebRTC VAD -> AASIST Voice Model -> Sarvam Multilingual STT -> Guardian SOS Alert",
-    coreStack: "FastAPI • WebSockets • AASIST • Sarvam AI STT • WebRTC",
+  "VaakKavach": {
+    category: "Autonomous Edge AI Acoustic Defense & Deepfake Shield",
+    math: "P(Clone | X) = σ(w_j(1 - Ĵ) + w_h(1 - Ĥ) + w_b(1 - B̂) + w_k K̂ - θ) ≥ 0.65",
+    pipeline: "44.1kHz PCM Stream -> Lock-Free Ring Buffer -> Native Kotlin FFT/Jitter DSP -> Bayesian Threat Engine -> Haptic/SMS Shield",
+    coreStack: "Flutter • Kotlin Native DSP • FFT Spectral Analysis • SQLite • Riverpod",
     keyHighlights: [
-      "Sub-second (< 280ms) real-time audio pipeline detecting synthetic voice deepfakes and scam patterns",
-      "Sarvam AI multilingual Speech-to-Text supporting 7+ Indic languages in real time",
-      "Hybrid risk scoring engine with automated WebSocket Guardian SOS dispatch"
+      "Sub-15ms on-device frame evaluation isolating neural vocoder phase jitter and spectral clamping",
+      "100% offline sovereign privacy with zero external telemetry, cloud APIs, or authentication barriers",
+      "Autonomous agentic watchdog auto-recovering audio pipelines and logging SHA-256 evidence"
     ],
-    latency: "< 280ms Sub-Second Inference",
-    security: "End-to-End Encrypted WebSocket Stream",
-    siteKey: "aegis",
-    repo: "https://github.com/GuruMachanica/A.E.G.I.S.",
-    demo: "https://aegis-anti-scam.netlify.app/"
+    latency: "< 15ms Real-Time Edge Inference",
+    security: "100% Sovereign Local Sandboxed Execution (Zero Cloud Telemetry)",
+    siteKey: "vaakkavach",
+    repo: "https://github.com/GuruMachanica/VaakKavach",
+    demo: "https://vaakkavach.netlify.app/"
+  },
+  "A.E.G.I.S": {
+    category: "Autonomous Edge AI Acoustic Defense & Deepfake Shield",
+    math: "P(Clone | X) = σ(w_j(1 - Ĵ) + w_h(1 - Ĥ) + w_b(1 - B̂) + w_k K̂ - θ) ≥ 0.65",
+    pipeline: "44.1kHz PCM Stream -> Lock-Free Ring Buffer -> Native Kotlin FFT/Jitter DSP -> Bayesian Threat Engine -> Haptic/SMS Shield",
+    coreStack: "Flutter • Kotlin Native DSP • FFT Spectral Analysis • SQLite • Riverpod",
+    keyHighlights: [
+      "Sub-15ms on-device frame evaluation isolating neural vocoder phase jitter and spectral clamping",
+      "100% offline sovereign privacy with zero external telemetry, cloud APIs, or authentication barriers",
+      "Autonomous agentic watchdog auto-recovering audio pipelines and logging SHA-256 evidence"
+    ],
+    latency: "< 15ms Real-Time Edge Inference",
+    security: "100% Sovereign Local Sandboxed Execution (Zero Cloud Telemetry)",
+    siteKey: "vaakkavach",
+    repo: "https://github.com/GuruMachanica/VaakKavach",
+    demo: "https://vaakkavach.netlify.app/"
   },
   "SunMap": {
     category: "3D Spatial Solar Irradiance & Yield Engine",

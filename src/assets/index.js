@@ -1,6 +1,7 @@
 import anveshaksutra from './projects/anveshaksutra.webp';
 import concept3d from './projects/Concept-2-3d.webp';
-import aegis from './projects/AEGIS.webp';
+import vaakkavach from './projects/VaakKavach.webp';
+const aegis = vaakkavach;
 import sunmap from './projects/sunmap.webp';
 import kavachg from './projects/KavachG.webp';
 
@@ -37,6 +38,7 @@ export {
   menu,
   anveshaksutra,
   concept3d,
+  vaakkavach,
   aegis,
   sunmap,
   kavachg,
