@@ -32,24 +32,6 @@ const DEPLOYED_WEBSITES = {
     tag: "EDGE AI ACOUSTIC DEFENSE",
     description: "Autonomous Edge AI Acoustic Defense & Real-Time Deepfake Voice Interceptor."
   },
-  aegis: {
-    id: "vaakkavach",
-    name: "VaakKavach",
-    url: "https://vaakkavach.netlify.app/",
-    icon: FaShieldAlt,
-    domain: "vaakkavach.netlify.app",
-    tag: "EDGE AI ACOUSTIC DEFENSE",
-    description: "Autonomous Edge AI Acoustic Defense & Real-Time Deepfake Voice Interceptor."
-  },
-  sunmap: {
-    id: "sunmap",
-    name: "ArkaSutra",
-    url: "https://arkasutra.netlify.app/",
-    icon: FaSun,
-    domain: "arkasutra.netlify.app",
-    tag: "3D SPATIAL SOLAR & AGENT AI",
-    description: "3D Spatial Solar Energy & Autonomous Rooftop Intelligence Engine."
-  },
   arkasutra: {
     id: "arkasutra",
     name: "ArkaSutra",
@@ -70,24 +52,48 @@ const DEPLOYED_WEBSITES = {
   }
 };
 
+const SITE_ALIASES = {
+  aegis: "vaakkavach",
+  sunmap: "arkasutra",
+};
+
+const resolveSiteKey = (key) => {
+  if (!key) return "anveshaksutra";
+  const lower = String(key).toLowerCase();
+  const target = SITE_ALIASES[lower] || lower;
+  return DEPLOYED_WEBSITES[target] ? target : "anveshaksutra";
+};
+
+const SITE_TABS = Object.values(DEPLOYED_WEBSITES);
+
 const LiveWebsiteModal = ({ isOpen, onClose, initialSite = "anveshaksutra" }) => {
-  const [activeSiteKey, setActiveSiteKey] = useState(initialSite);
+  const [activeSiteKey, setActiveSiteKey] = useState(() => resolveSiteKey(initialSite));
   const [loading, setLoading] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [reloadKey, setReloadKey] = useState(0);
 
   useEffect(() => {
-    if (initialSite && DEPLOYED_WEBSITES[initialSite]) {
-      setActiveSiteKey(initialSite);
+    if (initialSite) {
+      setActiveSiteKey(resolveSiteKey(initialSite));
     }
   }, [initialSite, isOpen]);
+
+  useEffect(() => {
+    setLoading(true);
+    // Safety fallback so loading state resolves even if third-party site delays load events
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 6000);
+    return () => clearTimeout(timer);
+  }, [activeSiteKey, reloadKey]);
 
   // Focus trap + Escape + focus restore + scroll lock (see hook)
   const modalRef = useModalA11y(isOpen, onClose);
 
   if (!isOpen) return null;
 
-  const activeSite = DEPLOYED_WEBSITES[activeSiteKey] || DEPLOYED_WEBSITES.anveshaksutra;
+  const currentKey = resolveSiteKey(activeSiteKey);
+  const activeSite = DEPLOYED_WEBSITES[currentKey] || DEPLOYED_WEBSITES.anveshaksutra;
 
   const handleRefresh = () => {
     setLoading(true);
@@ -134,9 +140,9 @@ const LiveWebsiteModal = ({ isOpen, onClose, initialSite = "anveshaksutra" }) =>
 
               {/* Tabs */}
               <div className="flex items-center gap-1.5">
-                {Object.values(DEPLOYED_WEBSITES).map((site) => {
+                {SITE_TABS.map((site) => {
                   const TabIcon = site.icon || FaGlobe;
-                  const isActive = activeSiteKey === site.id;
+                  const isActive = currentKey === site.id;
                   return (
                     <button
                       key={site.id}
@@ -223,14 +229,14 @@ const LiveWebsiteModal = ({ isOpen, onClose, initialSite = "anveshaksutra" }) =>
               </div>
             )}
 
-            {/* Minimal permission set — embedded third-party sites get no camera/mic/geolocation */}
             <iframe
               key={reloadKey + activeSite.id}
               src={activeSite.url}
               title={activeSite.name}
               onLoad={() => setLoading(false)}
+              onError={() => setLoading(false)}
               className="w-full h-full border-0 bg-white"
-              allow="fullscreen; autoplay"
+              allow="fullscreen; autoplay; clipboard-write; encrypted-media"
             />
 
             {/* Quick Floating Tab Launcher */}

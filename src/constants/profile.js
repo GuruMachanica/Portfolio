@@ -41,7 +41,7 @@ export const educations = [
     field: 'Computer Science & Engineering',
     institution: 'United Institute of Technology, Prayagraj',
     period: '2023 - 2027 (Ongoing)',
-    score: '7.47 CGPA',
+    score: '7.45 CGPA (up to 6th sem)',
     status: 'In Progress',
     description:
       'Focusing on artificial intelligence, systems engineering, distributed computing, and advanced data structures.',

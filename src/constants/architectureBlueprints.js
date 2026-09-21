@@ -59,7 +59,7 @@ export const architectureBlueprints = {
     ],
     latency: "60 FPS GPU-Accelerated Raycasting",
     security: "Client-Side Sandboxed WebGL Engine",
-    siteKey: "sunmap",
+    siteKey: "arkasutra",
     repo: "https://github.com/GuruMachanica/ArkaSutra",
     demo: "https://arkasutra.netlify.app/"
   },

@@ -20,7 +20,6 @@ import {
   anveshaksutra,
   concept3d,
   vaakkavach,
-  aegis,
   sunmap,
   kavachg,
 } from '../assets';
@@ -248,7 +247,7 @@ const projects = [
   },
   {
     id: 'project-4',
-    siteKey: 'sunmap',
+    siteKey: 'arkasutra',
     name: 'ArkaSutra',
     category: 'Spatial 3D & Solar Intelligence',
     description:
