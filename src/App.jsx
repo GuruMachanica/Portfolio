@@ -1,4 +1,4 @@
-import { useEffect, useState, lazy, Suspense } from "react";
+import { useEffect, useState, lazy, Suspense, useRef } from "react";
 import { AnimatePresence, MotionConfig } from "framer-motion";
 import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-dom";
 import {
@@ -15,8 +15,8 @@ import ScrollToTop from "./components/ScrollToTop";
 import AmbientGlow from "./components/AmbientGlow";
 import TiltCard from "./components/TiltCard";
 import { FaBrain, FaCubes, FaFolderOpen, FaBriefcase, FaGraduationCap, FaCertificate, FaTrophy, FaPaperPlane, FaArrowRight, FaFilePdf } from "react-icons/fa";
-import { animate, stagger } from "animejs";
 import { preloadRoute } from "./utils/routePreloader";
+import { useScrollReveal, useScrollVelocity } from "./hooks/useScrollMotion";
 
 // Dynamic route loaders with instant background preloading
 const pageImports = {
@@ -108,27 +108,17 @@ const hubCards = [
 ];
 
 const HomePage = () => {
-  useEffect(() => {
-    try {
-      animate(".hub-card", {
-        opacity: [0, 1],
-        translateY: [20, 0],
-        delay: stagger(50, { start: 100 }),
-        ease: "outExpo",
-        duration: 600,
-      });
-    } catch (e) {
-    /* noop: non-critical failure */
-  }
-  }, []);
+  const hubRef = useRef(null);
+  useScrollReveal({ root: hubRef });
+  useScrollVelocity({ target: hubRef });
 
   return (
     <PageTransition>
       <Hero />
 
       {/* Interactive Monolith Hub (Gateway to All Dedicated Standalone Pages) */}
-      <section className="relative z-10 py-16 sm:py-24 border-t border-white/[0.08] stripe-grid px-4 sm:px-8 max-w-7xl mx-auto">
-        <div className="mb-12 text-center max-w-3xl mx-auto">
+      <section ref={hubRef} className="relative z-10 py-16 sm:py-24 border-t border-white/[0.08] stripe-grid px-4 sm:px-8 max-w-7xl mx-auto">
+        <div data-reveal className="mb-12 text-center max-w-3xl mx-auto">
           <p className="text-[12px] font-mono uppercase tracking-[0.25em] text-zinc-400 font-bold">
             MONOLITH ARCHITECTURE INDEX
           </p>
@@ -140,16 +130,18 @@ const HomePage = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {hubCards.map((card) => {
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 velocity-tilt">
+          {hubCards.map((card, index) => {
             const Icon = card.icon;
             return (
               <Link
                 key={card.path}
                 to={card.path}
+                data-reveal
+                style={{ "--reveal-delay": `${index * 55}ms` }}
                 onMouseEnter={() => preloadRoute(card.path)}
                 onTouchStart={() => preloadRoute(card.path)}
-                className="hub-card opacity-100 group">
+                className="group">
                 <TiltCard className="brutalist-panel rounded-3xl p-6 border border-white/10 group-hover:border-white/40 flex flex-col justify-between h-full transition-all duration-300">
                   <div>
                     <div className="flex items-center justify-between mb-5">

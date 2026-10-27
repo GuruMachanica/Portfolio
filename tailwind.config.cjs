@@ -61,6 +61,9 @@ module.exports = {
         overcameBold: ['Overcame Bold'],
         overcameOutline: ['Overcame Outline'],
         poppins: ['Poppins', 'sans-serif'],
+        // 153 font-mono call sites were falling through to the OS default mono,
+        // so the JetBrains Mono webfont already loaded here was never applied.
+        mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
       },
     },
   },
