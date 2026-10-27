@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 /**
  * AmbientGlow - cursor-following radial glow.
@@ -10,8 +10,17 @@ const AmbientGlow = () => {
   const pos = useRef({ x: -1000, y: -1000 });
   const rafId = useRef(null);
   const framePending = useRef(false);
+  // A full-screen mix-blend-screen layer is composited on every frame, but with no
+  // cursor to follow it contributes nothing on touch - so it never mounts there.
+  const [pointerFine] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(hover: hover) and (pointer: fine)").matches
+  );
 
   useEffect(() => {
+    if (!pointerFine) return undefined;
+
     const paint = () => {
       framePending.current = false;
       const el = glowRef.current;
@@ -44,7 +53,9 @@ const AmbientGlow = () => {
       document.removeEventListener("mouseleave", handleMouseLeave);
       if (rafId.current) cancelAnimationFrame(rafId.current);
     };
-  }, []);
+  }, [pointerFine]);
+
+  if (!pointerFine) return null;
 
   return (
     <div

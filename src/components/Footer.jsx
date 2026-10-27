@@ -17,7 +17,7 @@ const pageLinks = [
 
 const Footer = () => {
   return (
-    <footer className="relative z-10 border-t border-white/10 bg-[#000000] text-white">
+    <footer className="relative z-10 border-t border-white/10 bg-[#000000] text-white pb-[env(safe-area-inset-bottom)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 py-12">
         
         {/* Top Footer Grid */}

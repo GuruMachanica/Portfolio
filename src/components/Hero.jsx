@@ -19,6 +19,14 @@ const Hero = () => {
   const [isCompact, setCompact] = useState(
     () => typeof window !== "undefined" && window.innerWidth < 1024
   );
+  // The WebGL layer costs a 117 KB gzipped chunk, so honour an explicit data-saver
+  // request or a 2G-class link and let the CSS glow carry the hero instead.
+  const [webglAllowed] = useState(() => {
+    const conn = typeof navigator !== "undefined" ? navigator.connection : null;
+    if (!conn) return true;
+    if (conn.saveData) return false;
+    return !["slow-2g", "2g"].includes(conn.effectiveType);
+  });
 
   useEffect(() => {
     const media = window.matchMedia("(max-width: 1023px)");
@@ -69,19 +77,24 @@ const Hero = () => {
     <section
       ref={sectionRef}
       className="relative w-full min-h-screen min-h-[100svh] mx-auto flex flex-col justify-end sm:justify-center overflow-hidden pt-28 sm:pt-32 pb-24 sm:pb-16 bg-black">
-      <Suspense fallback={null}>
-        <BlackHole
-          className="absolute inset-0 z-0 bh-fade"
-          focusX={isCompact ? 0.5 : 0.74}
-          focusY={isCompact ? 0.2 : 0.5}
-          scale={isCompact ? 0.44 : 0.62}
-        />
-      </Suspense>
+      {/* Paints instantly and covers the gap while the lazily loaded chunk arrives. */}
+      <div aria-hidden="true" className="absolute inset-0 z-0 pointer-events-none hero-disk-glow" />
+
+      {webglAllowed && (
+        <Suspense fallback={null}>
+          <BlackHole
+            className="absolute inset-0 z-[1] bh-fade"
+            focusX={isCompact ? 0.5 : 0.74}
+            focusY={isCompact ? 0.2 : 0.5}
+            scale={isCompact ? 0.44 : 0.62}
+          />
+        </Suspense>
+      )}
 
       {/* Scrims keep the wordmark legible where the accretion disk passes behind it. */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 z-[1] pointer-events-none"
+        className="absolute inset-0 z-[2] pointer-events-none"
         style={{
           background:
             "linear-gradient(100deg, rgba(0,0,0,0.96) 0%, rgba(0,0,0,0.82) 34%, rgba(0,0,0,0.35) 58%, rgba(0,0,0,0) 78%)",
@@ -89,7 +102,7 @@ const Hero = () => {
       />
       <div
         aria-hidden="true"
-        className="absolute inset-x-0 bottom-0 z-[1] h-48 pointer-events-none bg-gradient-to-t from-black via-black/80 to-transparent"
+        className="absolute inset-x-0 bottom-0 z-[2] h-48 pointer-events-none bg-gradient-to-t from-black via-black/80 to-transparent"
       />
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10">
@@ -138,19 +151,19 @@ const Hero = () => {
         <div className="hero-cta opacity-0 mt-9 sm:mt-11 flex flex-wrap items-center gap-3 sm:gap-4">
           <Link
             to="/projects"
-            className="flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-full bg-white text-black font-bold text-[12px] sm:text-[13px] font-mono uppercase tracking-wider hover:bg-zinc-200 transition-colors duration-200">
+            className="flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 rounded-full bg-white text-black font-bold text-[12px] sm:text-[13px] font-mono uppercase tracking-wider hover:bg-zinc-200 transition-colors duration-200">
             View Projects
             <FaArrowRight className="w-3 h-3" />
           </Link>
           <Link
             to="/resume"
-            className="hero-pill-ghost flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-full text-white font-bold text-[12px] sm:text-[13px] font-mono uppercase tracking-wider">
+            className="hero-pill-ghost flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 rounded-full text-white font-bold text-[12px] sm:text-[13px] font-mono uppercase tracking-wider">
             <FaFileDownload className="w-3 h-3" />
             Resume
           </Link>
           <Link
             to="/technologies"
-            className="hero-pill-ghost flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-full text-zinc-300 font-bold text-[12px] sm:text-[13px] font-mono uppercase tracking-wider">
+            className="hero-pill-ghost flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 rounded-full text-zinc-300 font-bold text-[12px] sm:text-[13px] font-mono uppercase tracking-wider">
             Stack
           </Link>
         </div>

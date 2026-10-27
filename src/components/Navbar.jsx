@@ -38,7 +38,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="w-full fixed top-0 z-50 bg-black/90 backdrop-blur-md border-b border-white/10 px-4 sm:px-8 py-3">
+    <nav className="w-full fixed top-0 z-50 bg-black/90 backdrop-blur-md border-b border-white/10 pl-[calc(1rem_+_var(--safe-left))] pr-[calc(1rem_+_var(--safe-right))] sm:pl-[calc(2rem_+_var(--safe-left))] sm:pr-[calc(2rem_+_var(--safe-right))] pt-[calc(0.75rem_+_var(--safe-top))] pb-3">
       <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
         
         {/* Brand Logo & Name */}
@@ -157,7 +157,7 @@ const Navbar = () => {
 
       {/* Mobile Drawer */}
       {toggle && (
-        <div className="xl:hidden fixed inset-x-0 top-[60px] bg-black/95 border-b border-white/15 p-5 sm:p-6 backdrop-blur-2xl flex flex-col gap-4 shadow-2xl max-h-[calc(100dvh-70px)] overflow-y-auto no-scrollbar">
+        <div className="xl:hidden fixed inset-x-0 top-[calc(60px_+_var(--safe-top))] bg-black/95 border-b border-white/15 p-5 sm:p-6 pb-[calc(1.25rem_+_var(--safe-bottom))] backdrop-blur-2xl flex flex-col gap-4 shadow-2xl max-h-[calc(100dvh-70px_-_var(--safe-top))] overflow-y-auto no-scrollbar">
           <div className="text-[11px] font-mono text-zinc-500 uppercase tracking-widest pb-2 border-b border-white/10">
             PAGES &amp; SECTIONS
           </div>

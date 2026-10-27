@@ -5,7 +5,6 @@ const aegis = vaakkavach;
 import sunmap from './projects/sunmap.webp';
 import kavachg from './projects/KavachG.webp';
 
-import worldmap from './backgrounds/world_map_user.jpg';
 import logo from './logo/logo-black.webp';
 import logotext from './logo/logo-text-black.webp';
 
@@ -60,5 +59,4 @@ export {
   scikitlearn,
   threejs,
   postgresql,
-  worldmap,
 };

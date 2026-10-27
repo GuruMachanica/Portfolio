@@ -170,7 +170,7 @@ const CommandPalette = () => {
       <button
         onClick={() => setIsOpen(true)}
         aria-label="Open CLI Terminal (Ctrl+K or /)"
-        className="fixed left-4 bottom-4 sm:left-6 sm:bottom-6 z-[9998] flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-[#111111]/90 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-black font-mono text-[12px] shadow-2xl transition-all duration-300 group cursor-pointer hover:scale-105">
+        className="fixed left-[calc(1rem_+_var(--safe-left))] bottom-[calc(1rem_+_var(--safe-bottom))] sm:left-6 sm:bottom-[calc(1.5rem_+_var(--safe-bottom))] z-[9998] flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-[#111111]/90 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-black font-mono text-[12px] shadow-2xl transition-all duration-300 group cursor-pointer hover:scale-105">
         <FaTerminal className="w-3.5 h-3.5 text-zinc-400 group-hover:text-black" />
         <span className="hidden sm:inline font-bold">CLI</span>
         <kbd className="text-[10px] px-1.5 py-0.5 rounded bg-white/10 text-zinc-300 font-mono">

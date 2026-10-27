@@ -243,7 +243,10 @@ const BlackHole = ({
     const smallViewport = window.innerWidth < 768;
     const lowTier =
       quality === "low" ||
-      (quality === "auto" && (smallViewport || (navigator.hardwareConcurrency || 8) <= 4));
+      (quality === "auto" &&
+        (smallViewport ||
+          (navigator.hardwareConcurrency || 8) <= 4 ||
+          (navigator.deviceMemory || 8) <= 4));
 
     let renderer;
     try {
@@ -390,7 +393,6 @@ const BlackHole = ({
     const pointer = { x: 0, y: 0 };
     const eased = { x: 0, y: 0 };
     const onPointerMove = (event) => {
-      if (coarsePointer) return;
       pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
       pointer.y = (event.clientY / window.innerHeight) * 2 - 1;
     };
@@ -457,7 +459,7 @@ const BlackHole = ({
 
     document.addEventListener("visibilitychange", onVisibility);
     window.addEventListener("resize", onResize);
-    window.addEventListener("pointermove", onPointerMove, { passive: true });
+    if (!coarsePointer) window.addEventListener("pointermove", onPointerMove, { passive: true });
     reducedMotion.addEventListener("change", onMotionPreferenceChange);
 
     return () => {
